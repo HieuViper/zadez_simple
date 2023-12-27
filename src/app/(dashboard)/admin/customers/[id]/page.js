@@ -1,30 +1,27 @@
 "use client";
 
-import { fetcher } from "@/library/util";
+import { useSWRData } from "@/library/api";
 import { SaveOutlined } from "@ant-design/icons";
-import { Button, Form, Input, Row, message } from "antd";
+import { Button, Form, Input, Row } from "antd";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect } from "react";
-import useSWR from "swr";
 
 const CustomerForm = ({ params }) => {
   const isAddMode = params.id == 0 ? true : false;
   const searchParams = useSearchParams();
-  console.log(
-    "🚀 ~ file: page.js:13 ~ CustomerForm ~ searchParams:",
-    searchParams.get("previousPage")
-  );
   const router = useRouter();
   const [form] = Form.useForm();
+
+  const { data, error, isLoading, createData, updateData } = useSWRData(
+    `/api/customers`,
+    isAddMode ? {} : { id: params.id }
+  );
+
   const onFinish = async (values) => {
     console.log(values);
     if (isAddMode) {
-      await fetch(`/api/customers`, {
-        method: "POST",
-        body: JSON.stringify(values),
-      }).then((rs) => {
-        if (rs.ok) {
-          message.success("Add Success");
+      createData(values).then((res) => {
+        if (res.status === 200) {
           router.push(
             `/admin/customers?page=${searchParams.get(
               "previousPage"
@@ -33,12 +30,8 @@ const CustomerForm = ({ params }) => {
         }
       });
     } else {
-      await fetch(`/api/customers/${params.id}`, {
-        method: "PUT",
-        body: JSON.stringify(values),
-      }).then((rs) => {
-        if (rs.ok) {
-          message.success("Update Success");
+      updateData(params.id, values).then((res) => {
+        if (res.status == 200) {
           router.push(
             `/admin/customers?page=${searchParams.get(
               "previousPage"
@@ -49,12 +42,6 @@ const CustomerForm = ({ params }) => {
     }
   };
   const onFinishFailed = () => {};
-
-  const { data, error, isLoading } = useSWR(
-    !isAddMode ? `/api/customers/${params.id}` : null,
-    fetcher
-  );
-  console.log("🚀 ~ file: page.js:56 ~ CustomerList ~ data:", data);
 
   useEffect(() => {
     if (data) {

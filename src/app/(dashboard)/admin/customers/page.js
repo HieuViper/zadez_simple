@@ -1,11 +1,10 @@
 "use client";
-import { fetcher } from "@/library/util";
-import { Button, Popconfirm, Space, Table, message } from "antd";
+import { useSWRData } from "@/library/api";
+import { Button, Popconfirm, Space, Table } from "antd";
 import Search from "antd/es/input/Search";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useState } from "react";
-import useSWR, { useSWRConfig } from "swr";
 
 const CustomerList = () => {
   const router = useRouter();
@@ -51,17 +50,7 @@ const CustomerList = () => {
             title="Delete the customer"
             description="Are you sure to delete this customer?"
             onConfirm={async () => {
-              await fetch(`/api/customers/${record.id}`, {
-                method: "DELETE",
-              }).then((rs) => {
-                console.log("🚀 ~ file: page.js:53 ~ onConfirm={ ~ rs:", rs);
-                if (rs.ok) {
-                  mutate(
-                    `/api/customers?keyword=${search}&page=${page}&limit=${limit}`
-                  );
-                }
-                message.success("Delete Success");
-              });
+              deleteData(record.id);
             }}
             onCancel={() => {}}
             okText="Yes"
@@ -78,12 +67,11 @@ const CustomerList = () => {
   const page = Number(searchParams.get("page") || 1);
   const limit = Number(searchParams.get("limit") || 10);
 
-  const { mutate } = useSWRConfig();
-  const { data, error, isLoading } = useSWR(
-    `/api/customers?keyword=${search}&page=${page}&limit=${limit}`,
-    fetcher
-  );
-  console.log("🚀 ~ file: page.js:56 ~ CustomerList ~ data:", data);
+  const { data, error, isLoading, deleteData } = useSWRData("/api/customers", {
+    page,
+    limit,
+    keyword: search,
+  });
 
   if (error) return <div>failed to load</div>;
   if (isLoading) return <div>loading...123</div>;
@@ -110,7 +98,7 @@ const CustomerList = () => {
           style={{ width: 300 }}
         />
       </div>
-      <hr class="border-white my-4" />
+      <hr className="border-white my-4" />
 
       <Table
         columns={columns}

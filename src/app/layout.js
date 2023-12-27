@@ -1,3 +1,4 @@
+import { RootStyleRegistry } from "@/library/RootStyleRegistry";
 import { ConfigProvider } from "antd";
 import { Inter } from "next/font/google";
 import "./globals.css";
@@ -26,7 +27,7 @@ export default function RootLayout({ children }) {
             },
           }}
         >
-          {children}
+          <RootStyleRegistry>{children}</RootStyleRegistry>
         </ConfigProvider>
       </body>
     </html>
