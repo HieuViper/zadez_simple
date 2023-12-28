@@ -1,4 +1,4 @@
-import { updateOrCreate } from "@/library/utils";
+import { updateOrCreate } from "@/library/util";
 import db from "@/models";
 import { NextResponse } from "next/server";
 const Sequelize = require("sequelize");

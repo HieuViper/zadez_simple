@@ -1,5 +1,4 @@
 'use client'
-
 import { Button, Popconfirm, Select, Table, message } from 'antd'
 import {
   DeleteOutlined,
@@ -12,18 +11,12 @@ import Search from 'antd/es/input/Search'
 import Link from 'next/link'
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import React, { useState, useEffect } from 'react'
-// import { callNon } from '@/library/api'
+import { useSWRData } from "@/library/api";
 
 const ProductList = () => {
-
-  const [loadingDataTable, setLoadingDataTable] = useState(false)
   const [loadingChangePage, setLoadingChangePage] = useState(false)
   const [loadingBulkDelete, setLoadingBulkDelete] = useState(false);
-
-  const [langTable, setLangTable] = useState([])
-  const [lang, setLang] = useState(myConstant.DEFAULT_LANGUAGE);
   const [search, setSearch] = useState("");
-  const [errorMessage, setErrorMessage] = useState('');
   const defaultPagination = {
     current: 1,
     disable: false,
@@ -32,23 +25,24 @@ const ProductList = () => {
   }
   const [pagination, setPagination] = useState(defaultPagination);
   const router = useRouter();
-  const { setLoginForm } = useLogin();
-  const [dataTable, setDataTable] = useState([])
   const [selectedRowKeys, setSelectedRowKeys] = useState([]);
+  const searchParams = useSearchParams();
+  const page = Number(searchParams.get("page") || 1);
+  const limit = Number(searchParams.get("limit") || 10);
 
+  const { data, isLoading, error, deleteData } = useSWRData("/api/products", {
+    page,
+    limit,
+    keyword: search,
+  });
+
+  if (error) return <div>failed to load</div>;
+  if (isLoading) return <div>loading...123</div>;
 
   const handleChangePage = async (values) => {
     setPagination(values)
-    callProduct()
-    router.refresh()
-  }
-  let langOptions = langTable.map((lang) => {
-    return { value: lang.code, label: lang.name };
-  });
-  const handleChangeLanguage = async (langValue) => {
-    setLang(langValue);
-    callProduct()
-    router.refresh()
+    // callProduct()
+    // router.refresh()
   }
   const handleSearch = async (e) => {
     setPagination(defaultPagination)
@@ -63,21 +57,9 @@ const ProductList = () => {
       .map((item) => `${item},`)
       .join("")
       .slice(0, -1);
-    // let query = `?page=${pagination.current}&limit=${pagination.pageSize}&search=${search}&lang=${lang}&bulkdel=${bulkdel}`;
-    let { result, res } = await callAPI(await fetch(`/api/products`, {
-      method: 'DELETE',
-      cache: 'no-store',
-      body: JSON.stringify({ ids: ids })
-    }),
-      (msg) => { setErrorMessage(msg) },
-      () => { router.push('/login') },
-      () => { setLoginForm(true) },
-    );
-    if (res.status == 200) {
-      router.refresh()
-    }
 
-    message.success("Tasks deleted");
+
+    // message.success("Tasks deleted");
     setLoadingBulkDelete(false);
   };
   const onSelectChange = (SelectedRowKeys) => {
@@ -89,21 +71,6 @@ const ProductList = () => {
   };
   let hasSelected = selectedRowKeys.length > 0;
 
-  //  DELETE
-  const confirmDelete = async (id) => {
-    let { result, res } = await callAPI(await fetch(`/api/products/${id}`, {
-      method: 'DELETE',
-      cache: 'no-store',
-    }),
-      (msg) => { setErrorMessage(msg) },
-      () => { router.push('/login') },
-      () => { setLoginForm(true) },
-    );
-    if (res.status == 200) {
-      router.refresh()
-    }
-    message.success("Task deleted");
-  };
   const columns = [
     {
       title: 'Name',
@@ -114,14 +81,14 @@ const ProductList = () => {
       render: (_, record) => (<div>
         <div className="text-base font-medium pb-2">{record.name}</div>
         <div className="flex gap-2">
-          <Link href={`/admin/products/edit/${record.id}`}>
+          <Link href={`/admin/products/${record.id}`}>
             <Button size='small' type="primary" ghost icon={<EditOutlined />}>Edit</Button>
           </Link>
 
           <Popconfirm
             title="Delete the task"
             description={`Are you sure to delete ${record.name}?`}
-            onConfirm={() => confirmDelete(record.id)}
+            onConfirm={() => deleteData(record.id)}
             okText="Yes"
             cancelText="No"
           >
@@ -136,7 +103,7 @@ const ProductList = () => {
       dataIndex: 'main_image',
       key: 'main_image',
       render: (image) => <div>
-        <img src={image} alt="main_image" />
+        <img className='w-20' src={image} alt="main_image" />
       </div>
     },
     {
@@ -175,79 +142,24 @@ const ProductList = () => {
       key: 'color',
       width: 50,
     },
-
   ];
-  const callProduct = async () => {
-    let query = `?page=${pagination.current}&limit=${pagination.pageSize}&search=${search}&lang=${lang}`;
-    let { result, res } = await callAPI(await fetch(`/api/products${query}`, {
-      method: 'GET',
-      cache: 'no-store',
-    }),
-      (msg) => { setErrorMessage(msg) },
-      () => { router.push('/login') },
-      () => { setLoginForm(true) },
-    );
-    if (res.status == 200) {
-      setDataTable(result.data)
-    }
-  }
-  const formatProducts = (data) => {
-    return data.map(item => {
-      const language = item.product_languages[0];
 
-      return {
-        ...item,
-        name: language.name || '',
-        short: language.short || '',
-        description: language.description || ''
-      };
-    });
-  };
-
-  const products = formatProducts(dataTable);
-  const test = async () => {
-    let query = `?page=${pagination.current}&limit=${pagination.pageSize}&search=${search}&lang=${lang}`;
-    const test = await callNon(`/api/products${query}`, "GET");
-    console.log('test :', test);
-
-  }
-  useEffect(() => {
-    //redirect to login page if user is not authorized
-    // if (props.isAuthorize == false) {
-    //     handleNotAuthorized(
-    //         () => { router.push('/login') },
-    //         (msg) => { setErrorMessage(msg) }
-    //     );
-    // }
-    callProduct()
-    const { data } = props.langTable && JSON.parse(props.langTable)
-    setLangTable(data)
-  }, [props]);
   return <div>
 
     <div className="flex justify-between mb-4 gap-x-4">
       <div className="flex gap-x-5">
         <p className="font-semibold text-xl pr-4">Products</p>
-        {/* {props.roles[props.user.role]?.products?.add === true && ( */}
-        <Link href={`/admin/products/add`}>
-          <Button>Add product </Button>
+        <Link href={`/admin/products/0`}>
+          <Button>Add product</Button>
         </Link>
-        {/* )} */}
-        <Select
-          value={lang}
-          style={{
-            width: 120,
-          }}
-          onChange={handleChangeLanguage}
-          options={langOptions}
-        />
+
       </div>
       <Search
         placeholder="input search text"
         // value={search}
         // disabled={loadingStatus}
         // onChange={(e) => onSearchChange(e)}
-        onSearch={(e) => handleSearch(e)}
+        onSearch={(e) => setSearch(e)}
         enterButton
         style={{
           width: 250,
@@ -285,13 +197,23 @@ const ProductList = () => {
       style={{ marginTop: 10 }}
       rowSelection={rowSelection}
       columns={columns}
-      dataSource={products}
       rowKey="id"
-      onChange={handleChangePage}
-
-      pagination={{ ...pagination, disabled: loadingChangePage }}
-      bordered={true}
-      loading={loadingDataTable}
+      onChange={(e) => {
+        router.replace(
+          `/admin/products?page=${e.current}&limit=${e.pageSize}&keyword=${search}`
+        );
+      }}
+      pagination={{
+        pageSize: data.pagging.limit,
+        current: data.pagging.currentPage,
+        total: data.pagging.total,
+        showSizeChanger: true,
+        showQuickJumper: true,
+      }}
+      // bordered={true}
+      dataSource={data.data}
+      loading={isLoading}
+    // pagination={{ ...pagination, disabled: loadingChangePage }}
     // scroll={{
     //     x: 1300,
     //     y: 500,

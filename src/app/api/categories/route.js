@@ -10,9 +10,9 @@ export async function GET(req, { params }) {
         const page = searchParams.has("page") ? searchParams.get('page') - 1 : 0;
         const limit = searchParams.has("limit") ? searchParams.get('limit') : 10;
 
-        // const option = searchParams.has("search") ? {
+        // const option = searchParams.has("keyword") ? {
         //     Code: {
-        //         [Op.like]: "%" + searchParams.get('search') + "%",
+        //         [Op.like]: "%" + searchParams.get('keyword') + "%",
         //     },
         // } ? type : {
         //     [Op.like]: "%" + searchParams.get('type') + "%",
@@ -22,17 +22,17 @@ export async function GET(req, { params }) {
         //     [Op.or]: [
         //         {
         //             name: {
-        //                 [Op.like]: "%" + searchParams.get("search") + "%",
+        //                 [Op.like]: "%" + searchParams.get("keyword") + "%",
         //             },
         //         },
         //         {
         //             category_code: {
-        //                 [Op.like]: "%" + searchParams.get("search") + "%",
+        //                 [Op.like]: "%" + searchParams.get("keyword") + "%",
         //             },
         //         },
         //         {
         //             description: {
-        //                 [Op.like]: "%" + searchParams.get("search") + "%",
+        //                 [Op.like]: "%" + searchParams.get("keyword") + "%",
         //             },
         //         },
         //         {
@@ -49,23 +49,23 @@ export async function GET(req, { params }) {
         //     ]
         // } : {}
         let option = {}
-        if (searchParams.has("search")) {
+        if (searchParams.has("keyword")) {
             option = {
                 ...option,
                 [Op.or]: [
                     {
                         name: {
-                            [Op.like]: "%" + searchParams.get("search") + "%",
+                            [Op.like]: "%" + searchParams.get("keyword") + "%",
                         },
                     },
                     {
                         category_code: {
-                            [Op.like]: "%" + searchParams.get("search") + "%",
+                            [Op.like]: "%" + searchParams.get("keyword") + "%",
                         },
                     },
                     {
                         description: {
-                            [Op.like]: "%" + searchParams.get("search") + "%",
+                            [Op.like]: "%" + searchParams.get("keyword") + "%",
                         },
                     },
                 ],
