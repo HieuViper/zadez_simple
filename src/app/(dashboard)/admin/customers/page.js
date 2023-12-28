@@ -56,14 +56,15 @@ const CustomerList = () => {
               }).then((rs) => {
                 console.log("🚀 ~ file: page.js:53 ~ onConfirm={ ~ rs:", rs);
                 if (rs.ok) {
-                  mutate(
-                    `/api/customers?keyword=${search}&page=${page}&limit=${limit}`
-                  );
+                  // mutate(
+                  //   `/api/customers?keyword=${search}&page=${page}&limit=${limit}`
+                  // );
+                  mutate()
                 }
                 message.success("Delete Success");
               });
             }}
-            onCancel={() => {}}
+            onCancel={() => { }}
             okText="Yes"
             cancelText="No"
           >
@@ -78,8 +79,8 @@ const CustomerList = () => {
   const page = Number(searchParams.get("page") || 1);
   const limit = Number(searchParams.get("limit") || 10);
 
-  const { mutate } = useSWRConfig();
-  const { data, error, isLoading } = useSWR(
+  // const { mutate } = useSWRConfig(); 
+  const { data, error, isLoading, mutate } = useSWR(
     `/api/customers?keyword=${search}&page=${page}&limit=${limit}`,
     fetcher
   );
