@@ -71,14 +71,6 @@ export const useSWRData = (endpoint, params = {}) => {
 };
 
 export const useSWRUpload = (endpoint, params = {}) => {
-  // const { id, ...otherParams } = params; // Extract 'id' from params
-  // const queryString =
-  //   Object.keys(otherParams).length > 0
-  //     ? new URLSearchParams(otherParams).toString()
-  //     : "";
-  // const key = id
-  //   ? `${endpoint}/${id}?${queryString}`
-  //   : `${endpoint}?${queryString}`;
   const uploadFormData = async (formData) => {
     try {
       const res = await fetch(`${endpoint}`, {
@@ -93,14 +85,11 @@ export const useSWRUpload = (endpoint, params = {}) => {
         // message.success("Upload Success");
       }
       const result = await res.json()
-      // console.log('result :', result);
       return result
     }
     catch {
       throw new Error('File upload failed');
     }
-
-
   };
   return {
     uploadFormData
