@@ -25,8 +25,8 @@ import {
 import { useSWRData, useSWRUpload } from '@/library/api';
 import dynamic from 'next/dynamic';
 
+const Editor = dynamic(() => import("@/components/Editor"), { ssr: false });
 const ProductForm = ({ params }) => {
-  const Editor = dynamic(() => import("@/components/Editor"), { ssr: false });
   const isAddMode = params.id == 0 ? true : false;
   const searchParams = useSearchParams();
   const router = useRouter();
@@ -206,10 +206,6 @@ const ProductForm = ({ params }) => {
       setInitFileList(data.list_image)
     }
   }, [data]);
-  const [editorLoaded, setEditorLoaded] = useState(false);
-  useEffect(() => {
-    setEditorLoaded(true);
-  }, []);
 
   if (error) return <div>failed to load</div>;
   // if (isLoading) return <div>loading...123</div>;
@@ -558,7 +554,7 @@ const ProductForm = ({ params }) => {
         label={<span className="font-medium">Description</span>}
         name={`description`}
       >
-        <Editor editorLoaded={editorLoaded} />
+        <Editor />
       </Form.Item>
 
     </Form>
