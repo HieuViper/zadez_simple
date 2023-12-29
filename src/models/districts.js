@@ -3,17 +3,25 @@ module.exports = (sequelize, DataTypes) => {
   const Districts = sequelize.define(
     "Districts",
     {
-      name:DataTypes.STRING,
-			code:DataTypes.STRING,
-			cityId:DataTypes.INTEGER,
-			order:DataTypes.INTEGER,
-			active:DataTypes.BOOLEAN,
-			
+      name: DataTypes.STRING,
+      code: DataTypes.STRING,
+      division_type: DataTypes.STRING,
+      codename: DataTypes.STRING,
     },
-    {tableName:"districts"}
+    { tableName: "districts" }
   );
   Districts.associate = function (models) {
-    //return
+    Districts.hasMany(models.Wards, {
+      as: "wards",
+      foreignKey: "districtId",
+    });
+    Districts.belongsTo(models.Cities, {
+      as: "cities",
+      foreignKey: "cityId",
+    });
+    Districts.hasMany(models.Customers, {
+      foreignKey: "districtId",
+    });
   };
   return Districts;
 };

@@ -34,6 +34,20 @@ export async function GET(req, { params }) {
     offset: parseInt(page) * parseInt(limit),
     limit: parseInt(limit),
     order: [["id", "DESC"]],
+    include: [
+      {
+        model: db.Cities,
+        as: "cities",
+      },
+      {
+        model: db.Districts,
+        as: "districts",
+      },
+      {
+        model: db.Wards,
+        as: "wards",
+      },
+    ],
   });
 
   return NextResponse.json({

@@ -77,6 +77,7 @@ const OrderList = () => {
         <Space size="middle">
           <Link
             href={`/admin/orders/${record.id}?previousPage=${page}&previousLimit=${limit}`}
+            prefetch={false}
           >
             Edit
           </Link>

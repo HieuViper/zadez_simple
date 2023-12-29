@@ -12,6 +12,7 @@ export const useSWRData = (endpoint, params = {}) => {
   const key = id
     ? `${endpoint}/${id}?${queryString}`
     : `${endpoint}?${queryString}`;
+
   const { data, isLoading, error, mutate } = useSWR(key, fetcher);
 
   const createData = async (newData) => {
@@ -62,8 +63,8 @@ export const useSWRData = (endpoint, params = {}) => {
 
   return {
     data,
-    error,
     isLoading,
+    error,
     createData,
     updateData,
     deleteData,

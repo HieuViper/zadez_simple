@@ -1,10 +1,11 @@
 "use client";
 
+import SelectLocations from "@/components/SelectLocations";
 import { useSWRData } from "@/library/api";
 import { SaveOutlined } from "@ant-design/icons";
 import { Button, Form, Input, Row } from "antd";
 import { useRouter, useSearchParams } from "next/navigation";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 const CustomerForm = ({ params }) => {
   const isAddMode = params.id == 0 ? true : false;
@@ -15,6 +16,21 @@ const CustomerForm = ({ params }) => {
   const { data, error, isLoading, createData, updateData } = useSWRData(
     `/api/customers`,
     isAddMode ? {} : { id: params.id }
+  );
+
+  //locations
+  const [cityId, setCityId] = useState("");
+  const [districtId, setDistrictId] = useState("");
+  console.log("🚀 ~ file: page.js:24 ~ CustomerForm ~ districtId:", districtId);
+  const [wardId, setWardId] = useState("");
+
+  const { data: dataLocation } = useSWRData("/api/location", {
+    cityId,
+    districtId,
+  });
+  console.log(
+    "🚀 ~ file: page.js:31 ~ CustomerForm ~ dataLocation:",
+    dataLocation
   );
 
   const onFinish = async (values) => {
@@ -46,6 +62,8 @@ const CustomerForm = ({ params }) => {
   useEffect(() => {
     if (data) {
       form.setFieldsValue(data);
+      setCityId(data.cityId);
+      setDistrictId(data.districtId);
     }
   }, [data]);
 
@@ -147,18 +165,19 @@ const CustomerForm = ({ params }) => {
         >
           <Input />
         </Form.Item>
-        <Form.Item
-          label="District"
-          name="districtId"
-          rules={[
-            {
-              required: true,
-              message: "Please input customer's district!",
-            },
-          ]}
-        >
-          <Input />
-        </Form.Item>
+
+        <SelectLocations
+          {...{
+            cityId,
+            setCityId,
+            districtId,
+            setDistrictId,
+            wardId,
+            setWardId,
+            dataLocation,
+            form,
+          }}
+        />
 
         <Form.Item className="flex justify-center">
           <Button

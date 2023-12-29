@@ -8,7 +8,6 @@ const nextConfig = {
   env: {
     ROOT: __dirname,
   },
-  reactStrictMode: true,
   pageExtensions: ["mdx", "md", "jsx", "js", "tsx", "ts"],
 };
 

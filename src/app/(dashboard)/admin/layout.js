@@ -70,6 +70,18 @@ const DashboardLayout = (props) => {
         <Link href="/admin/customers/0">Add Customers</Link>
       ),
     ]),
+    getItem("Consts", "Consts", <AppstoreOutlined />, [
+      getItem(
+        "/admin/consts",
+        null,
+        <Link href="/admin/consts">Consts List</Link>
+      ),
+      getItem(
+        "/admin/consts/0",
+        null,
+        <Link href="/admin/consts/0">Add Consts</Link>
+      ),
+    ]),
     {
       type: "divider",
     },

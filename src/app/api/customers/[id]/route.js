@@ -6,6 +6,20 @@ const Op = Sequelize.Op;
 export async function GET(req, { params }) {
   let rows = await db.Customers.findOne({
     where: { id: params.id },
+    include: [
+      {
+        model: db.Cities,
+        as: "cities",
+      },
+      {
+        model: db.Districts,
+        as: "districts",
+      },
+      {
+        model: db.Wards,
+        as: "wards",
+      },
+    ],
   });
 
   return NextResponse.json(rows);

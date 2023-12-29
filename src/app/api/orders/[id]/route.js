@@ -27,12 +27,6 @@ export async function GET(req, { params }) {
               "price",
               "discount_price",
             ],
-            include: [
-              {
-                model: db.Product_languages,
-                as: "product_languages",
-              },
-            ],
           },
         ],
       },
