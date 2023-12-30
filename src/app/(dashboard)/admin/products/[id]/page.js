@@ -44,6 +44,10 @@ const ProductForm = ({ params }) => {
     `/api/products/images`,
     isAddMode ? {} : { id: params.id }
   );
+  const { data: categories } = useSWRData("/api/categories", {
+    limit: 1000,
+  });
+
   const { Option } = Select;
   const { id } = useParams();
   const [loadingSubmit, setLoadingSubmit] = useState(false)
@@ -55,6 +59,8 @@ const ProductForm = ({ params }) => {
   const [listImage, setListImage] = useState([]);
   const [initFileList, setInitFileList] = useState([])
   const [fileList, setFileList] = useState(initFileList);
+  const [value, setValue] = useState();
+
   const handleSubmit = async (value) => {
     // setLoadingSubmit(true);
     console.log('valueForm :', value);
@@ -72,7 +78,7 @@ const ProductForm = ({ params }) => {
           product_code: value.product_code,
           price: value.price,
           discount_price: value.discount_price,
-          categoryId: 1,
+          categoryId: value.categoryId,
           driver: value.driver,
           product_position: value.product_position,
           active: value.active,
@@ -90,8 +96,15 @@ const ProductForm = ({ params }) => {
         console.log('product add:', product);
         createData(product).then((res) => {
           console.log('res add:', res);
+          if (res.status == 200) {
+            setLoadingSubmit(false);
+            router.push(
+              `/admin/products?page=${searchParams.get(
+                "previousPage"
+              )}&limit=${searchParams.get("previousLimit")}`
+            );
+          }
         })
-        setLoadingSubmit(false);
       } else {
         const product = {
           id: id,
@@ -99,7 +112,7 @@ const ProductForm = ({ params }) => {
           product_code: value.product_code,
           price: value.price,
           discount_price: value.discount_price,
-          categoryId: 1,
+          categoryId: value.categoryId,
           driver: value.driver,
           product_position: value.product_position,
           active: value.active,
@@ -117,8 +130,15 @@ const ProductForm = ({ params }) => {
         console.log('product edit :', product);
         updateData(params.id, product).then((res) => {
           console.log('res edit:', res);
+          if (res.status == 200) {
+            setLoadingSubmit(false);
+            router.push(
+              `/admin/products?page=${searchParams.get(
+                "previousPage"
+              )}&limit=${searchParams.get("previousLimit")}`
+            );
+          }
         })
-        setLoadingSubmit(false);
       }
     } catch (error) {
       message.error(error);
@@ -196,7 +216,20 @@ const ProductForm = ({ params }) => {
     { value: 'white', label: 'White' },
     { value: 'grey', label: 'Grey' },
   ];
-
+  // TREE DATA
+  function buildTreeData(data, parent = null) {
+    return data
+      .filter((item) => item.parent === parent)
+      .map((item) => ({
+        title: item.name,
+        value: item.id,
+        children: buildTreeData(data, item.id),
+      }));
+  }
+  const treeData = categories && buildTreeData(categories.data, null);
+  const onChange = (newValue) => {
+    setValue(newValue);
+  };
   useEffect(() => {
     if (data) {
       form.setFieldsValue(data);
@@ -302,9 +335,19 @@ const ProductForm = ({ params }) => {
             label={<span className="font-medium">Categories </span>}
             name="categoryId"
           >
-            <Select placeholder="Select Categories" >
-
-            </Select>
+            <TreeSelect
+              showSearch
+              allowClear
+              treeDefaultExpandAll
+              treeData={treeData}
+              value={value}
+              onChange={onChange}
+              dropdownStyle={{
+                maxHeight: 400,
+                overflow: 'auto',
+              }}
+              placeholder="Select parent"
+            />
           </Form.Item>
           <Form.Item
             label={<span className="font-medium">Driver</span>}
@@ -548,7 +591,7 @@ const ProductForm = ({ params }) => {
         label={<span className="font-medium">Short</span>}
         name={`short`}
       >
-        <Input.TextArea rows={2} placeholder="Input short" />
+        <Input.TextArea rows={4} placeholder="Input short" />
       </Form.Item>
       <Form.Item
         label={<span className="font-medium">Description</span>}

@@ -3,8 +3,8 @@ import db from "@/models";
 
 export async function POST(body, req) {
     try {
-        const product = await body.json();
-        let result = await db.Categories.create(product);
+        const category = await body.json();
+        let result = await db.Categories.create(category);
         return NextResponse.json({
             result: "success",
             message: "categories created successfully",
@@ -32,7 +32,7 @@ export async function GET(req, { params }) {
             code: searchParams.get("lang")
 
         } : {};
-        let product = await db.Categories.findOne({
+        let category = await db.Categories.findOne({
             where: { id: params.id },
             include: [
                 {
@@ -42,9 +42,7 @@ export async function GET(req, { params }) {
             ],
         });
 
-        return NextResponse.json({
-            data: product
-        });
+        return NextResponse.json(category);
     }
     catch (error) {
         return NextResponse.json({ msg: 'error here: ' + error.message }, { status: 500 });
@@ -54,50 +52,23 @@ export async function GET(req, { params }) {
 
 export async function PUT(body, req) {
     try {
-        const productId = req.params.id; // Assuming productId is passed in the request parameters
-        const productData = await body.json();
+        const categoryId = req.params.id; // Assuming categoryId is passed in the request parameters
+        const categoryData = await body.json();
 
-        const existingProduct = await db.Categories.findByPk(productId);
-        if (!existingProduct) {
-            return NextResponse.json({ msg: 'Product not found' }, { status: 404 });
+        const existingCategory = await db.Categories.findByPk(categoryId);
+        if (!existingCategory) {
+            return NextResponse.json({ msg: 'Category not found' }, { status: 404 });
         }
 
-        // Update the existing product with the new data
-        await existingProduct.update(productData);
+        // Update the existing category with the new data
+        await existingCategory.update(categoryData);
 
         return NextResponse.json({
             result: "success",
-            message: "Product updated successfully",
-            data: existingProduct
+            message: "Category updated successfully",
+            data: existingCategory
         });
     } catch (error) {
-        return NextResponse.json({ msg: 'Error updating product: ' + error.message }, { status: 500 });
+        return NextResponse.json({ msg: 'Error updating category: ' + error.message }, { status: 500 });
     }
 }
-// export async function PUT(body, req) {
-//     try {
-//         const product = await body.json();
-//         let result = await db.Categories.create(product);
-
-//         const Cate_langs = product.Cate_langs.map(item => ({
-//             productId: result.id,
-//             name: item.name,
-//             short: item.short,
-//             description: item.description,
-//             languageCode: item.languageCode,
-//         }));
-
-//         const createdLanguages = await db.Cate_langs.bulkCreate(Cate_langs);
-
-//         return NextResponse.json({
-//             result: "success",
-//             message: "Categories created successfully",
-//             data: {
-//                 product: result,
-//                 Cate_langs: createdLanguages
-//             }
-//         });
-//     } catch (error) {
-//         return NextResponse.json({ msg: 'Error here: ' + error.message }, { status: 500 });
-//     }
-// }
