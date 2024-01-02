@@ -70,3 +70,29 @@ export const useSWRData = (endpoint, params = {}) => {
     deleteData,
   };
 };
+
+export const useSWRUpload = (endpoint, params = {}) => {
+  const uploadFormData = async (formData) => {
+    try {
+      const res = await fetch(`${endpoint}`, {
+        method: "POST",
+        // headers: {
+        //   'content-type': 'multipart/form-data',
+        //   accept: 'application/json',
+        // },
+        body: formData,
+      })
+      if (res.ok) {
+        // message.success("Upload Success");
+      }
+      const result = await res.json()
+      return result
+    }
+    catch {
+      throw new Error('File upload failed');
+    }
+  };
+  return {
+    uploadFormData
+  };
+}

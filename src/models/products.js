@@ -10,6 +10,25 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false,
         comment: "product code is used to build URL",
       },
+      name: {
+        type: DataTypes.STRING(300),
+        collate: 'utf8mb4_unicode_520_ci',
+        allowNull: true,
+        defaultValue: 'undefined',
+        comment: 'Title can be null',
+      },
+      short: {
+        type: DataTypes.TEXT,
+        collate: 'utf8mb4_unicode_520_ci',
+        allowNull: true,
+        comment: 'Description',
+      },
+      description: {
+        type: DataTypes.TEXT,
+        collate: 'utf8mb4_unicode_520_ci',
+        allowNull: true,
+        comment: 'Description',
+      },
       main_image: {
         type: DataTypes.STRING(200),
         allowNull: true,
@@ -71,25 +90,10 @@ module.exports = (sequelize, DataTypes) => {
       //     allowNull: true,
       //     comment: 'feature image of the products',
       // },
-      categories: {
-        type: DataTypes.STRING(200),
-        collate: "utf8mb4_unicode_520_ci",
-        allowNull: true,
-        defaultValue: "default",
-        comment: "Categories has the format: category1, category2, category3",
+      categoryId: {
+        type: DataTypes.BIGINT(20).UNSIGNED,
+        allownNull: true,
       },
-      // manufacturerId: {
-      //     type: DataTypes.BIGINT(20).UNSIGNED,
-      //     comment: 'Id of the manufaturer',
-      //     // references: {
-      //     //     model: 'manufacturers',
-      //     //     key: 'id',
-      //     //     onDelete: 'CASCADE',
-      //     //     onUpdate: 'CASCADE',
-      //     // }
-      // },
-      // isWarranty: DataTypes.BOOLEAN,
-      // warrantyDay: DataTypes.INTEGER,
       price: {
         type: DataTypes.DOUBLE,
         comment: "Original price",

@@ -53,7 +53,7 @@ const CustomerList = () => {
             onConfirm={async () => {
               deleteData(record.id);
             }}
-            onCancel={() => {}}
+            onCancel={() => { }}
             okText="Yes"
             cancelText="No"
           >

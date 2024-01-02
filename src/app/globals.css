@@ -5,3 +5,185 @@
 body {
   margin: 0;
 }
+
+.sidebar-logo img {
+  display: inline-block;
+  height: 30px;
+  width: 30px;
+  vertical-align: middle;
+}
+
+.sidebar-logo h1 {
+  display: inline-block;
+  margin: 0 0 0 10px;
+  color: #fff;
+  font-weight: 400;
+  font-size: 11px;
+  font-family: Avenir, Helvetica Neue, Arial, Helvetica, sans-serif;
+  vertical-align: middle;
+}
+
+.ck.ck-editor__editable_inline {
+  border: 1px solid #ccced1 !important;
+}
+
+/* button */
+.btn-edit {
+  color: #2563eb;
+}
+.btn-trash {
+  color: #ef4444;
+}
+.btn-preview {
+  color: #047857;
+}
+.btn-recover {
+  color: #65a30d;
+}
+.btn-delete {
+  color: #ef4444;
+}
+/* Optional: Style for the disabled link */
+.disabled-link {
+  color: gray; /* Change the color to visually indicate it's disabled */
+  pointer-events: none; /* Disable pointer events to prevent clicks */
+  cursor: not-allowed; /* Change the cursor */
+}
+
+/* SLIDER SWIPER */
+
+.swiper {
+  width: 100%;
+  height: 100%;
+}
+
+.swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  background: #fff;
+
+  /* Center slide text vertically */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.swiper {
+  width: 100%;
+  height: 300px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.swiper-slide {
+  background-size: cover;
+  background-position: center;
+}
+
+.mySwiper {
+  /* height: 50%; */
+  /* width: 100%; */
+}
+
+.mySwiper .swiper-slide img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 90%;
+  height: 90%;
+  object-fit: contain;
+  border-radius: 10px;
+}
+
+.mySwiper1 {
+  /* width: 100%; */
+  /* height: 20%; */
+  height: fit-content;
+  box-sizing: border-box;
+  padding: 10px 0;
+}
+
+.mySwiper1 .swiper-slide {
+  width: 20%;
+  /* height: 100%; */
+  opacity: 0.7;
+  padding: 10px;
+}
+
+.mySwiper1 .swiper-slide-thumb-active {
+  opacity: 1;
+}
+
+.mySwiper1 .swiper-slide img {
+  display: block;
+  /* margin-left: auto; */
+  /* margin-right: auto; */
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 10px;
+}
+.mySwiperCard {
+  width: 100%;
+  height: 30%;
+  box-sizing: border-box;
+  padding: 10px 0;
+}
+.mySwiperCard .swiper-slide {
+  width: 20%;
+  height: 100%;
+}
+
+.mySwiperCard .swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+}
+.swiper-button-prev,
+.swiper-button-next {
+  visibility: hidden;
+}
+
+/* CSS dangerouslySetInnerHTML*/
+/* .editor td,
+th {
+  border: 1px solid rgb(190, 190, 190);
+  padding: 10px;
+}
+
+.editor tr:nth-child(even) {
+  background-color: #eee;
+}
+
+.editor th[scope="col"] {
+  background-color: #696969;
+  color: #fff;
+}
+
+.editor th[scope="row"] {
+  background-color: #d7d9f2;
+}
+
+.editor .detail_product img {
+  margin-bottom: 20px;
+}
+.editor figure {
+  padding-bottom: 10px;
+  padding-top: 10px;
+} 
+
+.editor table {
+  border-collapse: collapse;
+  border: 2px solid rgb(200, 200, 200);
+  overflow: hidden;
+  font-size: 11px;
+}*/
