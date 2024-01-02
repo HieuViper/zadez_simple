@@ -14,6 +14,11 @@ module.exports = (sequelize, DataTypes) => {
         collate: "utf8mb4_unicode_520_ci",
         defaultValue: "",
       },
+      image: {
+        type: DataTypes.STRING(200),
+        allowNull: true,
+        comment: "feature image of the products",
+      },
       parent: DataTypes.INTEGER,
       type: DataTypes.STRING,
       order: DataTypes.INTEGER,

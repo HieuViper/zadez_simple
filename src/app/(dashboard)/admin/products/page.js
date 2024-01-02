@@ -1,5 +1,5 @@
 'use client'
-import { Button, Popconfirm, Select, Table, message } from 'antd'
+import { Button, Divider, Popconfirm, Select, Table, Tag, message } from 'antd'
 import {
   DeleteOutlined,
   EditOutlined,
@@ -30,10 +30,13 @@ const ProductList = () => {
   const page = Number(searchParams.get("page") || 1);
   const limit = Number(searchParams.get("limit") || 10);
 
-  const { data, isLoading, error, deleteData } = useSWRData("/api/products", {
+  const { data, isLoading, error, deleteData, bulkDeleteData } = useSWRData("/api/products", {
     page,
     limit,
     keyword: search,
+  });
+  const { data: categories } = useSWRData("/api/categories", {
+    limit: 1000,
   });
 
   if (error) return <div>failed to load</div>;
@@ -57,7 +60,7 @@ const ProductList = () => {
       .map((item) => `${item},`)
       .join("")
       .slice(0, -1);
-
+    bulkDeleteData(ids)
 
     // message.success("Tasks deleted");
     setLoadingBulkDelete(false);
@@ -78,24 +81,7 @@ const ProductList = () => {
       dataIndex: 'name',
       key: 'name',
       fixed: 'left',
-      render: (_, record) => (<div>
-        <div className="text-base font-medium pb-2">{record.name}</div>
-        <div className="flex gap-2">
-          <Link href={`/admin/products/${record.id}`}>
-            <Button size='small' type="primary" ghost icon={<EditOutlined />}>Edit</Button>
-          </Link>
-
-          <Popconfirm
-            title="Delete the task"
-            description={`Are you sure to delete ${record.name}?`}
-            onConfirm={() => deleteData(record.id)}
-            okText="Yes"
-            cancelText="No"
-          >
-            <Button size='small' danger icon={<DeleteOutlined />}>Delete</Button>
-          </Popconfirm>
-        </div>
-      </div>)
+      render: (_, record) => (<div className="text-base font-medium pb-2">{record.name}</div>)
     },
     {
       title: 'Image',
@@ -120,9 +106,13 @@ const ProductList = () => {
     },
     {
       title: 'Category',
-      dataIndex: 'category',
-      key: 'category',
+      dataIndex: 'categoryId',
+      key: 'categoryId',
       width: 50,
+      render: (categoryId) => {
+        const nameCategory = categories?.data.find(data => data.id == categoryId);
+        return (<div>{nameCategory?.name}</div>)
+      }
     },
     {
       title: 'Status',
@@ -141,57 +131,78 @@ const ProductList = () => {
       dataIndex: 'color',
       key: 'color',
       width: 50,
+      render: (color) => {
+        return (< Tag color={color} > {color}</Tag >)
+      }
+
+    },
+    {
+      title: "Action",
+      key: "action",
+      fixed: 'right',
+      width: 50,
+      render: (_, record) => (
+        <div className="flex gap-2">
+          <Link href={`/admin/products/${record.id}?previousPage=${page}&previousLimit=${limit}`}>
+            <Button size='small' type="primary" ghost icon={<EditOutlined />}>Edit</Button>
+          </Link>
+          <Popconfirm
+            title="Delete the task"
+            description={`Are you sure to delete ${record.name}?`}
+            onConfirm={() => deleteData(record.id)}
+            okText="Yes"
+            cancelText="No"
+          >
+            <Button size='small' danger icon={<DeleteOutlined />}>Delete</Button>
+          </Popconfirm>
+        </div>
+
+      ),
     },
   ];
 
   return <div>
-
+    <h1 className="font-semibold text-xl pr-4">Products</h1>
+    <Divider />
     <div className="flex justify-between mb-4 gap-x-4">
-      <div className="flex gap-x-5">
-        <p className="font-semibold text-xl pr-4">Products</p>
-        <Link href={`/admin/products/0`}>
-          <Button>Add product</Button>
-        </Link>
-
+      <Link href={`/admin/products/0?previousPage=${page}&previousLimit=${limit}`}>
+        <Button>Add Product</Button>
+      </Link>
+      <div className='flex'>
+        <div className="flex pb-2 pr-4">
+          <div className='mx-2 flex items-center'>
+            {hasSelected ? `Selected ${selectedRowKeys.length} items` : ""}
+          </div>
+          <Popconfirm
+            title="Delete the task"
+            description="Are you sure to bulk delete this task?"
+            onConfirm={confirmBulkDelete}
+            okText="Yes"
+            cancelText="No"
+            placement="left"
+          >
+            <Button
+              type="primary"
+              danger
+              disabled={!hasSelected}
+              loading={loadingBulkDelete}
+            >
+              Bulk Delete
+            </Button>
+          </Popconfirm>
+        </div>
+        <Search
+          placeholder="input search text"
+          // value={search}
+          // disabled={loadingStatus}
+          // onChange={(e) => onSearchChange(e)}
+          onSearch={(e) => setSearch(e)}
+          enterButton
+          style={{
+            width: 250,
+          }}
+        />
       </div>
-      <Search
-        placeholder="input search text"
-        // value={search}
-        // disabled={loadingStatus}
-        // onChange={(e) => onSearchChange(e)}
-        onSearch={(e) => setSearch(e)}
-        enterButton
-        style={{
-          width: 250,
-        }}
-      />
-    </div>
-    <div className="flex justify-end pb-2">
-      <div
-        style={{
-          marginLeft: 8,
-          marginRight: 8,
-        }}
-      >
-        {hasSelected ? `Selected ${selectedRowKeys.length} items` : ""}
-      </div>
-      <Popconfirm
-        title="Delete the task"
-        description="Are you sure to bulk delete this task?"
-        onConfirm={confirmBulkDelete}
-        okText="Yes"
-        cancelText="No"
-        placement="left"
-      >
-        <Button
-          type="primary"
-          danger
-          disabled={!hasSelected}
-          loading={loadingBulkDelete}
-        >
-          Bulk Delete
-        </Button>
-      </Popconfirm>
     </div>
     <Table
       style={{ marginTop: 10 }}

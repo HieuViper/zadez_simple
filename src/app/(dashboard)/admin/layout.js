@@ -6,6 +6,8 @@ import {
   MenuUnfoldOutlined,
   SettingOutlined,
   UserOutlined,
+  ShoppingCartOutlined,
+  CodeSandboxOutlined,
 } from "@ant-design/icons";
 import { Avatar, Button, Layout, Menu, theme } from "antd";
 import Image from "next/image";
@@ -30,7 +32,7 @@ const DashboardLayout = (props) => {
     };
   }
   const items = [
-    getItem("Products", "Products", <AppstoreOutlined />, [
+    getItem("Products", "Products", <CodeSandboxOutlined />, [
       getItem(
         "/admin/products",
         null,
@@ -43,10 +45,18 @@ const DashboardLayout = (props) => {
       ),
     ]),
     getItem("/admin/categories", "Categories", <AppstoreOutlined />, [
-      getItem("Categories List", "3"),
-      getItem("Add Category", "4"),
+      getItem(
+        "/admin/categories",
+        null,
+        <Link href="/admin/categories">Categories List</Link>
+      ),
+      getItem(
+        "/admin/categories/0",
+        null,
+        <Link href="/admin/categories/0">Add Categories</Link>
+      ),
     ]),
-    getItem("Orders", "Orders", <AppstoreOutlined />, [
+    getItem("Orders", "Orders", < ShoppingCartOutlined />, [
       getItem(
         "/admin/orders",
         null,
@@ -58,7 +68,7 @@ const DashboardLayout = (props) => {
         <Link href="/admin/orders/0">Add Order</Link>
       ),
     ]),
-    getItem("Customer", "Customer", <AppstoreOutlined />, [
+    getItem("Customer", "Customer", <UserOutlined />, [
       getItem(
         "/admin/customers",
         null,

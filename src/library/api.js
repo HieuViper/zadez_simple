@@ -60,6 +60,18 @@ export const useSWRData = (endpoint, params = {}) => {
       return { status: 200 };
     }
   };
+  const bulkDeleteData = async (ids) => {
+    const res = await fetch(`${endpoint}`, {
+      method: "DELETE",
+      body: JSON.stringify({ ids })
+    });
+
+    if (res.ok) {
+      message.success("Delete Success");
+      mutate();
+      return { status: 200 };
+    }
+  };
 
   return {
     data,
@@ -68,6 +80,7 @@ export const useSWRData = (endpoint, params = {}) => {
     createData,
     updateData,
     deleteData,
+    bulkDeleteData
   };
 };
 
