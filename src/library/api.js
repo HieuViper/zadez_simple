@@ -76,6 +76,7 @@ export const useSWRData = (endpoint, params = {}) => {
     data,
     error,
     isLoading,
+    mutate,
     createData,
     updateData,
     deleteData,

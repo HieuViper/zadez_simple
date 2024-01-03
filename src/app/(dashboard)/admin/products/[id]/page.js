@@ -73,25 +73,34 @@ const ProductForm = ({ params }) => {
     const listImage = await uploadListImage()
     try {
       if (isAddMode) {
+        // const product = {
+        //   name: value.name,
+        //   product_code: value.product_code,
+        //   price: value.price,
+        //   discount_price: value.discount_price,
+        //   categoryId: value.categoryId,
+        //   driver: value.driver,
+        //   product_position: value.product_position,
+        //   active: value.active,
+        //   status: value.status,
+        //   color: value.color,
+        //   main_image: mainImage.url || "",
+        //   sub_image: subImage.url || "",
+        //   list_image: listImage || {},
+        //   modified_by: null,
+        //   product_author: "",
+        //   manufacturerId: null,
+        //   short: value.short,
+        //   description: value.description
+        // }
         const product = {
-          name: value.name,
-          product_code: value.product_code,
-          price: value.price,
-          discount_price: value.discount_price,
-          categoryId: value.categoryId,
-          driver: value.driver,
-          product_position: value.product_position,
-          active: value.active,
-          status: value.status,
-          color: value.color,
+          ...value,
           main_image: mainImage.url || "",
           sub_image: subImage.url || "",
           list_image: listImage || {},
           modified_by: null,
           product_author: "",
           manufacturerId: null,
-          short: value.short,
-          description: value.description
         }
         console.log('product add:', product);
         createData(product).then((res) => {
@@ -106,26 +115,32 @@ const ProductForm = ({ params }) => {
           }
         })
       } else {
+        // const product = {
+        //   id: id,
+        //   name: value.name,
+        //   product_code: value.product_code,
+        //   price: value.price,
+        //   discount_price: value.discount_price,
+        //   categoryId: value.categoryId,
+        //   driver: value.driver,
+        //   product_position: value.product_position,
+        //   active: value.active,
+        //   status: value.status,
+        //   color: value.color,
+        //   main_image: mainImage?.url || data.main_image || "",
+        //   sub_image: subImage?.url || data.sub_image || "",
+        //   list_image: listImage || {},
+        //   modified_by: null,
+        //   product_author: "",
+        //   manufacturerId: null,
+        //   short: value.short,
+        //   description: value.description
+        // }
         const product = {
-          id: id,
-          name: value.name,
-          product_code: value.product_code,
-          price: value.price,
-          discount_price: value.discount_price,
-          categoryId: value.categoryId,
-          driver: value.driver,
-          product_position: value.product_position,
-          active: value.active,
-          status: value.status,
-          color: value.color,
+          ...value, id: id,
           main_image: mainImage?.url || data.main_image || "",
           sub_image: subImage?.url || data.sub_image || "",
           list_image: listImage || {},
-          modified_by: null,
-          product_author: "",
-          manufacturerId: null,
-          short: value.short,
-          description: value.description
         }
         console.log('product edit :', product);
         updateData(params.id, product).then((res) => {
@@ -376,9 +391,31 @@ const ProductForm = ({ params }) => {
             label={<span className="font-medium">Status</span>}
             name="status"
           >
-            <Select placeholder="Select status" >
+            {/* <Select placeholder="Select status" >
               <Option value={"in"}>In Stock</Option>
               <Option value={"out"}>Out Stock</Option>
+            </Select> */}
+            <Input placeholder="Input status" />
+          </Form.Item>
+          <Form.Item
+            label={<span className="font-medium">Stock</span>}
+            name="stock"
+          >
+            <Select placeholder="Select stock" >
+              <Option value={"in"}>In Stock</Option>
+              <Option value={"out"}>Out Stock</Option>
+            </Select>
+          </Form.Item>
+          <Form.Item
+            label={<span className="font-medium">Type</span>}
+            name="type"
+          >
+            <Select placeholder="Select type" >
+              <Option value={"mouse"}>Mouse</Option>
+              <Option value={"keyboard"}>Keyboard</Option>
+              <Option value={"audio"}>Audio</Option>
+              <Option value={"smartwatch"}>Smart Watch</Option>
+              <Option value={"accessories"}>Accessories</Option>
             </Select>
           </Form.Item>
           <Form.Item

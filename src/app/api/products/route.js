@@ -9,44 +9,101 @@ export async function GET(req, { params }) {
         const searchParams = req.nextUrl.searchParams;
         const page = searchParams.has("page") ? searchParams.get('page') - 1 : 0;
         const limit = searchParams.has("limit") ? searchParams.get('limit') : 10;
-        const option = searchParams.has("keyword") ? {
-            [Op.or]: [
-                {
-                    name: {
-                        [Op.like]: "%" + searchParams.get("keyword") + "%",
-                    },
-                },
-                {
-                    product_code: {
-                        [Op.like]: "%" + searchParams.get("keyword") + "%",
-                    },
-                },
-                {
-                    short: {
-                        [Op.like]: "%" + searchParams.get("keyword") + "%",
-                    },
-                },
-                {
-                    description: {
-                        [Op.like]: "%" + searchParams.get("keyword") + "%",
-                    },
-                },
-                {
-                    status: {
-                        [Op.like]: "%" + searchParams.get("keyword") + "%",
-                    },
-                },
-            ],
-        } : {};
-
-        // const status = await db.Products.findAll({
-        //     where:option,
-        //     attributes: [
-        //         'status',
-        //         [Sequelize.fn("COUNT", Sequelize.col("status")), "total"]
+        // const option = searchParams.has("keyword") ? {
+        //     [Op.or]: [
+        //         {
+        //             name: {
+        //                 [Op.like]: "%" + searchParams.get("keyword") + "%",
+        //             },
+        //         },
+        //         {
+        //             product_code: {
+        //                 [Op.like]: "%" + searchParams.get("keyword") + "%",
+        //             },
+        //         },
+        //         {
+        //             short: {
+        //                 [Op.like]: "%" + searchParams.get("keyword") + "%",
+        //             },
+        //         },
+        //         {
+        //             description: {
+        //                 [Op.like]: "%" + searchParams.get("keyword") + "%",
+        //             },
+        //         },
+        //         {
+        //             status: {
+        //                 [Op.like]: "%" + searchParams.get("keyword") + "%",
+        //             },
+        //         },
         //     ],
-        //     group: 'status'
-        // })
+        // } : {};
+        console.log('type :', searchParams.get('type'));
+        console.log('categoryId :', searchParams.get('categoryId'));
+
+        let option = {}
+        if (searchParams.has("keyword")) {
+            option = {
+                ...option,
+                [Op.or]: [
+                    {
+                        name: {
+                            [Op.like]: "%" + searchParams.get("keyword") + "%",
+                        },
+                    },
+                    {
+                        product_code: {
+                            [Op.like]: "%" + searchParams.get("keyword") + "%",
+                        },
+                    },
+                    {
+                        short: {
+                            [Op.like]: "%" + searchParams.get("keyword") + "%",
+                        },
+                    },
+                    {
+                        description: {
+                            [Op.like]: "%" + searchParams.get("keyword") + "%",
+                        },
+                    },
+                    {
+                        status: {
+                            [Op.like]: "%" + searchParams.get("keyword") + "%",
+                        },
+                    },
+                ],
+            };
+        } else { { } }
+        if (searchParams.has("categoryId") && searchParams.get("type") === '') {
+            option = {
+                ...option,
+                categoryId: searchParams.get('categoryId'),
+            };
+        } else { { } }
+        if (searchParams.has("type") && searchParams.get("categoryId") === '') {
+            option = {
+                ...option,
+                type: searchParams.get("type")
+            };
+        } else { { } }
+        if (searchParams.has("order")) {
+            option = {
+                ...option,
+                order: {
+                    [Op.like]: "%" + searchParams.get('order') + "%",
+                },
+            };
+        } else { { } }
+        if (searchParams.has("status")) {
+            option = {
+                ...option,
+                status: {
+                    [Op.like]: "%" + searchParams.get('status') + "%",
+                },
+            };
+        } else { { } }
+
+        console.log('>>option', option);
 
         let { count, rows } = await db.Products.findAndCountAll({
             where: option,

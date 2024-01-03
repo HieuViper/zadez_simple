@@ -123,7 +123,7 @@ module.exports = (sequelize, DataTypes) => {
           "This one is not the author, he is the one modified the products",
       },
       product_position: {
-        type: DataTypes.TINYINT(1),
+        type: DataTypes.INTEGER,
         allowNull: true,
         defaultValue: 0,
         comment: "it has the value 1 that means the news is prioritied",
@@ -131,20 +131,9 @@ module.exports = (sequelize, DataTypes) => {
       active: DataTypes.BOOLEAN,
       status: DataTypes.STRING(100),
       color: DataTypes.STRING(100),
-      driver: DataTypes.STRING(200),
-      modified_by: {
-        type: DataTypes.STRING(200),
-        collate: "utf8mb4_unicode_520_ci",
-        allowNull: true,
-        comment:
-          "This one is not the author, he is the one modified the products",
-      },
-      product_position: {
-        type: DataTypes.TINYINT(1),
-        allowNull: true,
-        defaultValue: 0,
-        comment: "it has the value 1 that means the news is prioritied",
-      },
+      driver: DataTypes.STRING,
+      type: DataTypes.STRING,
+      stock: DataTypes.STRING,
     },
     { tableName: "products" }
   );

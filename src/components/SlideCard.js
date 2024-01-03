@@ -40,7 +40,7 @@ const SlideCard = (props) => {
                 },
             }}
         >
-            {products && products?.map((item) => (
+            {products && products?.map((item, i) => (
                 <SwiperSlide>
                     <ProductCard data={item} key={i} />
                 </SwiperSlide>))}

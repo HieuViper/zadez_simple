@@ -1,10 +1,13 @@
+'use client'
 import SlideShow from '@/components/SlideShow'
 import { Button, Input, Tag } from 'antd'
 import { MinusOutlined, PlusOutlined } from "@ant-design/icons";
 
 import React from 'react'
 import SlideCard from '@/components/SlideCard';
-const Product = () => {
+const Product = ({ params }) => {
+    const { slug } = params
+    const id = slug.split("-")[slug.split("-").length - 1];
     // const { decreaseQty, increaseQty, qty, onAdd } = useStateContext();
     const decreaseQty = () => { }
     const increaseQty = () => { }
@@ -126,8 +129,8 @@ const Product = () => {
         ]
     }]
     return (
-        <div className='px-4 md:px-20 py-20'>
-            <div className='grid grid-cols-5 gap-10'>
+        <div className='px-4 md:px-20 '>
+            <div className='grid grid-cols-5 gap-5'>
                 <div className='col-span-5 md:col-span-3 mx-10'>
                     <SlideShow listImage={product.list_image} />
                 </div>
@@ -139,7 +142,7 @@ const Product = () => {
                         {product_langs.short}
                     </div>
                     <div className='pb-2'>
-                        {product.status == "in" ? <Tag color='green'>Còn hàng</Tag>
+                        {product.stock == "in" ? <Tag color='green'>Còn hàng</Tag>
                             : <Tag color='red'>Hết hàng</Tag>}
                     </div>
                     <div className='text-2xl font-medium pb-2'> GIÁ: {product.price} VND</div>
@@ -169,7 +172,7 @@ const Product = () => {
                     <div className='pb-2'> <Button type='primary' block>Mua ngay</Button></div>
                     <div className='pb-2'> <Button block  >Thêm vào giỏ hàng</Button ></div>
                     <div>Thong so ki thuat
-                        <table class="table-auto">
+                        {/* <table class="table-auto">
                             <thead>
                                 <tr>
                                     <th>Song</th>
@@ -225,7 +228,7 @@ const Product = () => {
                                 </tr>
 
                             </tbody>
-                        </table>
+                        </table> */}
                     </div>
                 </div>
             </div>
