@@ -1,6 +1,7 @@
 "use client";
+import Editor from "@/components/Editor";
 import UploadImage from "@/components/UploadImage";
-import { useSWRData } from "@/library/api";
+import { useSWRData, useSWRUpload } from "@/library/api";
 import { DeleteOutlined, SaveOutlined } from "@ant-design/icons";
 import { Button, Form, Input, InputNumber, Row, Select } from "antd";
 import Image from "next/image";
@@ -17,6 +18,7 @@ const ConstsForm = ({ params }) => {
     `/api/consts`,
     isAddMode ? {} : { id: params.id }
   );
+  const { uploadFormData } = useSWRUpload(`/api/image`);
 
   //image upload
   const [constsPicURL, setConstsPicURL] = useState(null);
@@ -28,8 +30,17 @@ const ConstsForm = ({ params }) => {
 
     return e && e.fileList;
   };
+  const uploadImage = async () => {
+    if (!previewConstsPic) return null;
+    const formData = new FormData();
+    formData.append("file", previewConstsPic);
+    return uploadFormData(formData);
+  };
 
   const onFinish = async (values) => {
+    const mainImage = await uploadImage();
+    // console.log("🚀 ~ file: page.js:42 ~ onFinish ~ mainImage:", mainImage);
+    mainImage ? (values.mainImageURL = mainImage.url) : null;
     console.log(values);
     if (isAddMode) {
       createData(values).then((res) => {
@@ -58,6 +69,7 @@ const ConstsForm = ({ params }) => {
   useEffect(() => {
     if (data) {
       form.setFieldsValue(data);
+      setConstsPicURL(data.mainImageURL);
     }
   }, [data]);
 
@@ -83,7 +95,7 @@ const ConstsForm = ({ params }) => {
         onFinishFailed={onFinishFailed}
         autoComplete="off"
       >
-        {/* product image */}
+        {/* const image */}
         <Form.Item
           name="mainImageURL"
           label="Image"
@@ -102,6 +114,7 @@ const ConstsForm = ({ params }) => {
               <Image
                 src={`${URL.createObjectURL(previewConstsPic)}`}
                 width={160}
+                height={160}
                 className="rounded-lg shadow"
                 alt={`${constsPicURL}`}
               />
@@ -115,8 +128,9 @@ const ConstsForm = ({ params }) => {
           )}
           {constsPicURL && !previewConstsPic && (
             <Image
-              src={`${process.env.BASE_URL}${constsPicURL}`}
+              src={`${constsPicURL}`}
               width={160}
+              height={160}
               className="rounded-lg shadow"
               alt={`${constsPicURL}`}
             />
@@ -136,16 +150,7 @@ const ConstsForm = ({ params }) => {
           <Input />
         </Form.Item>
 
-        <Form.Item
-          label="Order"
-          name="order"
-          rules={[
-            {
-              required: true,
-              message: "Please input the const's order!",
-            },
-          ]}
-        >
+        <Form.Item label="Order" name="order">
           <InputNumber />
         </Form.Item>
 
@@ -174,8 +179,7 @@ const ConstsForm = ({ params }) => {
           <Input />
         </Form.Item>
         <Form.Item name="description" label="Description">
-          {/* <Editor data={item.description} onChange={(e) => {}} /> */}
-          <Input />
+          <Editor />
         </Form.Item>
 
         <Form.Item className="flex justify-center">

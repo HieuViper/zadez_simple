@@ -5,8 +5,8 @@ module.exports = (sequelize, DataTypes) => {
     {
       name: {
         type: DataTypes.STRING(200),
-        collate: 'utf8mb4_unicode_520_ci',
-        defaultValue: 'undefined',
+        collate: "utf8mb4_unicode_520_ci",
+        defaultValue: "undefined",
       },
       category_code: {
         type: DataTypes.STRING,
@@ -23,10 +23,10 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       order: DataTypes.INTEGER,
       description: {
-        type: DataTypes.TEXT('long'),
-        collate: 'utf8mb4_unicode_520_ci',
+        type: DataTypes.TEXT("long"),
+        collate: "utf8mb4_unicode_520_ci",
         allowNull: true,
-        comment: 'Description',
+        comment: "Description",
       },
     },
     {
@@ -36,14 +36,14 @@ module.exports = (sequelize, DataTypes) => {
 
   Categories.associate = function (db) {
     // associations can be defined here
-    Categories.hasMany(db.Products, {
-      as: 'products',
-      foreignKey: 'CategoryId',
-    });
-    db.Products.belongsTo(Categories, {
-      as: 'categories',
-      foreignKey: "CategoryId",
-    });
+    // Categories.hasMany(db.Products, {
+    //   as: 'products',
+    //   foreignKey: 'CategoryId',
+    // });
+    // db.Products.belongsTo(Categories, {
+    //   as: 'categories',
+    //   foreignKey: "CategoryId",
+    // });
   };
   return Categories;
 };

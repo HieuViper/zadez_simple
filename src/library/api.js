@@ -63,7 +63,7 @@ export const useSWRData = (endpoint, params = {}) => {
   const bulkDeleteData = async (ids) => {
     const res = await fetch(`${endpoint}`, {
       method: "DELETE",
-      body: JSON.stringify({ ids })
+      body: JSON.stringify({ ids }),
     });
 
     if (res.ok) {
@@ -80,7 +80,7 @@ export const useSWRData = (endpoint, params = {}) => {
     createData,
     updateData,
     deleteData,
-    bulkDeleteData
+    bulkDeleteData,
   };
 };
 
@@ -94,18 +94,17 @@ export const useSWRUpload = (endpoint, params = {}) => {
         //   accept: 'application/json',
         // },
         body: formData,
-      })
+      });
       if (res.ok) {
         // message.success("Upload Success");
       }
-      const result = await res.json()
-      return result
-    }
-    catch {
-      throw new Error('File upload failed');
+      const result = await res.json();
+      return result;
+    } catch {
+      throw new Error("File upload failed");
     }
   };
   return {
-    uploadFormData
+    uploadFormData,
   };
-}
+};

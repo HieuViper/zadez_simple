@@ -1,6 +1,6 @@
 "use client";
 import { fetcher } from "@/library/util";
-import { Button, Popconfirm, Space, Table } from "antd";
+import { Button, Divider, Popconfirm, Space, Table } from "antd";
 import Search from "antd/es/input/Search";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
@@ -140,12 +140,13 @@ const OrderList = () => {
           style={{ width: 300 }}
         />
       </div>
-      <hr className="my-4" />
+      <Divider />
 
       <Table
         columns={columns}
         dataSource={data.data}
         loading={isLoading}
+        bordered
         pagination={{
           pageSize: data.pagging.limit,
           current: data.pagging.currentPage,

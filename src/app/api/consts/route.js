@@ -53,3 +53,14 @@ export async function POST(body, req) {
     message: "consts created successfully",
   });
 }
+
+export async function DELETE(body, req) {
+  const bodyJSON = await body.json();
+  await db.Consts.destroy({
+    where: { id: { [Op.in]: bodyJSON.ids } },
+  });
+  return NextResponse.json({
+    result: "success",
+    message: "consts deleted successfully",
+  });
+}

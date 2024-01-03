@@ -79,7 +79,7 @@ export async function POST(req, res) {
         buffer
       );
       return NextResponse.json({
-        Message: "Success",
+        message: "success",
         status: 201,
         url: `/uploads/${nameFolderInCustom}/` + filename,
       });

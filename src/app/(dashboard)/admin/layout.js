@@ -1,13 +1,13 @@
 "use client";
 import {
   AppstoreOutlined,
+  CodeSandboxOutlined,
   LogoutOutlined,
   MenuFoldOutlined,
   MenuUnfoldOutlined,
   SettingOutlined,
-  UserOutlined,
   ShoppingCartOutlined,
-  CodeSandboxOutlined,
+  UserOutlined,
 } from "@ant-design/icons";
 import { Avatar, Button, Layout, Menu, theme } from "antd";
 import Image from "next/image";
@@ -44,7 +44,7 @@ const DashboardLayout = (props) => {
         <Link href="/admin/products/0">Add Products</Link>
       ),
     ]),
-    getItem("/admin/categories", "Categories", <AppstoreOutlined />, [
+    getItem("Categories", "Categories", <AppstoreOutlined />, [
       getItem(
         "/admin/categories",
         null,
@@ -56,7 +56,7 @@ const DashboardLayout = (props) => {
         <Link href="/admin/categories/0">Add Categories</Link>
       ),
     ]),
-    getItem("Orders", "Orders", < ShoppingCartOutlined />, [
+    getItem("Orders", "Orders", <ShoppingCartOutlined />, [
       getItem(
         "/admin/orders",
         null,
@@ -65,7 +65,9 @@ const DashboardLayout = (props) => {
       getItem(
         "/admin/orders/0",
         null,
-        <Link href="/admin/orders/0">Add Order</Link>
+        <Link href="/admin/orders/0?previousPage=1&previousLimit=10">
+          Add Order
+        </Link>
       ),
     ]),
     getItem("Customer", "Customer", <UserOutlined />, [
@@ -77,7 +79,9 @@ const DashboardLayout = (props) => {
       getItem(
         "/admin/customers/0",
         null,
-        <Link href="/admin/customers/0">Add Customers</Link>
+        <Link href="/admin/customers/0?previousPage=1&previousLimit=10">
+          Add Customers
+        </Link>
       ),
     ]),
     getItem("Consts", "Consts", <AppstoreOutlined />, [
@@ -89,7 +93,9 @@ const DashboardLayout = (props) => {
       getItem(
         "/admin/consts/0",
         null,
-        <Link href="/admin/consts/0">Add Consts</Link>
+        <Link href="/admin/consts/0?previousPage=1&previousLimit=10">
+          Add Consts
+        </Link>
       ),
     ]),
     {

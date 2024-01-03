@@ -1,6 +1,6 @@
+import { fetcher } from "@/library/util";
 import {
   Button,
-  Form,
   InputNumber,
   Popconfirm,
   Select,
@@ -8,44 +8,72 @@ import {
   Typography,
 } from "antd";
 import { useState } from "react";
+import useSWR from "swr";
 
-const TableProductOrder = ({
-  selectProductList,
-  productsOrder,
-  setProductsOrder,
-  productList,
-}) => {
-  const [editingElm, setEditingElm] = useState("");
-  const isEditing = (record) => record.id === editingElm.id;
+const TableProductOrder = ({ productsOrder, setProductsOrder }) => {
+  const [editingElm, setEditingElm] = useState(null);
+  const isEditing = (record) => record.id === editingElm?.id;
+  const [searchProduct, setSearchProduct] = useState("");
+  const [productList, setProductList] = useState([]);
+  useSWR(
+    searchProduct ? `/api/products?keyword=${searchProduct}` : null,
+    fetcher,
+    {
+      onSuccess: (data) => {
+        const modifiedData = data.data.map((item) => {
+          return {
+            label: `${item.name} `,
+            code: item.product_code,
+            value: item.id,
+          };
+        });
+        setProductList(modifiedData);
+      },
+    }
+  );
 
   const columns = [
     {
       title: "Name",
-      dataIndex: ["products", "product_languages", 0, "name"],
+      dataIndex: ["products", "name"],
       width: "25%",
       editable: true,
       render: (item, record) => {
-        return !item ? (
+        return isEditing(record) ? (
           <Select
             showSearch
-            placeholder="Select a product"
+            placeholder="Search by code or name"
             optionFilterProp="children"
-            onChange={(e) => {
-              console.log(e);
-              setProductsOrder((state) =>
-                state.map((s) =>
-                  s.id === record.id ? { ...s, productId: e } : s
-                )
-              );
+            onSearch={(value) => {
+              setSearchProduct(value);
             }}
-            filterOption={(input, option) =>
-              (option?.label ?? "").toLowerCase().includes(input.toLowerCase())
-            }
-            defaultValue={null}
-            options={selectProductList}
+            className="w-[200px]"
+            defaultValue={{
+              label: `${record?.products?.name} `,
+              value: record?.products?.id,
+            }}
+            onChange={(value, option) => {
+              const updatedData = productsOrder.map((item) =>
+                item.id === record.id
+                  ? {
+                      ...item,
+                      productId: value,
+                      products: {
+                        ...item.products,
+                        name: option.label,
+                        product_code: option.code,
+                      },
+                    }
+                  : item
+              );
+              setProductsOrder(updatedData);
+              setSearchProduct("");
+            }}
+            filterOption={false}
+            options={productList}
           />
         ) : (
-          <span>{item}</span>
+          <span>{record?.products?.name || item}</span>
         );
       },
     },
@@ -55,20 +83,7 @@ const TableProductOrder = ({
       width: "20%",
       editable: false,
       render: (item, record) => {
-        return !item ? (
-          record.productId ? (
-            <span>
-              {
-                productList.data.find((item) => item.id == record.productId)
-                  .product_code
-              }
-            </span>
-          ) : (
-            ""
-          )
-        ) : (
-          <span>{item}</span>
-        );
+        return <span>{item}</span>;
       },
     },
     {
@@ -76,15 +91,55 @@ const TableProductOrder = ({
       dataIndex: "amount",
       width: "10%",
       editable: true,
+      render: (item, record) => {
+        return isEditing(record) ? (
+          <InputNumber
+            value={item}
+            onChange={(value) => {
+              const updatedData = productsOrder.map((item) =>
+                item.id === record.id
+                  ? {
+                      ...item,
+                      amount: value,
+                    }
+                  : item
+              );
+              setProductsOrder(updatedData);
+            }}
+          />
+        ) : (
+          <span>{item}</span>
+        );
+      },
     },
     {
       title: "Price",
       dataIndex: "price",
       width: "30%",
       editable: true,
+      render: (item, record) => {
+        return isEditing(record) ? (
+          <InputNumber
+            value={item}
+            onChange={(value) => {
+              const updatedData = productsOrder.map((item) =>
+                item.id === record.id
+                  ? {
+                      ...item,
+                      price: value,
+                    }
+                  : item
+              );
+              setProductsOrder(updatedData);
+            }}
+          />
+        ) : (
+          <span>{item}</span>
+        );
+      },
     },
     {
-      title: "operation",
+      title: "Action",
       dataIndex: "operation",
       render: (_, record) => {
         const editable = isEditing(record);
@@ -98,7 +153,10 @@ const TableProductOrder = ({
             >
               Save
             </Typography.Link>
-            <Popconfirm title="Sure to cancel?" onConfirm={handleCancelEdit}>
+            <Popconfirm
+              title="Sure to cancel?"
+              onConfirm={() => setEditingElm(null)}
+            >
               <a>Cancel</a>
             </Popconfirm>
           </span>
@@ -106,7 +164,9 @@ const TableProductOrder = ({
           <>
             <Typography.Link
               disabled={editingElm}
-              onClick={() => handleEditProduct(record)}
+              onClick={() => {
+                setEditingElm(record);
+              }}
             >
               Edit
             </Typography.Link>
@@ -128,62 +188,46 @@ const TableProductOrder = ({
     }
     return {
       ...col,
-      onCell: (record) => ({
-        record,
-        inputType:
-          col.dataIndex === "amount" || col.dataIndex === "price"
-            ? "number"
-            : "text",
-        dataIndex: col.dataIndex,
-        title: col.title,
-        editing: isEditing(record),
-      }),
+      onCell: (record) => {
+        return {
+          record,
+          dataindex: col.dataIndex,
+          title: col.title,
+          editable: isEditing(record).toString(),
+        };
+      },
     };
   });
 
-  const handleEditProduct = (record) => {
-    // productsOrderForm.setFieldsValue({
-    //   ...record,
-    // });
-    setEditingElm(record);
-  };
-  const handleCancelEdit = () => {
-    setEditingElm(null);
-  };
   const handleDeleteProduct = (id) => {
     const newData = productsOrder.filter((item) => item.id !== id);
     setProductsOrder(newData);
   };
   const handleAddProduct = () => {
-    const newData = {
-      id: Math.round(Math.random() * 1000000),
-      code: "",
-      amount: 0,
-      price: 0,
-    };
-    setProductsOrder([...productsOrder, newData]);
-    setEditingElm(newData);
+    setProductsOrder([
+      ...productsOrder,
+      {
+        id: Math.floor(Math.random() * (100000 - 1)),
+        amount: 0,
+        price: 0,
+        productId: 0,
+      },
+    ]);
+    // setEditingElm(null);
   };
   const handleSave = async (id) => {
-    console.log("🚀 ~ file: page.js:90 ~ save ~ id:", id);
     try {
-      const row = await productsOrderForm.validateFields();
       const newData = [...productsOrder];
       const index = newData.findIndex((item) => id === item.id);
+
       if (index > -1) {
         const item = newData[index];
         newData.splice(index, 1, {
           ...item,
-          ...row,
         });
         setProductsOrder(newData);
         setEditingElm(null);
-      } else {
-        newData.push(row);
-        setProductsOrder(newData);
-        setEditingElm(null);
       }
-      console.log(productsOrder);
     } catch (errInfo) {
       console.log("Validate Failed:", errInfo);
     }
@@ -191,15 +235,14 @@ const TableProductOrder = ({
 
   return (
     <>
-      <Button type="primary" onClick={() => handleAddProduct()}>
+      <Button
+        type="primary"
+        onClick={() => handleAddProduct()}
+        className="mb-3"
+      >
         Add Product
       </Button>
       <Table
-        components={{
-          body: {
-            cell: EditableCell,
-          },
-        }}
         bordered
         dataSource={productsOrder}
         columns={mergedColumns}
@@ -211,37 +254,16 @@ const TableProductOrder = ({
 
 export default TableProductOrder;
 
-const EditableCell = ({
-  editing,
-  dataIndex,
-  title,
-  inputType,
-  record,
-  index,
-  children,
-  ...restProps
-}) => {
-  const inputNode = inputType === "number" ? <InputNumber /> : children;
-  return (
-    <td {...restProps}>
-      {editing ? (
-        <Form.Item
-          name={dataIndex}
-          style={{
-            margin: 0,
-          }}
-          rules={[
-            {
-              required: true,
-              message: `Please Input ${title}!`,
-            },
-          ]}
-        >
-          {inputNode}
-        </Form.Item>
-      ) : (
-        children
-      )}
-    </td>
-  );
-};
+// const EditableCell = ({
+//   editing,
+//   dataIndex,
+//   title,
+//   inputType,
+//   record,
+//   index,
+//   children,
+//   ...restProps
+// }) => {
+//   const inputNode = inputType === "number" ? <InputNumber /> : children;
+//   return <td {...restProps}>{editing ? <>{inputNode}</> : children}</td>;
+// };

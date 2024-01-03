@@ -1,6 +1,6 @@
 "use client";
 import { useSWRData } from "@/library/api";
-import { Button, Popconfirm, Space, Table, Tag } from "antd";
+import { Button, Divider, Popconfirm, Space, Table, Tag } from "antd";
 import Search from "antd/es/input/Search";
 import Image from "next/image";
 import Link from "next/link";
@@ -9,6 +9,8 @@ import { useState } from "react";
 
 const ConstsList = () => {
   const router = useRouter();
+  const [selectedRowKeys, setSelectedRowKeys] = useState([]);
+  const hasSelected = selectedRowKeys.length > 0;
   const columns = [
     {
       title: "Value",
@@ -21,11 +23,10 @@ const ConstsList = () => {
       dataIndex: "mainImageURL",
       key: "mainImageURL",
       render: (item, record) => {
-        console.log("🚀 ~ file: page.js:34 ~ ConstsList ~ record:", record);
         return (
           <Image
             height={50}
-            width={60}
+            width={50}
             src={item ? item : "/no-image.jpg"}
             alt={record?.value}
             priority={true}
@@ -88,11 +89,14 @@ const ConstsList = () => {
   const page = Number(searchParams.get("page") || 1);
   const limit = Number(searchParams.get("limit") || 10);
 
-  const { data, error, isLoading, deleteData } = useSWRData("/api/consts", {
-    page,
-    limit,
-    keyword: search,
-  });
+  const { data, error, isLoading, deleteData, bulkDeleteData } = useSWRData(
+    "/api/consts",
+    {
+      page,
+      limit,
+      keyword: search,
+    }
+  );
 
   if (error) return <div>failed to load</div>;
   if (isLoading) return <div>loading...123</div>;
@@ -119,8 +123,33 @@ const ConstsList = () => {
           style={{ width: 300 }}
         />
       </div>
-      <hr className="border-white my-4" />
+      <Divider />
 
+      <div className="mb-4">
+        <Popconfirm
+          title="Delete items"
+          description="Are you sure to delete these items?"
+          onConfirm={() => {
+            bulkDeleteData(selectedRowKeys).then((res) => {
+              res.status === 200 && setSelectedRowKeys([]);
+            });
+          }}
+          onCancel={() => {}}
+          okText="Yes"
+          cancelText="No"
+        >
+          <Button type="primary" disabled={!hasSelected} loading={isLoading}>
+            Bulk Delete
+          </Button>
+          <span
+            style={{
+              marginLeft: 8,
+            }}
+          >
+            {hasSelected ? `Selected ${selectedRowKeys.length} items` : ""}
+          </span>
+        </Popconfirm>
+      </div>
       <Table
         columns={columns}
         dataSource={data.data}
@@ -131,6 +160,13 @@ const ConstsList = () => {
           total: data.pagging.total,
           showSizeChanger: true,
           showQuickJumper: true,
+        }}
+        bordered
+        rowSelection={{
+          selectedRowKeys,
+          onChange: (newSelectedRowKeys) => {
+            setSelectedRowKeys(newSelectedRowKeys);
+          },
         }}
         onChange={(e) => {
           router.replace(

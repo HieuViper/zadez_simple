@@ -140,18 +140,7 @@ const CustomerForm = ({ params }) => {
         >
           <Input />
         </Form.Item>
-        <Form.Item
-          label="Address"
-          name="address"
-          rules={[
-            {
-              required: true,
-              message: "Please input customer's address!",
-            },
-          ]}
-        >
-          <Input />
-        </Form.Item>
+
         <Form.Item
           label="Email"
           name="email"
@@ -178,6 +167,19 @@ const CustomerForm = ({ params }) => {
             form,
           }}
         />
+
+        <Form.Item
+          label="Address"
+          name="address"
+          rules={[
+            {
+              required: true,
+              message: "Please input customer's address!",
+            },
+          ]}
+        >
+          <Input />
+        </Form.Item>
 
         <Form.Item className="flex justify-center">
           <Button

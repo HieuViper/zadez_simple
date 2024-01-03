@@ -1,80 +1,80 @@
 "use client";
+import { useSWRData } from "@/library/api";
 import { fetcher } from "@/library/util";
 import { SaveOutlined } from "@ant-design/icons";
-import { Button, DatePicker, Form, Input, Row } from "antd";
+import { Button, DatePicker, Divider, Form, Input, Row, Select } from "antd";
 import dayjs from "dayjs";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import useSWR from "swr";
 import TableProductOrder from "./_components/TableProductOrder";
+const { Option } = Select;
 
 const OrderForm = ({ params }) => {
   const isAddMode = params.id == 0 ? true : false;
   const searchParams = useSearchParams();
   const router = useRouter();
   const [form] = Form.useForm();
-  const [productsOrderForm] = Form.useForm();
 
   const [productsOrder, setProductsOrder] = useState([]);
+  const [searchCustomer, setSearchCustomer] = useState("");
 
   const onFinish = async (values) => {
     values.input_date = new Date(values.input_date.$d).toISOString();
     values.output_date = new Date(values.output_date.$d).toISOString();
-    console.log(values);
     console.log(productsOrder);
+    values.products = productsOrder;
+    console.log(values);
 
-    // if (isAddMode) {
-    //   await fetch(`/api/orders`, {
-    //     method: "POST",
-    //     body: JSON.stringify(values),
-    //   }).then((rs) => {
-    //     if (rs.ok) {
-    //       message.success("Add Success");
-    //       router.push(
-    //         `/admin/orders?page=${searchParams.get(
-    //           "previousPage"
-    //         )}&limit=${searchParams.get("previousLimit")}`
-    //       );
-    //     }
-    //   });
-    // } else {
-    //   await fetch(`/api/orders/${params.id}`, {
-    //     method: "PUT",
-    //     body: JSON.stringify(values),
-    //   }).then((rs) => {
-    //     if (rs.ok) {
-    //       message.success("Update Success");
-    //       router.push(
-    //         `/admin/orders?page=${searchParams.get(
-    //           "previousPage"
-    //         )}&limit=${searchParams.get("previousLimit")}`
-    //       );
-    //     }
-    //   });
-    // }
+    if (isAddMode) {
+      createData(values).then((res) => {
+        if (res.status === 200) {
+          router.push(
+            `/admin/orders?page=${searchParams.get(
+              "previousPage"
+            )}&limit=${searchParams.get("previousLimit")}`
+          );
+        }
+      });
+    } else {
+      updateData(params.id, values).then((res) => {
+        if (res.status == 200) {
+          router.push(
+            `/admin/orders?page=${searchParams.get(
+              "previousPage"
+            )}&limit=${searchParams.get("previousLimit")}`
+          );
+        }
+      });
+    }
   };
   const onFinishFailed = () => {};
 
-  const { data, error, isLoading } = useSWR(
-    !isAddMode ? `/api/orders/${params.id}` : null,
-    fetcher
+  const { data, error, isLoading, createData, updateData } = useSWRData(
+    "/api/orders",
+    isAddMode ? {} : { id: params.id }
   );
   console.log("🚀 ~ file: page.js:56 ~ orderList ~ data:", data);
 
-  const { data: productList } = useSWR(
-    !isAddMode ? `/api/products` : null,
-    fetcher
+  const [customerList, setCustomerList] = useState([]);
+  useSWR(
+    searchCustomer ? `/api/customers?keyword=${searchCustomer}` : null,
+    fetcher,
+    {
+      onSuccess: (data) => {
+        const modifiedData = data.data.map((item) => {
+          return {
+            value: item.id,
+            label: item.name,
+          };
+        });
+        setCustomerList(modifiedData);
+      },
+    }
   );
-  const selectProductList = productList?.data?.map((item) => {
-    return {
-      value: item.id,
-      label: item.product_languages[0].name,
-    };
-  });
-  console.log("🚀 ~ file: page.js:235 ~ OrderForm ~ productList:", productList);
 
   useEffect(() => {
-    if (data) {
+    if (!isAddMode && data) {
       form.setFieldsValue(data);
       form.setFieldValue("input_date", dayjs(data.input_date));
       form.setFieldValue("output_date", dayjs(data.output_date));
@@ -99,7 +99,14 @@ const OrderForm = ({ params }) => {
         style={{
           width: "75%",
         }}
-        initialValues={{}}
+        initialValues={{
+          customerId: isAddMode
+            ? ""
+            : {
+                value: data.customerId,
+                label: data.customers.name,
+              },
+        }}
         onFinish={onFinish}
         onFinishFailed={onFinishFailed}
         autoComplete="off"
@@ -153,55 +160,28 @@ const OrderForm = ({ params }) => {
         >
           <DatePicker format="YYYY-MM-DD HH:mm" showTime onChange={() => {}} />
         </Form.Item>
-        <Form.Item
-          label="Customer"
-          name={["customers", "name"]}
-          rules={[
-            {
-              required: true,
-              message: "Please input customer's name!",
-            },
-          ]}
-        >
-          <Input />
-        </Form.Item>
-        <Form.Item
-          label="Phone"
-          name={["customers", "phone"]}
-          rules={[
-            {
-              required: true,
-              message: "Please input customer's phone!",
-            },
-          ]}
-        >
-          <Input />
-        </Form.Item>
-        <Form.Item
-          label="Email"
-          name={["customers", "email"]}
-          rules={[
-            {
-              required: true,
-              message: "Please input customer's email!",
-            },
-          ]}
-        >
-          <Input />
+
+        <Form.Item name="customerId" label="Customer">
+          <Select
+            showSearch
+            placeholder="Search by phone or email"
+            optionFilterProp="children"
+            onSearch={(value) => {
+              setSearchCustomer(value);
+            }}
+            filterOption={false}
+            options={customerList}
+          />
         </Form.Item>
 
-        <hr />
+        <Divider />
 
         <p className="text-2xl">Products</p>
 
-        <Form form={productsOrderForm} component={false}>
-          <TableProductOrder
-            selectProductList={selectProductList}
-            productsOrder={productsOrder}
-            setProductsOrder={setProductsOrder}
-            productList={productList}
-          />
-        </Form>
+        <TableProductOrder
+          productsOrder={productsOrder}
+          setProductsOrder={setProductsOrder}
+        />
 
         <Form.Item className="flex justify-center">
           <Button

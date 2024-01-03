@@ -26,6 +26,7 @@ export async function GET(req, { params }) {
               "main_image",
               "price",
               "discount_price",
+              "name",
             ],
           },
         ],

@@ -1,6 +1,6 @@
 "use client";
 import { useSWRData } from "@/library/api";
-import { Button, Popconfirm, Space, Table } from "antd";
+import { Button, Divider, Popconfirm, Space, Table } from "antd";
 import Search from "antd/es/input/Search";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
@@ -8,6 +8,8 @@ import { useState } from "react";
 
 const CustomerList = () => {
   const router = useRouter();
+  const [selectedRowKeys, setSelectedRowKeys] = useState([]);
+  const hasSelected = selectedRowKeys.length > 0;
   const columns = [
     {
       title: "Name",
@@ -31,8 +33,8 @@ const CustomerList = () => {
       key: "phone",
     },
     {
-      title: "DistrictId",
-      dataIndex: "districtId",
+      title: "City",
+      dataIndex: ["cities", "name"],
       key: "districtId",
     },
 
@@ -53,7 +55,7 @@ const CustomerList = () => {
             onConfirm={async () => {
               deleteData(record.id);
             }}
-            onCancel={() => { }}
+            onCancel={() => {}}
             okText="Yes"
             cancelText="No"
           >
@@ -68,11 +70,14 @@ const CustomerList = () => {
   const page = Number(searchParams.get("page") || 1);
   const limit = Number(searchParams.get("limit") || 10);
 
-  const { data, error, isLoading, deleteData } = useSWRData("/api/customers", {
-    page,
-    limit,
-    keyword: search,
-  });
+  const { data, error, isLoading, deleteData, bulkDeleteData } = useSWRData(
+    "/api/customers",
+    {
+      page,
+      limit,
+      keyword: search,
+    }
+  );
 
   if (error) return <div>failed to load</div>;
   if (isLoading) return <div>loading...123</div>;
@@ -99,7 +104,33 @@ const CustomerList = () => {
           style={{ width: 300 }}
         />
       </div>
-      <hr className="border-white my-4" />
+      <Divider />
+
+      <div className="mb-4">
+        <Popconfirm
+          title="Delete items"
+          description="Are you sure to delete these items?"
+          onConfirm={() => {
+            bulkDeleteData(selectedRowKeys).then((res) => {
+              res.status === 200 && setSelectedRowKeys([]);
+            });
+          }}
+          onCancel={() => {}}
+          okText="Yes"
+          cancelText="No"
+        >
+          <Button type="primary" disabled={!hasSelected} loading={isLoading}>
+            Bulk Delete
+          </Button>
+          <span
+            style={{
+              marginLeft: 8,
+            }}
+          >
+            {hasSelected ? `Selected ${selectedRowKeys.length} items` : ""}
+          </span>
+        </Popconfirm>
+      </div>
 
       <Table
         columns={columns}
@@ -111,6 +142,13 @@ const CustomerList = () => {
           total: data.pagging.total,
           showSizeChanger: true,
           showQuickJumper: true,
+        }}
+        bordered
+        rowSelection={{
+          selectedRowKeys,
+          onChange: (newSelectedRowKeys) => {
+            setSelectedRowKeys(newSelectedRowKeys);
+          },
         }}
         onChange={(e) => {
           router.replace(
