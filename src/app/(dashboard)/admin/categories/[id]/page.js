@@ -108,6 +108,7 @@ const CategoriesForm = ({ params }) => {
             .replace(/đ/g, 'd')
             .replace(/Đ/g, 'D')
             .replace(/\s/g, "-")
+            .toLowerCase()
         if (!isChangeCode) {
             form.setFieldValue('category_code', cateCode);
         }

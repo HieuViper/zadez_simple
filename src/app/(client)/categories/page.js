@@ -1,8 +1,10 @@
 "use client"
-import { Button, Checkbox, Select, Switch } from 'antd'
+import { Button, Checkbox, Select, Switch, Menu } from 'antd'
 import React, { useEffect, useState } from 'react'
 import { ShoppingCartOutlined } from "@ant-design/icons";
 import ProductCard from '@/components/ProductCard';
+import SlideBanner from '@/components/SlideBanner';
+import Link from 'next/link';
 const Categories = () => {
     const { Option } = Select
     const cate = [{
@@ -109,117 +111,136 @@ const Categories = () => {
         ]
     }]
 
-    const [isInStock, setIsInStock] = useState(false);
-    const [isOutOfStock, setIsOutOfStock] = useState(false);
 
-    const handleInStock = () => {
-        setIsInStock(!isInStock);
-    };
-    const handleOutOfStock = () => {
-        setIsOutOfStock(!isOutOfStock);
-    };
-
-    const filteredProducts = products.filter((product) => {
-        if (isInStock && !isOutOfStock) {
-            return product.status === "in";
-        } else if (isOutOfStock && !isInStock) {
-            return product.status === "out";
-        } else {
-            return "all";
+    const menuData = [
+        {
+            id: 1,
+            label: 'Home',
+            link: '/'
+        },
+        {
+            id: 2,
+            label: 'Products',
+            children: [
+                {
+                    id: 3,
+                    label: 'Product 1',
+                    link: '/product1'
+                },
+                {
+                    id: 4,
+                    label: 'Product 2',
+                    children: [
+                        {
+                            id: 5,
+                            label: 'Sub Product A',
+                            link: '/sub-product-a'
+                        },
+                        {
+                            id: 6,
+                            label: 'Sub Product B',
+                            link: '/sub-product-b'
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            id: 7,
+            label: 'About',
+            link: '/about'
         }
-    });
+    ];
 
-    const [sortBy, setSortBy] = useState("");
-    const [sortedProducts, setSortedProducts] = useState(filteredProducts);
+    const catTest = [
+        {
+            "id": 1,
+            "name": "test",
+            "category_code": "test",
+            "image": "",
+            "parent": null,
+            "type": "categories",
+            "order": 1,
+            "description": "1",
+        },
+        {
+            "id": 2,
+            "name": "test2",
+            "category_code": "test2",
+            "image": "",
+            "parent": 1,
+            "type": "categories",
+            "order": 2,
+            "description": "2",
+        },
+        {
+            "id": 3,
+            "name": "test3",
+            "category_code": "test3",
+            "image": "",
+            "parent": 2,
+            "type": "products",
+            "order": 3,
+            "description": "3",
+        },
+        {
+            "id": 4,
+            "name": "test4",
+            "category_code": "test4",
+            "image": "",
+            "parent": null,
+            "type": "categories",
+            "order": 4,
+            "description": "4",
+        },
+        {
+            "id": 5,
+            "name": "test5",
+            "category_code": "test5",
+            "image": "",
+            "parent": 4,
+            "type": "categories",
+            "order": 5,
+            "description": "5",
+        },
 
-    useEffect(() => {
-        setSortedProducts(filteredProducts);
-    }, [isInStock, isOutOfStock]);
+    ]
 
-    const handleSortChange = (value) => {
-        // console.log('event :', event);
-        // const value = event;
-        setSortBy(value);
 
-        let sortedProducts = [...filteredProducts];
 
-        switch (value) {
-            case "best-selling":
-                sortedProducts.sort((a, b) => b.order - a.order);
-                break;
-            case "a-z":
-                sortedProducts.sort((a, b) => a.name.localeCompare(b.name));
-                break;
-            case "z-a":
-                sortedProducts.sort((a, b) => b.name.localeCompare(a.name));
-                break;
-            case "lowest-price":
-                sortedProducts.sort((a, b) => a.price - b.price);
-                break;
-            case "highest-price":
-                sortedProducts.sort((a, b) => b.price - a.price);
-                break;
-            case "new-to-old":
-                sortedProducts.sort(
-                    (a, b) => new Date(a.createdAt) - new Date(b.createdAt)
-                );
-                break;
-            case "old-to-new":
-                sortedProducts.sort(
-                    (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
-                );
-                break;
-            default:
-                break;
-        }
-
-        setSortedProducts(sortedProducts);
-    };
     return (
-        <div className='mx-28 my-28'>
-            <div className='mx-44 flex justify-between text-center'>
-                {cate.map((item) => (
-                    <div className='w-32'>
-                        <img src={item.image} alt={item.name} />
-                        <div>{item.name}</div>
-                    </div>
-                ))}
-
+        <div className='mx-28 my-28 h-[96]'>
+            <div id="banner" className=''>
+                <SlideBanner />
             </div>
-            <div className='grid grid-cols-4 gap-6 py-20'>
-                <div className='col-span-1 border'>
-                    <div className='flex flex-col gap-4 p-4 '>
-                        <h5 className='text-xl font-medium'>Tình trạng:</h5>
-                        <Checkbox value='in' checked={isInStock}
-                            onChange={handleInStock}><div className='text-base'>Còn hàng</div></Checkbox>
-                        <Checkbox value='out'
-                            checked={isOutOfStock}
-                            onChange={handleOutOfStock}><div className='text-base'>Hết hàng</div></Checkbox>
+            <div className='grid grid-cols-3 justify-center items-center'>
+                <div className='col-span-3 md:col-span-1 '>
+                    <img src="https://zadez.vn/wp-content/uploads/2022/11/ZADEZ-ZHS701G-BLACK-MEDIA-2048-6.webp" alt="" className='w-20' />
+                    <div>Chuột</div>
+                </div>
+                <div className='col-span-3 md:col-span-1 grid grid-cols-2'>
+                    <div className=' col-span-2 md:col-span-1 w-10 '>
+                        <img src="https://zadez.vn/wp-content/uploads/2022/11/ZADEZ-ZHS701G-BLACK-MEDIA-2048-6.webp" alt="" className='w-20' />
+                        <div>Chuột</div>
                     </div>
-                    <div className='flex justify-between border p-4'>
-                        <div>Giảm giá</div>
-                        <Switch />
+                    <div className='col-span-2 md:col-span-1 w-5'>
+                        <img src="https://zadez.vn/wp-content/uploads/2022/11/ZADEZ-ZHS701G-BLACK-MEDIA-2048-6.webp" alt="" className='w-20' />
+                        <div>Chuột</div>
+                    </div>
+                    <div className=' col-span-2 md:col-span-1 w-5'>
+                        <img src="https://zadez.vn/wp-content/uploads/2022/11/ZADEZ-ZHS701G-BLACK-MEDIA-2048-6.webp" alt="" className='w-20' />
+                        <div>Chuột</div>
+                    </div>
+                    <div className='col-span-2 md:col-span-1 w-5'>
+                        <img src="https://zadez.vn/wp-content/uploads/2022/11/ZADEZ-ZHS701G-BLACK-MEDIA-2048-6.webp" alt="" className='w-20' />
+                        <div>Chuột</div>
                     </div>
                 </div>
-                <div className='col-span-3'>
-                    <div className='flex justify-end pb-4'>
-                        <div className='mr-2'>Sắp xếp theo:</div>
-                        <Select defaultValue="a" style={{ width: 160 }} value={sortBy}
-                            onChange={handleSortChange}>
-                            <Option value="a-z">Từ A-Z</Option>
-                            <Option value="z-a">Từ Z-A</Option>
-                            <Option value="lowest-price">Giá thấp nhất</Option>
-                            <Option value="highest-price">Giá cao nhất</Option>
-                        </Select>
-                    </div>
-                    <div className='border grid grid-cols-3'>
-                        {sortedProducts && sortedProducts?.map((item, i) => (
-                            <div className='col-span-1'>
-                                <ProductCard data={item} key={i} />
-                            </div>
-                        ))}
-                    </div>
+                <div className='col-span-3 md:col-span-1 w-5'>
+                    <img src="https://zadez.vn/wp-content/uploads/2022/11/ZADEZ-ZHS701G-BLACK-MEDIA-2048-6.webp" alt="" className='w-20' />
+                    <div>Chuột</div>
                 </div>
+
             </div>
         </div>
     )

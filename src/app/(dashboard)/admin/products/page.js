@@ -127,6 +127,18 @@ const ProductList = () => {
       width: 50,
     },
     {
+      title: 'Stock',
+      dataIndex: 'stock',
+      key: 'stock',
+      width: 50,
+    },
+    {
+      title: 'Type',
+      dataIndex: 'type',
+      key: 'type',
+      width: 50,
+    },
+    {
       title: 'Color',
       dataIndex: 'color',
       key: 'color',
@@ -221,7 +233,7 @@ const ProductList = () => {
         showSizeChanger: true,
         showQuickJumper: true,
       }}
-      // bordered={true}
+      bordered={true}
       dataSource={data.data}
       loading={isLoading}
     // pagination={{ ...pagination, disabled: loadingChangePage }}

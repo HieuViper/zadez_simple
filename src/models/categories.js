@@ -38,11 +38,11 @@ module.exports = (sequelize, DataTypes) => {
     // associations can be defined here
     // Categories.hasMany(db.Products, {
     //   as: 'products',
-    //   foreignKey: 'CategoryId',
+    //   foreignKey: 'categoryId',
     // });
     // db.Products.belongsTo(Categories, {
     //   as: 'categories',
-    //   foreignKey: "CategoryId",
+    //   foreignKey: "categoryId",
     // });
   };
   return Categories;
