@@ -1,29 +1,15 @@
 "use client"
-import { Button, Checkbox, Select, Switch, Menu } from 'antd'
 import React, { useEffect, useState } from 'react'
-import { ShoppingCartOutlined } from "@ant-design/icons";
-import ProductCard from '@/components/ProductCard';
 import SlideBanner from '@/components/SlideBanner';
 import Link from 'next/link';
+import Image from 'next/image';
+import { useSWRData } from '@/library/api';
+import { useRouter } from 'next/navigation';
 const Categories = () => {
-    const { Option } = Select
-    const cate = [{
-        name: "Chuot",
-        image: "https://zadez.vn/wp-content/uploads/2022/12/1-2.webp"
-    },
-    {
-        name: "Ban phim",
-        image: "https://zadez.vn/wp-content/uploads/2022/12/1-2.webp"
-    }, {
-        name: "Tai Nghe",
-        image: "https://zadez.vn/wp-content/uploads/2022/12/1-2.webp"
-    }, {
-        name: "Phu kien",
-        image: "https://zadez.vn/wp-content/uploads/2022/12/1-2.webp"
-    }]
+    const router = useRouter()
     const products = [{
         product_code: "999",
-        main_image: "https://zadez.us/cdn/shop/products/G-151M_500x.png?v=1638523572",
+        main_image: "/images/categories/audio.webp",
         price: 9,
         discount_price: 1,
         status: "in",
@@ -41,7 +27,7 @@ const Categories = () => {
     },
     {
         product_code: "999",
-        main_image: "https://zadez.us/cdn/shop/products/G-151M_500x.png?v=1638523572",
+        main_image: "/images/categories/audio.webp",
         price: 99,
         discount_price: 1,
         status: "in",
@@ -58,7 +44,7 @@ const Categories = () => {
         ]
     }, {
         product_code: "999",
-        main_image: "https://zadez.us/cdn/shop/products/G-151M_500x.png?v=1638523572",
+        main_image: "/images/categories/audio.webp",
         price: 999,
         discount_price: 1,
         status: "in",
@@ -76,7 +62,7 @@ const Categories = () => {
     },
     {
         product_code: "999",
-        main_image: "https://zadez.us/cdn/shop/products/G-151M_500x.png?v=1638523572",
+        main_image: "/images/categories/audio.webp",
         price: 9999,
         discount_price: 1,
         status: "in",
@@ -94,7 +80,7 @@ const Categories = () => {
     },
     {
         product_code: "999",
-        main_image: "https://zadez.us/cdn/shop/products/G-151M_500x.png?v=1638523572",
+        main_image: "/images/categories/audio.webp",
         price: 999999,
         discount_price: 1,
         status: "in",
@@ -110,137 +96,89 @@ const Categories = () => {
             },
         ]
     }]
-
-
-    const menuData = [
-        {
-            id: 1,
-            label: 'Home',
-            link: '/'
-        },
-        {
-            id: 2,
-            label: 'Products',
-            children: [
-                {
-                    id: 3,
-                    label: 'Product 1',
-                    link: '/product1'
-                },
-                {
-                    id: 4,
-                    label: 'Product 2',
-                    children: [
-                        {
-                            id: 5,
-                            label: 'Sub Product A',
-                            link: '/sub-product-a'
-                        },
-                        {
-                            id: 6,
-                            label: 'Sub Product B',
-                            link: '/sub-product-b'
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            id: 7,
-            label: 'About',
-            link: '/about'
-        }
-    ];
-
-    const catTest = [
-        {
-            "id": 1,
-            "name": "test",
-            "category_code": "test",
-            "image": "",
-            "parent": null,
-            "type": "categories",
-            "order": 1,
-            "description": "1",
-        },
-        {
-            "id": 2,
-            "name": "test2",
-            "category_code": "test2",
-            "image": "",
-            "parent": 1,
-            "type": "categories",
-            "order": 2,
-            "description": "2",
-        },
-        {
-            "id": 3,
-            "name": "test3",
-            "category_code": "test3",
-            "image": "",
-            "parent": 2,
-            "type": "products",
-            "order": 3,
-            "description": "3",
-        },
-        {
-            "id": 4,
-            "name": "test4",
-            "category_code": "test4",
-            "image": "",
-            "parent": null,
-            "type": "categories",
-            "order": 4,
-            "description": "4",
-        },
-        {
-            "id": 5,
-            "name": "test5",
-            "category_code": "test5",
-            "image": "",
-            "parent": 4,
-            "type": "categories",
-            "order": 5,
-            "description": "5",
-        },
-
-    ]
-
-
+    const { data: product, isLoading, error, mutate } = useSWRData(
+        `/api/products`, { limit: 6, status: 'new' }
+    );
+    // console.log('product :', product?.data);
 
     return (
-        <div className='mx-28 my-28 h-[96]'>
-            <div id="banner" className=''>
+        <div className='mx-28 my-10 h-[96] text-center'>
+            <div id="banner" >
                 <SlideBanner />
             </div>
-            <div className='grid grid-cols-3 justify-center items-center'>
-                <div className='col-span-3 md:col-span-1 '>
-                    <img src="https://zadez.vn/wp-content/uploads/2022/11/ZADEZ-ZHS701G-BLACK-MEDIA-2048-6.webp" alt="" className='w-20' />
-                    <div>Chuột</div>
+            <h2 className='text-4xl pt-4 font-bold '>Danh mục sản phẩm</h2>
+            <div className='grid grid-cols-3 my-8'>
+                <div className='col-span-3 md:col-span-1 flex flex-col justify-center items-center bg-stone-200 rounded-2xl m-4 cursor-pointer hover:text-red-500'
+                    onClick={() => {
+                        router.push(
+                            `/categories/0?type=audio`
+                        );
+                    }}>
+                    <Image width={200} height={200} src="/images/categories/headset.webp" alt="" />
+                    <div>Tai nghe</div>
                 </div>
                 <div className='col-span-3 md:col-span-1 grid grid-cols-2'>
-                    <div className=' col-span-2 md:col-span-1 w-10 '>
-                        <img src="https://zadez.vn/wp-content/uploads/2022/11/ZADEZ-ZHS701G-BLACK-MEDIA-2048-6.webp" alt="" className='w-20' />
-                        <div>Chuột</div>
+                    <div className=' col-span-2 md:col-span-1 flex flex-col justify-center items-center bg-stone-200 rounded-2xl m-4 cursor-pointer hover:text-red-500'
+                        onClick={() => {
+                            router.push(
+                                `/categories/0?type=mouse`
+                            );
+                        }}>
+                        <Image width={200} height={200} src="/images/categories/mouse.webp" alt="" />
+                        <div className='mb-4'>Chuột</div>
                     </div>
-                    <div className='col-span-2 md:col-span-1 w-5'>
-                        <img src="https://zadez.vn/wp-content/uploads/2022/11/ZADEZ-ZHS701G-BLACK-MEDIA-2048-6.webp" alt="" className='w-20' />
-                        <div>Chuột</div>
+                    <div className='col-span-2 md:col-span-1 flex flex-col justify-center items-center bg-stone-200 rounded-2xl m-4 cursor-pointer hover:text-red-500'
+                        onClick={() => {
+                            router.push(
+                                `/categories/0?type=mouse`
+                            );
+                        }}>
+                        <Image width={200} height={200} src="/images/categories/keyboard.webp" alt="" />
+                        <div className='mb-4'>Bàn phím</div>
                     </div>
-                    <div className=' col-span-2 md:col-span-1 w-5'>
-                        <img src="https://zadez.vn/wp-content/uploads/2022/11/ZADEZ-ZHS701G-BLACK-MEDIA-2048-6.webp" alt="" className='w-20' />
-                        <div>Chuột</div>
+                    <div className=' col-span-2 md:col-span-1 flex flex-col justify-center items-center bg-stone-200 rounded-2xl m-4 cursor-pointer hover:text-red-500'
+                        onClick={() => {
+                            router.push(
+                                `/categories/0?type=keyboard`
+                            );
+                        }}>
+                        <Image width={200} height={200} src="/images/categories/smartwatch.webp" alt=""
+                            onClick={() => {
+                                router.push(
+                                    `/categories/0?type=smartwatch`
+                                );
+                            }} />
+                        <div className='mb-4'>Đồng hồ thông minh</div>
                     </div>
-                    <div className='col-span-2 md:col-span-1 w-5'>
-                        <img src="https://zadez.vn/wp-content/uploads/2022/11/ZADEZ-ZHS701G-BLACK-MEDIA-2048-6.webp" alt="" className='w-20' />
-                        <div>Chuột</div>
+                    <div className='col-span-2 md:col-span-1 flex flex-col justify-center items-center bg-stone-200 rounded-2xl m-4 cursor-pointer hover:text-red-500'
+                        onClick={() => {
+                            router.push(
+                                `/categories/0?type=accessories`
+                            );
+                        }}>
+                        <Image width={200} height={200} src="/images/categories/accessories.webp" alt="" />
+                        <div className='mb-4'>Phụ kiện</div>
                     </div>
                 </div>
-                <div className='col-span-3 md:col-span-1 w-5'>
-                    <img src="https://zadez.vn/wp-content/uploads/2022/11/ZADEZ-ZHS701G-BLACK-MEDIA-2048-6.webp" alt="" className='w-20' />
-                    <div>Chuột</div>
+                <div className='col-span-3 md:col-span-1 flex flex-col justify-center items-center bg-stone-200 rounded-2xl m-4 cursor-pointer hover:text-red-500'
+                    onClick={() => {
+                        router.push(
+                            `/categories/0?type=audio`
+                        );
+                    }}>
+                    <Image width={200} height={200} src="/images/categories/audio.webp" alt="" />
+                    <div>Loa</div>
                 </div>
 
+            </div>
+            {/* NEW PRODUCT */}
+            <h2 className='text-4xl pt-4 font-bold'>Sản phẩm mới</h2>
+            <div className='grid grid-cols-12 gap-4'>
+                {products && products.map((item, i) => (
+                    <div className='col-span-12 md:col-span-6 lg:col-span-4 rounded-2xl' >
+                        <Image sizes="(max-width: 768px) 100vw, 33vw" width={500} height={500} src={item.main_image} alt={item.name} />
+                    </div>
+                ))}
             </div>
         </div>
     )

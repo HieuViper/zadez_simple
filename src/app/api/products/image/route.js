@@ -5,7 +5,6 @@ import path from "path";
 
 // Function to check if a folder exists
 const doesFolderExist = async (folderPath) => {
-  console.log(folderPath);
   try {
     // Use 'access' method to check if the folder exists
     await fsPromises.access(folderPath);
@@ -52,9 +51,9 @@ export async function POST(req, res) {
       await doesFolderExist(`public/uploads/${nameFolderInCustom}`).then(
         async (exists) => {
           if (exists) {
-            console.log("Folder exists!");
+            // console.log("Folder exists!");
           } else {
-            console.log("Folder does not exist.");
+            // console.log("Folder does not exist.");
             await fsPromises.mkdir(`public/uploads/${nameFolderInCustom}`);
           }
         }
@@ -69,7 +68,7 @@ export async function POST(req, res) {
         const temp = filename.split(".");
         filename = temp[0] + "-" + Date.now().toString() + "." + temp[1];
       }
-      console.log("filenaem", filename);
+      // console.log("filenaem", filename);
 
       await writeFile(
         path.join(

@@ -1,15 +1,18 @@
 "use client"
-import { Button, Checkbox, Select, Switch } from 'antd'
+import { Button, Checkbox, Select, Spin, Switch } from 'antd'
 import React, { useEffect, useState } from 'react'
 import { ShoppingCartOutlined } from "@ant-design/icons";
 import ProductCard from '@/components/ProductCard';
 import { useSWRData } from '@/library/api';
-import { useRouter } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
+import Image from 'next/image';
 const Category = ({ params }) => {
     const { slug } = params
     const id = slug.split("-")[slug.split("-").length - 1];
-    console.log('id :', id);
     const router = useRouter()
+    const searchParams = useSearchParams();
+    const type = searchParams.has("type") ? searchParams.get('type') : '';
+
     const { Option } = Select
     const menuCategory = [{
         name: "Chuột",
@@ -124,15 +127,14 @@ const Category = ({ params }) => {
     //     ]
     // }]
     // CALL API
-    const [productType, setProductType] = useState()
-    // const { data: productById, isLoading, error } = useSWRData(
-    //     `/api/products?${productType ? `type=${productType} ` : `categoryId=${id}`}`, { limit: 1000 }
+    const [productType, setProductType] = useState(type)
+    // const { data: products, isLoading, error, mutate } = useSWRData(
+    //     `/api/products`, { limit: 100, type: productType, categoryId: id, }
     // );
-    // console.log('productById :', productById);
     const { data: products, isLoading, error, mutate } = useSWRData(
-        `/api/products`, { limit: 1000, type: productType ? productType : '', categoryId: productType ? '' : id }
-    );
-    console.log('products :', products);
+        `/api/products?limit=100&${productType ? `type=${productType}` : `categoryId=${id}`}`);
+    // console.log('products1 :', products);
+
 
     // FILTER
 
@@ -221,9 +223,9 @@ const Category = ({ params }) => {
                 {menuCategory.map((item, i) => (
                     <div key={i} className='hover:text-red-500 cursor-pointer' onClick={() => {
                         setProductType(item.type)
-                        mutate()
+                        // mutate()
                     }}>
-                        <img src={item.image} alt={item.name} className='w-32 object-cover' />
+                        <Image src={item.image} alt={item.name} width={128} height={128} className='' />
                         <div>{item.name}</div>
                     </div>
                 ))}
@@ -256,13 +258,13 @@ const Category = ({ params }) => {
                             <Option value="highest-price">Giá cao nhất</Option>
                         </Select>
                     </div>
-                    <div className='border grid grid-cols-3 gap-y-7'>
-                        {sortedProducts && sortedProducts?.map((item, i) => (
+                    {sortedProducts ? <div className='border grid grid-cols-3 gap-y-7'>
+                        {sortedProducts?.map((item, i) => (
                             <div className='col-span-1'>
                                 <ProductCard data={item} key={i} />
                             </div>
                         ))}
-                    </div>
+                    </div> : <div className='flex justify-center'><Spin /></div>}
                 </div>
             </div>
         </div>

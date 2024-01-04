@@ -137,8 +137,11 @@ body {
 }
 
 /* CSS dangerouslySetInnerHTML*/
-/* .editor td,
-th {
+.editor td {
+  border: 1px solid rgb(190, 190, 190);
+  padding: 10px;
+}
+.editor th {
   border: 1px solid rgb(190, 190, 190);
   padding: 10px;
 }
@@ -162,14 +165,14 @@ th {
 .editor figure {
   padding-bottom: 10px;
   padding-top: 10px;
-} 
+}
 
 .editor table {
   border-collapse: collapse;
   border: 2px solid rgb(200, 200, 200);
   overflow: hidden;
   font-size: 11px;
-}*/
+}
 
 .zalo-chat-widget {
   z-index: 1000;
