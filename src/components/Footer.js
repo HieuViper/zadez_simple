@@ -2,7 +2,7 @@
 import Image from "next/image";
 import logo from "/public/images/logo-white.png"
 
-const Footer = async () => {
+const Footer = () => {
     // const introFooter =
     // const contactFooter = 
     const introFooter = { name: "SI.ZADEZ.VN", description: "<p>ZADEZ là thương hiệu phụ kiện công nghệ đầu tiên triển khai hệ thống quản lý chất lượng sản phẩm theo mã số định danh Serial Number. Tất cả sản phẩm ZADEZ đều có số Serial Number riêng biệt để phục vụ việc tra cứu thông tin sản xuất &amp; thông tin bảo hành. Quý khách hàng tại thị trường Việt Nam vui lòng kích hoạt và tra cứu bảo hành (miễn phí) tại website PSI.ZADEZ.VN<br>ZADEZ - Make Life Easier</p>" }

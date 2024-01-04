@@ -6,12 +6,12 @@ import 'swiper/css';
 import 'swiper/css/free-mode';
 import 'swiper/css/navigation';
 import 'swiper/css/thumbs'
-import { Image } from 'antd';
+import Image from 'next/image';
 
 const SlideBanner = () => {
-    const banners = [{ name: "Zadez", image: "https://zadez.vn/wp-content/uploads/2022/12/1-2.webp" },
-    { name: "Zadez", image: "https://zadez.vn/wp-content/uploads/2022/12/1-2.webp" },
-    { name: "Zadez", image: "https://zadez.vn/wp-content/uploads/2022/12/1-2.webp" }]
+    const banners = [{ name: "Zadez", image: "/images/categories/audio.webp" },
+    { name: "Zadez", image: "/images/categories/audio.webp" },
+    { name: "Zadez", image: "/images/categories/audio.webp" }]
     return (
         <div>
             <Swiper
@@ -26,9 +26,11 @@ const SlideBanner = () => {
             >
                 {banners && banners?.map((item, i) => (
                     <SwiperSlide>
-                        <div className='h-96 flex justify-center items-center'>
+                        {/* <div className='h-96 flex justify-center items-center'>
                             <img className='object-contain' src={item.image} alt={item.name} />
-                        </div>
+                        </div> */}
+                        <Image width={500} height={500} src={item.image} alt={item.name} />
+
                     </SwiperSlide>))}
             </Swiper>
         </div>
