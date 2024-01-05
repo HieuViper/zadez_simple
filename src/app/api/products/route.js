@@ -38,8 +38,6 @@ export async function GET(req, { params }) {
         //         },
         //     ],
         // } : {};
-        console.log('type :', searchParams.get('type'));
-        console.log('categoryId :', searchParams.get('categoryId'));
 
         let option = {}
         if (searchParams.has("keyword")) {
@@ -74,36 +72,22 @@ export async function GET(req, { params }) {
                 ],
             };
         } else { { } }
-        if (searchParams.has("categoryId") && searchParams.get("type") === '') {
-            option = {
-                ...option,
-                categoryId: searchParams.get('categoryId'),
-            };
-        } else { { } }
-        if (searchParams.has("type") && searchParams.get("categoryId") === '') {
-            option = {
-                ...option,
-                type: searchParams.get("type")
-            };
-        } else { { } }
-        if (searchParams.has("order")) {
-            option = {
-                ...option,
-                order: {
-                    [Op.like]: "%" + searchParams.get('order') + "%",
-                },
-            };
-        } else { { } }
-        if (searchParams.has("status")) {
-            option = {
-                ...option,
-                status: {
-                    [Op.like]: "%" + searchParams.get('status') + "%",
-                },
-            };
-        } else { { } }
-
-        console.log('>>option', option);
+        searchParams.has("type") ? option = {
+            ...option,
+            type: searchParams.get("type")
+        } : {}
+        searchParams.has("categoryId") ? option = {
+            ...option,
+            categoryId: searchParams.get("categoryId")
+        } : {}
+        searchParams.has("order") ? option = {
+            ...option,
+            order: searchParams.get("order")
+        } : {}
+        searchParams.has("status") ? option = {
+            ...option,
+            status: searchParams.get("status")
+        } : {}
 
         let { count, rows } = await db.Products.findAndCountAll({
             where: option,

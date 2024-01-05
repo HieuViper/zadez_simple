@@ -1,4 +1,5 @@
 "use client";
+import Image from "next/image";
 import "swiper/css";
 import "swiper/css/free-mode";
 import "swiper/css/navigation";
@@ -8,18 +9,9 @@ import { Swiper, SwiperSlide } from "swiper/react";
 
 const SlideBanner = () => {
   const banners = [
-    {
-      name: "Zadez",
-      image: "https://zadez.vn/wp-content/uploads/2022/12/1-2.webp",
-    },
-    {
-      name: "Zadez",
-      image: "https://zadez.vn/wp-content/uploads/2022/12/1-2.webp",
-    },
-    {
-      name: "Zadez",
-      image: "https://zadez.vn/wp-content/uploads/2022/12/1-2.webp",
-    },
+    { name: "Zadez", image: "/images/categories/audio.webp" },
+    { name: "Zadez", image: "/images/categories/audio.webp" },
+    { name: "Zadez", image: "/images/categories/audio.webp" },
   ];
   return (
     <div>
@@ -35,14 +27,16 @@ const SlideBanner = () => {
       >
         {banners &&
           banners?.map((item, i) => (
-            <SwiperSlide>
-              <div className="h-96 flex justify-center items-center">
-                <img
-                  className="object-contain"
-                  src={item.image}
-                  alt={item.name}
-                />
-              </div>
+            <SwiperSlide key={i}>
+              {/* <div className='h-96 flex justify-center items-center'>
+                            <img className='object-contain' src={item.image} alt={item.name} />
+                        </div> */}
+              <Image
+                width={500}
+                height={500}
+                src={item.image}
+                alt={item.name}
+              />
             </SwiperSlide>
           ))}
       </Swiper>

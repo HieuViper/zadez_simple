@@ -1,13 +1,17 @@
 "use client";
 import ProductCard from "@/components/ProductCard";
-import { Checkbox, Select, Switch } from "antd";
-import { useRouter } from "next/navigation";
+import { useSWRData } from "@/library/api";
+import { Checkbox, Select, Spin, Switch } from "antd";
+import Image from "next/image";
+import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 const Category = ({ params }) => {
   const { slug } = params;
   const id = slug.split("-")[slug.split("-").length - 1];
-  console.log("id :", id);
   const router = useRouter();
+  const searchParams = useSearchParams();
+  const type = searchParams.has("type") ? searchParams.get("type") : "";
+
   const { Option } = Select;
   const menuCategory = [
     {
@@ -36,118 +40,111 @@ const Category = ({ params }) => {
       type: "accessories",
     },
   ];
-  const products = [
-    {
-      product_code: "999",
-      main_image:
-        "https://zadez.us/cdn/shop/products/G-151M_500x.png?v=1638523572",
-      price: 900000,
-      discount_price: 1,
-      stock: "in",
-      name: "aGaming",
-      product_languages: [
-        {
-          id: 1,
-          name: "Macbook Bro`",
-          short:
-            "Tai nghe không dây cao cấp với công nghệ ENC - Environmental Noise Cancellation hiện đại, trọng lượng siêu nhẹ 176 gram mang đến cảm giác đeo thoải mái trong thời gian dài. Kết nối Bluetooth 5.2 và chế độ EQ Bass cho chất lượng âm thanh tuyệt hảo. Hãy trải nghiệm ngay !",
-          description: "description",
-          productId: 128,
-          languageCode: "vi",
-        },
-      ],
-    },
-    {
-      product_code: "999",
-      main_image:
-        "https://zadez.us/cdn/shop/products/G-151M_500x.png?v=1638523572",
-      price: 990000,
-      discount_price: 1,
-      stock: "in",
-      name: "bGaming",
-      product_languages: [
-        {
-          id: 1,
-          name: "Macbook Bro`",
-          short:
-            "Tai nghe không dây cao cấp với công nghệ ENC - Environmental Noise Cancellation hiện đại, trọng lượng siêu nhẹ 176 gram mang đến cảm giác đeo thoải mái trong thời gian dài. Kết nối Bluetooth 5.2 và chế độ EQ Bass cho chất lượng âm thanh tuyệt hảo. Hãy trải nghiệm ngay !",
-          description: "description",
-          productId: 128,
-          languageCode: "vi",
-        },
-      ],
-    },
-    {
-      product_code: "999",
-      main_image:
-        "https://zadez.us/cdn/shop/products/G-151M_500x.png?v=1638523572",
-      price: 999,
-      discount_price: 1,
-      stock: "in",
-      name: "cGaming",
-      product_languages: [
-        {
-          id: 1,
-          name: "Macbook Bro`",
-          short:
-            "Tai nghe không dây cao cấp với công nghệ ENC - Environmental Noise Cancellation hiện đại, trọng lượng siêu nhẹ 176 gram mang đến cảm giác đeo thoải mái trong thời gian dài. Kết nối Bluetooth 5.2 và chế độ EQ Bass cho chất lượng âm thanh tuyệt hảo. Hãy trải nghiệm ngay !",
-          description: "description",
-          productId: 128,
-          languageCode: "vi",
-        },
-      ],
-    },
-    {
-      product_code: "999",
-      main_image:
-        "https://zadez.us/cdn/shop/products/G-151M_500x.png?v=1638523572",
-      price: 9999,
-      discount_price: 1,
-      stock: "out",
-      name: "dGaming",
-      product_languages: [
-        {
-          id: 1,
-          name: "Macbook Bro`",
-          short:
-            "Tai nghe không dây cao cấp với công nghệ ENC - Environmental Noise Cancellation hiện đại, trọng lượng siêu nhẹ 176 gram mang đến cảm giác đeo thoải mái trong thời gian dài. Kết nối Bluetooth 5.2 và chế độ EQ Bass cho chất lượng âm thanh tuyệt hảo. Hãy trải nghiệm ngay !",
-          description: "description",
-          productId: 128,
-          languageCode: "vi",
-        },
-      ],
-    },
-    {
-      product_code: "999",
-      main_image:
-        "https://zadez.us/cdn/shop/products/G-151M_500x.png?v=1638523572",
-      price: 999999,
-      discount_price: 0,
-      stock: "in",
-      name: "eGaming",
-      product_languages: [
-        {
-          id: 1,
-          name: "Macbook Bro`",
-          short:
-            "Tai nghe không dây cao cấp với công nghệ ENC - Environmental Noise Cancellation hiện đại, trọng lượng siêu nhẹ 176 gram mang đến cảm giác đeo thoải mái trong thời gian dài. Kết nối Bluetooth 5.2 và chế độ EQ Bass cho chất lượng âm thanh tuyệt hảo. Hãy trải nghiệm ngay !",
-          description: "description",
-          productId: 128,
-          languageCode: "vi",
-        },
-      ],
-    },
-  ];
+  // const products = [{
+  //     product_code: "999",
+  //     main_image: "https://zadez.us/cdn/shop/products/G-151M_500x.png?v=1638523572",
+  //     price: 900000,
+  //     discount_price: 1,
+  //     stock: "in",
+  //     name: "aGaming",
+  //     product_languages: [
+  //         {
+  //             id: 1,
+  //             name: "Macbook Bro`",
+  //             short: "Tai nghe không dây cao cấp với công nghệ ENC - Environmental Noise Cancellation hiện đại, trọng lượng siêu nhẹ 176 gram mang đến cảm giác đeo thoải mái trong thời gian dài. Kết nối Bluetooth 5.2 và chế độ EQ Bass cho chất lượng âm thanh tuyệt hảo. Hãy trải nghiệm ngay !",
+  //             description: "description",
+  //             productId: 128,
+  //             languageCode: "vi",
+  //         },
+  //     ]
+  // },
+  // {
+  //     product_code: "999",
+  //     main_image: "https://zadez.us/cdn/shop/products/G-151M_500x.png?v=1638523572",
+  //     price: 990000,
+  //     discount_price: 1,
+  //     stock: "in",
+  //     name: "bGaming",
+  //     product_languages: [
+  //         {
+  //             id: 1,
+  //             name: "Macbook Bro`",
+  //             short: "Tai nghe không dây cao cấp với công nghệ ENC - Environmental Noise Cancellation hiện đại, trọng lượng siêu nhẹ 176 gram mang đến cảm giác đeo thoải mái trong thời gian dài. Kết nối Bluetooth 5.2 và chế độ EQ Bass cho chất lượng âm thanh tuyệt hảo. Hãy trải nghiệm ngay !",
+  //             description: "description",
+  //             productId: 128,
+  //             languageCode: "vi",
+  //         },
+  //     ]
+  // }, {
+  //     product_code: "999",
+  //     main_image: "https://zadez.us/cdn/shop/products/G-151M_500x.png?v=1638523572",
+  //     price: 999,
+  //     discount_price: 1,
+  //     stock: "in",
+  //     name: "cGaming",
+  //     product_languages: [
+  //         {
+  //             id: 1,
+  //             name: "Macbook Bro`",
+  //             short: "Tai nghe không dây cao cấp với công nghệ ENC - Environmental Noise Cancellation hiện đại, trọng lượng siêu nhẹ 176 gram mang đến cảm giác đeo thoải mái trong thời gian dài. Kết nối Bluetooth 5.2 và chế độ EQ Bass cho chất lượng âm thanh tuyệt hảo. Hãy trải nghiệm ngay !",
+  //             description: "description",
+  //             productId: 128,
+  //             languageCode: "vi",
+  //         },
+  //     ]
+  // },
+  // {
+  //     product_code: "999",
+  //     main_image: "https://zadez.us/cdn/shop/products/G-151M_500x.png?v=1638523572",
+  //     price: 9999,
+  //     discount_price: 1,
+  //     stock: "out",
+  //     name: "dGaming",
+  //     product_languages: [
+  //         {
+  //             id: 1,
+  //             name: "Macbook Bro`",
+  //             short: "Tai nghe không dây cao cấp với công nghệ ENC - Environmental Noise Cancellation hiện đại, trọng lượng siêu nhẹ 176 gram mang đến cảm giác đeo thoải mái trong thời gian dài. Kết nối Bluetooth 5.2 và chế độ EQ Bass cho chất lượng âm thanh tuyệt hảo. Hãy trải nghiệm ngay !",
+  //             description: "description",
+  //             productId: 128,
+  //             languageCode: "vi",
+  //         },
+  //     ]
+  // },
+  // {
+  //     product_code: "999",
+  //     main_image: "https://zadez.us/cdn/shop/products/G-151M_500x.png?v=1638523572",
+  //     price: 999999,
+  //     discount_price: 0,
+  //     stock: "in",
+  //     name: "eGaming",
+  //     product_languages: [
+  //         {
+  //             id: 1,
+  //             name: "Macbook Bro`",
+  //             short: "Tai nghe không dây cao cấp với công nghệ ENC - Environmental Noise Cancellation hiện đại, trọng lượng siêu nhẹ 176 gram mang đến cảm giác đeo thoải mái trong thời gian dài. Kết nối Bluetooth 5.2 và chế độ EQ Bass cho chất lượng âm thanh tuyệt hảo. Hãy trải nghiệm ngay !",
+  //             description: "description",
+  //             productId: 128,
+  //             languageCode: "vi",
+  //         },
+  //     ]
+  // }]
   // CALL API
-  const [productType, setProductType] = useState();
-  // const { data: productById, isLoading, error } = useSWRData(
-  //     `/api/products?${productType ? `type=${productType} ` : `categoryId=${id}`}`, { limit: 1000 }
-  // );
-  // console.log('productById :', productById);
+  const [productType, setProductType] = useState(type);
   // const { data: products, isLoading, error, mutate } = useSWRData(
-  //     `/api/products`, { limit: 1000, type: productType ? productType : '', categoryId: productType ? '' : id }
+  //     `/api/products`, { limit: 100, type: productType, categoryId: id, }
   // );
-  console.log("products :", products);
+  const {
+    data: products,
+    isLoading,
+    error,
+    mutate,
+  } = useSWRData(
+    `/api/products?limit=100&${
+      productType ? `type=${productType}` : `categoryId=${id}`
+    }`
+  );
+  console.log("products1 :", products);
 
   // FILTER
 
@@ -169,7 +166,7 @@ const Category = ({ params }) => {
 
   const filteredProducts =
     products &&
-    products.filter((product) => {
+    products.data.filter((product) => {
       if (isInStock && !isOutOfStock && isSale) {
         return product.stock === "in" && product.discount_price > 0;
       } else if (isInStock && !isOutOfStock && !isSale) {
@@ -241,13 +238,15 @@ const Category = ({ params }) => {
             className="hover:text-red-500 cursor-pointer"
             onClick={() => {
               setProductType(item.type);
-              mutate();
+              // mutate()
             }}
           >
-            <img
+            <Image
               src={item.image}
               alt={item.name}
-              className="w-32 object-cover"
+              width={128}
+              height={128}
+              className=""
             />
             <div>{item.name}</div>
           </div>
@@ -289,14 +288,19 @@ const Category = ({ params }) => {
               <Option value="highest-price">Giá cao nhất</Option>
             </Select>
           </div>
-          <div className="border grid grid-cols-3 gap-y-7">
-            {sortedProducts &&
-              sortedProducts?.map((item, i) => (
+          {sortedProducts ? (
+            <div className="border grid grid-cols-3 gap-y-7">
+              {sortedProducts?.map((item, i) => (
                 <div className="col-span-1">
                   <ProductCard data={item} key={i} />
                 </div>
               ))}
-          </div>
+            </div>
+          ) : (
+            <div className="flex justify-center">
+              <Spin />
+            </div>
+          )}
         </div>
       </div>
     </div>

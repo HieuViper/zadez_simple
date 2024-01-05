@@ -6,7 +6,6 @@ const Op = Sequelize.Op;
 export async function GET(req, { params }) {
     try {
         const searchParams = req.nextUrl.searchParams;
-        console.log('searchParams :', Array.from(searchParams.entries()).length);
         const page = searchParams.has("page") ? searchParams.get('page') - 1 : 0;
         const limit = searchParams.has("limit") ? searchParams.get('limit') : 10;
 
@@ -74,17 +73,13 @@ export async function GET(req, { params }) {
         if (searchParams.has("type")) {
             option = {
                 ...option,
-                type: {
-                    [Op.like]: "%" + searchParams.get('type') + "%",
-                },
+                type: searchParams.get("type"),
             };
         } else { { } }
         if (searchParams.has("order")) {
             option = {
                 ...option,
-                order: {
-                    [Op.like]: "%" + searchParams.get('order') + "%",
-                },
+                order: searchParams.get("order"),
             };
         } else { { } }
         let { count, rows } = await db.Categories.findAndCountAll({

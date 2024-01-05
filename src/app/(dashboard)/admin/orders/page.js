@@ -1,11 +1,10 @@
 "use client";
-import { fetcher } from "@/library/util";
+import { useSWRData } from "@/library/api";
 import { Button, Divider, Popconfirm, Space, Table } from "antd";
 import Search from "antd/es/input/Search";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useState } from "react";
-import useSWR, { useSWRConfig } from "swr";
 const optTimeFormat = {
   weekday: "long",
   month: "long",
@@ -22,6 +21,8 @@ const OrderList = () => {
   const [search, setSearch] = useState("");
   const page = Number(searchParams.get("page") || 1);
   const limit = Number(searchParams.get("limit") || 10);
+  const [selectedRowKeys, setSelectedRowKeys] = useState([]);
+  const hasSelected = selectedRowKeys.length > 0;
 
   const columns = [
     {
@@ -84,18 +85,8 @@ const OrderList = () => {
           <Popconfirm
             title="Delete the order"
             description="Are you sure to delete this order?"
-            onConfirm={async () => {
-              await fetch(`/api/orders/${record.id}`, {
-                method: "DELETE",
-              }).then((rs) => {
-                console.log("🚀 ~ file: page.js:53 ~ onConfirm={ ~ rs:", rs);
-                if (rs.ok) {
-                  mutate(
-                    `/api/orders?keyword=${search}&page=${page}&limit=${limit}`
-                  );
-                }
-                message.success("Delete Success");
-              });
+            onConfirm={() => {
+              deleteData(record.id);
             }}
             onCancel={() => {}}
             okText="Yes"
@@ -108,12 +99,14 @@ const OrderList = () => {
     },
   ];
 
-  const { mutate } = useSWRConfig();
-  const { data, error, isLoading } = useSWR(
-    `/api/orders?keyword=${search}&page=${page}&limit=${limit}`,
-    fetcher
+  const { data, error, isLoading, deleteData, bulkDeleteData } = useSWRData(
+    "/api/orders",
+    {
+      page,
+      limit,
+      keyword: search,
+    }
   );
-  console.log("🚀 ~ file: page.js:56 ~ CustomerList ~ data:", data);
 
   if (error) return <div>failed to load</div>;
   if (isLoading) return <div>loading...123</div>;
@@ -142,11 +135,43 @@ const OrderList = () => {
       </div>
       <Divider />
 
+      <div className="mb-4">
+        <Popconfirm
+          title="Delete items"
+          description="Are you sure to delete these items?"
+          onConfirm={() => {
+            bulkDeleteData(selectedRowKeys).then((res) => {
+              res.status === 200 && setSelectedRowKeys([]);
+            });
+          }}
+          onCancel={() => {}}
+          okText="Yes"
+          cancelText="No"
+        >
+          <Button type="primary" disabled={!hasSelected} loading={isLoading}>
+            Bulk Delete
+          </Button>
+          <span
+            style={{
+              marginLeft: 8,
+            }}
+          >
+            {hasSelected ? `Selected ${selectedRowKeys.length} items` : ""}
+          </span>
+        </Popconfirm>
+      </div>
+
       <Table
         columns={columns}
         dataSource={data.data}
         loading={isLoading}
         bordered
+        rowSelection={{
+          selectedRowKeys,
+          onChange: (newSelectedRowKeys) => {
+            setSelectedRowKeys(newSelectedRowKeys);
+          },
+        }}
         pagination={{
           pageSize: data.pagging.limit,
           current: data.pagging.currentPage,

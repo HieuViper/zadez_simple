@@ -61,3 +61,17 @@ export async function POST(body, req) {
     message: "order created successfully",
   });
 }
+
+export async function DELETE(body, req) {
+  const bodyJSON = await body.json();
+  await db.Orders.destroy({
+    where: { id: { [Op.in]: bodyJSON.ids } },
+  });
+  await db.OrderDetails.destroy({
+    where: { orderId: { [Op.in]: bodyJSON.ids } },
+  });
+  return NextResponse.json({
+    result: "success",
+    message: "customers deleted successfully",
+  });
+}

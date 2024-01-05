@@ -96,8 +96,8 @@ const ProductForm = ({ params }) => {
           modified_by: null,
           product_author: "",
           manufacturerId: null,
-        }
-        console.log('product add:', product);
+        };
+        console.log("product add:", product);
         createData(product).then((res) => {
           console.log("res add:", res);
           if (res.status == 200) {
@@ -132,12 +132,13 @@ const ProductForm = ({ params }) => {
         //   description: value.description
         // }
         const product = {
-          ...value, id: id,
+          ...value,
+          id: id,
           main_image: mainImage?.url || data.main_image || "",
           sub_image: subImage?.url || data.sub_image || "",
           list_image: listImage || {},
-        }
-        console.log('product edit :', product);
+        };
+        console.log("product edit :", product);
         updateData(params.id, product).then((res) => {
           console.log("res edit:", res);
           if (res.status == 200) {
@@ -260,201 +261,206 @@ const ProductForm = ({ params }) => {
   if (error) return <div>failed to load</div>;
   // if (isLoading) return <div>loading...123</div>;
 
-
-  return <div>
-    <div className="flex justify-between mb-4">
-      <Button type="dashed" icon={<SwapLeftOutlined />}>
-        <Link href={`/admin/products`}>Back to Products</Link>
-      </Button>
-      {isAddMode ? (
-
-        <Button form="myForm" type="primary" htmlType="submit"
-          loading={loadingSubmit}
-        >
-          Add New Product
+  return (
+    <div>
+      <div className="flex justify-between mb-4">
+        <Button type="dashed" icon={<SwapLeftOutlined />}>
+          <Link href={`/admin/products`}>Back to Products</Link>
         </Button>
-      ) : (
-        <Button
-          form="myForm"
-          type="primary"
-          htmlType="submit"
-          disabled={loadingSubmit}
-          loading={loadingSubmit}
-        >
-          Update
-        </Button>
-      )}
-    </div>
-    <Form
-      id="myForm"
-      name="basic"
-      labelCol={{
-        offset: 1,
-        span: 3,
-      }}
-      wrapperCol={{
-        // offset: 2,
-        span: 18
-      }}
-      // style={
-      //     {
-      //         maxWidth: 2000,
-      //         width: '100%',
-      //     }
-      // }
-      initialValues={{
-        remember: true,
-      }}
-      onFinish={handleSubmit}
-      onFinishFailed={handleSubmitFailed}
-      autoComplete="off"
-      form={form}
-    >
-      <div className='grid grid-cols-2'>
-        <div id="col-1" className=''>
-          <Form.Item
-            label={<span className="font-medium ">Name</span>}
-            name={`name`}
-            rules={[
-              {
-                required: true,
-                message: "Please input name!",
-              },
-            ]}
+        {isAddMode ? (
+          <Button
+            form="myForm"
+            type="primary"
+            htmlType="submit"
+            loading={loadingSubmit}
           >
-            <Input placeholder="Input name" />
-          </Form.Item>
-          <Form.Item
-            label={<span className="font-medium">Code</span>}
-            name="product_code"
-            rules={[
-              {
-                required: true,
-                message: "Please input code!",
-              },
-            ]}
+            Add New Product
+          </Button>
+        ) : (
+          <Button
+            form="myForm"
+            type="primary"
+            htmlType="submit"
+            disabled={loadingSubmit}
+            loading={loadingSubmit}
           >
-            <Input placeholder="Input Product Code" />
-          </Form.Item>
-          <Form.Item
-            label={<span className="font-medium">Price</span>}
-            name="price"
-          >
-            <Input placeholder="Input price" />
-          </Form.Item>
-          <Form.Item
-            label={<span className="font-medium">Discount </span>}
-            name="discount_price"
-          >
-            <Input placeholder="Input Discount Price" />
-          </Form.Item>
-          <Form.Item
-            label={<span className="font-medium">Categories </span>}
-            name="categoryId"
-          >
-            <TreeSelect
-              showSearch
-              allowClear
-              treeDefaultExpandAll
-              treeData={treeData}
-              value={value}
-              onChange={onChange}
-              dropdownStyle={{
-                maxHeight: 400,
-                overflow: 'auto',
-              }}
-              placeholder="Select parent"
-            />
-          </Form.Item>
-          <Form.Item
-            label={<span className="font-medium">Driver</span>}
-            name="driver"
-          >
-            <Input placeholder="Input Driver" />
-          </Form.Item>
-        </div>
-        <div id="col-2" className=''>
-          <Form.Item
-            label={<span className="font-medium"> Position </span>}
-            name="product_position"
-          >
-            <Input placeholder="Input Position" />
-          </Form.Item>
-          <Form.Item
-            label={<span className="font-medium">Active</span>}
-            name="active"
-          >
-            <Select placeholder="Select active" >
-              <Option value={true}>Yes</Option>
-              <Option value={false}>No</Option>
-            </Select>
-          </Form.Item>
-          <Form.Item
-            label={<span className="font-medium">Status</span>}
-            name="status"
-          >
-            {/* <Select placeholder="Select status" >
+            Update
+          </Button>
+        )}
+      </div>
+      <Form
+        id="myForm"
+        name="basic"
+        labelCol={{
+          offset: 1,
+          span: 3,
+        }}
+        wrapperCol={{
+          // offset: 2,
+          span: 18,
+        }}
+        // style={
+        //     {
+        //         maxWidth: 2000,
+        //         width: '100%',
+        //     }
+        // }
+        initialValues={{
+          remember: true,
+        }}
+        onFinish={handleSubmit}
+        onFinishFailed={handleSubmitFailed}
+        autoComplete="off"
+        form={form}
+      >
+        <div className="grid grid-cols-2">
+          <div id="col-1" className="">
+            <Form.Item
+              label={<span className="font-medium ">Name</span>}
+              name={`name`}
+              rules={[
+                {
+                  required: true,
+                  message: "Please input name!",
+                },
+              ]}
+            >
+              <Input placeholder="Input name" />
+            </Form.Item>
+            <Form.Item
+              label={<span className="font-medium">Code</span>}
+              name="product_code"
+              rules={[
+                {
+                  required: true,
+                  message: "Please input code!",
+                },
+              ]}
+            >
+              <Input placeholder="Input Product Code" />
+            </Form.Item>
+            <Form.Item
+              label={<span className="font-medium">Price</span>}
+              name="price"
+            >
+              <Input placeholder="Input price" />
+            </Form.Item>
+            <Form.Item
+              label={<span className="font-medium">Discount </span>}
+              name="discount_price"
+            >
+              <Input placeholder="Input Discount Price" />
+            </Form.Item>
+            <Form.Item
+              label={<span className="font-medium">Categories </span>}
+              name="categoryId"
+            >
+              <TreeSelect
+                showSearch
+                allowClear
+                treeDefaultExpandAll
+                treeData={treeData}
+                value={value}
+                onChange={onChange}
+                dropdownStyle={{
+                  maxHeight: 400,
+                  overflow: "auto",
+                }}
+                placeholder="Select parent"
+              />
+            </Form.Item>
+            <Form.Item
+              label={<span className="font-medium">Driver</span>}
+              name="driver"
+            >
+              <Input placeholder="Input Driver" />
+            </Form.Item>
+          </div>
+          <div id="col-2" className="">
+            <Form.Item
+              label={<span className="font-medium"> Position </span>}
+              name="product_position"
+            >
+              <Input placeholder="Input Position" />
+            </Form.Item>
+            <Form.Item
+              label={<span className="font-medium">Active</span>}
+              name="active"
+            >
+              <Select placeholder="Select active">
+                <Option value={true}>Yes</Option>
+                <Option value={false}>No</Option>
+              </Select>
+            </Form.Item>
+            <Form.Item
+              label={<span className="font-medium">Status</span>}
+              name="status"
+            >
+              {/* <Select placeholder="Select status" >
               <Option value={"in"}>In Stock</Option>
               <Option value={"out"}>Out Stock</Option>
             </Select> */}
-            <Input placeholder="Input status" />
-          </Form.Item>
-          <Form.Item
-            label={<span className="font-medium">Stock</span>}
-            name="stock"
-          >
-            <Select placeholder="Select stock" >
-              <Option value={"in"}>In Stock</Option>
-              <Option value={"out"}>Out Stock</Option>
-            </Select>
-          </Form.Item>
-          <Form.Item
-            label={<span className="font-medium">Type</span>}
-            name="type"
-          >
-            <Select placeholder="Select type" >
-              <Option value={"mouse"}>Mouse</Option>
-              <Option value={"keyboard"}>Keyboard</Option>
-              <Option value={"audio"}>Audio</Option>
-              <Option value={"smartwatch"}>Smart Watch</Option>
-              <Option value={"accessories"}>Accessories</Option>
-            </Select>
-          </Form.Item>
-          <Form.Item
-            label={<span className="font-medium">Color </span>}
-            name="color"
-          >
-            <Select
-              style={{
-                width: '100%',
-              }}
-              options={optionsColor}
-              placeholder="Select Color"
-            />
-          </Form.Item>
-        </div>
-      </div>
-      {/* IMAGE */}
-      <div id='image' className='flex justify-center gap-40'>
-        <div id="main-image" className="flex flex-col justify-center items-center " >
-          <div>
-            {previewMainPic && (
-              <Image
-                src={`${URL.createObjectURL(previewMainPic)}`}
-                width={180}
-                className="rounded-lg shadow"
-                alt={`${mainPicURL}`}
+              <Input placeholder="Input status" />
+            </Form.Item>
+            <Form.Item
+              label={<span className="font-medium">Stock</span>}
+              name="stock"
+            >
+              <Select placeholder="Select stock">
+                <Option value={"in"}>In Stock</Option>
+                <Option value={"out"}>Out Stock</Option>
+              </Select>
+            </Form.Item>
+            <Form.Item
+              label={<span className="font-medium">Type</span>}
+              name="type"
+            >
+              <Select placeholder="Select type">
+                <Option value={"mouse"}>Mouse</Option>
+                <Option value={"keyboard"}>Keyboard</Option>
+                <Option value={"audio"}>Audio</Option>
+                <Option value={"smartwatch"}>Smart Watch</Option>
+                <Option value={"accessories"}>Accessories</Option>
+              </Select>
+            </Form.Item>
+            <Form.Item
+              label={<span className="font-medium">Color </span>}
+              name="color"
+            >
+              <Select
+                style={{
+                  width: "100%",
+                }}
+                options={optionsColor}
+                placeholder="Select Color"
               />
-            )}
-            {mainPicURL && !previewMainPic && (
-              <Image
-                src={`${mainPicURL}`}
-                width={180}
-                className="rounded-lg shadow"
-                alt={`${mainPicURL}`}
-              />
-            )}
+            </Form.Item>
           </div>
+        </div>
+        {/* IMAGE */}
+        <div id="image" className="flex justify-center gap-40">
+          <div
+            id="main-image"
+            className="flex flex-col justify-center items-center "
+          >
+            <div>
+              {previewMainPic && (
+                <Image
+                  src={`${URL.createObjectURL(previewMainPic)}`}
+                  width={180}
+                  className="rounded-lg shadow"
+                  alt={`${mainPicURL}`}
+                />
+              )}
+              {mainPicURL && !previewMainPic && (
+                <Image
+                  src={`${mainPicURL}`}
+                  width={180}
+                  className="rounded-lg shadow"
+                  alt={`${mainPicURL}`}
+                />
+              )}
+            </div>
 
             <div className="py-1 font-medium"> Main Image</div>
             <div className="flex">

@@ -12,22 +12,22 @@ module.exports = (sequelize, DataTypes) => {
       },
       name: {
         type: DataTypes.STRING(300),
-        collate: 'utf8mb4_unicode_520_ci',
+        collate: "utf8mb4_unicode_520_ci",
         allowNull: true,
-        defaultValue: 'undefined',
-        comment: 'Title can be null',
+        defaultValue: "undefined",
+        comment: "Title can be null",
       },
       short: {
         type: DataTypes.TEXT,
-        collate: 'utf8mb4_unicode_520_ci',
+        collate: "utf8mb4_unicode_520_ci",
         allowNull: true,
-        comment: 'Description',
+        comment: "Description",
       },
       description: {
         type: DataTypes.TEXT,
-        collate: 'utf8mb4_unicode_520_ci',
+        collate: "utf8mb4_unicode_520_ci",
         allowNull: true,
-        comment: 'Description',
+        comment: "Description",
       },
       main_image: {
         type: DataTypes.STRING(200),
@@ -90,10 +90,6 @@ module.exports = (sequelize, DataTypes) => {
       //     allowNull: true,
       //     comment: 'feature image of the products',
       // },
-      categoryId: {
-        type: DataTypes.BIGINT(20).UNSIGNED,
-        allownNull: true,
-      },
       price: {
         type: DataTypes.DOUBLE,
         comment: "Original price",
@@ -137,7 +133,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     { tableName: "products" }
   );
-  Products.associate = function (db) {
+  Products.associate = function (models) {
     // associations can be defined here
   };
   return Products;

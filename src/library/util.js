@@ -15,3 +15,7 @@ export async function updateOrCreate(model, where, newItem) {
   const item = await model.update(newItem, { where });
   return { item, created: false };
 }
+
+export function moneyToString(money) {
+  return money.toLocaleString('en-US').replace(/,/g, '.')
+}

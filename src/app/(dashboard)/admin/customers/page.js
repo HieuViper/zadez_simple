@@ -52,7 +52,7 @@ const CustomerList = () => {
           <Popconfirm
             title="Delete the customer"
             description="Are you sure to delete this customer?"
-            onConfirm={async () => {
+            onConfirm={() => {
               deleteData(record.id);
             }}
             onCancel={() => {}}
