@@ -176,9 +176,9 @@ const Header = () => {
         if (item.children) {
           return (
             <SubMenu key={item.id} title={item.name}>
-              {/* <a href={`/${item.type}/${item.category_code}/${item.id}`}> */}
-              {menuItems(item.children)}
-              {/* </a> */}
+              <a href={`/${item.type}/${item.category_code}-${item.id}`}>
+                {menuItems(item.children)}
+              </a>
             </SubMenu>
           );
         }

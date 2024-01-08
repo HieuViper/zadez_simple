@@ -17,5 +17,5 @@ export async function updateOrCreate(model, where, newItem) {
 }
 
 export function moneyToString(money) {
-  return money.toLocaleString('en-US').replace(/,/g, '.')
+  return money?.toLocaleString("en-US").replace(/,/g, ".");
 }

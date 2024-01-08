@@ -9,8 +9,25 @@ let cartStore = (set, get) => {
     addToCart: (data) => {
       set(
         (state) => {
-          const newData = cartItems.push(data);
-          state.cartState.cartItems = newData;
+          if (
+            !state.cartState.cartItems.find(
+              (item) => item.products.id == data.id
+            ) ||
+            state.cartState.length == 0
+          ) {
+            state.cartState.cartItems.push({
+              products: data,
+              amount: 1,
+            });
+          } else {
+            const index = state.cartState.cartItems.findIndex(
+              (item) => item.products.id == data.id
+            );
+            state.cartState.cartItems[index].amount =
+              state.cartState.cartItems[index].amount + 1;
+          }
+          console.log(state.cartState.cartItems);
+
           state.cartState.total = caculateTotalPrice(state);
         },
         false,
@@ -20,12 +37,43 @@ let cartStore = (set, get) => {
     removeFromCart: (id) => {
       set(
         (state) => {
-          const newData = state.cartItems.filter((item) => item.id !== id);
-          state.cartState.cartItems = newData;
-          state.cartState.total = caculateTotalPrice(state);
+          state.cartState.cartItems.filter((item) => item.products.id !== id);
+          console.log(state.cartState.cartItems);
+          state.cartState.cartItems.length == 0
+            ? (state.cartState.total = 0)
+            : (state.cartState.total = caculateTotalPrice(state));
+          // state.cartState.total = caculateTotalPrice(state);
         },
         false,
         `cart/addToCart`
+      );
+    },
+    increseAmount: (id) => {
+      set(
+        (state) => {
+          const index = state.cartState.cartItems.findIndex(
+            (item) => item.products.id == id
+          );
+          state.cartState.cartItems[index].amount =
+            state.cartState.cartItems[index].amount + 1;
+          state.cartState.total = caculateTotalPrice(state);
+        },
+        false,
+        `cart/increseAmount`
+      );
+    },
+    decreaseAmount: (id) => {
+      set(
+        (state) => {
+          const index = state.cartState.cartItems.findIndex(
+            (item) => item.products.id == id
+          );
+          state.cartState.cartItems[index].amount =
+            state.cartState.cartItems[index].amount - 1;
+          state.cartState.total = caculateTotalPrice(state);
+        },
+        false,
+        `cart/decreaseAmount`
       );
     },
   };
@@ -33,7 +81,7 @@ let cartStore = (set, get) => {
 
 const caculateTotalPrice = (state) => {
   return state.cartState.cartItems.reduce((total, currentItem) => {
-    const itemTotal = currentItem.amount * currentItem.price;
+    const itemTotal = currentItem.amount * currentItem.products.price;
     return total + itemTotal;
   }, 0);
 };

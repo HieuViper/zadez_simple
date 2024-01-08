@@ -2,10 +2,14 @@
 import SlideCard from "@/components/SlideCard";
 import SlideShow from "@/components/SlideShow";
 import { useSWRData } from "@/library/api";
+import store from "@/library/zustand/store";
 import { Button, Tag } from "antd";
+
 const Product = ({ params }) => {
   const { slug } = params;
   const id = slug.split("-")[slug.split("-").length - 1];
+  const { cartState, addToCart } = store();
+  console.log("🚀 ~ file: page.js:12 ~ Product ~ cartState:", cartState);
   const {
     data: product,
     isLoading,
@@ -13,11 +17,6 @@ const Product = ({ params }) => {
     mutate,
   } = useSWRData(`/api/products`, { id });
   console.log("product :", product);
-  // const { decreaseQty, increaseQty, qty, onAdd } = useStateContext();
-  const decreaseQty = () => {};
-  const increaseQty = () => {};
-  const onAdd = () => {};
-  const qty = 1;
   // const product = {
   //     list_image: [
   //         { url: "https://zadez.vn/wp-content/uploads/2023/08/GP-803B-Black_Square_1-1024x1024.webp" },
@@ -160,7 +159,16 @@ const Product = ({ params }) => {
               </div>
               <div className="pb-2">
                 {" "}
-                <Button block>Thêm vào giỏ hàng</Button>
+                <Button
+                  block
+                  onClick={() => {
+                    console.log(product);
+                    addToCart(product);
+                    console.log(cartState);
+                  }}
+                >
+                  Thêm vào giỏ hàng
+                </Button>
               </div>
             </>
           ) : (

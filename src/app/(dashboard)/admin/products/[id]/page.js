@@ -96,6 +96,7 @@ const ProductForm = ({ params }) => {
           modified_by: null,
           product_author: "",
           manufacturerId: null,
+          description: null || "",
         };
         console.log("product add:", product);
         createData(product).then((res) => {

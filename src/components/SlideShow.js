@@ -35,14 +35,13 @@ const SlideShow = (props) => {
         spaceBetween={10}
         navigation={true}
         grabCursor={true}
-        onTap={console.log("log click")}
         thumbs={{ swiper: thumbsSwiper }}
         modules={[FreeMode, Navigation, Thumbs]}
         className="mySwiper"
       >
         {listImage &&
-          listImage?.map((item) => (
-            <SwiperSlide>
+          listImage?.map((item, index) => (
+            <SwiperSlide key={index}>
               <img src={item.url} />
             </SwiperSlide>
           ))}
@@ -70,8 +69,8 @@ const SlideShow = (props) => {
         }}
       >
         {listImage &&
-          listImage?.map((item) => (
-            <SwiperSlide>
+          listImage?.map((item, index) => (
+            <SwiperSlide key={index}>
               <img src={item.url} />
             </SwiperSlide>
           ))}

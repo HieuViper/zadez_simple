@@ -9,7 +9,6 @@ import ProductCard from "./ProductCard";
 
 const SlideCard = (props) => {
   const products = props.products;
-  console.log("products :", products);
   const addToCard = (id) => {};
   return (
     <Swiper
