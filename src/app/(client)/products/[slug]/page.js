@@ -4,12 +4,13 @@ import SlideShow from "@/components/SlideShow";
 import { useSWRData } from "@/library/api";
 import store from "@/library/zustand/store";
 import { Button, Tag } from "antd";
+import { useRouter } from "next/navigation";
 
 const Product = ({ params }) => {
   const { slug } = params;
   const id = slug.split("-")[slug.split("-").length - 1];
-  const { cartState, addToCart } = store();
-  console.log("🚀 ~ file: page.js:12 ~ Product ~ cartState:", cartState);
+  const { addToCart } = store();
+  const router = useRouter();
   const {
     data: product,
     isLoading,
@@ -153,7 +154,14 @@ const Product = ({ params }) => {
             <>
               <div className="pb-2">
                 {" "}
-                <Button type="primary" block>
+                <Button
+                  type="primary"
+                  block
+                  onClick={() => {
+                    addToCart(product);
+                    router.push("/gio-hang");
+                  }}
+                >
                   Mua ngay
                 </Button>
               </div>
@@ -164,7 +172,6 @@ const Product = ({ params }) => {
                   onClick={() => {
                     console.log(product);
                     addToCart(product);
-                    console.log(cartState);
                   }}
                 >
                   Thêm vào giỏ hàng

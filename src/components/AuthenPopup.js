@@ -1,13 +1,60 @@
 "use client";
-
 import store from "@/library/zustand/store";
 import { LockOutlined, MailOutlined, UserOutlined } from "@ant-design/icons";
-import { Button, Checkbox, Form, Input, Modal, Tabs, Typography } from "antd";
+import {
+  Button,
+  Checkbox,
+  Form,
+  Input,
+  Modal,
+  Tabs,
+  Typography,
+  message,
+} from "antd";
+import { useState } from "react";
 
 const LoginForm = () => {
   const [form] = Form.useForm();
+  const { toggleModal, saveUser } = store();
+  const [loading, setLoading] = useState(false);
   const onFinish = async (values) => {
     console.log("🚀 ~ file: AuthenPopup.js:10 ~ onFinish ~ values:", values);
+    await fetch(`/api/users/login`, {
+      method: "POST",
+      body: JSON.stringify(values),
+    }).then((res) => {
+      res.json().then((rs) => {
+        if (rs.status === 404) {
+          form.setFields([
+            {
+              name: "email",
+              errors: [rs.message],
+            },
+          ]);
+        } else if (rs.status === 400) {
+          form.setFields([
+            {
+              name: "password",
+              errors: [rs.message],
+            },
+          ]);
+        } else if (rs.roles.every((item) => item.code !== "customer")) {
+          form.setFields([
+            {
+              name: "email",
+              errors: [
+                "Bạn là admin, vui lòng không dùng tài khoản này để đăng nhập",
+              ],
+            },
+          ]);
+        } else {
+          saveUser(rs);
+          message.success("Login success");
+          toggleModal(false);
+        }
+        setLoading(false);
+      });
+    });
   };
   return (
     <Form
@@ -24,13 +71,13 @@ const LoginForm = () => {
         rules={[
           {
             required: "true",
-            message: "Please input your Email!",
+            message: "Vui lòng nhập Email!",
           },
         ]}
       >
         <Input
-          prefix={<MailOutlined className="site-form-item-icon" />}
-          placeholder="Email"
+          prefix={<MailOutlined />}
+          placeholder="E-mail / Tên người dùng / Số điện thoại"
         />
       </Form.Item>
       <Form.Item
@@ -38,30 +85,35 @@ const LoginForm = () => {
         rules={[
           {
             required: "true",
-            message: "Please input your Password!",
+            message: "Vui lòng nhập mật khẩu!",
           },
         ]}
       >
         <Input.Password
-          prefix={<LockOutlined className="site-form-item-icon" />}
-          placeholder="Password"
+          prefix={<LockOutlined />}
+          placeholder="Mật Khẩu"
           autoComplete="true"
         />
       </Form.Item>
       <Form.Item>
         <div className="flex justify-between">
           <Form.Item name="remember" valuePropName="checked" noStyle>
-            <Checkbox>Remember me</Checkbox>
+            <Checkbox>Nhớ lần sau</Checkbox>
           </Form.Item>
 
           <a className="#" href={null}>
-            Forgot password
+            Quên mật khẩu?
           </a>
         </div>
       </Form.Item>
 
       <Form.Item>
-        <Button type="primary" htmlType="submit" className="w-full">
+        <Button
+          type="primary"
+          htmlType="submit"
+          loading={loading}
+          className="w-full"
+        >
           Login
         </Button>
       </Form.Item>
@@ -73,6 +125,14 @@ const RegisterForm = () => {
   const [form] = Form.useForm();
   const onFinish = async (values) => {
     console.log("🚀 ~ file: AuthenPopup.js:10 ~ onFinish ~ values:", values);
+  };
+
+  const validateCheckbox = (rule, value) => {
+    if (!value) {
+      return Promise.reject("Vui lòng đồng ý Điều khoản và Dịch vụ");
+    }
+
+    return Promise.resolve();
   };
   return (
     <Form
@@ -89,54 +149,52 @@ const RegisterForm = () => {
         rules={[
           {
             required: "true",
-            message: "Please input your full name!",
+            message: "Vui lòng nhập họ và tên!",
           },
         ]}
       >
-        <Input
-          prefix={<UserOutlined className="site-form-item-icon" />}
-          placeholder="Full Name"
-        />
+        <Input prefix={<UserOutlined />} placeholder="Họ Tên" />
       </Form.Item>
       <Form.Item
         name="email"
         rules={[
           {
             required: "true",
-            message: "Please input your Email!",
+            message: "Vui lòng nhập Email!",
           },
         ]}
       >
-        <Input
-          prefix={<MailOutlined className="site-form-item-icon" />}
-          placeholder="Email"
-        />
+        <Input prefix={<MailOutlined />} placeholder="Email" />
       </Form.Item>
       <Form.Item
         name="password"
         rules={[
           {
             required: "true",
-            message: "Please input your Password!",
+            message: "Vui lòng nhập mật khẩu",
           },
         ]}
       >
         <Input.Password
-          prefix={<LockOutlined className="site-form-item-icon" />}
-          placeholder="Password"
+          prefix={<LockOutlined />}
+          placeholder="Mật Khẩu"
           autoComplete="true"
         />
       </Form.Item>
 
-      <Form.Item name="agree" valuePropName="checked">
+      <Form.Item
+        name="agree"
+        valuePropName="checked"
+        rules={[{ validator: validateCheckbox }]}
+      >
         <Checkbox>
-          I agree to all <Typography.Link>Terms and Conditions</Typography.Link>
+          Tôi đồng ý với <Typography.Link>Điều khoản dịch vụ</Typography.Link>
         </Checkbox>
       </Form.Item>
 
       <Form.Item>
         <Button type="primary" htmlType="submit" className="w-full">
-          Create Account
+          Đăng ký ngay
         </Button>
       </Form.Item>
     </Form>
@@ -145,17 +203,18 @@ const RegisterForm = () => {
 const items = [
   {
     key: "1",
-    label: "Log In",
+    label: "Đăng nhập",
     children: <LoginForm />,
   },
   {
     key: "2",
-    label: "Create Account",
+    label: "Tạo tài khoản",
     children: <RegisterForm />,
   },
 ];
 const AuthenPopup = () => {
   const { modalLoginState, toggleModal } = store();
+
   return (
     <Modal
       open={modalLoginState.isOpen}

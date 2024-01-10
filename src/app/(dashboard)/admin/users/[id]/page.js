@@ -1,32 +1,23 @@
 "use client";
-
-import SelectLocations from "@/components/SelectLocations";
 import { useSWRData } from "@/library/api";
 import { SaveOutlined } from "@ant-design/icons";
-import { Button, Form, Input, Row } from "antd";
+import { Button, Checkbox, Form, Input, Row, Select } from "antd";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 
-const CustomerForm = ({ params }) => {
+const UserForm = ({ params }) => {
   const isAddMode = params.id == 0 ? true : false;
   const searchParams = useSearchParams();
   const router = useRouter();
   const [form] = Form.useForm();
+  const [rolesOptions, setRolesOptions] = useState([]);
 
   const { data, error, isLoading, createData, updateData } = useSWRData(
-    `/api/customers`,
+    `/api/users`,
     isAddMode ? {} : { id: params.id }
   );
 
-  //locations
-  const [cityId, setCityId] = useState("");
-  const [districtId, setDistrictId] = useState("");
-  const [wardId, setWardId] = useState("");
-
-  const { data: dataLocation } = useSWRData("/api/location", {
-    cityId,
-    districtId,
-  });
+  const { data: rolesData } = useSWRData("/api/roles");
 
   const onFinish = async (values) => {
     console.log(values);
@@ -34,7 +25,7 @@ const CustomerForm = ({ params }) => {
       createData(values).then((res) => {
         if (res.status === 200) {
           router.push(
-            `/admin/customers?page=${searchParams.get(
+            `/admin/users?page=${searchParams.get(
               "previousPage"
             )}&limit=${searchParams.get("previousLimit")}`
           );
@@ -44,7 +35,7 @@ const CustomerForm = ({ params }) => {
       updateData(params.id, values).then((res) => {
         if (res.status == 200) {
           router.push(
-            `/admin/customers?page=${searchParams.get(
+            `/admin/users?page=${searchParams.get(
               "previousPage"
             )}&limit=${searchParams.get("previousLimit")}`
           );
@@ -57,10 +48,13 @@ const CustomerForm = ({ params }) => {
   useEffect(() => {
     if (data) {
       form.setFieldsValue(data);
-      setCityId(data.cityId);
-      setDistrictId(data.districtId);
     }
-  }, [data]);
+    if (rolesData) {
+      setRolesOptions(
+        rolesData.data.map((role) => ({ label: role.name, value: role.id }))
+      );
+    }
+  }, [data, rolesData]);
 
   if (error) return <div>failed to load</div>;
   if (isLoading) return <div>loading...123</div>;
@@ -79,18 +73,22 @@ const CustomerForm = ({ params }) => {
         style={{
           width: "75%",
         }}
-        initialValues={{}}
+        initialValues={
+          !isAddMode && {
+            rolesId: data?.roles.map((item) => item.id),
+          }
+        }
         onFinish={onFinish}
         onFinishFailed={onFinishFailed}
         autoComplete="off"
       >
         <Form.Item
           label="Name"
-          name="name"
+          name="fullName"
           rules={[
             {
               required: true,
-              message: "Please input customer's name!",
+              message: "Please input user's name!",
             },
           ]}
         >
@@ -99,11 +97,11 @@ const CustomerForm = ({ params }) => {
 
         <Form.Item
           label="Phone"
-          name="phone"
+          name="phoneNumber"
           rules={[
             {
               required: true,
-              message: "Please input customer's phone!",
+              message: "Please input user's phone!",
             },
             () => ({
               validator(_, value) {
@@ -137,7 +135,7 @@ const CustomerForm = ({ params }) => {
         </Form.Item>
 
         <Form.Item
-          label="Email"
+          label="E-mail"
           name="email"
           rules={[
             {
@@ -150,31 +148,42 @@ const CustomerForm = ({ params }) => {
           <Input />
         </Form.Item>
 
-        <SelectLocations
-          {...{
-            cityId,
-            setCityId,
-            districtId,
-            setDistrictId,
-            wardId,
-            setWardId,
-            dataLocation,
-            form,
-          }}
-        />
-
-        <Form.Item
-          label="Address"
-          name="address"
-          rules={[
-            {
-              required: true,
-              message: "Please input customer's address!",
-            },
-          ]}
-        >
+        <Form.Item label="User Name" name="userName">
           <Input />
         </Form.Item>
+
+        <Form.Item label="Status" name="status">
+          <Select
+            options={[
+              {
+                value: "Pending",
+                label: "Pending",
+              },
+              {
+                value: "Deleted",
+                label: "Deleted",
+              },
+              {
+                value: "Active",
+                label: "Active",
+              },
+              {
+                value: "Deactivated",
+                label: "Deactivated",
+              },
+            ]}
+          />
+        </Form.Item>
+
+        <Form.Item label="Roles" name="rolesId">
+          <Checkbox.Group options={rolesOptions} />
+        </Form.Item>
+
+        {isAddMode && (
+          <Form.Item label="Password" name={"password"}>
+            <Input.Password />
+          </Form.Item>
+        )}
 
         <Form.Item className="flex justify-center">
           <Button
@@ -194,4 +203,4 @@ const CustomerForm = ({ params }) => {
   );
 };
 
-export default CustomerForm;
+export default UserForm;

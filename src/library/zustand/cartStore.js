@@ -37,15 +37,16 @@ let cartStore = (set, get) => {
     removeFromCart: (id) => {
       set(
         (state) => {
-          state.cartState.cartItems.filter((item) => item.products.id !== id);
+          state.cartState.cartItems = state.cartState.cartItems.filter(
+            (item) => item.products.id !== id
+          );
           console.log(state.cartState.cartItems);
           state.cartState.cartItems.length == 0
             ? (state.cartState.total = 0)
             : (state.cartState.total = caculateTotalPrice(state));
-          // state.cartState.total = caculateTotalPrice(state);
         },
         false,
-        `cart/addToCart`
+        `cart/removeFromCart`
       );
     },
     increseAmount: (id) => {
@@ -74,6 +75,15 @@ let cartStore = (set, get) => {
         },
         false,
         `cart/decreaseAmount`
+      );
+    },
+    resetCartState: () => {
+      set(
+        (state) => {
+          state.cartState = cartState;
+        },
+        false,
+        "cart/resetCartState"
       );
     },
   };

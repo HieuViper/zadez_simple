@@ -5,7 +5,7 @@ import { PhoneOutlined, ShoppingCartOutlined } from "@ant-design/icons";
 import { Button, Tag } from "antd";
 import Image from "next/image";
 const ProductCard = ({ data }) => {
-  const { addToCart, cartState } = store();
+  const { addToCart } = store();
   return (
     <div className="shadow-lg p-4 py-10 w-72 relative">
       {data.discount_price > 0 && (

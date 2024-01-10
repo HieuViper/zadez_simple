@@ -13,11 +13,10 @@ let combineStores = (set, get) => ({
 combineStores = devtools(combineStores);
 
 combineStores = persist(combineStores, {
-  name: "zustand",
-  getStorage: () => localStorage,
+  name: "zadez-simple",
   partialize: (state) => ({
     userState: state.userState,
-    // cartState: state.cartState,
+    cartState: state.cartState,
   }),
 });
 

@@ -1,3 +1,4 @@
+"use client";
 import { Card } from "antd";
 import Image from "next/image";
 import LoginForm from "./_components/LoginForm";
@@ -12,6 +13,7 @@ const LoginPage = () => {
             width={30}
             height={30}
             alt=""
+            priority
             className="w-32 h-10"
           />
           <span className="font-semibold text-2xl">Admin Portal</span>

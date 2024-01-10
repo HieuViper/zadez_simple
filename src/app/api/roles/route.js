@@ -1,7 +1,6 @@
 import db from "@/models";
 import { NextResponse } from "next/server";
-const Sequelize = require("sequelize");
-const Op = Sequelize.Op;
+import { Op } from "sequelize";
 
 export async function GET(req, { params }) {
   // const signIn = await auth.checkAuth(req.headers.get("Authorization"), [
@@ -18,17 +17,12 @@ export async function GET(req, { params }) {
     ? {
         [Op.or]: [
           {
+            code: {
+              [Op.like]: "%" + searchParams.get("keyword") + "%",
+            },
+          },
+          {
             name: {
-              [Op.like]: "%" + searchParams.get("keyword") + "%",
-            },
-          },
-          {
-            email: {
-              [Op.like]: "%" + searchParams.get("keyword") + "%",
-            },
-          },
-          {
-            phone: {
               [Op.like]: "%" + searchParams.get("keyword") + "%",
             },
           },
@@ -36,25 +30,11 @@ export async function GET(req, { params }) {
       }
     : {};
 
-  let { count, rows } = await db.Customers.findAndCountAll({
+  let { count, rows } = await db.Roles.findAndCountAll({
     where: option,
     offset: parseInt(page) * parseInt(limit),
     limit: parseInt(limit),
     order: [["id", "DESC"]],
-    include: [
-      {
-        model: db.Cities,
-        as: "cities",
-      },
-      {
-        model: db.Districts,
-        as: "districts",
-      },
-      {
-        model: db.Wards,
-        as: "wards",
-      },
-    ],
   });
 
   return NextResponse.json({
@@ -69,23 +49,7 @@ export async function GET(req, { params }) {
 }
 
 export async function POST(body, req) {
-  const bodyJSON = await body.json();
-  let customer = bodyJSON;
-
-  let customerResult = await db.Customers.create(customer);
-  return NextResponse.json({
-    result: "success",
-    message: "customer created successfully",
-  });
-}
-
-export async function DELETE(body, req) {
-  const bodyJSON = await body.json();
-  await db.Customers.destroy({
-    where: { id: { [Op.in]: bodyJSON.ids } },
-  });
-  return NextResponse.json({
-    result: "success",
-    message: "customers deleted successfully",
-  });
+  const role = await body.json();
+  const result = await db.Roles.create(role);
+  return NextResponse.json(result);
 }

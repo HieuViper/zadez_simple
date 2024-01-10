@@ -1,11 +1,12 @@
 "use client";
-import store from "@/library/zustand/store";
+import { getCartStateFromLocalStorage } from "@/library/util";
 import { Button, Divider, Drawer, Tag } from "antd";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
-const Cart = ({ data, onClose, open }) => {
-  const { cartState } = store();
-  console.log("🚀 ~ file: Cart.js:9 ~ Cart ~ cartState:", cartState);
+const Cart = ({ onClose, open }) => {
+  const data = getCartStateFromLocalStorage();
+  const router = useRouter();
   return (
     <>
       <Drawer
@@ -20,24 +21,29 @@ const Cart = ({ data, onClose, open }) => {
             <div>
               <div className="flex justify-between">
                 <div className="text-sm font-light">Tạm tính</div>
-                <div className="text-sm font-light">500 VNĐ</div>
+                <div className="text-sm font-light">{data?.total} VNĐ</div>
               </div>
               <div className="flex justify-between">
                 <div className="text-sm font-light">Giảm giá</div>
-                <div className="text-sm font-light">500 VNĐ</div>
+                <div className="text-sm font-light">0 VNĐ</div>
               </div>
               <div className="flex justify-between">
                 <div className="text-sm font-light">Phí vận chuyển</div>
-                <div className="text-sm font-light">500 VNĐ</div>
+                <div className="text-sm font-light">0 VNĐ</div>
               </div>
               <Divider />
               <div className="flex justify-between">
                 <div className="text-base font-medium">Tổng cộng</div>
-                <div className="text-base font-medium">500 VNĐ</div>
+                <div className="text-base font-medium">{data?.total} VNĐ</div>
               </div>
             </div>
             <div className="py-5 w-full mb-4">
-              <Button type="primary" size="large" block>
+              <Button
+                type="primary"
+                size="large"
+                block
+                onClick={() => router.push("/gio-hang")}
+              >
                 Thanh toán
               </Button>
             </div>
@@ -45,26 +51,27 @@ const Cart = ({ data, onClose, open }) => {
         }
       >
         {data &&
-          data.map((item, i) => (
+          data.cartItems.map((item, i) => (
             <div key={i}>
               <div className="grid grid-cols-4 gap-2 px-2 py-1 ">
                 <div className="col-span-1">
-                  {/* <img src={item.main_image} alt={item.name} className="w-20 object-contain" /> */}
                   <Image
-                    src={item.main_image}
-                    alt={item.name}
+                    src={item.products.main_image}
+                    alt={item.products.name}
                     width={80}
                     height={80}
                     className=""
                   />
                 </div>
                 <div className="col-span-3 ">
-                  <h3 className="text-xs font-light">{item.name}</h3>
-                  <Tag color={item.color}>{item.color}</Tag>
-                  <div className="my-1">x1</div>
+                  <h3 className="text-xs font-light">{item.products.name}</h3>
+                  <Tag color={item.products.color}>{item.products.color}</Tag>
+                  <div className="my-1">x{item.amount}</div>
                   <div className="flex justify-end">
                     <div>
-                      {item.discount_price ? item.discount_price : item.price}
+                      {item.products.discount_price
+                        ? item.products.discount_price
+                        : item.products.price}
                       VNĐ
                     </div>
                   </div>

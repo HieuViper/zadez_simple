@@ -1,4 +1,5 @@
 "use client";
+import { getUserStateFromLocalStorage } from "@/library/util";
 import {
   AppstoreOutlined,
   CodeSandboxOutlined,
@@ -7,13 +8,15 @@ import {
   MenuUnfoldOutlined,
   SettingOutlined,
   ShoppingCartOutlined,
+  TeamOutlined,
+  TrademarkOutlined,
   UserOutlined,
 } from "@ant-design/icons";
 import { Avatar, Button, Layout, Menu, theme } from "antd";
 import Image from "next/image";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { useState } from "react";
+import { redirect, usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
 
 const DashboardLayout = (props) => {
   const {
@@ -22,6 +25,8 @@ const DashboardLayout = (props) => {
   let location = usePathname();
 
   const [collapsed, setCollapsed] = useState(false);
+  const isLoginPage = location === "/admin/login";
+  const pathName = usePathname();
 
   function getItem(key, label, icon, children) {
     return {
@@ -98,6 +103,35 @@ const DashboardLayout = (props) => {
         </Link>
       ),
     ]),
+    getItem("User", "User", <TeamOutlined />, [
+      getItem(
+        "/admin/users",
+        null,
+        <Link href="/admin/users">Users List</Link>
+      ),
+      getItem(
+        "/admin/users/0",
+        null,
+        <Link href="/admin/users/0?previousPage=1&previousLimit=10">
+          Add Users
+        </Link>
+      ),
+    ]),
+    getItem("Roles", "Roles", <TrademarkOutlined />, [
+      getItem(
+        "/admin/roles",
+        null,
+        <Link href="/admin/roles">Roles List</Link>
+      ),
+      getItem(
+        "/admin/roles/0",
+        null,
+        <Link href="/admin/roles/0?previousPage=1&previousLimit=10">
+          Add Roles
+        </Link>
+      ),
+    ]),
+
     {
       type: "divider",
     },
@@ -108,7 +142,25 @@ const DashboardLayout = (props) => {
       getItem("Option 12", "12"),
     ]),
   ];
-  return (
+
+  useEffect(() => {
+    const userState = getUserStateFromLocalStorage();
+    const token = userState.token;
+
+    if (pathName === "/admin/login" && token) {
+      redirect("/admin");
+    } else if (pathName === "/admin/login" && !token) {
+    } else if (pathName !== "/admin/login" && !token) {
+      redirect("/admin/login");
+    } else if (
+      pathName.startsWith("/admin") &&
+      userState?.roles.some((item) => item.code == "customer")
+    ) {
+      redirect("/");
+    } else {
+    }
+  }, []);
+  return !isLoginPage ? (
     <Layout hasSider style={{ minHeight: "100vh" }}>
       <Layout.Sider
         trigger={null}
@@ -197,6 +249,8 @@ const DashboardLayout = (props) => {
         </Layout.Content>
       </Layout>
     </Layout>
+  ) : (
+    <>{props.children}</>
   );
 };
 

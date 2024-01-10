@@ -1,5 +1,9 @@
 "use client";
 import { useSWRData } from "@/library/api";
+import {
+  getCartStateFromLocalStorage,
+  getUserStateFromLocalStorage,
+} from "@/library/util";
 import store from "@/library/zustand/store";
 import {
   CloseOutlined,
@@ -7,14 +11,16 @@ import {
   ShoppingCartOutlined,
   UserOutlined,
 } from "@ant-design/icons";
-import { Badge, Dropdown, Menu } from "antd";
+import { Badge, Button, Dropdown, Menu, message } from "antd";
 import { stagger, useAnimate } from "framer-motion";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import Cart from "./Cart";
 import logo from "/public/images/logo-zadez.png";
 const Header = () => {
-  const { userState, toggleModal } = store();
+  const { toggleModal, resetCartState, resetUserState } = store();
+  const userState = getUserStateFromLocalStorage();
+  const cartState = getCartStateFromLocalStorage();
   const {
     data: categories,
     isLoading,
@@ -126,7 +132,7 @@ const Header = () => {
 
   // handle open modal login
   const handleOpenModalLogin = () => {
-    if (!userState) {
+    if (!userState?.token) {
       toggleModal(true);
     }
   };
@@ -134,18 +140,32 @@ const Header = () => {
   // dropdown items profile
   const items = [
     {
-      label: <a href="https://www.antgroup.com">1st menu item</a>,
+      label: (
+        <span>
+          Xin chào, <b>{userState?.fullName}</b>
+        </span>
+      ),
       key: "0",
     },
     {
-      label: <a href="https://www.aliyun.com">2nd menu item</a>,
+      label: "Chỉnh sửa hồ sơ cá nhân",
       key: "1",
     },
     {
       type: "divider",
     },
     {
-      label: "3rd menu item",
+      label: (
+        <Button
+          onClick={() => {
+            resetCartState();
+            resetUserState();
+            message("Đăng xuất thành công!");
+          }}
+        >
+          Đăng xuất
+        </Button>
+      ),
       key: "3",
     },
   ];
@@ -295,7 +315,7 @@ const Header = () => {
               <MenuHeader menuData={dataTree} mode="horizontal" />
             </div>
             <div className="col-span-2 lg:flex justify-center gap-4 hidden">
-              <Badge count={99}>
+              <Badge count={cartState?.cartItems.length}>
                 <ShoppingCartOutlined
                   style={{ fontSize: "30px" }}
                   onClick={showDrawer}
@@ -306,7 +326,7 @@ const Header = () => {
                   items,
                 }}
                 trigger={["click"]}
-                disabled={userState.token ? false : true}
+                disabled={userState?.token ? false : true}
               >
                 <UserOutlined
                   style={{ fontSize: "30px" }}
@@ -336,7 +356,7 @@ const Header = () => {
           </div>
         </div>
       </div>
-      <Cart data={cartData} onClose={onCloseCart} open={openCart} />
+      <Cart onClose={onCloseCart} open={openCart} />
     </header>
   );
 };

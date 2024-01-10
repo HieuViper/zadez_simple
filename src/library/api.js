@@ -4,6 +4,7 @@ import useSWR from "swr";
 const fetcher = (url) => fetch(url).then((r) => r.json());
 
 export const useSWRData = (endpoint, params = {}) => {
+  // const token = window.localStorage.getItem("token");
   const { id, ...otherParams } = params; // Extract 'id' from params
   const queryString =
     Object.keys(otherParams).length > 0
@@ -20,6 +21,7 @@ export const useSWRData = (endpoint, params = {}) => {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        // "Authorization": "Bearer " + auth.token
       },
       body: JSON.stringify(newData),
     });

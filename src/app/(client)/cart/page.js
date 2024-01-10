@@ -1,10 +1,17 @@
 "use client";
-import { DeleteTwoTone } from "@ant-design/icons";
-import { Button, Divider, InputNumber } from "antd";
+import { getCartStateFromLocalStorage } from "@/library/util";
+import store from "@/library/zustand/store";
+import { DeleteTwoTone, MinusOutlined, PlusOutlined } from "@ant-design/icons";
+import { Button, Divider, Tooltip } from "antd";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 const CartPage = () => {
-  return (
+  const { increseAmount, decreaseAmount, removeFromCart } = store();
+  const cartState = getCartStateFromLocalStorage();
+  console.log("🚀 ~ CartPage ~ cartState:", cartState);
+  const router = useRouter();
+  return cartState?.cartItems.length > 0 ? (
     <div>
       <ol className="flex items-center justify-center w-full p-3 space-x-2 text-sm font-medium text-center text-gray-500 bg-white  rounded-lg  sm:text-base  sm:p-4 sm:space-x-4 mb-4 mt-0">
         <li className="flex items-center text-primary">
@@ -38,50 +45,79 @@ const CartPage = () => {
 
       <div className="grid lg:grid-cols-12 grid-cols-1 gap-24">
         <div className="lg:col-span-8 gap-8 flex flex-col">
-          <Card />
-          <Card />
-          <Card />
+          {cartState.cartItems.map((item, index) => (
+            <Card
+              data={item}
+              key={index}
+              increase={increseAmount}
+              decrease={decreaseAmount}
+              remove={removeFromCart}
+            />
+          ))}
         </div>
         <div className="lg:col-span-4 h-fit p-4 border border-slate-100 border-solid rounded-xl shadow-sm flex flex-col gap-5 ">
-          <div className="text-xl font-[500]">Payment Details</div>
+          <div className="text-xl font-[500]">Đơn hàng của bạn</div>
           <div className="flex flex-col gap-2">
             <div className="flex justify-between text-sm">
-              <span>Subtotal</span>
-              <span>520.000</span>
+              <span>Tổng giá sản phẩm</span>
+              <span>{cartState.total.toLocaleString()}</span>
             </div>
             <div className="flex justify-between text-sm">
-              <span>Discount</span>
-              <span>-20.000</span>
+              <span>Giảm giá</span>
+              <span>-0.000</span>
             </div>
             <div className="flex justify-between text-sm">
-              <span>Shipment cost</span>
-              <span>30.000</span>
+              <span>Phí vận chuyển</span>
+              <span>Free</span>
             </div>
             <Divider style={{ marginTop: 0, marginBottom: 0 }} />
             <div className="flex justify-between font-[500] text-xl">
-              <span>Grand Total</span>
-              <span>530.000</span>
+              <span>Tổng Hoá Đơn</span>
+              <span>{cartState.total.toLocaleString()}</span>
             </div>
           </div>
-          <Button type="primary">Proceed to checkout </Button>
+          <Button
+            type="primary"
+            onClick={() => {
+              console.log("ss");
+              router.push("/thanh-toan");
+            }}
+          >
+            Đi đến thanh toán
+          </Button>
         </div>
       </div>
+    </div>
+  ) : (
+    <div className="flex flex-col justify-center items-center gap-10 py-32">
+      <Image
+        src="/images/empty-cart.png"
+        width={100}
+        height={100}
+        alt="empty cart"
+        className="w-1/3 h-1/3"
+      />
+      <div className="text-xl">No Item Found In Cart</div>
     </div>
   );
 };
 
 export default CartPage;
 
-const Card = () => {
+const Card = ({ data, increase, decrease, remove }) => {
   return (
     <div className="grid grid-cols-12 p-3 border border-solid border-slate-50 shadow rounded-xl">
       <div className="col-span-4 flex justify-center items-center">
-        <Image src="/no-image.jpg" width={100} height={100} alt="" />
+        <Image
+          src={data.products.main_image || "/no-image.jpg"}
+          width={100}
+          height={100}
+          className="rounded-xl w-auto h-full"
+          alt=""
+        />
       </div>
       <div className="col-span-8 flex flex-col gap-3">
-        <div className="font-[500] uppercase text-xl">
-          MacBook Pro M2 MNEJ3 2022 LLA 13.3 inch
-        </div>
+        <div className="font-[500] uppercase text-xl">{data.products.name}</div>
 
         <div className="flex flex-col text-xs">
           <div className="flex gap-2 items-center">
@@ -95,11 +131,42 @@ const Card = () => {
         <div className="flex justify-between">
           <div className="flex gap-3 items-center">
             <div className="line-through text-sm text-gray-300">1,230,000₫</div>
-            <div className="text-lg font-[500]">1,000,000₫</div>
+            <div className="text-lg font-[500]">
+              {data.products.price.toLocaleString()}₫
+            </div>
           </div>
           <div className="flex gap-2">
-            <DeleteTwoTone twoToneColor={"red"} />
-            <InputNumber defaultValue={3} onChange={() => {}} />
+            <DeleteTwoTone
+              twoToneColor={"red"}
+              onClick={() => {
+                remove(data.products.id);
+              }}
+            />
+            <div className="flex gap-3 items-center">
+              {data.amount > 1 && (
+                <Tooltip title="Giảm">
+                  <Button
+                    type="primary"
+                    shape="circle"
+                    size="small"
+                    icon={<MinusOutlined />}
+                    onClick={() => {
+                      decrease(data.products.id);
+                    }}
+                  />
+                </Tooltip>
+              )}
+              <div className="">{data.amount}</div>
+              <Tooltip title="Tăng">
+                <Button
+                  type="primary"
+                  shape="circle"
+                  size="small"
+                  icon={<PlusOutlined />}
+                  onClick={() => increase(data.products.id)}
+                />
+              </Tooltip>
+            </div>
           </div>
         </div>
       </div>

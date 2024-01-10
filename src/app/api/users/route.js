@@ -1,7 +1,7 @@
 import db from "@/models";
+import bcrypt from "bcrypt";
 import { NextResponse } from "next/server";
-const Sequelize = require("sequelize");
-const Op = Sequelize.Op;
+import { Op } from "sequelize";
 
 export async function GET(req, { params }) {
   // const signIn = await auth.checkAuth(req.headers.get("Authorization"), [
@@ -14,21 +14,22 @@ export async function GET(req, { params }) {
   const searchParams = req.nextUrl.searchParams;
   const page = searchParams.has("page") ? searchParams.get("page") - 1 : 0;
   const limit = searchParams.has("limit") ? searchParams.get("limit") : 10;
+  const role = searchParams.has("role") ? searchParams.get("role") : "";
   const option = searchParams.has("keyword")
     ? {
         [Op.or]: [
-          {
-            name: {
-              [Op.like]: "%" + searchParams.get("keyword") + "%",
-            },
-          },
           {
             email: {
               [Op.like]: "%" + searchParams.get("keyword") + "%",
             },
           },
           {
-            phone: {
+            fullName: {
+              [Op.like]: "%" + searchParams.get("keyword") + "%",
+            },
+          },
+          {
+            phoneNumber: {
               [Op.like]: "%" + searchParams.get("keyword") + "%",
             },
           },
@@ -36,23 +37,20 @@ export async function GET(req, { params }) {
       }
     : {};
 
-  let { count, rows } = await db.Customers.findAndCountAll({
+  let { count, rows } = await db.Users.findAndCountAll({
     where: option,
     offset: parseInt(page) * parseInt(limit),
     limit: parseInt(limit),
     order: [["id", "DESC"]],
     include: [
       {
-        model: db.Cities,
-        as: "cities",
-      },
-      {
-        model: db.Districts,
-        as: "districts",
-      },
-      {
-        model: db.Wards,
-        as: "wards",
+        model: db.Roles,
+        as: "roles",
+        where: role
+          ? {
+              code: role,
+            }
+          : {},
       },
     ],
   });
@@ -69,23 +67,19 @@ export async function GET(req, { params }) {
 }
 
 export async function POST(body, req) {
-  const bodyJSON = await body.json();
-  let customer = bodyJSON;
+  let user = await body.json();
 
-  let customerResult = await db.Customers.create(customer);
-  return NextResponse.json({
-    result: "success",
-    message: "customer created successfully",
-  });
-}
+  const hashedPassword = await bcrypt.hash(user.password, 10);
+  user.password = hashedPassword;
+  const resultUser = await db.Users.create(user);
 
-export async function DELETE(body, req) {
-  const bodyJSON = await body.json();
-  await db.Customers.destroy({
-    where: { id: { [Op.in]: bodyJSON.ids } },
+  await fetch(`${process.env.BASE_URL}/api/userRoles`, {
+    method: "POST",
+    body: JSON.stringify({
+      userId: resultUser.id,
+      roleId: user.rolesId,
+    }),
   });
-  return NextResponse.json({
-    result: "success",
-    message: "customers deleted successfully",
-  });
+
+  return NextResponse.json(resultUser);
 }

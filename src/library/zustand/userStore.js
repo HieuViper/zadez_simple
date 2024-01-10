@@ -1,10 +1,10 @@
 const userState = {
   userId: null,
   email: "",
-  userName: "",
-  avatar: null,
+  fullName: "",
   roles: [],
   token: "",
+  phoneNumber: "",
 };
 
 let userStore = (set, get) => {
@@ -15,13 +15,22 @@ let userStore = (set, get) => {
         (state) => {
           state.userState.userId = data.userId;
           state.userState.email = data.email;
-          state.userState.userName = data.userName;
-          state.userState.avatar = data.avatar;
+          state.userState.fullName = data.fullName;
+          state.userState.phoneNumber = data.phoneNumber;
           state.userState.token = data.token;
-          state.userState.role = data.role;
+          state.userState.roles = data.roles;
         },
         false,
         `user/saveUser`
+      );
+    },
+    resetUserState: () => {
+      set(
+        (state) => {
+          state.userState = userState;
+        },
+        false,
+        "User/resetUserState"
       );
     },
   };

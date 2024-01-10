@@ -1,14 +1,17 @@
 "use client";
+import { getCartStateFromLocalStorage } from "@/library/util";
 import { ArrowLeftOutlined } from "@ant-design/icons";
 import { Button, Divider, Form, Input } from "antd";
 import Image from "next/image";
 
 const CheckoutPage = () => {
   const [form] = Form.useForm();
+  const cartState = getCartStateFromLocalStorage();
+  console.log("🚀 ~ CheckoutPage ~ cartState:", cartState);
   const onFinish = (values) => {
     console.log("🚀 ~ file: page.js:8 ~ onFinish ~ values:", values);
   };
-  return (
+  return cartState?.cartItems.length > 0 ? (
     <Form layout="vertical" onFinish={onFinish}>
       <ol className="flex items-center justify-center w-full p-3 space-x-2 text-sm font-medium text-center text-gray-500 bg-white  rounded-lg  sm:text-base  sm:p-4 sm:space-x-4 mb-4 mt-0">
         <li className="flex items-center ">
@@ -70,8 +73,8 @@ const CheckoutPage = () => {
               <Card />
             </div>
             <div className="flex items-center gap-3">
-              <Input placeholder="Discount code" />
-              <Button>Apply</Button>
+              <Input disabled={true} placeholder="Discount code" />
+              <Button disabled>Apply</Button>
             </div>
             <div className="flex flex-col gap-2">
               <div className="flex justify-between text-sm">
@@ -99,6 +102,8 @@ const CheckoutPage = () => {
         </div>
       </div>
     </Form>
+  ) : (
+    <>Chưa có sản phẩm trong giỏ hàng</>
   );
 };
 
