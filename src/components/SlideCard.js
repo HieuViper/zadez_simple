@@ -7,9 +7,7 @@ import { Navigation } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import ProductCard from "./ProductCard";
 
-const SlideCard = (props) => {
-  const products = props.products;
-  const addToCard = (id) => {};
+const SlideCard = ({ data }) => {
   return (
     <Swiper
       // onSwiper={setThumbsSwiper}
@@ -36,9 +34,9 @@ const SlideCard = (props) => {
         },
       }}
     >
-      {products &&
-        products?.map((item, i) => (
-          <SwiperSlide>
+      {data &&
+        data?.map((item, i) => (
+          <SwiperSlide key={i}>
             <ProductCard data={item} key={i} />
           </SwiperSlide>
         ))}

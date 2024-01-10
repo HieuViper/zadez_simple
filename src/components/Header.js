@@ -13,6 +13,7 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import Cart from "./Cart";
 import logo from "/public/images/logo-zadez.png";
+import NavBar from "./NavBar";
 const Header = () => {
   const { userState, toggleModal } = store();
   const {
@@ -185,9 +186,8 @@ const Header = () => {
         return (
           <Menu.Item key={item.id}>
             <a
-              href={`${item.type && `/${item.type}`}/${item.category_code}-${
-                item.id
-              }`}
+              href={`${item.type && `/${item.type}`}/${item.category_code}-${item.id
+                }`}
             >
               <div>{item.name}</div>
             </a>
@@ -207,29 +207,28 @@ const Header = () => {
   const scope = useMenuAnimation(isOpenMenu);
   function useMenuAnimation(isOpenMenu) {
     const [scope, animate] = useAnimate();
-
     useEffect(() => {
       const menuAnimations = isOpenMenu
         ? [
-            [
-              "nav",
-              { transform: "translateX(0%)" },
-              { ease: [0.08, 0.65, 0.53, 0.96], duration: 0.2 },
-            ],
-            [
-              "li",
-              { transform: "scale(1)", opacity: 1, filter: "blur(0px)" },
-              { delay: stagger(0.01), at: "-0.1" },
-            ],
-          ]
+          [
+            "nav",
+            { transform: "translateX(0%)" },
+            { ease: [0.08, 0.65, 0.53, 0.96], duration: 0.2 },
+          ],
+          [
+            "li",
+            { transform: "scale(1)", opacity: 1, filter: "blur(0px)" },
+            { delay: stagger(0.01), at: "-0.1" },
+          ],
+        ]
         : [
-            [
-              "li",
-              { transform: "scale(0.5)", opacity: 0, filter: "blur(10px)" },
-              { delay: stagger(0.01, { from: "last" }), at: "<" },
-            ],
-            ["nav", { transform: "translateX(-100%)" }, { at: "-0.1" }],
-          ];
+          [
+            "li",
+            { transform: "scale(0.5)", opacity: 0, filter: "blur(10px)" },
+            { delay: stagger(0.01, { from: "last" }), at: "<" },
+          ],
+          ["nav", { transform: "translateX(-100%)" }, { at: "-0.1" }],
+        ];
 
       animate([
         [
@@ -263,14 +262,14 @@ const Header = () => {
     setOpenCart(false);
   };
   return (
-    <header className="h-32 shadow-sm">
+    <header className="h-32 shadow-lg">
       {/* <Head>
                 <script src="https://sp.zalo.me/plugins/sdk.js"></script>
             </Head> */}
       {/* {isOpenMenu && <div onClick={() => setIsOpenMenu(false)} className="fixed inset-0 top-32 bg-gray-200 bg-opacity-75 transition-opacity z-50  overflow-hidden"></div>} */}
       <div className=" text-gray-600  border-b-[#e5e7eb] top-0 ">
         <div className="h-32 border border-b-[#e5e7eb]">
-          <div className="h-32 mx-10 flex lg:grid lg:grid-cols-12  justify-center items-center">
+          <div className="h-32  flex lg:grid lg:grid-cols-12  justify-center items-center">
             <div
               className=" block lg:hidden absolute top-16 left-5 px-3 py-2 border rounded hover:text-teal-200 border-gray-300 cursor-pointer"
               onClick={() => setIsOpenMenu(!isOpenMenu)}
@@ -292,7 +291,8 @@ const Header = () => {
               </a>
             </div>
             <div className="col-span-8 hidden lg:block">
-              <MenuHeader menuData={dataTree} mode="horizontal" />
+              {/* <MenuHeader menuData={dataTree} mode="horizontal" /> */}
+              <NavBar data={dataTree} />
             </div>
             <div className="col-span-2 lg:flex justify-center gap-4 hidden">
               <Badge count={99}>
@@ -336,7 +336,7 @@ const Header = () => {
           </div>
         </div>
       </div>
-      <Cart data={cartData} onClose={onCloseCart} open={openCart} />
+      <Cart data={cartData} onClose={onCloseCart} open={openCart} className="no-scrollbar" />
     </header>
   );
 };
