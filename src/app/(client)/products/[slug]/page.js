@@ -254,7 +254,7 @@ const Product = ({ params }) => {
       {/* SIMILAR PRODUCT */}
       <div className="pt-10 px-2 md:10">
         <h2 className="text-lg font-normal">Sản phẩm tượng tự</h2>
-        <SlideCard products={similarProduct} />
+        <SlideCard data={similarProduct} />
       </div>
     </div>
   );

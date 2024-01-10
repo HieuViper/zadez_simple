@@ -16,6 +16,7 @@ import { stagger, useAnimate } from "framer-motion";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import Cart from "./Cart";
+import NavBar from "./NavBar";
 import logo from "/public/images/logo-zadez.png";
 const Header = () => {
   const { toggleModal, resetCartState, resetUserState } = store();
@@ -27,108 +28,6 @@ const Header = () => {
     error,
     mutate,
   } = useSWRData(`/api/categories`, { limit: 1000 });
-  const cartData = [
-    {
-      product_code: "999",
-      main_image: "/images/categories/audio.webp",
-      price: 9,
-      discount_price: 1,
-      status: "in",
-      name: "aGaming",
-      color: "green",
-      product_languages: [
-        {
-          id: 1,
-          name: "Macbook Bro`",
-          short:
-            "Tai nghe không dây cao cấp với công nghệ ENC - Environmental Noise Cancellation hiện đại, trọng lượng siêu nhẹ 176 gram mang đến cảm giác đeo thoải mái trong thời gian dài. Kết nối Bluetooth 5.2 và chế độ EQ Bass cho chất lượng âm thanh tuyệt hảo. Hãy trải nghiệm ngay !",
-          description: "description",
-          productId: 128,
-          languageCode: "vi",
-        },
-      ],
-    },
-    {
-      product_code: "999",
-      main_image: "/images/categories/audio.webp",
-      price: 99,
-      discount_price: 1,
-      status: "in",
-      name: "bGaming",
-      color: "green",
-      product_languages: [
-        {
-          id: 1,
-          name: "Macbook Bro`",
-          short:
-            "Tai nghe không dây cao cấp với công nghệ ENC - Environmental Noise Cancellation hiện đại, trọng lượng siêu nhẹ 176 gram mang đến cảm giác đeo thoải mái trong thời gian dài. Kết nối Bluetooth 5.2 và chế độ EQ Bass cho chất lượng âm thanh tuyệt hảo. Hãy trải nghiệm ngay !",
-          description: "description",
-          productId: 128,
-          languageCode: "vi",
-        },
-      ],
-    },
-    {
-      product_code: "999",
-      main_image: "/images/categories/audio.webp",
-      price: 999,
-      discount_price: 1,
-      status: "in",
-      name: "cGaming",
-      color: "green",
-      product_languages: [
-        {
-          id: 1,
-          name: "Macbook Bro`",
-          short:
-            "Tai nghe không dây cao cấp với công nghệ ENC - Environmental Noise Cancellation hiện đại, trọng lượng siêu nhẹ 176 gram mang đến cảm giác đeo thoải mái trong thời gian dài. Kết nối Bluetooth 5.2 và chế độ EQ Bass cho chất lượng âm thanh tuyệt hảo. Hãy trải nghiệm ngay !",
-          description: "description",
-          productId: 128,
-          languageCode: "vi",
-        },
-      ],
-    },
-    {
-      product_code: "999",
-      main_image: "/images/categories/audio.webp",
-      price: 9999,
-      discount_price: 1,
-      status: "in",
-      name: "dGaming",
-      color: "green",
-      product_languages: [
-        {
-          id: 1,
-          name: "Macbook Bro`",
-          short:
-            "Tai nghe không dây cao cấp với công nghệ ENC - Environmental Noise Cancellation hiện đại, trọng lượng siêu nhẹ 176 gram mang đến cảm giác đeo thoải mái trong thời gian dài. Kết nối Bluetooth 5.2 và chế độ EQ Bass cho chất lượng âm thanh tuyệt hảo. Hãy trải nghiệm ngay !",
-          description: "description",
-          productId: 128,
-          languageCode: "vi",
-        },
-      ],
-    },
-    {
-      product_code: "999",
-      main_image: "/images/categories/audio.webp",
-      price: 999999,
-      discount_price: 1,
-      status: "in",
-      name: "eGaming",
-      color: "green",
-      product_languages: [
-        {
-          id: 1,
-          name: "Macbook Bro`",
-          short:
-            "Tai nghe không dây cao cấp với công nghệ ENC - Environmental Noise Cancellation hiện đại, trọng lượng siêu nhẹ 176 gram mang đến cảm giác đeo thoải mái trong thời gian dài. Kết nối Bluetooth 5.2 và chế độ EQ Bass cho chất lượng âm thanh tuyệt hảo. Hãy trải nghiệm ngay !",
-          description: "description",
-          productId: 128,
-          languageCode: "vi",
-        },
-      ],
-    },
-  ];
 
   // handle open modal login
   const handleOpenModalLogin = () => {
@@ -227,7 +126,6 @@ const Header = () => {
   const scope = useMenuAnimation(isOpenMenu);
   function useMenuAnimation(isOpenMenu) {
     const [scope, animate] = useAnimate();
-
     useEffect(() => {
       const menuAnimations = isOpenMenu
         ? [
@@ -283,14 +181,14 @@ const Header = () => {
     setOpenCart(false);
   };
   return (
-    <header className="h-32 shadow-sm">
+    <header className="h-32 shadow-lg">
       {/* <Head>
                 <script src="https://sp.zalo.me/plugins/sdk.js"></script>
             </Head> */}
       {/* {isOpenMenu && <div onClick={() => setIsOpenMenu(false)} className="fixed inset-0 top-32 bg-gray-200 bg-opacity-75 transition-opacity z-50  overflow-hidden"></div>} */}
       <div className=" text-gray-600  border-b-[#e5e7eb] top-0 ">
         <div className="h-32 border border-b-[#e5e7eb]">
-          <div className="h-32 mx-10 flex lg:grid lg:grid-cols-12  justify-center items-center">
+          <div className="h-32  flex lg:grid lg:grid-cols-12  justify-center items-center">
             <div
               className=" block lg:hidden absolute top-16 left-5 px-3 py-2 border rounded hover:text-teal-200 border-gray-300 cursor-pointer"
               onClick={() => setIsOpenMenu(!isOpenMenu)}
@@ -312,7 +210,8 @@ const Header = () => {
               </a>
             </div>
             <div className="col-span-8 hidden lg:block">
-              <MenuHeader menuData={dataTree} mode="horizontal" />
+              {/* <MenuHeader menuData={dataTree} mode="horizontal" /> */}
+              <NavBar data={dataTree} />
             </div>
             <div className="col-span-2 lg:flex justify-center gap-4 hidden">
               <Badge count={cartState?.cartItems.length}>
@@ -356,7 +255,7 @@ const Header = () => {
           </div>
         </div>
       </div>
-      <Cart onClose={onCloseCart} open={openCart} />
+      <Cart onClose={onCloseCart} open={openCart} className="no-scrollbar" />
     </header>
   );
 };

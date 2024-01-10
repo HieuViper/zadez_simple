@@ -15,42 +15,46 @@ const Cart = ({ onClose, open }) => {
         onClose={onClose}
         open={open}
         width={520}
-        getContainer={false}
+        // getContainer={false}
         footer={
-          <>
-            <div>
-              <div className="flex justify-between">
-                <div className="text-sm font-light">Tạm tính</div>
-                <div className="text-sm font-light">{data?.total} VNĐ</div>
+          data?.cartItems.length > 0 ? (
+            <>
+              <div>
+                <div className="flex justify-between">
+                  <div className="text-sm font-light">Tạm tính</div>
+                  <div className="text-sm font-light">{data?.total} VNĐ</div>
+                </div>
+                <div className="flex justify-between">
+                  <div className="text-sm font-light">Giảm giá</div>
+                  <div className="text-sm font-light">0 VNĐ</div>
+                </div>
+                <div className="flex justify-between">
+                  <div className="text-sm font-light">Phí vận chuyển</div>
+                  <div className="text-sm font-light">0 VNĐ</div>
+                </div>
+                <Divider />
+                <div className="flex justify-between">
+                  <div className="text-base font-medium">Tổng cộng</div>
+                  <div className="text-base font-medium">{data?.total} VNĐ</div>
+                </div>
               </div>
-              <div className="flex justify-between">
-                <div className="text-sm font-light">Giảm giá</div>
-                <div className="text-sm font-light">0 VNĐ</div>
+              <div className="py-5 w-full mb-4">
+                <Button
+                  type="primary"
+                  size="large"
+                  block
+                  onClick={() => router.push("/gio-hang")}
+                >
+                  Thanh toán
+                </Button>
               </div>
-              <div className="flex justify-between">
-                <div className="text-sm font-light">Phí vận chuyển</div>
-                <div className="text-sm font-light">0 VNĐ</div>
-              </div>
-              <Divider />
-              <div className="flex justify-between">
-                <div className="text-base font-medium">Tổng cộng</div>
-                <div className="text-base font-medium">{data?.total} VNĐ</div>
-              </div>
-            </div>
-            <div className="py-5 w-full mb-4">
-              <Button
-                type="primary"
-                size="large"
-                block
-                onClick={() => router.push("/gio-hang")}
-              >
-                Thanh toán
-              </Button>
-            </div>
-          </>
+            </>
+          ) : (
+            <></>
+          )
         }
       >
-        {data &&
+        {data?.cartItems.length > 0 ? (
           data.cartItems.map((item, i) => (
             <div key={i}>
               <div className="grid grid-cols-4 gap-2 px-2 py-1 ">
@@ -79,7 +83,10 @@ const Cart = ({ onClose, open }) => {
               </div>
               <Divider style={{ margin: 0 }} />
             </div>
-          ))}
+          ))
+        ) : (
+          <> chưa có gì</>
+        )}
       </Drawer>
     </>
   );

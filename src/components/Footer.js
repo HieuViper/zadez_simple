@@ -6,7 +6,7 @@ const Footer = () => {
   // const introFooter =
   // const contactFooter =
   const introFooter = {
-    name: "SI.ZADEZ.VN",
+    name: "ZADEZ.VN",
     description:
       "<p>ZADEZ là thương hiệu phụ kiện công nghệ đầu tiên triển khai hệ thống quản lý chất lượng sản phẩm theo mã số định danh Serial Number. Tất cả sản phẩm ZADEZ đều có số Serial Number riêng biệt để phục vụ việc tra cứu thông tin sản xuất &amp; thông tin bảo hành. Quý khách hàng tại thị trường Việt Nam vui lòng kích hoạt và tra cứu bảo hành (miễn phí) tại website PSI.ZADEZ.VN<br>ZADEZ - Make Life Easier</p>",
   };
@@ -54,7 +54,9 @@ const Footer = () => {
         href="https://zalo.me/3126944695787017498"
         target="_blank"
       >
-        <img
+        <Image
+          width={50}
+          height={50}
           src="https://page.widget.zalo.me/static/images/2.0/Logo.svg"
           alt="zalo"
         />

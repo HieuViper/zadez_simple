@@ -101,7 +101,7 @@ const LoginForm = () => {
             <Checkbox>Nhớ lần sau</Checkbox>
           </Form.Item>
 
-          <a className="#" href={null}>
+          <a className="#" href="/quen-mat-khau">
             Quên mật khẩu?
           </a>
         </div>

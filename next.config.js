@@ -23,6 +23,34 @@ const nextConfig = {
         source: "/thanh-toan",
         destination: "/checkout",
       },
+      {
+        source: "/quen-mat-khau",
+        destination: "/forgot-password",
+      },
+      //     {
+      //       source: '/gioi-thieu-ve-zadez',
+      //       destination: '/about',
+      //     },
+      //     {
+      //       source: '/quyen-loi-doi-tac-zpartner',
+      //       destination: '/partner',
+      //     },
+      //     {
+      //       source: '/trung-tam-bao-hanh-zadez',
+      //       destination: '/warranty',
+      //     },
+      //     {
+      //       source: '/san-pham-moi',
+      //       destination: '/newproduct',
+      //     },
+      //     {
+      //       source: '/categories/co-hoi-nghe-nghiep',
+      //       destination: 'https://tuyendung.zadez.vn/',
+      //     },
+      //     {
+      //       source: '/categories',
+      //       destination: '/danh-muc-san-pham',
+      //     },
     ];
   },
 };

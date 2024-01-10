@@ -41,19 +41,7 @@ export async function POST(body, { params }) {
         fullName: item.fullName,
       };
       const token = jwt.sign(payload, secretKey, { expiresIn });
-      // const options = {
-      //   from: "ZADEZ <cskh@gmail.com>", // sender address
-      //   to: "hieucuchuoi2491@gmail.com", // receiver email
-      //   subject: "otp",
-      //   html: `<div style="color:'red'">abc</div>`,
-      // };
-      // sendMail(options, (info) => {
-      //   NextResponse.json({
-      //     status: 200,
-      //     result: "success",
-      //     message: "requests created successfully",
-      //   });
-      // });
+
       return NextResponse.json({
         status: 200,
         message: "success",

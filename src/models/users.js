@@ -25,8 +25,8 @@ module.exports = (sequelize, DataTypes) => {
       },
       lastLogin: DataTypes.DATE,
 
-      changedPassword: {
-        type: DataTypes.DATE,
+      otp: {
+        type: DataTypes.STRING,
         allowNull: true,
       },
       isActive: {

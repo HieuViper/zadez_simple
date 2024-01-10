@@ -1,4 +1,5 @@
 "use client";
+import Image from "next/image";
 import { useState } from "react";
 import "swiper/css";
 import "swiper/css/free-mode";
@@ -7,21 +8,7 @@ import "swiper/css/thumbs";
 import { FreeMode, Navigation, Thumbs } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 
-// import './styles.css';
-
 const SlideShow = (props) => {
-  // const listImage = [
-  //     { url: "https://zadez.vn/wp-content/uploads/2023/08/GP-803B-Black_Square_1-1024x1024.webp" },
-  //     { url: "https://zadez.vn/wp-content/uploads/2023/08/GP-803B-White_Square_1-1024x1024.webp" },
-  //     { url: "https://zadez.vn/wp-content/uploads/2023/08/GP-803B-Black_Square_2-1024x1024.webp" },
-  //     { url: "https://zadez.vn/wp-content/uploads/2023/08/GP-803B-White_Square_2-1024x1024.webp" },
-  //     { url: "https://zadez.vn/wp-content/uploads/2023/08/3.webp" },
-  //     { url: "https://zadez.vn/wp-content/uploads/2023/08/2.webp" },
-  //     { url: "https://zadez.vn/wp-content/uploads/2023/08/4.webp" },
-  //     { url: "https://zadez.vn/wp-content/uploads/2023/08/5.webp" },
-  //     { url: "https://zadez.vn/wp-content/uploads/2023/08/6.webp" },
-
-  // ]
   const listImage = props.listImage;
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
   return (
@@ -42,7 +29,7 @@ const SlideShow = (props) => {
         {listImage &&
           listImage?.map((item, index) => (
             <SwiperSlide key={index}>
-              <img src={item.url} />
+              <Image src={item.url} width={500} height={500} alt="Zadez" priority={true} />
             </SwiperSlide>
           ))}
       </Swiper>
@@ -71,7 +58,7 @@ const SlideShow = (props) => {
         {listImage &&
           listImage?.map((item, index) => (
             <SwiperSlide key={index}>
-              <img src={item.url} />
+              <Image src={item.url} width={500} height={500} alt="Zadez" priority={true} />
             </SwiperSlide>
           ))}
       </Swiper>

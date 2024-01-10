@@ -4,15 +4,10 @@ import "swiper/css";
 import "swiper/css/free-mode";
 import "swiper/css/navigation";
 import "swiper/css/thumbs";
-import { Navigation } from "swiper/modules";
+import { Navigation, Autoplay } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 
-const SlideBanner = () => {
-  const banners = [
-    { name: "Zadez", image: "/images/categories/audio.webp" },
-    { name: "Zadez", image: "/images/categories/audio.webp" },
-    { name: "Zadez", image: "/images/categories/audio.webp" },
-  ];
+const SlideBanner = ({ data, width, height }) => {
   return (
     <div>
       <Swiper
@@ -21,21 +16,28 @@ const SlideBanner = () => {
         freeMode={true}
         grabCursor={true}
         watchSlidesProgress={true}
-        modules={[Navigation]}
+        modules={[Navigation, Autoplay]}
         className="mySwiperBanner"
         navigation={true}
+        autoplay={{
+          delay: 5000,
+          disableOnInteraction: false,
+        }}
       >
-        {banners &&
-          banners?.map((item, i) => (
+        {data &&
+          data?.map((item, i) => (
             <SwiperSlide key={i}>
-              {/* <div className='h-96 flex justify-center items-center'>
-                            <img className='object-contain' src={item.image} alt={item.name} />
-                        </div> */}
               <Image
-                width={500}
-                height={500}
+                sizes="100vw"
+                style={{
+                  width: "100%",
+                  height: "auto",
+                }}
+                width={width}
+                height={height}
                 src={item.image}
                 alt={item.name}
+                className="rounded-lg"
               />
             </SwiperSlide>
           ))}
