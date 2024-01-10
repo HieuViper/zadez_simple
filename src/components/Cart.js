@@ -14,7 +14,7 @@ const Cart = ({ data, onClose, open }) => {
         onClose={onClose}
         open={open}
         width={520}
-        getContainer={false}
+        // getContainer={false}
         footer={
           <>
             <div>

@@ -140,8 +140,7 @@ const Category = ({ params }) => {
     error,
     mutate,
   } = useSWRData(
-    `/api/products?limit=100&${
-      productType ? `type=${productType}` : `categoryId=${id}`
+    `/api/products?limit=100&${productType ? `type=${productType}` : `categoryId=${id}`
     }`
   );
   console.log("products1 :", products);
@@ -230,12 +229,12 @@ const Category = ({ params }) => {
     setSortedProducts(sortedProducts);
   };
   return (
-    <div className="mx-28 ">
-      <div className="mx-44 flex justify-between text-center">
+    <div className="">
+      <div className="mx-2 lg:mx-20 grid grid-cols-4 md:grid-cols-5 gap-2 ">
         {menuCategory.map((item, i) => (
           <div
             key={i}
-            className="hover:text-red-500 cursor-pointer"
+            className="hover:text-red-500 cursor-pointer  col-span-2 md:col-span-1 flex flex-col justify-center items-center hover:transform hover:scale-105 transition-transform duration-300 ease-in-out"
             onClick={() => {
               setProductType(item.type);
               // mutate()
@@ -252,8 +251,9 @@ const Category = ({ params }) => {
           </div>
         ))}
       </div>
-      <div className="grid grid-cols-4 gap-6 py-10">
-        <div className="col-span-1 border">
+      <div className="grid grid-cols-3 md:grid-cols-4 gap-6 py-10">
+        {/* FILTER */}
+        <div className="col-span-1 border hidden md:block">
           <div className="flex flex-col gap-4 p-4 ">
             <h5 className="text-xl font-medium">Tình trạng:</h5>
             <Checkbox value="in" checked={isInStock} onChange={handleInStock}>
@@ -272,6 +272,7 @@ const Category = ({ params }) => {
             <Switch checked={isSale} onChange={handleIsSale} />
           </div>
         </div>
+        {/* PRODUCT CARDS */}
         <div className="col-span-3">
           <div className="flex justify-end pb-4 items-center">
             <div className="mr-2">Sắp xếp theo:</div>
@@ -288,10 +289,31 @@ const Category = ({ params }) => {
               <Option value="highest-price">Giá cao nhất</Option>
             </Select>
           </div>
+          <div className="block md:hidden">
+            <div className="flex flex-col gap-2 p-2 ">
+              <div className="text-lg font-medium">Tình trạng:</div>
+              <div className="flex">
+                <Checkbox value="in" checked={isInStock} onChange={handleInStock}>
+                  <div className="text-base">Còn hàng</div>
+                </Checkbox>
+                <Checkbox
+                  value="out"
+                  checked={isOutOfStock}
+                  onChange={handleOutOfStock}
+                >
+                  <div className="text-base">Hết hàng</div>
+                </Checkbox>
+              </div>
+            </div>
+            <div className="flex  border p-4">
+              <div className="pr-4">Giảm giá:</div>
+              <Switch checked={isSale} onChange={handleIsSale} />
+            </div>
+          </div>
           {sortedProducts ? (
-            <div className="border grid grid-cols-3 gap-y-7">
+            <div className="border grid grid-cols-12 gap-y-7">
               {sortedProducts?.map((item, i) => (
-                <div className="col-span-1">
+                <div key={i} className="col-span-12 md:col-span-6 lg:col-span-4">
                   <ProductCard data={item} key={i} />
                 </div>
               ))}

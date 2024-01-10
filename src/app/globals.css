@@ -185,7 +185,7 @@ body {
 .ant-menu-inline {
   border-right: none !important;
 }
-.ant-menu-title-content {
+.menu-title .ant-menu-title-content {
   font-size: 18px;
   font-weight: 500;
 }
@@ -203,4 +203,12 @@ body {
 ::-webkit-scrollbar-thumb {
   background: grey;
   border-radius: 10px;
+}
+/* NO SCROLL DRAWER */
+.ant-drawer-body::-webkit-scrollbar {
+  display: none;
+}
+.ant-drawer-body {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
 }
