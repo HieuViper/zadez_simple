@@ -104,15 +104,16 @@ body {
   height: 100%;
   object-fit: contain;
   border-radius: 10px;
+  cursor: pointer;
 }
 .mySwiperCard {
   width: 100%;
-  height: 30%;
+  height: 100%;
   box-sizing: border-box;
   padding: 10px 0;
 }
 .mySwiperCard .swiper-slide {
-  width: 20%;
+  width: 100%;
   height: 100%;
 }
 
@@ -132,6 +133,9 @@ body {
 }
 .mySwiperBanner .swiper-button-next {
   color: red;
+}
+.swiper {
+  z-index: 1 !important;
 }
 
 /* CSS dangerouslySetInnerHTML*/
@@ -170,6 +174,14 @@ body {
   border: 2px solid rgb(200, 200, 200);
   overflow: hidden;
   font-size: 11px;
+}
+@media screen and (min-width: 768px) {
+  .editor table {
+    font-size: 14px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 }
 
 .zalo-chat-widget {

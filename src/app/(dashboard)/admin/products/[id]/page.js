@@ -58,7 +58,7 @@ const ProductForm = ({ params }) => {
 
   const handleSubmit = async (value) => {
     // setLoadingSubmit(true);
-    console.log("valueForm :", value);
+    // console.log("valueForm :", value);
     const formMainImage = new FormData();
     formMainImage.append("file", previewMainPic);
     const formSubImage = new FormData();
@@ -98,9 +98,9 @@ const ProductForm = ({ params }) => {
           manufacturerId: null,
           description: null || "",
         };
-        console.log("product add:", product);
+        // console.log("product add:", product);
         createData(product).then((res) => {
-          console.log("res add:", res);
+          // console.log("res add:", res);
           if (res.status == 200) {
             setLoadingSubmit(false);
             router.push(
@@ -139,9 +139,9 @@ const ProductForm = ({ params }) => {
           sub_image: subImage?.url || data.sub_image || "",
           list_image: listImage || {},
         };
-        console.log("product edit :", product);
+        // console.log("product edit :", product);
         updateData(params.id, product).then((res) => {
-          console.log("res edit:", res);
+          // console.log("res edit:", res);
           if (res.status == 200) {
             setLoadingSubmit(false);
             router.push(
@@ -401,7 +401,7 @@ const ProductForm = ({ params }) => {
               <Option value={"in"}>In Stock</Option>
               <Option value={"out"}>Out Stock</Option>
             </Select> */}
-              <Input placeholder="Input status" />
+              <Input placeholder="status: new, outstanding, best, ..." />
             </Form.Item>
             <Form.Item
               label={<span className="font-medium">Stock</span>}
@@ -626,7 +626,7 @@ const ProductForm = ({ params }) => {
               fileList={fileList}
               multiple={true}
               onChange={onChangeListImage}
-              // onPreview={onPreview}
+            // onPreview={onPreview}
             >
               + Upload
             </Upload>

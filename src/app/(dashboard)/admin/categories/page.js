@@ -32,7 +32,6 @@ const ProductList = () => {
       keyword: search,
     }
   );
-  console.log("data :", data);
   const { data: categories } = useSWRData("/api/categories", {
     limit: 1000,
   });
@@ -230,10 +229,10 @@ const ProductList = () => {
         loading={isLoading}
         expandable={{ defaultExpandAllRows: true }}
         key={dataTree?.length}
-        // pagination={{ ...pagination, disabled: loadingChangePage }}
-        // scroll={{
-        //     x: 1300,
-        // }}
+      // pagination={{ ...pagination, disabled: loadingChangePage }}
+      // scroll={{
+      //     x: 1300,
+      // }}
       />
     </div>
   );

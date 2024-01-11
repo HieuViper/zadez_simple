@@ -3,7 +3,7 @@ import { Button } from 'antd'
 import Image from 'next/image'
 import React, { useState } from 'react'
 
-const warranty = () => {
+const Contact = () => {
     const QRCode = [
         { image: "/images/QRCode-Call.png", name: "Tổng Đài CSKH", short: "Số điện thoại (028).7777.0053 hoặc 1900.0053, thời gian hoạt động của tổng đài CSKH từ 8h30-12h00 và 13h30-18h00 các ngày từ thứ Hai đến thứ Sáu.", button: "TỔNG ĐÀI: (028) 7777.0053", link: "" },
         { image: "/images/QRCode-Zalo.png", name: "Tư Vấn Qua Zalo Chat", short: "Đây là kênh tư vấn và hỗ trợ khách hàng trực tuyến thông qua kênh Zalo chính thức của ZADEZ Việt Nam, vui lòng scan QR code hoặc nhấn vào link để kết nối.", button: "TƯ VẤN QUA ZALO", link: "https://zalo.me/3126944695787017498" },
@@ -71,4 +71,4 @@ const warranty = () => {
     )
 }
 
-export default warranty
+export default Contact

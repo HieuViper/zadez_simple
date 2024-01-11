@@ -18,6 +18,7 @@ import { useEffect, useState } from "react";
 import Cart from "./Cart";
 import NavBar from "./NavBar";
 import logo from "/public/images/logo-zadez.png";
+import { useScrollPosition } from "@/library/useScrollPosition";
 const Header = () => {
   const { toggleModal, resetCartState, resetUserState } = store();
   const userState = getUserStateFromLocalStorage();
@@ -28,7 +29,7 @@ const Header = () => {
     error,
     mutate,
   } = useSWRData(`/api/categories`, { limit: 1000 });
-
+  const scrollPosition = useScrollPosition();
   // handle open modal login
   const handleOpenModalLogin = () => {
     if (!userState?.token) {
@@ -104,9 +105,8 @@ const Header = () => {
         return (
           <Menu.Item key={item.id}>
             <a
-              href={`${item.type && `/${item.type}`}/${item.category_code}-${
-                item.id
-              }`}
+              href={`${item.type && `/${item.type}`}/${item.category_code}-${item.id
+                }`}
             >
               <div>{item.name}</div>
             </a>
@@ -129,25 +129,25 @@ const Header = () => {
     useEffect(() => {
       const menuAnimations = isOpenMenu
         ? [
-            [
-              "nav",
-              { transform: "translateX(0%)" },
-              { ease: [0.08, 0.65, 0.53, 0.96], duration: 0.2 },
-            ],
-            [
-              "li",
-              { transform: "scale(1)", opacity: 1, filter: "blur(0px)" },
-              { delay: stagger(0.01), at: "-0.1" },
-            ],
-          ]
+          [
+            "nav",
+            { transform: "translateX(0%)" },
+            { ease: [0.08, 0.65, 0.53, 0.96], duration: 0.2 },
+          ],
+          [
+            "li",
+            { transform: "scale(1)", opacity: 1, filter: "blur(0px)" },
+            { delay: stagger(0.01), at: "-0.1" },
+          ],
+        ]
         : [
-            [
-              "li",
-              { transform: "scale(0.5)", opacity: 0, filter: "blur(10px)" },
-              { delay: stagger(0.01, { from: "last" }), at: "<" },
-            ],
-            ["nav", { transform: "translateX(-100%)" }, { at: "-0.1" }],
-          ];
+          [
+            "li",
+            { transform: "scale(0.5)", opacity: 0, filter: "blur(10px)" },
+            { delay: stagger(0.01, { from: "last" }), at: "<" },
+          ],
+          ["nav", { transform: "translateX(-100%)" }, { at: "-0.1" }],
+        ];
 
       animate([
         [
@@ -181,14 +181,15 @@ const Header = () => {
     setOpenCart(false);
   };
   return (
-    <header className="h-32 shadow-lg">
+    <header className={`${scrollPosition > 0 ? "shadow-md py-2" : "lg:py-4 py-2"
+      }  w-full bg-[#fafafa]  px-2 fixed top-0 z-30 transition-all duration-500`}>
       {/* <Head>
                 <script src="https://sp.zalo.me/plugins/sdk.js"></script>
             </Head> */}
       {/* {isOpenMenu && <div onClick={() => setIsOpenMenu(false)} className="fixed inset-0 top-32 bg-gray-200 bg-opacity-75 transition-opacity z-50  overflow-hidden"></div>} */}
       <div className=" text-gray-600  border-b-[#e5e7eb] top-0 ">
-        <div className="h-32 border border-b-[#e5e7eb]">
-          <div className="h-32  flex lg:grid lg:grid-cols-12  justify-center items-center">
+        <div className="border border-b-[#e5e7eb]">
+          <div className="flex lg:grid lg:grid-cols-12  justify-center items-center">
             <div
               className=" block lg:hidden absolute top-16 left-5 px-3 py-2 border rounded hover:text-teal-200 border-gray-300 cursor-pointer"
               onClick={() => setIsOpenMenu(!isOpenMenu)}
@@ -202,10 +203,10 @@ const Header = () => {
               >
                 <Image
                   src={logo}
-                  width={100}
-                  height={100}
+                  width={scrollPosition > 0 ? 80 : 100}
+                  height={scrollPosition > 0 ? 60 : 80}
+                  className="hover:opacity-80 cursor-pointer duration-300 transition-all "
                   alt="Zadez"
-                  className="object-contain"
                 />
               </a>
             </div>

@@ -32,6 +32,9 @@ const SlideCard = ({ data }) => {
         1024: {
           slidesPerView: 4,
         },
+        1536: {
+          slidesPerView: 5,
+        },
       }}
     >
       {data &&

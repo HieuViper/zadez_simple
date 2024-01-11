@@ -143,7 +143,6 @@ const Category = ({ params }) => {
     `/api/products?limit=100&${productType ? `type=${productType}` : `categoryId=${id}`
     }`
   );
-  console.log("products1 :", products);
 
   // FILTER
 
@@ -229,7 +228,7 @@ const Category = ({ params }) => {
     setSortedProducts(sortedProducts);
   };
   return (
-    <div className="">
+    <div className="my-10 w-full">
       <div className="mx-2 lg:mx-20 grid grid-cols-4 md:grid-cols-5 gap-2 ">
         {menuCategory.map((item, i) => (
           <div
@@ -311,7 +310,7 @@ const Category = ({ params }) => {
             </div>
           </div>
           {sortedProducts ? (
-            <div className="border grid grid-cols-12 gap-y-7">
+            <div className="border grid grid-cols-12  gap-2 md:gap-4 lg:gap-8">
               {sortedProducts?.map((item, i) => (
                 <div key={i} className="col-span-12 md:col-span-6 lg:col-span-4">
                   <ProductCard data={item} key={i} />
