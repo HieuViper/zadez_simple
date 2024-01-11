@@ -15,17 +15,7 @@ const Categories = () => {
             discount_price: 1,
             status: "in",
             name: "aGaming",
-            product_languages: [
-                {
-                    id: 1,
-                    name: "Macbook Bro`",
-                    short:
-                        "Tai nghe không dây cao cấp với công nghệ ENC - Environmental Noise Cancellation hiện đại, trọng lượng siêu nhẹ 176 gram mang đến cảm giác đeo thoải mái trong thời gian dài. Kết nối Bluetooth 5.2 và chế độ EQ Bass cho chất lượng âm thanh tuyệt hảo. Hãy trải nghiệm ngay !",
-                    description: "description",
-                    productId: 128,
-                    languageCode: "vi",
-                },
-            ],
+
         },
         {
             product_code: "999",
@@ -34,17 +24,7 @@ const Categories = () => {
             discount_price: 1,
             status: "in",
             name: "bGaming",
-            product_languages: [
-                {
-                    id: 1,
-                    name: "Macbook Bro`",
-                    short:
-                        "Tai nghe không dây cao cấp với công nghệ ENC - Environmental Noise Cancellation hiện đại, trọng lượng siêu nhẹ 176 gram mang đến cảm giác đeo thoải mái trong thời gian dài. Kết nối Bluetooth 5.2 và chế độ EQ Bass cho chất lượng âm thanh tuyệt hảo. Hãy trải nghiệm ngay !",
-                    description: "description",
-                    productId: 128,
-                    languageCode: "vi",
-                },
-            ],
+
         },
         {
             product_code: "999",
@@ -53,17 +33,7 @@ const Categories = () => {
             discount_price: 1,
             status: "in",
             name: "cGaming",
-            product_languages: [
-                {
-                    id: 1,
-                    name: "Macbook Bro`",
-                    short:
-                        "Tai nghe không dây cao cấp với công nghệ ENC - Environmental Noise Cancellation hiện đại, trọng lượng siêu nhẹ 176 gram mang đến cảm giác đeo thoải mái trong thời gian dài. Kết nối Bluetooth 5.2 và chế độ EQ Bass cho chất lượng âm thanh tuyệt hảo. Hãy trải nghiệm ngay !",
-                    description: "description",
-                    productId: 128,
-                    languageCode: "vi",
-                },
-            ],
+
         },
         {
             product_code: "999",
@@ -72,17 +42,7 @@ const Categories = () => {
             discount_price: 1,
             status: "in",
             name: "dGaming",
-            product_languages: [
-                {
-                    id: 1,
-                    name: "Macbook Bro`",
-                    short:
-                        "Tai nghe không dây cao cấp với công nghệ ENC - Environmental Noise Cancellation hiện đại, trọng lượng siêu nhẹ 176 gram mang đến cảm giác đeo thoải mái trong thời gian dài. Kết nối Bluetooth 5.2 và chế độ EQ Bass cho chất lượng âm thanh tuyệt hảo. Hãy trải nghiệm ngay !",
-                    description: "description",
-                    productId: 128,
-                    languageCode: "vi",
-                },
-            ],
+
         },
         {
             product_code: "999",
@@ -91,17 +51,7 @@ const Categories = () => {
             discount_price: 1,
             status: "in",
             name: "eGaming",
-            product_languages: [
-                {
-                    id: 1,
-                    name: "Macbook Bro`",
-                    short:
-                        "Tai nghe không dây cao cấp với công nghệ ENC - Environmental Noise Cancellation hiện đại, trọng lượng siêu nhẹ 176 gram mang đến cảm giác đeo thoải mái trong thời gian dài. Kết nối Bluetooth 5.2 và chế độ EQ Bass cho chất lượng âm thanh tuyệt hảo. Hãy trải nghiệm ngay !",
-                    description: "description",
-                    productId: 128,
-                    languageCode: "vi",
-                },
-            ],
+
         },
     ];
     const {
@@ -245,7 +195,7 @@ const Categories = () => {
                 </div>
             </div>
             {/* NEW PRODUCT */}
-            <h2 className="text-4xl pt-4 font-bold">Sản phẩm mới</h2>
+            {/* <h2 className="text-4xl pt-4 font-bold">Sản phẩm mới</h2>
             <div className="grid grid-cols-12 gap-4">
                 {products &&
                     products.map((item, i) => (
@@ -266,7 +216,7 @@ const Categories = () => {
                             />
                         </div>
                     ))}
-            </div>
+            </div> */}
         </div>
     );
 };

@@ -49,15 +49,14 @@ const CategoriesForm = ({ params }) => {
     );
     const handleSubmit = async (value) => {
         setLoadingSubmit(true);
-        console.log('valueForm :', value);
         const formMainImage = new FormData();
         formMainImage.append('file', previewMainPic);
         const mainImage = previewMainPic && await uploadImage(formMainImage);
-        console.log('mainImage :', mainImage);
+        // console.log('mainImage :', mainImage);
         try {
             if (isAddMode) {
                 const category = { ...value, image: mainImage?.url || "" }
-                console.log('value add', category);
+                // console.log('value add', category);
                 createData(category).then((res) => {
                     if (res.status === 200) {
                         setLoadingSubmit(false);
@@ -71,7 +70,7 @@ const CategoriesForm = ({ params }) => {
                     parent: value.parent || null,
                     image: mainImage?.url || data?.image || ""
                 }
-                console.log('category edit', category);
+                // console.log('category edit', category);
                 updateData(params.id, category).then((res) => {
                     if (res.status === 200) {
                         setLoadingSubmit(false);

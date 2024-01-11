@@ -2,7 +2,9 @@
 import React, { useState } from 'react'
 import Image from 'next/image';
 import Link from 'next/link';
+import { useScrollPosition } from '@/library/useScrollPosition';
 const NavBar = ({ data }) => {
+    const scrollPosition = useScrollPosition();
     return (
         <>
             <div className="md:flex hidden uppercase items-center justify-center gap-2">
@@ -10,7 +12,7 @@ const NavBar = ({ data }) => {
                     <div key={i} className=''>
                         <div className="px-3 text-left group ">
                             <h1
-                                className="py-7 flex justify-between items-center md:pr-0 pr-5 text-base lg:text-xs 2xl:text-base md:cursor-pointer group-hover:text-red-500 text-black"
+                                className="py-2 flex justify-between items-center md:pr-0 pr-5 text-base lg:text-xs 2xl:text-base md:cursor-pointer group-hover:text-red-500 text-black"
 
                             >
                                 {item.name}
@@ -24,7 +26,7 @@ const NavBar = ({ data }) => {
                                 </span>}
                             </h1>
                             {item?.children && (
-                                <div className="absolute  top-20 hidden group-hover:md:block hover:md:block bg-white mt-5 py-2 pl-2 gap-10  rounded-xl shadow-lg  transition ease-in-out duration-100 delay-100 group-hover:-translate-y-1">
+                                <div className={`absolute ${scrollPosition > 0 ? 'top-9' : 'top-14'} hidden group-hover:md:block hover:md:block bg-white mt-5 py-2 pl-2 gap-10  rounded-xl shadow-lg  ease-in-out transition-all duration-500`}>
                                     {item?.children && item?.children.map((item, i) => (
                                         <div key={i} className=' md:cursor-pointer group/item '>
                                             <Link href={`${item.type && `/${item.type}`}/${item.category_code}-${item.id}`} style={{ textDecoration: "none", color: "black" }}>

@@ -88,7 +88,7 @@ export async function POST(req, res) {
             images: uploadedImages,
         });
     } catch (error) {
-        console.log("Error occurred: ", error);
+        // console.log("Error occurred: ", error);
         return NextResponse.json({ Message: "Failed", status: 500 });
     }
 }
