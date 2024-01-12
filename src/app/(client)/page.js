@@ -239,9 +239,9 @@ export default function Home() {
             </h4>
             <p className="text-base">
               Logo chính thức của ZADEZ bao gồm phần biểu tượng thể hiện chữ Z
-              cách điệu và ký tự "ZADEZ". Hình tượng chữ Z biểu trưng cho sự
-              tuần hoàn, sự hài hòa và sự kết hợp của "lưỡng nghi" trong quan
-              niệm của người Á Đông. Cùng với biểu tượng "tiêu điểm", ZADEZ luôn
+              cách điệu và ký tự &ldquo;ZADEZ&rdquo;. Hình tượng chữ Z biểu trưng cho sự
+              tuần hoàn, sự hài hòa và sự kết hợp của &ldquo;lưỡng nghi&rdquo; trong quan
+              niệm của người Á Đông. Cùng với biểu tượng &ldquo;tiêu điểm&rdquo;, ZADEZ luôn
               hoạch định mục tiêu phát triển rõ ràng và có trọng tâm ngay từ lúc
               khởi đầu các dự án, trên nền tảng cân đối tổng thể các nguồn lực
               cũng như điều kiện tác động.
