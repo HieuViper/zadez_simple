@@ -13,7 +13,7 @@ const Footer = () => {
   const contactFooter = {
     name: "THÔNG TIN LIÊN HỆ",
     description:
-      "<p>- Tổng đài CSKH: (028) 7777.0053 - 1900.0053 (phục vụ từ 8h30-17h30, T2-T6)<br>- Kích Hoạt &amp; Tra Cứu Bảo Hành: website PSI.ZADEZ.VN<br>- Fanpage: Facebook.com/ZadezVietnam<br>- Messeger: M.me/ZadezVietnam<br>- Tài khoản Zalo Official Account: Zalo.me/3126944695787017498<br>- Trung tâm CSKH: tòa nhà VietmayHome - 48 Phú Thuận, phường Phú Thuận, quận 7, Tp. HCM</p>",
+      "<p>- Tổng đài CSKH: (028) 7777.0053 - 1900.0053 (phục vụ từ 8h30-17h30, T2-T6)<br>- Kích Hoạt &amp; Tra Cứu Bảo Hành: website PSI.ZADEZ.VN<br>- Fanpage: Facebook.com/ZadezVietnam<br>- Messeger: M.me/ZadezVietnam<br>- Tài khoản Zalo Official Account: Zalo.me/3126944695787017498<br>- Trung tâm CSKH: B97 Phú Thuận, phường Phú Thuận, Quận 7, Tp. Hồ Chí Minh</p>",
   };
   return (
     <footer>
@@ -45,9 +45,9 @@ const Footer = () => {
         </div>
       </div>
       <div className="bg-[#161716] text-[#AAAAAA] text-xs p-4  text-center">
-        "Công ty TNHH ZADEZ Việt Nam triển khai theo bản quyền của ZADEZ AMERICA
-        LLC. (USA)" : "ZADEZ Vietnam Co., Ltd. is published under the copyright
-        of ZADEZ AMERICA LLC. (USA)"
+        &ldquo;Công ty TNHH ZADEZ Việt Nam triển khai theo bản quyền của ZADEZ AMERICA
+        LLC. (USA)&rdquo; : &ldquo;ZADEZ Vietnam Co., Ltd. is published under the copyright
+        of ZADEZ AMERICA LLC. (USA)&rdquo;
       </div>
       <a
         className="zalo-chat-widget"

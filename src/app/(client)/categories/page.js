@@ -15,17 +15,7 @@ const Categories = () => {
             discount_price: 1,
             status: "in",
             name: "aGaming",
-            product_languages: [
-                {
-                    id: 1,
-                    name: "Macbook Bro`",
-                    short:
-                        "Tai nghe không dây cao cấp với công nghệ ENC - Environmental Noise Cancellation hiện đại, trọng lượng siêu nhẹ 176 gram mang đến cảm giác đeo thoải mái trong thời gian dài. Kết nối Bluetooth 5.2 và chế độ EQ Bass cho chất lượng âm thanh tuyệt hảo. Hãy trải nghiệm ngay !",
-                    description: "description",
-                    productId: 128,
-                    languageCode: "vi",
-                },
-            ],
+
         },
         {
             product_code: "999",
@@ -34,17 +24,7 @@ const Categories = () => {
             discount_price: 1,
             status: "in",
             name: "bGaming",
-            product_languages: [
-                {
-                    id: 1,
-                    name: "Macbook Bro`",
-                    short:
-                        "Tai nghe không dây cao cấp với công nghệ ENC - Environmental Noise Cancellation hiện đại, trọng lượng siêu nhẹ 176 gram mang đến cảm giác đeo thoải mái trong thời gian dài. Kết nối Bluetooth 5.2 và chế độ EQ Bass cho chất lượng âm thanh tuyệt hảo. Hãy trải nghiệm ngay !",
-                    description: "description",
-                    productId: 128,
-                    languageCode: "vi",
-                },
-            ],
+
         },
         {
             product_code: "999",
@@ -53,17 +33,7 @@ const Categories = () => {
             discount_price: 1,
             status: "in",
             name: "cGaming",
-            product_languages: [
-                {
-                    id: 1,
-                    name: "Macbook Bro`",
-                    short:
-                        "Tai nghe không dây cao cấp với công nghệ ENC - Environmental Noise Cancellation hiện đại, trọng lượng siêu nhẹ 176 gram mang đến cảm giác đeo thoải mái trong thời gian dài. Kết nối Bluetooth 5.2 và chế độ EQ Bass cho chất lượng âm thanh tuyệt hảo. Hãy trải nghiệm ngay !",
-                    description: "description",
-                    productId: 128,
-                    languageCode: "vi",
-                },
-            ],
+
         },
         {
             product_code: "999",
@@ -72,17 +42,7 @@ const Categories = () => {
             discount_price: 1,
             status: "in",
             name: "dGaming",
-            product_languages: [
-                {
-                    id: 1,
-                    name: "Macbook Bro`",
-                    short:
-                        "Tai nghe không dây cao cấp với công nghệ ENC - Environmental Noise Cancellation hiện đại, trọng lượng siêu nhẹ 176 gram mang đến cảm giác đeo thoải mái trong thời gian dài. Kết nối Bluetooth 5.2 và chế độ EQ Bass cho chất lượng âm thanh tuyệt hảo. Hãy trải nghiệm ngay !",
-                    description: "description",
-                    productId: 128,
-                    languageCode: "vi",
-                },
-            ],
+
         },
         {
             product_code: "999",
@@ -91,17 +51,7 @@ const Categories = () => {
             discount_price: 1,
             status: "in",
             name: "eGaming",
-            product_languages: [
-                {
-                    id: 1,
-                    name: "Macbook Bro`",
-                    short:
-                        "Tai nghe không dây cao cấp với công nghệ ENC - Environmental Noise Cancellation hiện đại, trọng lượng siêu nhẹ 176 gram mang đến cảm giác đeo thoải mái trong thời gian dài. Kết nối Bluetooth 5.2 và chế độ EQ Bass cho chất lượng âm thanh tuyệt hảo. Hãy trải nghiệm ngay !",
-                    description: "description",
-                    productId: 128,
-                    languageCode: "vi",
-                },
-            ],
+
         },
     ];
     const {
@@ -127,7 +77,7 @@ const Categories = () => {
                 <div
                     className="col-span-3 md:col-span-1 flex flex-col justify-center items-center bg-stone-200 rounded-2xl m-4 cursor-pointer hover:text-red-500 hover:transform hover:scale-105 transition-transform duration-300 ease-in-out"
                     onClick={() => {
-                        router.push(`/categories/0?type=audio`);
+                        router.push(`/danh-muc-san-pham/0?type=audio`);
                     }}
                 >
                     <Image
@@ -147,7 +97,7 @@ const Categories = () => {
                     <div
                         className=" col-span-2 md:col-span-1 flex flex-col justify-center items-center bg-stone-200 rounded-2xl m-4 cursor-pointer hover:text-red-500 hover:transform hover:scale-105 transition-transform duration-300 ease-in-out"
                         onClick={() => {
-                            router.push(`/categories/0?type=mouse`);
+                            router.push(`/danh-muc-san-pham/0?type=mouse`);
                         }}
                     >
                         <Image
@@ -166,7 +116,7 @@ const Categories = () => {
                     <div
                         className="col-span-2 md:col-span-1 flex flex-col justify-center items-center bg-stone-200 rounded-2xl m-4 cursor-pointer hover:text-red-500 hover:transform hover:scale-105 transition-transform duration-300 ease-in-out"
                         onClick={() => {
-                            router.push(`/categories/0?type=mouse`);
+                            router.push(`/danh-muc-san-pham/0?type=mouse`);
                         }}
                     >
                         <Image
@@ -185,7 +135,7 @@ const Categories = () => {
                     <div
                         className=" col-span-2 md:col-span-1 flex flex-col justify-center items-center bg-stone-200 rounded-2xl m-4 cursor-pointer hover:text-red-500 hover:transform hover:scale-105 transition-transform duration-300 ease-in-out"
                         onClick={() => {
-                            router.push(`/categories/0?type=keyboard`);
+                            router.push(`/danh-muc-san-pham/0?type=keyboard`);
                         }}
                     >
                         <Image
@@ -199,7 +149,7 @@ const Categories = () => {
                             src="/images/categories/smartwatch.webp"
                             alt="Đồng hồ thông minh"
                             onClick={() => {
-                                router.push(`/categories/0?type=smartwatch`);
+                                router.push(`/danh-muc-san-pham/0?type=smartwatch`);
                             }}
                         />
                         <div className="mb-4">Đồng hồ thông minh</div>
@@ -207,7 +157,7 @@ const Categories = () => {
                     <div
                         className="col-span-2 md:col-span-1 flex flex-col justify-center items-center bg-stone-200 rounded-2xl m-4 cursor-pointer hover:text-red-500 hover:transform hover:scale-105 transition-transform duration-300 ease-in-out"
                         onClick={() => {
-                            router.push(`/categories/0?type=accessories`);
+                            router.push(`/danh-muc-san-pham/0?type=accessories`);
                         }}
                     >
                         <Image
@@ -227,7 +177,7 @@ const Categories = () => {
                 <div
                     className="col-span-3 md:col-span-1 flex flex-col justify-center items-center bg-stone-200 rounded-2xl m-4 cursor-pointer hover:text-red-500 hover:transform hover:scale-105 transition-transform duration-300 ease-in-out"
                     onClick={() => {
-                        router.push(`/categories/0?type=audio`);
+                        router.push(`/danh-muc-san-pham/0?type=audio`);
                     }}
                 >
                     <Image
@@ -245,7 +195,7 @@ const Categories = () => {
                 </div>
             </div>
             {/* NEW PRODUCT */}
-            <h2 className="text-4xl pt-4 font-bold">Sản phẩm mới</h2>
+            {/* <h2 className="text-4xl pt-4 font-bold">Sản phẩm mới</h2>
             <div className="grid grid-cols-12 gap-4">
                 {products &&
                     products.map((item, i) => (
@@ -266,7 +216,7 @@ const Categories = () => {
                             />
                         </div>
                     ))}
-            </div>
+            </div> */}
         </div>
     );
 };

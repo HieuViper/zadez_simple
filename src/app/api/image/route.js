@@ -66,7 +66,7 @@ export async function POST(req, res) {
         const temp = filename.split(".");
         filename = temp[0] + "-" + Date.now().toString() + "." + temp[1];
       }
-      console.log("filenaem", filename);
+      // console.log("filenaem", filename);
 
       await writeFile(
         path.join(
@@ -81,7 +81,7 @@ export async function POST(req, res) {
         url: `/uploads/${nameFolderInCustom}/` + filename,
       });
     } catch (error) {
-      console.log("Error occured ", error);
+      // console.log("Error occured ", error);
       return NextResponse.json({ Message: "Failed", status: 500 });
     }
   }

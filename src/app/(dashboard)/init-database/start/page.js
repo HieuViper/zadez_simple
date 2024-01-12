@@ -1,5 +1,6 @@
 import db from "@/models";
 import axios from "axios";
+import bcrypt from "bcrypt";
 
 const StartPage = () => {
   async function importData() {
@@ -44,11 +45,46 @@ const StartPage = () => {
     } catch (error) {
       console.error("Error importing data:", error.message);
     }
+
+    try {
+      const roles = [
+        {
+          code: "admin",
+          name: "Admin",
+        },
+        {
+          code: "system",
+          name: "System",
+        },
+        {
+          code: "sa",
+          name: "Sale Admin",
+        },
+        {
+          code: "customer",
+          name: "Customer",
+        },
+      ];
+
+      const hashedPassword = await bcrypt.hash("admin", 10);
+      const adminUser = {
+        email: "admin@gmail.com",
+        phoneNumber: "0909999999",
+        password: hashedPassword,
+        rolesId: [1, 2, 3],
+      };
+      for (let index = 0; index < roles.length; index++) {
+        await db.Roles.create(roles[index]);
+      }
+      await db.Users.create(adminUser);
+    } catch (error) {
+      console.error("Error importing data:", error.message);
+    }
   }
 
   importData();
 
-  return <div>StartPage</div>;
+  return <div>Init DB</div>;
 };
 
 export default StartPage;

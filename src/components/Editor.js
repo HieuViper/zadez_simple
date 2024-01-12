@@ -15,8 +15,8 @@ const Editor = ({ value, onChange }) => {
           return {
             upload: () => {
               return new Promise((resolve, reject) => {
-                console.log('reject :', reject);
-                console.log('resolve :', resolve);
+                // console.log('reject :', reject);
+                // console.log('resolve :', resolve);
                 const body = new FormData();
                 loader.file.then(async (file) => {
                   body.append('file', file);

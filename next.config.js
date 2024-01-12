@@ -27,30 +27,34 @@ const nextConfig = {
         source: "/quen-mat-khau",
         destination: "/forgot-password",
       },
-      //     {
-      //       source: '/gioi-thieu-ve-zadez',
-      //       destination: '/about',
-      //     },
-      //     {
-      //       source: '/quyen-loi-doi-tac-zpartner',
-      //       destination: '/partner',
-      //     },
-      //     {
-      //       source: '/trung-tam-bao-hanh-zadez',
-      //       destination: '/warranty',
-      //     },
-      //     {
-      //       source: '/san-pham-moi',
-      //       destination: '/newproduct',
-      //     },
-      //     {
-      //       source: '/categories/co-hoi-nghe-nghiep',
-      //       destination: 'https://tuyendung.zadez.vn/',
-      //     },
-      //     {
-      //       source: '/categories',
-      //       destination: '/danh-muc-san-pham',
-      //     },
+      {
+        source: '/gioi-thieu-ve-zadez',
+        destination: '/about',
+      },
+      {
+        source: '/quyen-loi-doi-tac-zpartner',
+        destination: '/partner',
+      },
+      {
+        source: '/lien-he',
+        destination: '/contact',
+      },
+      // {
+      //   source: '/san-pham-moi',
+      //   destination: '/newproduct',
+      // },
+      {
+        source: '/danh-muc-san-pham/co-hoi-nghe-nghiep',
+        destination: 'https://tuyendung.zadez.vn/',
+      },
+      {
+        source: '/danh-muc-san-pham',
+        destination: '/categories',
+      },
+      {
+        source: '/danh-muc-san-pham/:slug',
+        destination: '/categories/:slug',
+      },
     ];
   },
 };
