@@ -84,12 +84,12 @@ export async function GET(req, { params }) {
         } else { { } }
         let { count, rows } = await db.Categories.findAndCountAll({
             where: option,
-            // include: [
-            //     {
-            //         model: db.Products,
-            //         as: 'products',
-            //     },
-            // ],
+            include: [
+                {
+                    model: db.Products,
+                    as: 'products',
+                },
+            ],
             offset: parseInt(page) * parseInt(limit),
             limit: parseInt(limit),
             order: [["id", "DESC"]],

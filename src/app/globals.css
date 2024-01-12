@@ -178,6 +178,8 @@ body {
 @media screen and (min-width: 768px) {
   .editor table {
     font-size: 14px;
+  }
+  .editor figure {
     display: flex;
     justify-content: center;
     align-items: center;
