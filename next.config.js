@@ -44,7 +44,7 @@ const nextConfig = {
       //   destination: '/newproduct',
       // },
       {
-        source: '/danh-muc-san-pham/co-hoi-nghe-nghiep',
+        source: '/co-hoi-nghe-nghiep',
         destination: 'https://tuyendung.zadez.vn/',
       },
       {
