@@ -86,6 +86,12 @@ const CartPageComp = () => {
               if (!userState.token) {
                 toggleModal(true);
                 message.warning("Vui lòng đăng nhập để thanh toán");
+              } else if (
+                userState.roles.some((item) => item.code !== "customer")
+              ) {
+                message.warning(
+                  "Bạn đang đăng nhập với tài khoản admin nên không thể mua hàng!!"
+                );
               } else {
                 router.push("/thanh-toan");
               }

@@ -3,6 +3,7 @@ import { useSWRData } from "@/library/api";
 import store from "@/library/zustand/store";
 import {
   CloseOutlined,
+  LogoutOutlined,
   MenuOutlined,
   ShoppingCartOutlined,
   UserOutlined,
@@ -48,8 +49,12 @@ const Header = () => {
       key: "0",
     },
     {
-      label: "Chỉnh sửa hồ sơ cá nhân",
+      label: "Hồ sơ cá nhân",
       key: "1",
+    },
+    {
+      label: "Quản lý đơn đã đặt",
+      key: "2",
     },
     {
       type: "divider",
@@ -61,6 +66,7 @@ const Header = () => {
             resetUserState();
             message.success("Đăng xuất thành công!");
           }}
+          icon={<LogoutOutlined />}
         >
           Đăng xuất
         </Button>

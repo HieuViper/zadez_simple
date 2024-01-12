@@ -2,14 +2,16 @@ import SelectLocations from "@/components/SelectLocations";
 import { useSWRData } from "@/library/api";
 import store from "@/library/zustand/store";
 import { ArrowLeftOutlined } from "@ant-design/icons";
-import { Button, Divider, Form, Input } from "antd";
+import { Button, Divider, Form, Input, message } from "antd";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
 const CheckoutPageComp = () => {
   const [form] = Form.useForm();
-  const { cartState, userState } = store();
+  const { cartState, userState, resetCartState } = store();
+  const router = useRouter();
 
   //locations
   const [cityId, setCityId] = useState("");
@@ -20,7 +22,11 @@ const CheckoutPageComp = () => {
     districtId,
   });
 
+  const [isDoneCheckout, setIsDoneCheckout] = useState(false);
+  const [loadingCheckout, setLoadingCheckout] = useState(false);
+
   const onFinish = (values) => {
+    setLoadingCheckout(true);
     const productsData = cartState.cartItems.map((item) => {
       return {
         productId: item.products.id,
@@ -35,9 +41,12 @@ const CheckoutPageComp = () => {
     console.log("🚀 ~ file: page.js:8 ~ onFinish ~ values:", values);
     createOrder(values).then((res) => {
       console.log(res);
-    });
-    updateCustomer(customerData.data[0].id, values).then((res) => {
-      console.log(res);
+      updateCustomer(customerData.data[0].id, values).then((res) => {
+        console.log(res);
+        setIsDoneCheckout(true);
+        setLoadingCheckout(false);
+        message.success("Thanh toán thành công");
+      });
     });
   };
   const {
@@ -197,13 +206,23 @@ const CheckoutPageComp = () => {
               </div>
             </div>
           </div>
-          <Button
-            htmlType="submit"
-            type="primary"
-            loading={isLoadingCreateOrder}
-          >
-            Comfirm & Complete Order
-          </Button>
+
+          {isDoneCheckout ? (
+            <Button
+              type="default"
+              className="w-full"
+              onClick={() => {
+                resetCartState();
+                router.push("/");
+              }}
+            >
+              Tiếp tục mua hàng
+            </Button>
+          ) : (
+            <Button htmlType="submit" type="primary" loading={loadingCheckout}>
+              Xác nhận & Hoàn thành đơn hàng
+            </Button>
+          )}
         </div>
       </div>
     </Form>
@@ -217,10 +236,16 @@ export default CheckoutPageComp;
 const Card = ({ data }) => {
   return (
     <>
-      <div className="flex text-sm items-center">
-        <Image src="/no-image.jpg" width={100} height={100} alt="" />
-        <div className="flex flex-col gap-2 text-xs">
-          <span>{data.products.name}</span>
+      <div className="flex text-sm items-center gap-3">
+        <Image
+          src={data.products.main_image || "/no-image.jpg"}
+          width={100}
+          height={100}
+          alt=""
+          className="rounded-lg object-contain"
+        />
+        <div className="flex flex-col gap-2 text-xs w-full">
+          <span className="text-base">{data.products.name}</span>
           <span>Black</span>
           <span>x{data.amount}</span>
           <span className="text-right">

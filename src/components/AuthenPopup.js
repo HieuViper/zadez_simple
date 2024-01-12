@@ -154,6 +154,7 @@ const RegisterForm = () => {
             });
             message.success("Đăng ký thành công");
             form.resetFields();
+            setLoading(false);
           } else if (rs?.code === "phone") {
             form.setFields([
               {

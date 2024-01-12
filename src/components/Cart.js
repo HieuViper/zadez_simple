@@ -134,7 +134,7 @@ const Cart = ({ onClose, open }) => {
               src="/images/cart-empty.png"
               alt="empty-cart"
               width={300}
-              height={300}
+              height={250}
               className=""
             />
           </div>
