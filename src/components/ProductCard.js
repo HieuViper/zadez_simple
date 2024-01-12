@@ -16,7 +16,7 @@ const ProductCard = ({ data }) => {
         </div>
       )}
       <div className="flex justify-center h-[225px] items-center py-2 transition duration-200 hover:-translate-y-2">
-        <Link href={`/products/${data.id}`}>
+        <Link href={`/san-pham/${data.product_code && data.product_code}-${data.id}`}>
           <Image
             // sizes="100vw"
             // style={{

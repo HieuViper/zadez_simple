@@ -32,7 +32,7 @@ const Contact = () => {
                     referrerPolicy="no-referrer-when-downgrade"
                 />
             </section>
-            <section className='grid grid-cols-4'>
+            <section className='grid grid-cols-4 p-8 shadow-md mt-8'>
                 <div className='col-span-4 md:col-span-1'>
                     <Image width={295} height={295} alt='Chăm sóc khách hàng' src='/images/customer-service.png' />
                 </div>
@@ -48,7 +48,7 @@ const Contact = () => {
                     <p>– Thời gian làm việc buổi chiều: <span className='text-red-500'>từ 13h30 đến 18h00</span></p>
                 </div>
             </section>
-            <section>
+            <section className='p-8'>
                 <p>Quý khách hàng nếu có vấn đề chưa hài lòng về chất lượng phục vụ hoặc cần khiếu nại về thái độ làm việc của nhân viên tại các trung tâm Chăm sóc Khách hàng, xin vui lòng gửi email về địa chỉ chamsockhachhang@zadez.vn .</p>
                 <p>Rất hân hạnh được phục vụ quý khách hàng.</p>
                 <div className='grid grid-cols-1 md:grid-cols-2 gap-8'>
