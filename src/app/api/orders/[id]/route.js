@@ -11,6 +11,20 @@ export async function GET(req, { params }) {
       {
         model: db.Customers,
         as: "customers",
+        include: [
+          {
+            model: db.Cities,
+            as: "cities",
+          },
+          {
+            model: db.Districts,
+            as: "districts",
+          },
+          {
+            model: db.Wards,
+            as: "wards",
+          },
+        ],
       },
 
       {

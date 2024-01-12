@@ -10,8 +10,6 @@ const SelectLocations = ({
   wardId,
   setWardId,
 }) => {
-  console.log("🚀 ~ file: SelectLocations.js:12 ~ data:", data);
-  console.log(cityId, districtId, wardId);
   const optionCity = data?.cities.map((item) => {
     return {
       value: item.id,
@@ -38,12 +36,12 @@ const SelectLocations = ({
   return (
     <>
       <Form.Item
-        label="City"
+        label="Thành phố"
         name="cityId"
         rules={[
           {
             required: true,
-            message: "Please input customer's city!",
+            message: "Vui lòng chọn thành phố!",
           },
         ]}
       >
@@ -72,12 +70,12 @@ const SelectLocations = ({
       </Form.Item>
 
       <Form.Item
-        label="District"
+        label="Quận"
         name="districtId"
         rules={[
           {
             required: true,
-            message: "Please input customer's district!",
+            message: "Vui lòng chọn quận!",
           },
         ]}
       >
@@ -107,12 +105,12 @@ const SelectLocations = ({
       </Form.Item>
 
       <Form.Item
-        label="Ward"
+        label="Phường / Xã"
         name="wardId"
         rules={[
           {
             required: true,
-            message: "Please input customer's ward!",
+            message: "Vui lòng chọn phường, xã!",
           },
         ]}
       >

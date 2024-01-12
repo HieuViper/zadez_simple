@@ -23,8 +23,10 @@ export function moneyToString(money) {
 
 export function getCartStateFromLocalStorage() {
   if (typeof window !== "undefined") {
-    const item = JSON.parse(localStorage.getItem("zadez-simple"))?.state
-      .cartState;
+    const item = localStorage?.getItem("zadez-simple")
+      ? JSON.parse(localStorage.getItem("zadez-simple"))?.state.cartState
+      : null;
+
     return item;
   }
 }
@@ -39,7 +41,6 @@ export function getUserStateFromLocalStorage() {
 
 export function logOut() {
   console.log("logout");
-  const { resetCartState, resetUserState } = store();
-  resetCartState();
+  const { resetUserState } = store();
   resetUserState();
 }

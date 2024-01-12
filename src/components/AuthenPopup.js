@@ -1,6 +1,11 @@
 "use client";
 import store from "@/library/zustand/store";
-import { LockOutlined, MailOutlined, UserOutlined } from "@ant-design/icons";
+import {
+  LockOutlined,
+  MailOutlined,
+  PhoneOutlined,
+  UserOutlined,
+} from "@ant-design/icons";
 import {
   Button,
   Checkbox,
@@ -38,7 +43,7 @@ const LoginForm = () => {
               errors: [rs.message],
             },
           ]);
-        } else if (rs.roles.every((item) => item.code !== "customer")) {
+        } else if (rs.roles.some((item) => item.code !== "customer")) {
           form.setFields([
             {
               name: "email",
@@ -123,15 +128,59 @@ const LoginForm = () => {
 
 const RegisterForm = () => {
   const [form] = Form.useForm();
+  const [loading, setLoading] = useState(false);
   const onFinish = async (values) => {
+    setLoading(true);
+    values.rolesId = [4]; //customerId
     console.log("🚀 ~ file: AuthenPopup.js:10 ~ onFinish ~ values:", values);
+    await fetch(
+      `/api/users/check-exist?email=${values.email}&phone=${values.phoneNumber}`
+    )
+      .then((res) => {
+        res.json().then(async (rs) => {
+          console.log(rs);
+          if (rs.status === 200) {
+            await fetch(`/api/users`, {
+              method: "POST",
+              body: JSON.stringify(values),
+            });
+            await fetch(`/api/customers`, {
+              method: "POST",
+              body: JSON.stringify({
+                email: values.email,
+                phone: values.phoneNumber,
+                name: values.fullName,
+              }),
+            });
+            message.success("Đăng ký thành công");
+            form.resetFields();
+          } else if (rs?.code === "phone") {
+            form.setFields([
+              {
+                name: "phoneNumber",
+                errors: ["Số điện thoại này đã được đăng ký"],
+              },
+            ]);
+          } else {
+            form.setFields([
+              {
+                name: "email",
+                errors: ["Email này đã dược đăng ký"],
+              },
+            ]);
+          }
+        });
+      })
+      .catch((error) => {
+        message.error(error.message);
+      });
+    setLoading(false);
   };
 
   const validateCheckbox = (rule, value) => {
     if (!value) {
       return Promise.reject("Vui lòng đồng ý Điều khoản và Dịch vụ");
     }
-
     return Promise.resolve();
   };
   return (
@@ -145,7 +194,7 @@ const RegisterForm = () => {
       onFinish={onFinish}
     >
       <Form.Item
-        name="name"
+        name="fullName"
         rules={[
           {
             required: "true",
@@ -162,9 +211,50 @@ const RegisterForm = () => {
             required: "true",
             message: "Vui lòng nhập Email!",
           },
+          {
+            type: "email",
+            message: "The input is not valid E-mail!",
+          },
         ]}
       >
         <Input prefix={<MailOutlined />} placeholder="Email" />
+      </Form.Item>
+      <Form.Item
+        name="phoneNumber"
+        rules={[
+          {
+            required: "true",
+            message: "Vui lòng nhập Số điện thoại!",
+          },
+          () => ({
+            validator(_, value) {
+              const regexPhoneNumber = /(84|0[3|5|7|8|9])+([0-9]{8})\b/g;
+
+              if (!value) {
+                return Promise.reject();
+              }
+              if (isNaN(value)) {
+                return Promise.reject("Phone number has to be a number.");
+              }
+              if (value.length < 10) {
+                return Promise.reject(
+                  "Phone number can't be less than 10 digits"
+                );
+              }
+              if (value.length > 10) {
+                return Promise.reject(
+                  "Phone number can't be more than 10 digits"
+                );
+              }
+              if (!value.match(regexPhoneNumber)) {
+                return Promise.reject("Not valid Viet Nam phone number");
+              }
+              return Promise.resolve();
+            },
+          }),
+        ]}
+      >
+        <Input prefix={<PhoneOutlined />} placeholder="Số điện thoại" />
       </Form.Item>
       <Form.Item
         name="password"
@@ -193,7 +283,12 @@ const RegisterForm = () => {
       </Form.Item>
 
       <Form.Item>
-        <Button type="primary" htmlType="submit" className="w-full">
+        <Button
+          type="primary"
+          htmlType="submit"
+          loading={loading}
+          className="w-full"
+        >
           Đăng ký ngay
         </Button>
       </Form.Item>

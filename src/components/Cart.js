@@ -1,11 +1,11 @@
 "use client";
-import { getCartStateFromLocalStorage } from "@/library/util";
+import store from "@/library/zustand/store";
 import { Button, Divider, Drawer, Tag } from "antd";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 
 const Cart = ({ onClose, open }) => {
-  const data = getCartStateFromLocalStorage();
+  const { cartState: data } = store();
   const router = useRouter();
   return (
     <>
@@ -17,7 +17,7 @@ const Cart = ({ onClose, open }) => {
         width={520}
         // getContainer={false}
         footer={
-          data?.cartItems.length > 0 ? (
+          data?.cartItems?.length > 0 ? (
             <>
               <div>
                 <div className="flex justify-between">
@@ -54,7 +54,7 @@ const Cart = ({ onClose, open }) => {
           )
         }
       >
-        {data?.cartItems.length > 0 ? (
+        {data?.cartItems?.length > 0 ? (
           data.cartItems.map((item, i) => (
             <div key={i}>
               <div className="grid grid-cols-4 gap-2 px-2 py-1 ">

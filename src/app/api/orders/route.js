@@ -1,4 +1,7 @@
+import { sendMail } from "@/auth/mail";
+import { templateInfoOrder } from "@/library/templateMail";
 import db from "@/models";
+import axios from "axios";
 import { NextResponse } from "next/server";
 const Sequelize = require("sequelize");
 const Op = Sequelize.Op;
@@ -54,6 +57,25 @@ export async function POST(body, req) {
       price: item.price,
     };
     const rs = await db.OrderDetails.create(order_detail);
+  });
+
+  const createdOrder = await axios.get(
+    `${process.env.BASE_URL}/api/orders/${orderResult.id}`
+  );
+  console.log("🚀 ~ POST ~ createdOrder:", createdOrder.data);
+
+  const options = {
+    from: "ZADEZ <cskh@gmail.com>", // sender address
+    to: createdOrder.data.customers.email, // receiver email
+    subject: "Chi tiết đơn hàng",
+    html: templateInfoOrder(createdOrder.data),
+  };
+  sendMail(options, (info) => {
+    NextResponse.json({
+      status: 200,
+      result: "success",
+      message: "requests created successfully",
+    });
   });
 
   return NextResponse.json({

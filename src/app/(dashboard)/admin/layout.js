@@ -1,5 +1,5 @@
 "use client";
-import { getUserStateFromLocalStorage } from "@/library/util";
+import store from "@/library/zustand/store";
 import {
   AppstoreOutlined,
   CodeSandboxOutlined,
@@ -19,6 +19,7 @@ import { redirect, usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 
 const DashboardLayout = (props) => {
+  const { userState } = store();
   const {
     token: { colorBgContainer },
   } = theme.useToken();
@@ -144,7 +145,6 @@ const DashboardLayout = (props) => {
   ];
 
   useEffect(() => {
-    const userState = getUserStateFromLocalStorage();
     const token = userState.token;
 
     if (pathName === "/admin/login" && token) {

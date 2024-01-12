@@ -1,9 +1,5 @@
 "use client";
 import { useSWRData } from "@/library/api";
-import {
-  getCartStateFromLocalStorage,
-  getUserStateFromLocalStorage,
-} from "@/library/util";
 import store from "@/library/zustand/store";
 import {
   CloseOutlined,
@@ -11,17 +7,21 @@ import {
   ShoppingCartOutlined,
   UserOutlined,
 } from "@ant-design/icons";
-import { Badge, Button, Dropdown, Menu, message } from "antd";
+import { Button, Dropdown, Menu, message } from "antd";
 import { stagger, useAnimate } from "framer-motion";
+import dynamic from "next/dynamic";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import Cart from "./Cart";
 import NavBar from "./NavBar";
 import logo from "/public/images/logo-zadez.png";
+const BadgeCart = dynamic(() => import("../components/BadgeCart"), {
+  ssr: false,
+});
+
 const Header = () => {
-  const { toggleModal, resetCartState, resetUserState } = store();
-  const userState = getUserStateFromLocalStorage();
-  const cartState = getCartStateFromLocalStorage();
+  const { userState, cartState, toggleModal, resetUserState } = store();
+
   const {
     data: categories,
     isLoading,
@@ -57,9 +57,8 @@ const Header = () => {
       label: (
         <Button
           onClick={() => {
-            resetCartState();
             resetUserState();
-            message("Đăng xuất thành công!");
+            message.success("Đăng xuất thành công!");
           }}
         >
           Đăng xuất
@@ -214,12 +213,7 @@ const Header = () => {
               <NavBar data={dataTree} />
             </div>
             <div className="col-span-2 lg:flex justify-center gap-4 hidden">
-              <Badge count={cartState?.cartItems.length}>
-                <ShoppingCartOutlined
-                  style={{ fontSize: "30px" }}
-                  onClick={showDrawer}
-                />
-              </Badge>
+              <BadgeCart cartState={cartState} showDrawer={showDrawer} />
               <Dropdown
                 menu={{
                   items,
