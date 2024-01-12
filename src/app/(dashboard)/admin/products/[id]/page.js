@@ -55,9 +55,10 @@ const ProductForm = ({ params }) => {
   const [initFileList, setInitFileList] = useState([]);
   const [fileList, setFileList] = useState(initFileList);
   const [value, setValue] = useState();
+  const [isChangeCode, setIsChangeCode] = useState(false)
 
   const handleSubmit = async (value) => {
-    // setLoadingSubmit(true);
+    setLoadingSubmit(true);
     // console.log("valueForm :", value);
     const formMainImage = new FormData();
     formMainImage.append("file", previewMainPic);
@@ -68,26 +69,6 @@ const ProductForm = ({ params }) => {
     const listImage = await uploadListImage();
     try {
       if (isAddMode) {
-        // const product = {
-        //   name: value.name,
-        //   product_code: value.product_code,
-        //   price: value.price,
-        //   discount_price: value.discount_price,
-        //   categoryId: value.categoryId,
-        //   driver: value.driver,
-        //   product_position: value.product_position,
-        //   active: value.active,
-        //   status: value.status,
-        //   color: value.color,
-        //   main_image: mainImage.url || "",
-        //   sub_image: subImage.url || "",
-        //   list_image: listImage || {},
-        //   modified_by: null,
-        //   product_author: "",
-        //   manufacturerId: null,
-        //   short: value.short,
-        //   description: value.description
-        // }
         const product = {
           ...value,
           main_image: mainImage.url || "",
@@ -111,27 +92,6 @@ const ProductForm = ({ params }) => {
           }
         });
       } else {
-        // const product = {
-        //   id: id,
-        //   name: value.name,
-        //   product_code: value.product_code,
-        //   price: value.price,
-        //   discount_price: value.discount_price,
-        //   categoryId: value.categoryId,
-        //   driver: value.driver,
-        //   product_position: value.product_position,
-        //   active: value.active,
-        //   status: value.status,
-        //   color: value.color,
-        //   main_image: mainImage?.url || data.main_image || "",
-        //   sub_image: subImage?.url || data.sub_image || "",
-        //   list_image: listImage || {},
-        //   modified_by: null,
-        //   product_author: "",
-        //   manufacturerId: null,
-        //   short: value.short,
-        //   description: value.description
-        // }
         const product = {
           ...value,
           id: id,
@@ -227,6 +187,7 @@ const ProductForm = ({ params }) => {
 
   // COLOR
   const optionsColor = [
+    { value: "", label: "None" },
     { value: "red", label: "Red" },
     { value: "blue", label: "Blue" },
     { value: "green", label: "Green" },
@@ -249,6 +210,25 @@ const ProductForm = ({ params }) => {
   const onChange = (newValue) => {
     setValue(newValue);
   };
+
+  const changeCode = (e) => {
+    if (e.length <= 0) {
+      setIsChangeCode(false)
+    } else {
+      setIsChangeCode(true)
+    }
+  }
+  function generateCateCode(e) {
+    let cateCode = e.trim().normalize('NFD')
+      .replace(/[\u0300-\u036f]/g, '')
+      .replace(/đ/g, 'd')
+      .replace(/Đ/g, 'D')
+      .replace(/\s/g, "-")
+      .toLowerCase()
+    if (!isChangeCode) {
+      form.setFieldValue('product_code', cateCode);
+    }
+  }
   useEffect(() => {
     if (data) {
       form.setFieldsValue(data);
@@ -326,7 +306,7 @@ const ProductForm = ({ params }) => {
                 },
               ]}
             >
-              <Input placeholder="Input name" />
+              <Input onChange={(e) => generateCateCode(e.target.value)} placeholder="Input name" />
             </Form.Item>
             <Form.Item
               label={<span className="font-medium">Code</span>}
@@ -338,11 +318,17 @@ const ProductForm = ({ params }) => {
                 },
               ]}
             >
-              <Input placeholder="Input Product Code" />
+              <Input onChange={(e) => changeCode(e.target.value)} placeholder="Input product code" />
             </Form.Item>
             <Form.Item
               label={<span className="font-medium">Price</span>}
               name="price"
+              rules={[
+                {
+                  required: true,
+                  message: "Please input price!",
+                },
+              ]}
             >
               <Input placeholder="Input price" />
             </Form.Item>
@@ -397,15 +383,23 @@ const ProductForm = ({ params }) => {
               label={<span className="font-medium">Status</span>}
               name="status"
             >
-              {/* <Select placeholder="Select status" >
-              <Option value={"in"}>In Stock</Option>
-              <Option value={"out"}>Out Stock</Option>
-            </Select> */}
-              <Input placeholder="status: new, outstanding, best, ..." />
+              <Select placeholder="Select status" >
+                <Option value={""}>None</Option>
+                <Option value={"new"}>New</Option>
+                <Option value={"outstanding"}>Outstanding</Option>
+                <Option value={"best"}>BestSeller</Option>
+              </Select>
+              {/* <Input placeholder="status: new, outstanding, best, ..." /> */}
             </Form.Item>
             <Form.Item
               label={<span className="font-medium">Stock</span>}
               name="stock"
+              rules={[
+                {
+                  required: true,
+                  message: "Please input stock!",
+                },
+              ]}
             >
               <Select placeholder="Select stock">
                 <Option value={"in"}>In Stock</Option>

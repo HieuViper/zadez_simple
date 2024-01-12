@@ -6,6 +6,7 @@ import {
     Form,
     Image,
     Input,
+    InputNumber,
     Select,
     Switch,
     Tabs,
@@ -24,7 +25,7 @@ import {
 } from "next/navigation";
 import { useSWRData, useSWRUpload } from '@/library/api';
 const CategoriesForm = ({ params }) => {
-
+    const { Option } = Select;
     const isAddMode = params.id == 0 ? true : false;
     const searchParams = useSearchParams();
     const router = useRouter();
@@ -252,13 +253,18 @@ const CategoriesForm = ({ params }) => {
                 //     },
                 // ]}
                 >
-                    <Input placeholder="Input type" />
+                    {/* <Input placeholder="Input type" /> */}
+                    <Select placeholder="Select type">
+                        <Option value={""}>None</Option>
+                        <Option value={"categories"}>Categories</Option>
+                        <Option value={"products"}>Products</Option>
+                    </Select>
                 </Form.Item>
                 <Form.Item
                     label={<span className="font-medium ">Order</span>}
                     name={`order`}
                 >
-                    <Input placeholder="Input order" />
+                    <InputNumber />
                 </Form.Item>
                 <Form.Item
                     label={<span className="font-medium ">Description</span>}
