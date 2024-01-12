@@ -47,7 +47,7 @@ const DashboardLayout = (props) => {
       getItem(
         "/admin/products/0",
         null,
-        <Link href="/admin/products/0">Add Products</Link>
+        <Link href="/admin/products/0?previousPage=1&previousLimit=10">Add Products</Link>
       ),
     ]),
     getItem("Categories", "Categories", <AppstoreOutlined />, [
@@ -59,7 +59,7 @@ const DashboardLayout = (props) => {
       getItem(
         "/admin/categories/0",
         null,
-        <Link href="/admin/categories/0">Add Categories</Link>
+        <Link href="/admin/categories/0?previousPage=1&previousLimit=10">Add Categories</Link>
       ),
     ]),
     getItem("Orders", "Orders", <ShoppingCartOutlined />, [
