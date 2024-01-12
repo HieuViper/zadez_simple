@@ -64,6 +64,7 @@ const Header = () => {
         <Button
           onClick={() => {
             resetUserState();
+            window.location.reload();
             message.success("Đăng xuất thành công!");
           }}
           icon={<LogoutOutlined />}

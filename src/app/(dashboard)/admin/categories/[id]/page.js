@@ -270,7 +270,6 @@ const CategoriesForm = ({ params }) => {
           <Select placeholder="Select type">
             <Option value={""}>None - Root Category</Option>
             <Option value={"categories"}>Categories - First Level</Option>
-            <Option value={"products"}>Products - Second level</Option>
           </Select>
         </Form.Item>
         <Form.Item
