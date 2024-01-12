@@ -179,7 +179,7 @@ export default function Home() {
         <div className="mx-2 lg:mx-20 grid grid-cols-4 md:grid-cols-5 gap-2 ">
           {menuCategory.map((item, i) => (
             <Link
-              href={`/categories/0?type=${item.type}`}
+              href={`/danh-muc-san-pham/0?type=${item.type}`}
               key={i}
               className="hover:text-red-500 cursor-pointer no-underline text-black col-span-2 md:col-span-1 flex flex-col justify-center items-center hover:transform hover:scale-105 transition-transform duration-300 ease-in-out"
             >

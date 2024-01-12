@@ -77,7 +77,7 @@ const Categories = () => {
                 <div
                     className="col-span-3 md:col-span-1 flex flex-col justify-center items-center bg-stone-200 rounded-2xl m-4 cursor-pointer hover:text-red-500 hover:transform hover:scale-105 transition-transform duration-300 ease-in-out"
                     onClick={() => {
-                        router.push(`/categories/0?type=audio`);
+                        router.push(`/danh-muc-san-pham/0?type=audio`);
                     }}
                 >
                     <Image
@@ -97,7 +97,7 @@ const Categories = () => {
                     <div
                         className=" col-span-2 md:col-span-1 flex flex-col justify-center items-center bg-stone-200 rounded-2xl m-4 cursor-pointer hover:text-red-500 hover:transform hover:scale-105 transition-transform duration-300 ease-in-out"
                         onClick={() => {
-                            router.push(`/categories/0?type=mouse`);
+                            router.push(`/danh-muc-san-pham/0?type=mouse`);
                         }}
                     >
                         <Image
@@ -116,7 +116,7 @@ const Categories = () => {
                     <div
                         className="col-span-2 md:col-span-1 flex flex-col justify-center items-center bg-stone-200 rounded-2xl m-4 cursor-pointer hover:text-red-500 hover:transform hover:scale-105 transition-transform duration-300 ease-in-out"
                         onClick={() => {
-                            router.push(`/categories/0?type=mouse`);
+                            router.push(`/danh-muc-san-pham/0?type=mouse`);
                         }}
                     >
                         <Image
@@ -135,7 +135,7 @@ const Categories = () => {
                     <div
                         className=" col-span-2 md:col-span-1 flex flex-col justify-center items-center bg-stone-200 rounded-2xl m-4 cursor-pointer hover:text-red-500 hover:transform hover:scale-105 transition-transform duration-300 ease-in-out"
                         onClick={() => {
-                            router.push(`/categories/0?type=keyboard`);
+                            router.push(`/danh-muc-san-pham/0?type=keyboard`);
                         }}
                     >
                         <Image
@@ -149,7 +149,7 @@ const Categories = () => {
                             src="/images/categories/smartwatch.webp"
                             alt="Đồng hồ thông minh"
                             onClick={() => {
-                                router.push(`/categories/0?type=smartwatch`);
+                                router.push(`/danh-muc-san-pham/0?type=smartwatch`);
                             }}
                         />
                         <div className="mb-4">Đồng hồ thông minh</div>
@@ -157,7 +157,7 @@ const Categories = () => {
                     <div
                         className="col-span-2 md:col-span-1 flex flex-col justify-center items-center bg-stone-200 rounded-2xl m-4 cursor-pointer hover:text-red-500 hover:transform hover:scale-105 transition-transform duration-300 ease-in-out"
                         onClick={() => {
-                            router.push(`/categories/0?type=accessories`);
+                            router.push(`/danh-muc-san-pham/0?type=accessories`);
                         }}
                     >
                         <Image
@@ -177,7 +177,7 @@ const Categories = () => {
                 <div
                     className="col-span-3 md:col-span-1 flex flex-col justify-center items-center bg-stone-200 rounded-2xl m-4 cursor-pointer hover:text-red-500 hover:transform hover:scale-105 transition-transform duration-300 ease-in-out"
                     onClick={() => {
-                        router.push(`/categories/0?type=audio`);
+                        router.push(`/danh-muc-san-pham/0?type=audio`);
                     }}
                 >
                     <Image
