@@ -65,7 +65,7 @@ const Product = ({ params }) => {
             ) : (
               <div>
                 Giá:
-                <span className="text-red-500 font-semibold text-sx md:text-sm lg:text-base mx-2">{moneyToString(product?.price)} ₫</span>
+                <span className="text-red-500 font-semibold text-base md:text-xl lg:text-2xl mx-2">{moneyToString(product?.price)} ₫</span>
               </div>
             )}
           </div>
