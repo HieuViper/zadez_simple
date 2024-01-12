@@ -12,14 +12,23 @@ import {
   TrademarkOutlined,
   UserOutlined,
 } from "@ant-design/icons";
-import { Avatar, Button, Layout, Menu, theme } from "antd";
+import {
+  Avatar,
+  Button,
+  Dropdown,
+  Layout,
+  Menu,
+  Popconfirm,
+  theme,
+} from "antd";
 import Image from "next/image";
 import Link from "next/link";
-import { redirect, usePathname } from "next/navigation";
+import { redirect, usePathname, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
 const DashboardLayout = (props) => {
-  const { userState } = store();
+  const router = useRouter();
+  const { userState, resetUserState } = store();
   const {
     token: { colorBgContainer },
   } = theme.useToken();
@@ -183,7 +192,6 @@ const DashboardLayout = (props) => {
         <Menu
           theme="dark"
           mode="inline"
-          // defaultSelectedKeys={["news"]}
           selectedKeys={[location]}
           items={items}
         />
@@ -208,33 +216,24 @@ const DashboardLayout = (props) => {
               height: 64,
             }}
           />
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              paddingRight: "20px",
-              gap: "6px",
-            }}
-          >
-            {props.user?.image ? (
-              <Image
-                src={props.user.image}
-                width={30}
-                height={30}
-                style={{ width: "30px", height: "30px" }}
-                className="mr-2"
-                alt={props.user.display}
-              />
-            ) : (
-              <Avatar icon={<UserOutlined />} />
-            )}
-            <Button
-              type="dashed"
-              icon={<LogoutOutlined />}
-              onClick={() => props.logout()}
+          <div className="flex items-center pr-5 gap-2">
+            <DropdownAvatar userState={userState} />
+
+            <Popconfirm
+              title="Logout Action"
+              description="Are you sure to logout?"
+              onConfirm={() => {
+                resetUserState();
+                router.push("/admin/login");
+              }}
+              onCancel={() => {}}
+              okText="Yes"
+              cancelText="No"
             >
-              Logout
-            </Button>
+              <Button type="dashed" icon={<LogoutOutlined />}>
+                Logout
+              </Button>
+            </Popconfirm>
           </div>
         </Layout.Header>
         <Layout.Content
@@ -255,3 +254,27 @@ const DashboardLayout = (props) => {
 };
 
 export default DashboardLayout;
+
+const DropdownAvatar = ({ userState }) => {
+  const items = [
+    {
+      key: "1",
+      label: `Welcome, ${userState.fullName}`,
+    },
+    {
+      key: "2",
+      danger: true,
+      label: (
+        <span>
+          Role:{" "}
+          <strong>{userState.roles.map((item) => item.name).join(", ")}</strong>
+        </span>
+      ),
+    },
+  ];
+  return (
+    <Dropdown menu={{ items }}>
+      <Avatar icon={<UserOutlined />} />
+    </Dropdown>
+  );
+};

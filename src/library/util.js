@@ -1,5 +1,4 @@
 import axios from "axios";
-import store from "./zustand/store";
 
 export const fetcher = (url) => axios.get(url).then((res) => res.data);
 
@@ -37,10 +36,4 @@ export function getUserStateFromLocalStorage() {
       .userState;
     return item;
   }
-}
-
-export function logOut() {
-  console.log("logout");
-  const { resetUserState } = store();
-  resetUserState();
 }

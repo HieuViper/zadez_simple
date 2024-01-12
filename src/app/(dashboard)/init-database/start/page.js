@@ -68,6 +68,7 @@ const StartPage = () => {
 
       const hashedPassword = await bcrypt.hash("admin", 10);
       const adminUser = {
+        fullName: "Admin",
         email: "admin@gmail.com",
         phoneNumber: "0909999999",
         password: hashedPassword,
@@ -77,6 +78,12 @@ const StartPage = () => {
         await db.Roles.create(roles[index]);
       }
       await db.Users.create(adminUser);
+
+      const userRoles = {
+        userId: 1,
+        roleId: 1,
+      };
+      await db.UserRoles.create(userRoles);
     } catch (error) {
       console.error("Error importing data:", error.message);
     }
