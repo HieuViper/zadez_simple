@@ -41,7 +41,7 @@ const NavBar = ({ data }) => {
                                                         {item?.image && <Image src={item.image} width={50} height={50} className='p-2' alt={item.name} />}
                                                         <h2 className="text-xs 2xl:text-base font-semibold mr-2">{item.name}</h2>
                                                     </div>
-                                                    {item.children &&
+                                                    {item.products &&
                                                         <span className="md:block hidden transition-all transform group-hover/item:-rotate-90 mx-4  ">
                                                             <Image
                                                                 height={12}
@@ -53,12 +53,12 @@ const NavBar = ({ data }) => {
                                                     }
                                                 </div>
                                             </Link>
-                                            {item.children && <div className="absolute -mt-10 -right-[264px] m-2 w-60  hidden  group-hover/item:md:block hover:md:block bg-white p-2 gap-10  rounded-xl shadow-lg">
-                                                {item?.children && item?.children.map((item, i) => (
-                                                    <Link key={i} href={`${item.type = 'products' && `/san-pham`}/${item.category_code}-${item.id}`} className='col-span-1' style={{ textDecoration: "none", color: "black" }}>
+                                            {item.products && <div className="absolute -mt-10 -right-[264px] m-2 w-60  hidden  group-hover/item:md:block hover:md:block bg-white p-2 gap-10  rounded-xl shadow-lg">
+                                                {item?.products && item?.products.map((item, i) => (
+                                                    <Link key={i} href={`/san-pham/${item.product_code}-${item.id}`} className='col-span-1' style={{ textDecoration: "none", color: "black" }}>
                                                         <div className='flex items-center  hover:text-red-500 duration-300 transition'>
-                                                            {item?.image &&
-                                                                <Image src={item.image} width={50} height={50} className='p-2' alt={item.name} />}
+                                                            {item?.main_image &&
+                                                                <Image src={item.main_image} width={50} height={50} className='p-2' alt={item.name} />}
                                                             <h2 className="text-xs 2xl:text-base font-semibold">{item.name}</h2>
                                                         </div>
                                                     </Link>
