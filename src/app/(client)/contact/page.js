@@ -14,11 +14,11 @@ const Contact = () => {
     return (
         <div>
 
-            <section className='flex flex-col justify-center items-center text-center'>
+            <section className='flex flex-col justify-center items-center text-center md:mx-20 lg:mx-40'>
                 <h1 className='text-4xl text-red-500'>
                     Trung Tâm Bảo Hành – Chăm Sóc Khách Hàng
                 </h1>
-                <p className='text-[#999999] text-base'>Chào mừng Quý khách hàng đến với Trung tâm bảo hành và Chăm sóc khách hàng của ZADEZ tại Việt Nam. Quý khách hàng có thể yêu cầu tư vấn/ hỗ trợ trực tuyến thông qua các kênh CSKH chính thức của ZADEZ hoặc liên hệ trực tiếp đến Trung tâm CSKH.</p>
+                <p className='text-base'>Chào mừng Quý khách hàng đến với Trung tâm bảo hành và Chăm sóc khách hàng của ZADEZ tại Việt Nam. Quý khách hàng có thể yêu cầu tư vấn/ hỗ trợ trực tuyến thông qua các kênh CSKH chính thức của ZADEZ hoặc liên hệ trực tiếp đến Trung tâm CSKH.</p>
             </section>
             <section className='flex flex-col justify-center items-center text-center'>
                 <h4 className='text-2xl text-red-500'>Trung Tâm Bảo Hành & CSKH Tại Tp. Hồ Chí Minh</h4>
@@ -48,9 +48,9 @@ const Contact = () => {
                     <p>– Thời gian làm việc buổi chiều: <span className='text-red-500'>từ 13h30 đến 18h00</span></p>
                 </div>
             </section>
-            <section className='p-8'>
-                <p>Quý khách hàng nếu có vấn đề chưa hài lòng về chất lượng phục vụ hoặc cần khiếu nại về thái độ làm việc của nhân viên tại các trung tâm Chăm sóc Khách hàng, xin vui lòng gửi email về địa chỉ chamsockhachhang@zadez.vn .</p>
-                <p>Rất hân hạnh được phục vụ quý khách hàng.</p>
+            <section className='p-8 '>
+                <p className='font-medium'>Quý khách hàng nếu có vấn đề chưa hài lòng về chất lượng phục vụ hoặc cần khiếu nại về thái độ làm việc của nhân viên tại các trung tâm Chăm sóc Khách hàng, xin vui lòng gửi email về địa chỉ <span className='text-red-500'>chamsockhachhang@zadez.vn</span> .</p>
+                <p className='font-medium'>Rất hân hạnh được phục vụ quý khách hàng.</p>
                 <div className='grid grid-cols-1 md:grid-cols-2 gap-8'>
                     {QRCode?.map((item, i) => (
                         <div key={i} className='col-span-2 md:col-span-1 grid-cols-3 flex'>
