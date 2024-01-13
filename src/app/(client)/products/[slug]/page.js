@@ -25,6 +25,8 @@ const Product = ({ params }) => {
   if (isLoading) return <div className=" h-screen flex flex-col items-center justify-center">
     <Spin size="large" />
   </div>;
+
+  const similarProductsFilter = similarProducts?.data.filter(item => item.id !== product?.id);
   return (
     <div className=" py-4 ">
       <div className="grid grid-cols-5 gap-5">
@@ -69,29 +71,6 @@ const Product = ({ params }) => {
               </div>
             )}
           </div>
-          {/* <div className='flex py-2 gap-3'>
-                        <div>Chọn màu:</div>
-                        <div className='w-8 h-8 p-[1px] flex justify-center items-center rounded-full cursor-pointer border hover:border-blue-500 duration-200'>
-                            <div className=' w-6 h-6 bg-blue-500 rounded-full'></div>
-                        </div>
-                        <div className='w-8 h-8 p-[1px] flex justify-center items-center rounded-full cursor-pointer border hover:border-red-500 duration-200'>
-                            <div className=' w-6 h-6 bg-red-500 rounded-full'></div>
-                        </div>
-                        <div className='w-8 h-8 p-[1px] flex justify-center items-center rounded-full cursor-pointer border hover:border-green-500 duration-200'>
-                            <div className=' w-6 h-6 bg-green-500 rounded-full'></div>
-                        </div>
-                    </div> */}
-          {/* <div className='flex pb-2'>
-                        <div className=''>
-                            <Input 
-                                maxLength={3}
-                            style={{ width: '40%' }}
-                                addonBefore={<MinusOutlined />}
-                                addonAfter={<PlusOutlined />}
-                                defaultValue={qty} />
-                            </div>
-
-                    </div> */}
           {product?.stock == "in" ? (
             <>
               <div className="pb-2">
@@ -128,63 +107,6 @@ const Product = ({ params }) => {
             </div>
           )}
           <div>
-            {/* <table class="table-auto">
-                            <thead>
-                                <tr>
-                                    <th>Song</th>
-                                    <th>Artist</th>
-                                    <th>Year</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>The Sliding Mr. Bones (Next Stop, Pottersville)</td>
-                                    <td>Malcolm Lockyer</td>
-                                    <td>1961</td>
-                                </tr>
-                                <tr>
-                                    <td>Witchy Woman</td>
-                                    <td>The Eagles</td>
-                                    <td>1972</td>
-                                </tr>
-                                <tr>
-                                    <td>Shining Star</td>
-                                    <td>Earth, Wind, and Fire</td>
-                                    <td>1975</td>
-                                </tr>
-                                <tr>
-                                    <td>Shining Star</td>
-                                    <td>Earth, Wind, and Fire</td>
-                                    <td>1975</td>
-                                </tr>
-                                <tr>
-                                    <td>Shining Star</td>
-                                    <td>Earth, Wind, and Fire</td>
-                                    <td>1975</td>
-                                </tr>
-                                <tr>
-                                    <td>Shining Star</td>
-                                    <td>Earth, Wind, and Fire</td>
-                                    <td>1975</td>
-                                </tr>
-                                <tr>
-                                    <td>Shining Star</td>
-                                    <td>Earth, Wind, and Fire</td>
-                                    <td>1975</td>
-                                </tr>
-                                <tr>
-                                    <td>Shining Star</td>
-                                    <td>Earth, Wind, and Fire</td>
-                                    <td>1975</td>
-                                </tr>
-                                <tr>
-                                    <td>Shining Star</td>
-                                    <td>Earth, Wind, and Fire</td>
-                                    <td>1975</td>
-                                </tr>
-
-                            </tbody>
-                        </table> */}
           </div>
         </div>
       </div>
@@ -192,10 +114,10 @@ const Product = ({ params }) => {
         <div dangerouslySetInnerHTML={{ __html: product?.description }} />
       </div>
       {/* SIMILAR PRODUCT */}
-      <div className="pt-10 px-2 md:10">
-        <h2 className="text-lg font-normal">Sản phẩm tượng tự</h2>
-        <SlideCard data={similarProducts?.data} />
-      </div>
+      {similarProductsFilter?.length > 0 && <div className="pt-10 px-2 md:10">
+        <h2 className="text-xl font-bold">Sản phẩm tượng tự</h2>
+        <SlideCard data={similarProductsFilter} />
+      </div>}
     </div>
   );
 };
