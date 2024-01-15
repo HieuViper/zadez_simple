@@ -76,6 +76,7 @@ const Header = () => {
     },
   ];
 
+  // BUILD TREE DATA
   function buildCategoryTree(categories, parent = null) {
     const categoryTree = [];
 
@@ -88,13 +89,21 @@ const Header = () => {
         categoryTree.push(category);
       }
     }
+    // return categoryTree;
+    categoryTree.sort((a, b) => (a.order || Infinity) - (b.order || Infinity));
+    categoryTree.forEach(item => {
+      if (item.children && item.children.length > 0) {
+        item.children = item.children.sort((a, b) => (a.order || Infinity) - (b.order || Infinity));
+      }
+      if (item.products && item.products.length > 0) {
+        item.products.sort((a, b) => (a.order || Infinity) - (b.order || Infinity));
+      }
+    });
     return categoryTree;
   }
-  const sortedCat = categories?.data.sort(
-    (a, b) => (a.order || 0) - (b.order || 0)
-  );
-  const dataTree = categories && buildCategoryTree(sortedCat);
+  const dataTree = categories && buildCategoryTree(categories?.data);
 
+  // SUB MENU
   const { SubMenu } = Menu;
   const MenuHeader = ({ menuData, mode }) => {
     const menuItems = (data) => {
