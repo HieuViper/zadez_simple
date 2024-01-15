@@ -191,9 +191,6 @@ body {
     align-items: center;
   }
 }
-.editor image .image_resized {
-  /* align-content: center; */
-}
 
 .zalo-chat-widget {
   z-index: 1000;
