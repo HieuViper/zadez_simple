@@ -133,7 +133,7 @@ const UserList = () => {
 
       <Table
         columns={columns}
-        dataSource={data.data}
+        dataSource={data?.data}
         loading={isLoading}
         pagination={{
           pageSize: data.pagging.limit,
