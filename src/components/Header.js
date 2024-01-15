@@ -76,6 +76,7 @@ const Header = () => {
     },
   ];
 
+  // BUILD TREE DATA
   function buildCategoryTree(categories, parent = null) {
     const categoryTree = [];
 
@@ -88,13 +89,21 @@ const Header = () => {
         categoryTree.push(category);
       }
     }
+    // return categoryTree;
+    categoryTree.sort((a, b) => (a.order || Infinity) - (b.order || Infinity));
+    categoryTree.forEach(item => {
+      if (item.children && item.children.length > 0) {
+        item.children = item.children.sort((a, b) => (a.order || Infinity) - (b.order || Infinity));
+      }
+      if (item.products && item.products.length > 0) {
+        item.products.sort((a, b) => (a.order || Infinity) - (b.order || Infinity));
+      }
+    });
     return categoryTree;
   }
-  const sortedCat = categories?.data.sort(
-    (a, b) => (a.order || 0) - (b.order || 0)
-  );
-  const dataTree = categories && buildCategoryTree(sortedCat);
+  const dataTree = categories && buildCategoryTree(categories?.data);
 
+  // SUB MENU
   const { SubMenu } = Menu;
   const MenuHeader = ({ menuData, mode }) => {
     const menuItems = (data) => {
@@ -111,9 +120,8 @@ const Header = () => {
         return (
           <Menu.Item key={item.id}>
             <a
-              href={`${item.type && `/${item.type}`}/${item.category_code}-${
-                item.id
-              }`}
+              href={`${item.type && `/${item.type}`}/${item.category_code}-${item.id
+                }`}
             >
               <div>{item.name}</div>
             </a>
@@ -136,25 +144,25 @@ const Header = () => {
     useEffect(() => {
       const menuAnimations = isOpenMenu
         ? [
-            [
-              "nav",
-              { transform: "translateX(0%)" },
-              { ease: [0.08, 0.65, 0.53, 0.96], duration: 0.2 },
-            ],
-            [
-              "li",
-              { transform: "scale(1)", opacity: 1, filter: "blur(0px)" },
-              { delay: stagger(0.01), at: "-0.1" },
-            ],
-          ]
+          [
+            "nav",
+            { transform: "translateX(0%)" },
+            { ease: [0.08, 0.65, 0.53, 0.96], duration: 0.2 },
+          ],
+          [
+            "li",
+            { transform: "scale(1)", opacity: 1, filter: "blur(0px)" },
+            { delay: stagger(0.01), at: "-0.1" },
+          ],
+        ]
         : [
-            [
-              "li",
-              { transform: "scale(0.5)", opacity: 0, filter: "blur(10px)" },
-              { delay: stagger(0.01, { from: "last" }), at: "<" },
-            ],
-            ["nav", { transform: "translateX(-100%)" }, { at: "-0.1" }],
-          ];
+          [
+            "li",
+            { transform: "scale(0.5)", opacity: 0, filter: "blur(10px)" },
+            { delay: stagger(0.01, { from: "last" }), at: "<" },
+          ],
+          ["nav", { transform: "translateX(-100%)" }, { at: "-0.1" }],
+        ];
 
       animate([
         [
@@ -189,9 +197,8 @@ const Header = () => {
   };
   return (
     <header
-      className={`${
-        scrollPosition > 0 ? "shadow-md py-2" : "lg:py-4 py-2"
-      }  w-full bg-[#fafafa]  px-2 fixed top-0 z-30 transition-all duration-500`}
+      className={`${scrollPosition > 0 ? "shadow-md py-2" : "shadow-sm lg:py-4 py-2"
+        }  w-full bg-[#fafafa]  px-2 fixed top-0 z-30 transition-all duration-500`}
     >
       {/* <Head>
                 <script src="https://sp.zalo.me/plugins/sdk.js"></script>

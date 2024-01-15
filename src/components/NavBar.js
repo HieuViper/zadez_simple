@@ -15,12 +15,12 @@ const NavBar = ({ data }) => {
                   href={`/${item.category_code}`}
                   style={{ textDecoration: "none", color: "black" }}
                 >
-                  <span className="py-2 flex justify-between items-center md:pr-0 pr-5 text-base lg:text-xs 2xl:text-base md:cursor-pointer group-hover:text-red-500 text-black duration-300 transition">
+                  <span className="py-2 flex justify-between items-center md:pr-0 pr-5 text-sm lg:text-xs 2xl:text-base font-medium md:cursor-pointer group-hover:text-red-500 text-black duration-300 transition">
                     {item.name}
                   </span>
                 </Link>
               ) : (
-                <span className="font-medium py-2 flex justify-between items-center md:pr-0 pr-5 text-base lg:text-xs 2xl:text-base md:cursor-pointer group-hover:text-red-500 text-black duration-300 transition">
+                <span className=" py-2 flex justify-between items-center md:pr-0 pr-5 text-sm lg:text-xs 2xl:text-base font-medium md:cursor-pointer group-hover:text-red-500 text-black duration-300 transition">
                   {item.name}
                   {item?.children && (
                     <span className="text-xs md:mt-1 md:ml-2  md:block hidden transition-all transform group-hover:rotate-180 group-hover:-mt-2">
@@ -36,21 +36,17 @@ const NavBar = ({ data }) => {
               )}
               {item?.children && (
                 <div
-                  className={`absolute ${
-                    scrollPosition > 0 ? "top-8" : "top-12"
-                  } hidden group-hover:md:block hover:md:block bg-white mt-5 py-2 pl-2 gap-10  rounded-xl shadow-lg  ease-in-out transition-all duration-500`}
+                  className={`absolute ${scrollPosition > 0 ? "top-8" : "top-12"
+                    } hidden group-hover:md:block hover:md:block bg-white mt-5 py-2 pl-2 gap-10  rounded-xl shadow-lg  ease-in-out transition-all duration-500`}
                 >
                   {item?.children &&
                     item?.children.map((item, i) => (
                       <div key={i} className=" md:cursor-pointer group/item ">
                         <Link
-                          href={`${(item.type =
-                            "categories" && `/danh-muc-san-pham`)}/${
-                            item.category_code
-                          }-${item.id}`}
+                          href={`${(item.products.length > 0 ? `/danh-muc-san-pham` : '')}/${item.category_code}-${item.id}`}
                           style={{ textDecoration: "none", color: "black" }}
                         >
-                          <div className="col-span-1 flex items-center justify-between group-hover/item:text-red-500 duration-300 transition">
+                          <div className="col-span-1 flex items-center justify-between group-hover/item:text-red-500 duration-300 transition mx-2">
                             <div className="flex items-center justify-center flex-wrap">
                               {item?.image && (
                                 <Image
@@ -61,12 +57,12 @@ const NavBar = ({ data }) => {
                                   alt={item.name}
                                 />
                               )}
-                              <h2 className="text-xs 2xl:text-base font-semibold mr-2">
+                              <span className="text-xs 2xl:text-base font-medium my-1 mr-2">
                                 {item.name}
-                              </h2>
+                              </span>
                             </div>
                             {item.products.length > 0 && (
-                              <span className="md:block hidden transition-all transform group-hover/item:-rotate-90 mx-4  ">
+                              <span className="md:block hidden transition-all transform group-hover/item:-rotate-90 mr-2  ">
                                 <Image
                                   height={12}
                                   width={12}
@@ -78,7 +74,7 @@ const NavBar = ({ data }) => {
                           </div>
                         </Link>
                         {item.products.length > 0 && (
-                          <div className="absolute -mt-10 -right-[264px] m-2 w-60  hidden  group-hover/item:md:block hover:md:block bg-white p-2 gap-10  rounded-xl shadow-lg">
+                          <div className="absolute -mt-8 -right-[264px] m-2 w-60  hidden  group-hover/item:md:block hover:md:block bg-white p-2 gap-10  rounded-xl shadow-lg">
                             {item?.products.length > 0 &&
                               item?.products.map((item, i) => (
                                 <Link
@@ -94,15 +90,15 @@ const NavBar = ({ data }) => {
                                     {item?.main_image && (
                                       <Image
                                         src={item.main_image}
-                                        width={50}
-                                        height={50}
-                                        className="p-2"
+                                        width={40}
+                                        height={40}
+                                        className="p-1"
                                         alt={item.name}
                                       />
                                     )}
-                                    <h2 className="text-xs 2xl:text-base font-semibold">
+                                    <span className="text-xs 2xl:text-base font-medium my-1">
                                       {item.name}
-                                    </h2>
+                                    </span>
                                   </div>
                                 </Link>
                               ))}

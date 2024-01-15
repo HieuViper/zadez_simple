@@ -124,6 +124,9 @@ body {
   object-fit: cover;
   border-radius: 10px;
 }
+.mySwiperCard .swiper-wrapper {
+  padding-bottom: 4px;
+}
 /* .swiper-button-prev,
 .swiper-button-next {
   visibility: hidden;
@@ -161,12 +164,15 @@ body {
   background-color: #d7d9f2;
 }
 
-.editor .detail_product img {
+.editor img {
   margin-bottom: 20px;
+  max-width: 100%;
+  /* object-fit: contain; */
+  height: auto;
+  pointer-events: none;
 }
 .editor figure {
-  padding-bottom: 10px;
-  padding-top: 10px;
+  margin: 0;
 }
 
 .editor table {

@@ -139,7 +139,7 @@ export default function Home() {
     },
   ];
   return (
-    <main className="w-full bg-[#f8f9fa]">
+    <main className="w-full">
       {/* BANNER */}
       {/* <section id="banner" className="w-full m-auto -mt-10">
         <Image
@@ -258,7 +258,7 @@ export default function Home() {
             ZADEZ chính hãng.
           </p>
         </div>
-        <div className="grid grid-cols-2 gap-2">
+        <div className="grid grid-cols-2 gap-4">
           <div className="col-span-2 md:col-span-1 ">
             <h4 className="text-lg text-red-500 font-medium ">
               Ý Nghĩa Biểu Tượng
@@ -291,7 +291,7 @@ export default function Home() {
               <b>ZADEZ - Make Life Easier</b>
             </p>
           </div>
-          <div className="col-span-2 md:col-span-1 ">
+          <div className="col-span-2 md:col-span-1 flex items-center">
             <Image
               sizes="100vw"
               style={{
@@ -302,6 +302,7 @@ export default function Home() {
               width={500}
               height={500}
               alt="ZADEZ logo"
+              className="rounded-lg shadow-md"
             />
           </div>
         </div>
