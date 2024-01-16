@@ -4,7 +4,6 @@ import store from "./zustand/store";
 
 export const useSWRData = (endpoint, params = {}) => {
   const { userState } = store();
-  console.log("🚀 ~ useSWRData ~ userState:", userState);
   const headers = {};
   if (userState.token) {
     headers["Authorization"] = `${userState.token}`;

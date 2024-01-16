@@ -27,7 +27,7 @@ const ConstsList = () => {
           <Image
             height={50}
             width={50}
-            src={item ? item : "/no-image.jpg"}
+            src={item ? `${item}` : "/no-image.jpg"}
             alt={record?.value}
             priority={true}
           />

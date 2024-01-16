@@ -16,8 +16,8 @@ const CartPageComp = () => {
   console.log("🚀 ~ CartPage ~ cartState:", cartState);
   const router = useRouter();
   return cartState?.cartItems.length > 0 ? (
-    <div>
-      <ol className="flex items-center justify-center w-full p-3 space-x-2 text-sm font-medium text-center text-gray-500 bg-white  rounded-lg  sm:text-base  sm:p-4 sm:space-x-4 mb-4 mt-0">
+    <div className="bg-white p-3 rounded-xl">
+      <ol className="flex items-center justify-center p-3 space-x-2 text-sm font-medium text-center text-gray-500 bg-white  rounded-lg  sm:text-base  sm:p-4 sm:space-x-4 mb-4 mt-0">
         <li className="flex items-center text-primary">
           <span className="flex items-center justify-center w-5 h-5 me-2 text-xs bg-primary text-white rounded-full shrink-0 ">
             1

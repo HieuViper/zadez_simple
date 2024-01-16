@@ -3,6 +3,7 @@ import { useSWRData } from "@/library/api";
 import { DeleteOutlined, EditOutlined } from "@ant-design/icons";
 import { Button, Divider, Popconfirm, Table, Tag } from "antd";
 import Search from "antd/es/input/Search";
+import Image from "next/image";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useState } from "react";
@@ -89,7 +90,12 @@ const ProductList = () => {
       key: "main_image",
       render: (image) => (
         <div>
-          <img className="w-20" src={image} alt="main_image" />
+          <Image
+            width={100}
+            height={100}
+            src={image ? `${image}` : "/no-image.jpg"}
+            alt="image"
+          />
         </div>
       ),
     },
