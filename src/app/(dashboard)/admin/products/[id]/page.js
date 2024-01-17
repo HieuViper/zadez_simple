@@ -77,7 +77,7 @@ const ProductForm = ({ params }) => {
           modified_by: null,
           product_author: "",
           manufacturerId: null,
-          description: null || "",
+          description: value.description == null || "",
         };
         // console.log("product add:", product);
         createData(product).then((res) => {
@@ -245,9 +245,11 @@ const ProductForm = ({ params }) => {
   return (
     <div>
       <div className="flex justify-between mb-4">
-        <Button type="dashed" icon={<SwapLeftOutlined />}>
-          <Link href={`/admin/products`}>Back to Products</Link>
-        </Button>
+        <Link href={`/admin/products`}>
+          <Button type="dashed" icon={<SwapLeftOutlined />}>
+            Back to Products
+          </Button>
+        </Link>
         {isAddMode ? (
           <Button
             form="myForm"
@@ -615,7 +617,7 @@ const ProductForm = ({ params }) => {
             ]}
           >
             <Upload
-              action=""
+              action="https://run.mocky.io/v3/435e224c-44fb-4773-9faf-380c5e6a2188"
               listType="picture-card"
               fileList={fileList}
               multiple={true}

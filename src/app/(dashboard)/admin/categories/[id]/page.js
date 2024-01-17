@@ -122,7 +122,12 @@ const CategoriesForm = ({ params }) => {
   const filterCategories =
     categories && categories?.data.filter((item) => item.id !== data?.id);
   const treeData = categories && buildTreeData(filterCategories, null);
-
+  // console.log('treeData :', treeData);
+  // treeData?.unshift({
+  //   title: "Không chọn",
+  //   value: '',
+  //   children: []
+  // })
   const onChange = (newValue) => {
     setValue(newValue);
   };
@@ -139,9 +144,11 @@ const CategoriesForm = ({ params }) => {
   return (
     <div>
       <div className="flex justify-between mb-4">
-        <Button type="dashed" icon={<SwapLeftOutlined />}>
-          <Link href={`/admin/categories`}>Back to Categories</Link>
-        </Button>
+        <Link href={`/admin/categories`}>
+          <Button type="dashed" icon={<SwapLeftOutlined />}>
+            Back to Categories
+          </Button>
+        </Link>
         {isAddMode ? (
           <Button
             form="myForm"
@@ -259,12 +266,12 @@ const CategoriesForm = ({ params }) => {
         <Form.Item
           label={<span className="font-medium ">Type</span>}
           name={`type`}
-          // rules={[
-          //     {
-          //         required: true,
-          //         message: "Please input type!",
-          //     },
-          // ]}
+        // rules={[
+        //     {
+        //         required: true,
+        //         message: "Please input type!",
+        //     },
+        // ]}
         >
           {/* <Input placeholder="Input type" /> */}
           <Select placeholder="Select type">
