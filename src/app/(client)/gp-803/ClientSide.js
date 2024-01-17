@@ -129,8 +129,8 @@ const ClientSide = () => {
         <div>
             <section id='section1' className='grid grid-cols-2 gap-4 pb-64'>
                 <div className='col-span-2 md:col-span-1 p-20'>
-                    <h3 className='text-xl'>ZADEZ NEW PRODUCT</h3>
-                    <h2 className='text-4xl font-bold mb-0'>ENC BLUETOOTH HEADPHONE</h2>
+                    <p className='text-xl'>ZADEZ NEW PRODUCT</p>
+                    <p className='text-4xl font-bold mb-0'>ENC BLUETOOTH HEADPHONE</p>
                     <h1 className='text-5xl font-bold m-0'>GP-803 SERIES</h1>
                     <p>Tai nghe không dây cao cấp với công nghệ ENC-Environmental Noise Cancellation hiện đại, trọng lượng siêu nhẹ 176gram mang đến cảm giác đeo thoải mái trong thời gian dài. Kết nối bluetooth 5.2 và chế độ EQ Bass cho chất lượng âm thanh tuyệt hảo. Hãy trải nghiệm ngay! </p>
                     <button className='bg-yellow-300 w-40 flex justify-center items-center p-2'>
@@ -150,16 +150,17 @@ const ClientSide = () => {
             <section id='section2' class="relative">
                 <div class="absolute grid grid-cols-2 gap-4  shadow-2xl -top-36 xl:-top-44 left-[4%] md:left-[7%] -mt-10 w-10/12 h-80 xl:h-96 bg-gray-200 p-4">
                     <div className='col-span-2 md:col-span-1'>
-                        <Image width={600} height={400} src='/images/landing-page/gp-803/img2.png' alt='GP-803'
-                            sizes="100vw"
-                            style={{
-                                width: "100%",
-                                height: "auto",
-                                objectFit: 'center'
-                            }}
+                        <Image width={400} height={300} src='/images/landing-page/gp-803/img2.png' alt='GP-803'
+                            // sizes="100vw"
+                            // style={{
+                            //     width: "full",
+                            //     height: "auto",
+                            //     // objectFit: 'center'
+                            // }}
+                            className='w-full h-full object-contain'
                         />
                     </div>
-                    <div className='col-span-2 md:col-span-1 md:p-10 lg:p-20'>
+                    <div className='col-span-2 md:col-span-1 md:p-6 lg:p-10 xl:p-20'>
                         <h2 className='text-5xl font-bold uppercase text-yellow-400'>ULTRA LIGHT 176 GRAM</h2>
                         <p>Với chất liệu cao cấp và bền bỉ, ZADEZ GP-803B có trọng lượng siêu nhẹ chỉ 176 gram, mang đến trải nghiệm âm nhạc tuyệt vời trong thời gian dài.</p>
                         {/* <div className='bg-yellow-300 w-40 flex justify-center items-center p-2'>
@@ -210,9 +211,7 @@ const ClientSide = () => {
             </section>
             {/*  */}
             <section id='section 5' className="bg-[url('/images/landing-page/gp-803/bg2.png')] bg-center py-20 lg:-ml-16 lg:-mr-16 xl:-ml-24 xl:-mr-24">
-                <div className='w-3/5 m-auto'>
-
-
+                <div className='w-full md:w-3/5 m-auto'>
                     <Tabs
                         defaultActiveKey="1"
                         centered
@@ -255,7 +254,7 @@ const ClientSide = () => {
             {/*  */}
             <section id='params' className="bg-[url('/images/landing-page/gp-803/bg3.png')] bg-center py-40 lg:-ml-16 lg:-mr-16 xl:-ml-24 xl:-mr-24 ">
                 <div className='flex flex-col justify-center items-center px-10'>
-                    <h3 className='text-red-500 text-2xl font-bold mb-2'>ENC Bluetooth Headphone</h3>
+                    <h4 className='text-red-500 text-2xl font-bold mb-2'>ENC Bluetooth Headphone</h4>
                     {/* <p className='text-red-500 text-xl font-semibold'>ZADEZ GP-803B</p> */}
                     <div class="relative flex py-5 items-center w-full">
                         <div class="flex-grow border-t border-solid border-red-500 "></div>
@@ -266,45 +265,45 @@ const ClientSide = () => {
                 <div className='grid grid-cols-3'>
                     <div className='col-span-3 md:col-span-1 text-center'>
                         <div>
-                            <h5 className='text-red-500 text-xl font-bold mb-2'>Bluetooth</h5>
+                            <p className='text-red-500 text-xl font-bold mb-2'>Bluetooth</p>
                             <p className='font-semibold'>Chuẩn V5.2</p>
                         </div>
                         <div>
-                            <h5 className='text-red-500 text-xl font-bold mb-2'>Trọng lượng</h5>
+                            <p className='text-red-500 text-xl font-bold mb-2'>Trọng lượng</p>
                             <p className='font-semibold'>176 g (tai nghe)</p>
                         </div>
                         <div>
-                            <h5 className='text-red-500 text-xl font-bold mb-2'>Dung lượng pin</h5>
+                            <p className='text-red-500 text-xl font-bold mb-2'>Dung lượng pin</p>
                             <p className='font-semibold'>Li-Polymer 400 mAh</p>
                         </div>
                     </div>
 
                     <div className='col-span-3 md:col-span-1 text-center'>
                         <div>
-                            <h5 className='text-red-500 text-xl font-bold mb-2'>Tương thích</h5>
+                            <p className='text-red-500 text-xl font-bold mb-2'>Tương thích</p>
                             <p className='font-semibold'>iOS, Android, Windows OS, MacOS (kết nối Bluetooth tương thích).</p>
                         </div>
                         <div>
-                            <h5 className='text-red-500 text-xl font-bold mb-2'>Trở kháng</h5>
+                            <p className='text-red-500 text-xl font-bold mb-2'>Trở kháng</p>
                             <p className='font-semibold'>23 ± 15%</p>
                         </div>
                         <div>
-                            <h5 className='text-red-500 text-xl font-bold mb-2'>Độ nhạy của Micrô</h5>
+                            <p className='text-red-500 text-xl font-bold mb-2'>Độ nhạy của Micrô</p>
                             <p className='font-semibold'>40 ± 3dB</p>
                         </div>
                     </div>
 
                     <div className='col-span-3 md:col-span-1 text-center'>
                         <div>
-                            <h5 className='text-red-500 text-xl font-bold mb-2'>Đệm tai nghe</h5>
+                            <p className='text-red-500 text-xl font-bold mb-2'>Đệm tai nghe</p>
                             <p className='font-semibold'>Bọc vải cao cấp thoáng khí</p>
                         </div>
                         <div>
-                            <h5 className='text-red-500 text-xl font-bold mb-2'>Cổng kết nối</h5>
+                            <p className='text-red-500 text-xl font-bold mb-2'>Cổng kết nối</p>
                             <p className='font-semibold'>USB-C (Type-C)</p>
                         </div>
                         <div>
-                            <h5 className='text-red-500 text-xl font-bold mb-2'>Bảo hành</h5>
+                            <p className='text-red-500 text-xl font-bold mb-2'>Bảo hành</p>
                             <p className='font-semibold'>Kích hoạt bảo hành điện tử, 12 tháng (1 đổi 1)</p>
                         </div>
                     </div>
@@ -313,7 +312,7 @@ const ClientSide = () => {
             </section>
             <section id='form' className='grid grid-cols-2 py-20  bg-yellow-300 px-6 lg:px-16 xl:px-24 lg:-ml-16 lg:-mr-16 xl:-ml-24 xl:-mr-24'>
                 <div className='col-span-2 md:col-span-1'>
-                    <h3>Nhanh tay đặt hàng !</h3>
+                    <h5>Nhanh tay đặt hàng !</h5>
                     <p>Sau khi đặt hàng thành công, bộ phận CSKH sẽ tiến hành xác nhận thông tin quý khách mua hàng. Đóng gói sản phẩm và bàn giao cho đơn vị vận chuyển để mang đến sản phẩm tân tay cho quý khách.</p>
                     <button className='bg-black w-40 flex justify-center items-center p-2 cursor-pointer' onClick={showModal}>
                         <span className='text-xl font-semibold text-white' >Đặt hàng ngay</span>
@@ -346,9 +345,10 @@ const ClientSide = () => {
                     allowFullScreen=""
                     loading="lazy"
                     referrerPolicy="no-referrer-when-downgrade"
+                    title='Bản đồ Zadez'
                 />
                 <div className=' mt-10 flex flex-col justify-center items-center text-center'>
-                    <h2 className='text-3xl '>CONTACT</h2>
+                    <h6 className='text-3xl '>CONTACT</h6>
                     <p>Trung tâm chăm sóc khách hàng ZADEZ VIETNAM</p>
                     <button className='bg-black w-40 flex justify-center items-center p-2'>
                         <span className='text-xl font-semibold text-white'>Contact</span>
@@ -356,7 +356,7 @@ const ClientSide = () => {
                 </div>
                 {/* RATE */}
                 <div className='w-full bg-gray-100 my-10 lg:px-16 xl:px-24 lg:-ml-16 lg:-mr-16 xl:-ml-24 xl:-mr-24'>
-                    <h3 className='text-4xl font-bold'>Đánh giá của khách hàng</h3>
+                    <div className='text-4xl font-bold'>Đánh giá của khách hàng</div>
                     <div className=' flex-grow border-t border-solid border-yellow-400  mb-8'></div>
                     <Form
                         name="basic"
@@ -426,7 +426,7 @@ const ClientSide = () => {
                         </Form.Item> */}
                     </Form>
 
-                    <div>Bình chọn sản phẩm này: <Rate /></div>
+                    <ul>Bình chọn sản phẩm này: <Rate /></ul>
                     <div className='flex justify-end items-center'>
                         <button className='bg-yellow-400 w-40 flex justify-center items-center p-2'>
                             <span className='text-xl font-semibold text-black'>Gửi đánh giá</span>
@@ -436,7 +436,7 @@ const ClientSide = () => {
             </section>
             <section id='follow us' className="flex justify-center items-center ">
                 <div className="w-10/12 bg-[url('/images/bg-contact.png')] bg-cover rounded-xl flex flex-col justify-center items-center">
-                    <h3 className='text-3xl font-bold mb-2'>Theo dõi chúng tôi tại:</h3>
+                    <div className='text-3xl font-bold mb-2'>Theo dõi chúng tôi tại:</div>
                     <p className='mb-4'>Thông báo,events,khuyến mãi... Tất cả đều có ở đây</p>
                     <div className='flex gap-10 pb-8'>
                         <Link href='https://www.facebook.com/ZadezTechnology' target='_blank'>

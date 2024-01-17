@@ -30,6 +30,7 @@ const Contact = () => {
                     allowFullScreen=""
                     loading="lazy"
                     referrerPolicy="no-referrer-when-downgrade"
+                    title='Bản đồ Zadez'
                 />
             </section>
             <section className='grid grid-cols-4 p-8 shadow-md mt-8'>
