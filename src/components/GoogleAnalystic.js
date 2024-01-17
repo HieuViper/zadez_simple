@@ -1,4 +1,3 @@
-"use client";
 import Script from "next/script";
 
 const GoogleAnalystic = ({ GA_TRACKING_ID }) => {
@@ -6,9 +5,9 @@ const GoogleAnalystic = ({ GA_TRACKING_ID }) => {
     <>
       <Script
         src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`}
-        strategy="afterInteractive"
+        strategy="worker"
       />
-      <Script id="google-analytics" strategy="afterInteractive">
+      <Script id="google-analytics" strategy="worker">
         {`
         window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
