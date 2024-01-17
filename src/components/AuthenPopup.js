@@ -126,7 +126,7 @@ const LoginForm = () => {
   );
 };
 
-const RegisterForm = () => {
+const RegisterForm = ({ handleRegisterSuccess }) => {
   const [form] = Form.useForm();
   const [loading, setLoading] = useState(false);
   const onFinish = async (values) => {
@@ -154,6 +154,7 @@ const RegisterForm = () => {
             });
             message.success("Đăng ký thành công");
             form.resetFields();
+            handleRegisterSuccess();
             setLoading(false);
           } else if (rs?.code === "phone") {
             form.setFields([
@@ -173,9 +174,9 @@ const RegisterForm = () => {
         });
       })
       .catch((error) => {
+        setLoading(false);
         message.error(error.message);
       });
-    setLoading(false);
   };
 
   const validateCheckbox = (rule, value) => {
@@ -296,20 +297,26 @@ const RegisterForm = () => {
     </Form>
   );
 };
-const items = [
-  {
-    key: "1",
-    label: "Đăng nhập",
-    children: <LoginForm />,
-  },
-  {
-    key: "2",
-    label: "Tạo tài khoản",
-    children: <RegisterForm />,
-  },
-];
+
 const AuthenPopup = () => {
   const { modalLoginState, toggleModal } = store();
+  const [activeTab, setActiveTab] = useState("login");
+  const handleRegisterSuccess = () => {
+    setActiveTab("login");
+  };
+
+  const items = [
+    {
+      key: "login",
+      label: "Đăng nhập",
+      children: <LoginForm />,
+    },
+    {
+      key: "register",
+      label: "Tạo tài khoản",
+      children: <RegisterForm handleRegisterSuccess={handleRegisterSuccess} />,
+    },
+  ];
 
   return (
     <Modal
@@ -321,10 +328,13 @@ const AuthenPopup = () => {
       footer={null}
     >
       <Tabs
-        defaultActiveKey="1"
+        defaultActiveKey="login"
         items={items}
+        activeKey={activeTab}
         size="large"
-        onChange={() => {}}
+        onChange={(key) => {
+          setActiveTab(key);
+        }}
       />
     </Modal>
   );

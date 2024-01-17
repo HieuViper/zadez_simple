@@ -1,10 +1,12 @@
 "use client";
+import store from "@/library/zustand/store";
 import { SendOutlined } from "@ant-design/icons";
 import { Button, Form, Input, message } from "antd";
 import axios from "axios";
 import { useState } from "react";
 
 const ForgotPassPage = () => {
+  const { toggleModal } = store();
   const [resetPassStep, setResetPassStep] = useState(false);
   const [otpStep, setOtpStep] = useState(false);
   const [userData, setUserData] = useState(null);
@@ -34,6 +36,7 @@ const ForgotPassPage = () => {
             message.success("Thay đổi mật khẩu thành công");
             setResetPassStep(false);
             setUserData(null);
+            toggleModal(true);
           }
         });
     } else {
@@ -52,7 +55,7 @@ const ForgotPassPage = () => {
   const onFinishFailed = () => {};
 
   return (
-    <div className="flex flex-col gap-4 justify-center items-center">
+    <div className="flex flex-col gap-4 justify-center items-center h-[360px]">
       <div className="text-xl font-medium">Quên Mật Khẩu</div>
       <Form
         form={form}

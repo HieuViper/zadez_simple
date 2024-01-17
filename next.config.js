@@ -1,5 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  // output: "standalone",
   reactStrictMode: false,
   experimental: {
     serverComponentsExternalPackages: ["sequelize"],
@@ -8,6 +9,10 @@ const nextConfig = {
   env: {
     ROOT: __dirname,
   },
+  // images: {
+  //   loader: "custom",
+  //   loaderFile: "./ImageLoaderProduction.js",
+  // },
   pageExtensions: ["mdx", "md", "jsx", "js", "tsx", "ts"],
   async rewrites() {
     return [
@@ -57,22 +62,6 @@ const nextConfig = {
       },
     ];
   },
-  // images: {
-  //   remotePatterns: [
-  //     {
-  //       protocol: "http",
-  //       hostname: "localhost",
-  //       port: "3000",
-  //       pathname: "/**",
-  //     },
-  //     {
-  //       protocol: "https",
-  //       hostname: "<YOUR SITE URL>.com",
-  //       port: "",
-  //       pathname: "/**",
-  //     },
-  //   ],
-  // },
 };
 
 module.exports = nextConfig;

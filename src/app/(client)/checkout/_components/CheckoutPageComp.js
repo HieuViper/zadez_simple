@@ -39,9 +39,9 @@ const CheckoutPageComp = () => {
     values.status = "Pending";
     values.customerId = customerData.data[0].id;
     console.log("🚀 ~ file: page.js:8 ~ onFinish ~ values:", values);
-    createOrder(values).then((res) => {
-      console.log(res);
-      updateCustomer(customerData.data[0].id, values).then((res) => {
+    updateCustomer(customerData.data[0].id, values).then((res) => {
+      createOrder(values).then((res) => {
+        console.log(res);
         console.log(res);
         setIsDoneCheckout(true);
         setLoadingCheckout(false);
@@ -55,7 +55,6 @@ const CheckoutPageComp = () => {
     isLoading,
     error,
   } = useSWRData("/api/customers", { keyword: userState?.phoneNumber });
-  console.log("🚀 ~ CheckoutPageComp ~ customerData:", customerData);
 
   const { createData: createOrder, isLoading: isLoadingCreateOrder } =
     useSWRData("/api/orders");
@@ -72,7 +71,11 @@ const CheckoutPageComp = () => {
   if (isLoading) return <p>Loading...</p>;
   if (error) return <p>Error</p>;
 
-  return cartState?.cartItems.length > 0 ? (
+  return !userState.token ? (
+    <div className="flex items-center justify-center h-[200px] text-red-500 text-xl">
+      Bạn chưa đăng nhập
+    </div>
+  ) : cartState?.cartItems.length > 0 ? (
     <Form
       layout="vertical"
       form={form}

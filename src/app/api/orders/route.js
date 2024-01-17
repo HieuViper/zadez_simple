@@ -70,6 +70,7 @@ export async function POST(body, req) {
     subject: "Chi tiết đơn hàng",
     html: templateInfoOrder(createdOrder.data),
   };
+  console.log("option", options);
   sendMail(options, (info) => {
     NextResponse.json({
       status: 200,

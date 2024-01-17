@@ -6,21 +6,21 @@ import { Suspense, lazy } from 'react';
 const HomePage = lazy(() => import('./_components/home-page'))
 
 async function getOutstandingProducts() {
-  const res = await fetch('http://localhost:3000/api/products?status=outstanding')
+  const res = await fetch(`${process.env.BASE_URL}/api/products?status=outstanding`)
   if (!res.ok) {
     throw new Error('Failed to fetch data')
   }
   return res.json()
 }
 async function getNewProducts() {
-  const res = await fetch('http://localhost:3000/api/products?status=new')
+  const res = await fetch(`${process.env.BASE_URL}/api/products?status=new`)
   if (!res.ok) {
     throw new Error('Failed to fetch data')
   }
   return res.json()
 }
 async function getBestSeller() {
-  const res = await fetch('http://localhost:3000/api/products?status=best')
+  const res = await fetch(`${process.env.BASE_URL}/api/products?status=outstanding`)
   if (!res.ok) {
     throw new Error('Failed to fetch data')
   }

@@ -45,9 +45,8 @@ const Footer = () => {
         </div>
       </div>
       <div className="bg-[#161716] text-[#AAAAAA] text-xs p-4  text-center">
-        &ldquo;Công ty TNHH ZADEZ Việt Nam triển khai theo bản quyền của ZADEZ AMERICA
-        LLC. (USA)&rdquo; : &ldquo;ZADEZ Vietnam Co., Ltd. is published under the copyright
-        of ZADEZ AMERICA LLC. (USA)&rdquo;
+        Công ty TNHH ZADEZ Việt Nam triển khai theo bản quyền của ZADEZ AMERICA
+        LLC. (USA)
       </div>
       <a
         className="zalo-chat-widget"
