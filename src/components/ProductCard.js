@@ -43,7 +43,7 @@ const ProductCard = ({ data }) => {
           <div className="">
             Giá: <span className="text-base line-through mx-2">{moneyToString(data.price)} ₫</span>{" "}
             <div className="flex">
-              <span className=" text-red-500 font-semibold text-base md:text-lg lg:text-xl mx-2">{moneyToString(data.discount_price)} ₫</span>
+              <span className=" text-red-800 font-semibold text-base md:text-lg lg:text-xl mx-2">{moneyToString(data.discount_price)} ₫</span>
               <Tag color="red" >
                 <div className="border border-red-500 pt-[2px]">
                   -
@@ -58,13 +58,14 @@ const ProductCard = ({ data }) => {
         ) : (
           <div>
             Giá:
-            <span className="text-red-500 font-semibold text-sx md:text-sm lg:text-base mx-2">{moneyToString(data.price)} ₫</span>
+            <span className="text-red-800 font-semibold text-sx md:text-sm lg:text-base mx-2">{moneyToString(data.price)} ₫</span>
           </div>
         )}{" "}
       </div>
       <div className="flex justify-center items-center mt-2">
         {data.stock == "in" ? (
           <Button
+            style={{ backgroundColor: '#a8071a' }}
             icon={<ShoppingCartOutlined />}
             type="primary"
             size="large"
@@ -74,7 +75,7 @@ const ProductCard = ({ data }) => {
           </Button>
         ) : (
           <Link href='/contact'>
-            <Button icon={<PhoneOutlined />} type="primary" ghost size="large">
+            <Button style={{ color: '#a8071a' }} icon={<PhoneOutlined />} type="primary" ghost size="large">
               Liên hệ
             </Button>
           </Link>
