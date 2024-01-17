@@ -2,7 +2,7 @@ import SelectLocations from "@/components/SelectLocations";
 import { useSWRData } from "@/library/api";
 import store from "@/library/zustand/store";
 import { ArrowLeftOutlined } from "@ant-design/icons";
-import { Button, Divider, Form, Input, message } from "antd";
+import { Button, Divider, Form, Input } from "antd";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -38,10 +38,10 @@ const CheckoutPageComp = () => {
     values.code = "test-code-order";
     values.status = "Pending";
     values.customerId = customerData.data[0].id;
+    values.input_date = new Date().toISOString();
     console.log("🚀 ~ file: page.js:8 ~ onFinish ~ values:", values);
     updateCustomer(customerData.data[0].id, values).then((res) => {
       createOrder(values).then((res) => {
-        console.log(res);
         console.log(res);
         setIsDoneCheckout(true);
         setLoadingCheckout(false);

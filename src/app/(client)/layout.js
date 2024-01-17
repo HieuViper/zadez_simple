@@ -1,3 +1,4 @@
+import GoogleAnalystic from "@/components/GoogleAnalystic";
 import Footer from "../../components/Footer";
 import Header from "../../components/Header";
 // import './globals.css'
@@ -35,6 +36,7 @@ export const metadata = {
 export default function RootLayout({ children, params }) {
   return (
     <html>
+      <GoogleAnalystic GA_TRACKING_ID={process.env.GA_TRACKING_ID} />
       <body className={inter.className}>
         <Header />
         <div className="px-6 lg:px-16 xl:px-24 pt-28 pb-10 bg-[url('/images/bg-white.webp')] bg-contain overflow-x-hidden">

@@ -2,7 +2,16 @@
 import { useSWRData } from "@/library/api";
 import { fetcher } from "@/library/util";
 import { SaveOutlined } from "@ant-design/icons";
-import { Button, DatePicker, Divider, Form, Input, Row, Select } from "antd";
+import {
+  Button,
+  DatePicker,
+  Divider,
+  Form,
+  Input,
+  Row,
+  Select,
+  Typography,
+} from "antd";
 import dayjs from "dayjs";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -134,7 +143,34 @@ const OrderForm = ({ params }) => {
             },
           ]}
         >
-          <Input />
+          <Select
+            options={[
+              {
+                value: "pending",
+                label: "Pending",
+              },
+              {
+                value: "confirm",
+                label: "Confirmed",
+              },
+              {
+                value: "paid",
+                label: "Paid",
+              },
+              {
+                value: "delivered",
+                label: "Delivered",
+              },
+              {
+                value: "done",
+                label: <Typography.Text type="success">Done</Typography.Text>,
+              },
+              {
+                value: "reject",
+                label: <Typography.Text type="danger">Reject</Typography.Text>,
+              },
+            ]}
+          />
         </Form.Item>
         <Form.Item
           label="Input Date"
@@ -172,6 +208,15 @@ const OrderForm = ({ params }) => {
             filterOption={false}
             options={customerList}
           />
+        </Form.Item>
+        <Form.Item name={["customers", "address"]} label="Address">
+          <Input disabled />
+        </Form.Item>
+        <Form.Item name={["customers", "phone"]} label="Phone">
+          <Input disabled />
+        </Form.Item>
+        <Form.Item name={["customers", "email"]} label="E-mail">
+          <Input disabled />
         </Form.Item>
 
         <Divider />

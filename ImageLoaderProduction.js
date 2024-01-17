@@ -1,3 +1,3 @@
 export default function ImageLoaderProduction({ src }) {
-  return `http://uat.zadez.vn/${src}`;
+  return `https://uat.zadez.vn/${src}`;
 }
