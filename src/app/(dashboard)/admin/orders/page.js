@@ -163,7 +163,7 @@ const OrderList = () => {
 
       <Table
         columns={columns}
-        dataSource={data.data}
+        dataSource={data?.data}
         loading={isLoading}
         bordered
         rowSelection={{

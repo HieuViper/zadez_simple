@@ -1,10 +1,17 @@
 import { message } from "antd";
 import useSWR from "swr";
-
-const fetcher = (url) => fetch(url).then((r) => r.json());
+import store from "./zustand/store";
 
 export const useSWRData = (endpoint, params = {}) => {
-  // const token = window.localStorage.getItem("token");
+  const { userState } = store();
+  const headers = {};
+  if (userState.token) {
+    headers["Authorization"] = `${userState.token}`;
+  }
+  const fetcher = (url) =>
+    fetch(url, {
+      headers: headers,
+    }).then((r) => r.json());
   const { id, ...otherParams } = params; // Extract 'id' from params
   const queryString =
     Object.keys(otherParams).length > 0

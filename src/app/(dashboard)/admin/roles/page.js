@@ -66,14 +66,12 @@ const RoleList = () => {
 
   const [editedRow, setEditedRow] = useState(null);
 
-  const { data, error, isLoading,mutate, deleteData, bulkDeleteData } = useSWRData(
-    "/api/roles",
-    {
+  const { data, error, isLoading, mutate, deleteData, bulkDeleteData } =
+    useSWRData("/api/roles", {
       page,
       limit,
       keyword: search,
-    }
-  );
+    });
   if (error) return <div>failed to load</div>;
   if (isLoading) return <div>loading...123</div>;
 
@@ -98,7 +96,7 @@ const RoleList = () => {
         <Col xs={24} md={14} lg={15} className="pb-4">
           <Table
             columns={columns}
-            dataSource={data.data}
+            dataSource={data?.data}
             loading={isLoading}
             pagination={{
               pageSize: data.pagging.limit,

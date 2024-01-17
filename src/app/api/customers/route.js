@@ -10,6 +10,7 @@ export async function GET(req, { params }) {
   // if (!signIn) {
   //   return NextResponse.json({ status: 401 });
   // }
+  // console.log(req.headers.get("Authorization"));
 
   const searchParams = req.nextUrl.searchParams;
   const page = searchParams.has("page") ? searchParams.get("page") - 1 : 0;

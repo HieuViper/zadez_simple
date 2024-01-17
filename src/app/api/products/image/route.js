@@ -48,19 +48,19 @@ export async function POST(req, res) {
     let filename = file.name.replaceAll(" ", "_");
 
     try {
-      await doesFolderExist(`public/uploads/${nameFolderInCustom}`).then(
+      await doesFolderExist(`src/uploads/${nameFolderInCustom}`).then(
         async (exists) => {
           if (exists) {
             // console.log("Folder exists!");
           } else {
             // console.log("Folder does not exist.");
-            await fsPromises.mkdir(`public/uploads/${nameFolderInCustom}`);
+            await fsPromises.mkdir(`src/uploads/${nameFolderInCustom}`);
           }
         }
       );
 
       // Check if the filename is already present in the folder
-      const files = await fs.readdir(`public/uploads/${nameFolderInCustom}`);
+      const files = await fs.readdir(`src/uploads/${nameFolderInCustom}`);
       const isDuplicate = files.includes(filename);
 
       // if duplicate then change filename to unique
@@ -73,14 +73,14 @@ export async function POST(req, res) {
       await writeFile(
         path.join(
           process.cwd(),
-          `public/uploads/${nameFolderInCustom}/` + filename
+          `src/uploads/${nameFolderInCustom}/` + filename
         ),
         buffer
       );
       return NextResponse.json({
         Message: "Success",
         status: 201,
-        url: `/uploads/${nameFolderInCustom}/` + filename,
+        url: `/api/image?path=/src/uploads/${nameFolderInCustom}/` + filename,
       });
     } catch (error) {
       console.log("Error occured ", error);

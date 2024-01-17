@@ -43,7 +43,9 @@ const NavBar = ({ data }) => {
                     item?.children.map((item, i) => (
                       <div key={i} className=" md:cursor-pointer group/item ">
                         <Link
-                          href={`${(item.products.length > 0 ? `/danh-muc-san-pham` : '')}/${item.category_code}${(item.products.length > 0 ? `-${item.id}` : '')}`}
+                          href={`${item.products.length > 0 ? `/danh-muc-san-pham` : ""
+                            }/${item.category_code}${item.products.length > 0 ? -`${item.id}` : ""
+                            }`}
                           style={{ textDecoration: "none", color: "black" }}
                         >
                           <div className="col-span-1 flex items-center justify-between group-hover/item:text-red-500 duration-300 transition mx-2">

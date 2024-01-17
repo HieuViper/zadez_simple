@@ -154,12 +154,10 @@ export default function Home() {
           }}
         />
       </section> */}
-
       {/* SLIDE BANNER */}
       <section id="slide-banner" className="w-full my-4">
         <SlideBanner data={slideBanners} width={1200} height={300} />
       </section>
-
       {/* SẢN PHẨM NỔI BẬT */}
       <div
         id="outstanding-products"
@@ -176,7 +174,6 @@ export default function Home() {
         <h2 className="text-2xl font-bold text-white">Sản phẩm mới</h2>
         <SlideCard data={newPoducts?.data} />
       </div>
-
       {/* TOP BÁN CHẠY */}
       <div
         id="best-seller"
@@ -185,8 +182,7 @@ export default function Home() {
         <h2 className="text-2xl font-bold text-white">Top bán chạy</h2>
         <SlideCard data={bestSeller?.data} />
       </div>
-
-      {/* DANH MỤC SẢN PHẨM */}
+      {/* DANH MỤC SẢN PHẨM */}menuCategory
       <section id="categories" className="py-10rounded-md p-4 my-4 ">
         <h2 className="text-2xl font-bold text-red-500">Danh mục sản phẩm</h2>
         <div className="mx-2 lg:mx-20 grid grid-cols-4 md:grid-cols-5 gap-2 ">

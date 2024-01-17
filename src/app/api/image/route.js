@@ -48,17 +48,17 @@ export async function POST(req, res) {
     let filename = file.name.replaceAll(" ", "_");
 
     try {
-      await doesFolderExist(`public/uploads/${nameFolderInCustom}`).then(
+      await doesFolderExist(`src/uploads/${nameFolderInCustom}`).then(
         async (exists) => {
           if (exists) {
           } else {
-            await fsPromises.mkdir(`public/uploads/${nameFolderInCustom}`);
+            await fsPromises.mkdir(`src/uploads/${nameFolderInCustom}`);
           }
         }
       );
 
       // Check if the filename is already present in the folder
-      const files = await fs.readdir(`public/uploads/${nameFolderInCustom}`);
+      const files = await fs.readdir(`src/uploads/${nameFolderInCustom}`);
       const isDuplicate = files.includes(filename);
 
       // if duplicate then change filename to unique
@@ -71,18 +71,47 @@ export async function POST(req, res) {
       await writeFile(
         path.join(
           process.cwd(),
-          `public/uploads/${nameFolderInCustom}/` + filename
+          `src/uploads/${nameFolderInCustom}/` + filename
         ),
         buffer
       );
       return NextResponse.json({
         message: "success",
         status: 201,
-        url: `/uploads/${nameFolderInCustom}/` + filename,
+        url: `/api/image?path=/src/uploads/${nameFolderInCustom}/` + filename,
       });
     } catch (error) {
       // console.log("Error occured ", error);
       return NextResponse.json({ Message: "Failed", status: 500 });
     }
+  }
+}
+
+export async function GET(req, res) {
+  const url = new URL(req.url);
+  const filePath = url.searchParams.get("path");
+  if (!filePath) {
+    return new NextResponse("Path file not found", { status: 404 });
+  }
+  const ext = filePath.split(".").pop();
+  try {
+    const imagePath = path.join(process.cwd(), filePath);
+    const image = await fs.readFile(imagePath);
+    let type = "";
+    if (ext == "jpg" || ext == "jpeg") {
+      type = "image/jpeg";
+    } else if (ext == "png") {
+      type = "image/png";
+    } else {
+      type = "image/webp";
+    }
+
+    return new NextResponse(image, {
+      status: 200,
+      headers: { "Content-type": type },
+    });
+  } catch (error) {
+    console.error(error);
+    return new NextResponse("File not found", { status: 404 });
   }
 }

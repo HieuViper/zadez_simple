@@ -1,4 +1,5 @@
 "use client";
+import Permission from "@/components/Permission";
 import { useSWRData } from "@/library/api";
 import { Button, Divider, Popconfirm, Space, Table } from "antd";
 import Search from "antd/es/input/Search";
@@ -78,11 +79,14 @@ const CustomerList = () => {
       keyword: search,
     }
   );
+  console.log("🚀 ~ CustomerList ~ data:", data);
 
   if (error) return <div>failed to load</div>;
   if (isLoading) return <div>loading...123</div>;
 
-  return (
+  return data.status && data.status === 401 ? (
+    <Permission />
+  ) : (
     <div>
       <div className="flex justify-between">
         <Button
@@ -134,7 +138,7 @@ const CustomerList = () => {
 
       <Table
         columns={columns}
-        dataSource={data.data}
+        dataSource={data?.data}
         loading={isLoading}
         pagination={{
           pageSize: data.pagging.limit,

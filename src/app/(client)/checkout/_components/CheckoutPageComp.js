@@ -55,6 +55,7 @@ const CheckoutPageComp = () => {
     isLoading,
     error,
   } = useSWRData("/api/customers", { keyword: userState?.phoneNumber });
+  console.log("🚀 ~ CheckoutPageComp ~ customerData:", customerData);
 
   const { createData: createOrder, isLoading: isLoadingCreateOrder } =
     useSWRData("/api/orders");
@@ -72,8 +73,13 @@ const CheckoutPageComp = () => {
   if (error) return <p>Error</p>;
 
   return cartState?.cartItems.length > 0 ? (
-    <Form layout="vertical" form={form} onFinish={onFinish}>
-      <ol className="flex items-center justify-center w-full p-3 space-x-2 text-sm font-medium text-center text-gray-500 bg-white  rounded-lg  sm:text-base  sm:p-4 sm:space-x-4 mb-4 mt-0">
+    <Form
+      layout="vertical"
+      form={form}
+      onFinish={onFinish}
+      className="bg-white p-3 rounded-xl"
+    >
+      <ol className="flex items-center justify-center p-3 space-x-2 text-sm font-medium text-center text-gray-500 bg-white  rounded-lg  sm:text-base  sm:p-4 sm:space-x-4 mb-4 mt-0">
         <li className="flex items-center ">
           <span className="flex items-center justify-center w-5 h-5 me-2 text-xs bg-gray-400 text-white rounded-full shrink-0 ">
             1

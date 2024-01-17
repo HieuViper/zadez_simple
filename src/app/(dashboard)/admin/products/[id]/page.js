@@ -54,8 +54,9 @@ const ProductForm = ({ params }) => {
   const [listImage, setListImage] = useState([]);
   const [initFileList, setInitFileList] = useState([]);
   const [fileList, setFileList] = useState(initFileList);
+
   const [value, setValue] = useState();
-  const [isChangeCode, setIsChangeCode] = useState(false)
+  const [isChangeCode, setIsChangeCode] = useState(false);
 
   const handleSubmit = async (value) => {
     setLoadingSubmit(true);
@@ -138,6 +139,7 @@ const ProductForm = ({ params }) => {
     setFileList(newFileList);
   };
   const onPreview = async (file) => {
+    fileList;
     let src = file.url;
     if (!src) {
       src = await new Promise((resolve) => {
@@ -213,20 +215,22 @@ const ProductForm = ({ params }) => {
 
   const changeCode = (e) => {
     if (e.length <= 0) {
-      setIsChangeCode(false)
+      setIsChangeCode(false);
     } else {
-      setIsChangeCode(true)
+      setIsChangeCode(true);
     }
-  }
+  };
   function generateCateCode(e) {
-    let cateCode = e.trim().normalize('NFD')
-      .replace(/[\u0300-\u036f]/g, '')
-      .replace(/đ/g, 'd')
-      .replace(/Đ/g, 'D')
+    let cateCode = e
+      .trim()
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "")
+      .replace(/đ/g, "d")
+      .replace(/Đ/g, "D")
       .replace(/\s/g, "-")
-      .toLowerCase()
+      .toLowerCase();
     if (!isChangeCode) {
-      form.setFieldValue('product_code', cateCode);
+      form.setFieldValue("product_code", cateCode);
     }
   }
   useEffect(() => {
@@ -234,6 +238,7 @@ const ProductForm = ({ params }) => {
       form.setFieldsValue(data);
       setMainPicURL(data.main_image);
       setSubPicURL(data.sub_image);
+
       setFileList(data.list_image);
       setInitFileList(data.list_image);
     }
@@ -308,7 +313,10 @@ const ProductForm = ({ params }) => {
                 },
               ]}
             >
-              <Input onChange={(e) => generateCateCode(e.target.value)} placeholder="Input name" />
+              <Input
+                onChange={(e) => generateCateCode(e.target.value)}
+                placeholder="Input name"
+              />
             </Form.Item>
             <Form.Item
               label={<span className="font-medium">Code</span>}
@@ -320,7 +328,10 @@ const ProductForm = ({ params }) => {
                 },
               ]}
             >
-              <Input onChange={(e) => changeCode(e.target.value)} placeholder="Input product code" />
+              <Input
+                onChange={(e) => changeCode(e.target.value)}
+                placeholder="Input product code"
+              />
             </Form.Item>
             <Form.Item
               label={<span className="font-medium">Price</span>}
@@ -385,7 +396,7 @@ const ProductForm = ({ params }) => {
               label={<span className="font-medium">Status</span>}
               name="status"
             >
-              <Select placeholder="Select status" >
+              <Select placeholder="Select status">
                 <Option value={""}>None</Option>
                 <Option value={"new"}>New</Option>
                 <Option value={"outstanding"}>Outstanding</Option>
@@ -622,7 +633,7 @@ const ProductForm = ({ params }) => {
               fileList={fileList}
               multiple={true}
               onChange={onChangeListImage}
-            // onPreview={onPreview}
+              // onPreview={onPreview}
             >
               + Upload
             </Upload>
