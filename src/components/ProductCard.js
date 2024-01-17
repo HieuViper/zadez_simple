@@ -33,9 +33,11 @@ const ProductCard = ({ data }) => {
         </Link>
       </div>
       <hr className="my-2 h-px border-t-0 bg-transparent bg-gradient-to-r from-transparent via-neutral-500 to-transparent opacity-25 dark:opacity-100" />
-      <h1 className="text-xl font-semibold leading-6 text-center pb-2">
-        {data.name}
-      </h1>
+      <Link style={{ textDecoration: "none", color: "black" }} href={`/san-pham/${data.product_code && data.product_code}-${data.id}`}>
+        <h1 className="text-xl font-semibold leading-6 text-center ">
+          {data.name}
+        </h1>
+      </Link>
       <div className="flex flex-col justify-center items-center font-medium leading-normal pb-2 text-start">
         {data.discount_price > 0 ? (
           <div className="">

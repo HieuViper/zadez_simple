@@ -56,7 +56,7 @@ const Footer = () => {
         <Image
           width={50}
           height={50}
-          src="https://page.widget.zalo.me/static/images/2.0/Logo.svg"
+          src="/images/icon-zalo.svg"
           alt="zalo"
         />
       </a>
