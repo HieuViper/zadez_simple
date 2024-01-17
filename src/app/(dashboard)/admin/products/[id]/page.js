@@ -78,7 +78,7 @@ const ProductForm = ({ params }) => {
           modified_by: null,
           product_author: "",
           manufacturerId: null,
-          description: null || "",
+          description: value.description == null || "",
         };
         // console.log("product add:", product);
         createData(product).then((res) => {
@@ -250,9 +250,11 @@ const ProductForm = ({ params }) => {
   return (
     <div>
       <div className="flex justify-between mb-4">
-        <Button type="dashed" icon={<SwapLeftOutlined />}>
-          <Link href={`/admin/products`}>Back to Products</Link>
-        </Button>
+        <Link href={`/admin/products`}>
+          <Button type="dashed" icon={<SwapLeftOutlined />}>
+            Back to Products
+          </Button>
+        </Link>
         {isAddMode ? (
           <Button
             form="myForm"
