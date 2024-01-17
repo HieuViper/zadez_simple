@@ -137,6 +137,12 @@ body {
 .mySwiperBanner .swiper-button-next {
   color: red;
 }
+.mySwiper .swiper-button-prev {
+  color: red;
+}
+.mySwiper .swiper-button-next {
+  color: red;
+}
 .swiper {
   z-index: 1 !important;
 }
