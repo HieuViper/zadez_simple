@@ -182,7 +182,7 @@ export default function Home() {
         <h2 className="text-2xl font-bold text-white">Top bán chạy</h2>
         <SlideCard data={bestSeller?.data} />
       </div>
-      {/* DANH MỤC SẢN PHẨM */}menuCategory
+      {/* DANH MỤC SẢN PHẨM */}
       <section id="categories" className="py-10rounded-md p-4 my-4 ">
         <h2 className="text-2xl font-bold text-red-500">Danh mục sản phẩm</h2>
         <div className="mx-2 lg:mx-20 grid grid-cols-4 md:grid-cols-5 gap-2 ">

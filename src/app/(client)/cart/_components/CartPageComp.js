@@ -126,7 +126,7 @@ const Card = ({ data, increase, decrease, remove }) => {
           src={data.products.main_image || "/no-image.jpg"}
           width={100}
           height={100}
-          className="rounded-xl w-auto h-full"
+          className="rounded-xl w-auto "
           alt=""
         />
       </div>

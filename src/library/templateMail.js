@@ -1,4 +1,5 @@
 export const templateInfoOrder = (order) => {
+  console.log("🚀 ~ templateInfoOrder ~ order:", order);
   return `<!DOCTYPE html>
   <html lang="en">
   <head>
