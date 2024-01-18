@@ -1,6 +1,5 @@
 import GoogleAnalystic from "@/components/GoogleAnalystic";
 import Footer from "../../components/Footer";
-import Header from "../../components/Header";
 // import './globals.css'
 import AuthenPopup from "@/components/AuthenPopup";
 import { Inter } from "next/font/google";
@@ -21,7 +20,7 @@ export default function RootLayout({ children, params }) {
     <html>
       <GoogleAnalystic GA_TRACKING_ID={process.env.GA_TRACKING_ID} />
       <body className={inter.className}>
-        <Header />
+        {/* <Header /> */}
         <div className="px-6 lg:px-16 xl:px-24 pt-28 pb-10 bg-[url('/images/bg-white.webp')] bg-contain overflow-x-hidden">
           {children}
         </div>
