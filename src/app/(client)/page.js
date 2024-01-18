@@ -12,7 +12,9 @@ export default function Home() {
   );
   const { data: newProducts } = useSWRData(`/api/products?status=new`);
   const { data: bestSeller } = useSWRData(`/api/products?status=best`);
-
+  console.log("🚀 ~ Home ~ newProducts:", newProducts);
+  console.log("🚀 ~ Home ~ bestSeller:", bestSeller);
+  console.log("🚀 ~ Home ~ outstandingProducts:", outstandingProducts);
   const banner = { name: "Tết", image: "/images/banner-tet.jpg" };
   //
   const slideBanners = [
@@ -98,34 +100,34 @@ export default function Home() {
         <SlideBanner data={slideBanners} width={1200} height={300} />
       </section>
       {/* SẢN PHẨM NỔI BẬT */}
-      {outstandingProducts?.length > 0 && (
+      {outstandingProducts?.data?.length > 0 && (
         <div
           id="outstanding-products"
           className="bg-gray-100 rounded-md p-4 mb-4 bg-[url('/images/outstanding-products.webp')] bg-cover"
         >
           <h1 className="invisible m-0 text-xs">ZADEZ VIỆT NAM</h1>
           <h2 className="text-2xl font-bold text-red-500">Sản phẩm nổi bật</h2>
-          <SlideCard data={outstandingProducts} />
+          <SlideCard data={outstandingProducts.data} />
         </div>
       )}
       {/* SẢN PHẨM MỚI */}
-      {newProducts?.length > 0 && (
+      {newProducts?.data?.length > 0 && (
         <div
           id="new-products"
           className="bg-gray-100 rounded-md p-4 mb-4 bg-[url('/images/new-products.webp')] bg-cover"
         >
           <h2 className="text-2xl font-bold text-red-500">Sản phẩm mới</h2>
-          <SlideCard data={newProducts} />
+          <SlideCard data={newProducts.data} />
         </div>
       )}
       {/* TOP BÁN CHẠY */}
-      {bestSeller?.length > 0 && (
+      {bestSeller?.data?.length > 0 && (
         <div
           id="best-seller"
           className="bg-gray-100 rounded-md p-4 mb-4 bg-[url('/images/best-seller.webp')] bg-cover"
         >
           <h2 className="text-2xl font-bold text-red-500">Top bán chạy</h2>
-          <SlideCard data={bestSeller} />
+          <SlideCard data={bestSeller.data} />
         </div>
       )}
       {/* DANH MỤC SẢN PHẨM */}
