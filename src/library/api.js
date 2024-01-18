@@ -1,4 +1,5 @@
 import { message } from "antd";
+import axios from "axios";
 import useSWR from "swr";
 import store from "./zustand/store";
 
@@ -8,10 +9,13 @@ export const useSWRData = (endpoint, params = {}) => {
   if (userState.token) {
     headers["Authorization"] = `${userState.token}`;
   }
-  const fetcher = (url) =>
-    fetch(url, {
-      headers: headers,
-    }).then((r) => r.json());
+  // const fetcher = (url) =>
+  //   fetch(url, {
+  //     headers: headers,
+  //   }).then((r) => r.json());
+
+  const fetcher = (url, token) =>
+    axios.get(url, { headers: headers }).then((res) => res.data);
   const { id, ...otherParams } = params; // Extract 'id' from params
   const queryString =
     Object.keys(otherParams).length > 0

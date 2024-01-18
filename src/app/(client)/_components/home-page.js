@@ -11,7 +11,6 @@ export default function HomePage({
   newProducts,
   bestSeller,
 }) {
-  console.log("🚀 ~ outstandingProducts:", outstandingProducts);
   const banner = { name: "Tết", image: "/images/banner-tet.jpg" };
   //
   const slideBanners = [
@@ -101,6 +100,7 @@ export default function HomePage({
           id="outstanding-products"
           className="bg-gray-100 rounded-md p-4 mb-4 bg-[url('/images/outstanding-products.webp')] bg-cover"
         >
+          <h1 className="invisible m-0 text-xs">ZADEZ VIỆT NAM</h1>
           <h2 className="text-2xl font-bold text-red-500">Sản phẩm nổi bật</h2>
           <SlideCard data={outstandingProducts} />
         </div>
@@ -127,7 +127,7 @@ export default function HomePage({
       )}
       {/* DANH MỤC SẢN PHẨM */}
       <section id="categories" className="py-10rounded-md p-4 my-4 ">
-        <h2 className="text-2xl font-bold text-red-500">Danh mục sản phẩm</h2>
+        <h3 className="text-2xl font-bold text-red-500">Danh mục sản phẩm</h3>
         <div className="mx-2 lg:mx-20 grid grid-cols-4 md:grid-cols-5 gap-2 ">
           {menuCategory.map((item, i) => (
             <Link
@@ -137,7 +137,7 @@ export default function HomePage({
             >
               <Image
                 src={item.image}
-                alt={item.name}
+                alt={item.image}
                 width={128}
                 height={128}
                 className=""
@@ -149,8 +149,8 @@ export default function HomePage({
       </section>
       {/* ZADEZ */}
       <div className="flex flex-col justify-start items-center text-center h-[600px] bg-[url('/images/banner-zadez.jpg')] bg-center rounded-xl">
-        <div className="w-1/2 ">
-          <h2 className="text-2xl text-red-500 mt-32">ZADEZ GAMING</h2>
+        <div className="mx-4 md:w-1/2 ">
+          <h4 className="text-2xl text-red-500 mt-10 md:mt-32">ZADEZ GAMING</h4>
           <p className="text-base text-white">
             Game là niềm đam mê của bạn và phục vụ cho niềm đam mê đó là sứ mệnh
             của chúng tôi. Hãy trải nghiệm các phụ kiện Gaming của ZADEZ với
@@ -180,7 +180,7 @@ export default function HomePage({
       </div> */}
       {/* The New Story of GAMING */}
       <div className="flex flex-col justify-center items-center text-center my-4 p-4">
-        <h3 className="text-2xl text-red-500">The New Story of GAMING</h3>
+        <h5 className="text-2xl text-red-500">The New Story of GAMING</h5>
         <p className="text-base ">
           ZADEZ hân hạnh giới thiệu đến Quý khách hàng những sản phẩm mới nhất
           trong dòng phụ kiện Gaming, sẽ được ra mắt từ quý 2 năm 2023.
@@ -190,7 +190,7 @@ export default function HomePage({
       {/* LOGO CHÍNH THỨC ZADEZ */}
       <div className="my-4 p-4">
         <div className="flex flex-col justify-center items-center">
-          <h1 className="text-2xl text-red-500">Logo Chính Thức ZADEZ</h1>
+          <h6 className="text-2xl text-red-500">Logo Chính Thức ZADEZ</h6>
           <p className="text-base ">
             Hãy tham khảo logo chính thức của ZADEZ và sử dụng hệ thống tra cứu
             thông tin sản phẩm bằng Serial Number để nhận diện được sản phẩm
@@ -199,9 +199,9 @@ export default function HomePage({
         </div>
         <div className="grid grid-cols-2 gap-4">
           <div className="col-span-2 md:col-span-1 ">
-            <h4 className="text-lg text-red-500 font-medium ">
+            <div className="text-lg text-red-500 font-medium ">
               Ý Nghĩa Biểu Tượng
-            </h4>
+            </div>
             <p className="text-base">
               Logo chính thức của ZADEZ bao gồm phần biểu tượng thể hiện chữ Z
               cách điệu và ký tự &ldquo;ZADEZ&rdquo;. Hình tượng chữ Z biểu
@@ -211,7 +211,9 @@ export default function HomePage({
               rõ ràng và có trọng tâm ngay từ lúc khởi đầu các dự án, trên nền
               tảng cân đối tổng thể các nguồn lực cũng như điều kiện tác động.
             </p>
-            <h4 className="text-lg text-red-500 font-medium ">Ý Nghĩa Ký Tự</h4>
+            <div className="text-lg text-red-500 font-medium ">
+              Ý Nghĩa Ký Tự
+            </div>
             <p className="text-base">
               - Chữ A: Accessories - Phụ kiện, nền tảng kinh doanh cốt lõi của
               ZADEZ.

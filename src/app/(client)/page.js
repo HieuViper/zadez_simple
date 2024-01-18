@@ -16,7 +16,6 @@ async function getOutstandingProducts() {
 }
 async function getNewProducts() {
   const res = await fetch(`${process.env.BASE_URL}/api/products?status=new`);
-  console.log("🚀 ~ getNewProducts ~ res:", res);
   if (!res.ok) {
     throw new Error("Failed to fetch data");
   }

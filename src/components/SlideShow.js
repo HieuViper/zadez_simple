@@ -37,7 +37,7 @@ const SlideShow = (props) => {
         onSwiper={setThumbsSwiper}
         loop={true}
         // spaceBetween={1}
-        slidesPerView={5}
+        slidesPerView={4}
         freeMode={true}
         grabCursor={true}
         watchSlidesProgress={true}
@@ -50,9 +50,9 @@ const SlideShow = (props) => {
           768: {
             slidesPerView: 4,
           },
-          1024: {
-            slidesPerView: 5,
-          },
+          // 1024: {
+          //   slidesPerView: 5,
+          // },
         }}
       >
         {listImage &&
