@@ -1,18 +1,11 @@
 "use client";
-import { useSWRData } from "@/library/api";
+// import { useSWRData } from "@/library/api";
 import store from "@/library/zustand/store";
-import {
-  CloseOutlined,
-  LogoutOutlined,
-  MenuOutlined,
-  ShoppingCartOutlined,
-  UserOutlined,
-} from "@ant-design/icons";
-import { Button, Dropdown, Menu, message } from "antd";
-import { stagger, useAnimate } from "framer-motion";
+import { LogoutOutlined, UserOutlined } from "@ant-design/icons";
+import { Button, Dropdown, message } from "antd";
 import dynamic from "next/dynamic";
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Cart from "./Cart";
 import NavBar from "./NavBar";
 import logo from "/public/images/logo-zadez.png";
@@ -23,17 +16,18 @@ const BadgeCart = dynamic(() => import("../components/BadgeCart"), {
 import { useScrollPosition } from "@/library/useScrollPosition";
 import Head from "next/head";
 import { usePathname } from "next/navigation";
-const Header = () => {
+import SideBar from "./SideBar";
+const Header = ({ categories }) => {
   const { userState, cartState, toggleModal, resetUserState } = store();
   const site = "https://zadez.vn";
   const pathname = usePathname();
   const canonicalURL = site + pathname;
-  const {
-    data: categories,
-    isLoading,
-    error,
-    mutate,
-  } = useSWRData(`/api/categories/get-all`);
+  // const {
+  //   data: categories,
+  //   isLoading,
+  //   error,
+  //   mutate,
+  // } = useSWRData(`/api/categories/get-all`);
   const scrollPosition = useScrollPosition();
   // handle open modal login
   const handleOpenModalLogin = () => {
@@ -111,91 +105,6 @@ const Header = () => {
   }
   const dataTree = categories && buildCategoryTree(categories?.data);
 
-  // SUB MENU
-  const { SubMenu } = Menu;
-  const MenuHeader = ({ menuData, mode }) => {
-    const menuItems = (data) => {
-      return data?.map((item) => {
-        if (item.children) {
-          return (
-            <SubMenu key={item.id} title={item.name}>
-              <a href={`/${item.type}/${item.category_code}-${item.id}`}>
-                {menuItems(item.children)}
-              </a>
-            </SubMenu>
-          );
-        }
-        return (
-          <Menu.Item key={item.id}>
-            <a
-              href={`${item.type && `/${item.type}`}/${item.category_code}-${item.id
-                }`}
-            >
-              <div>{item.name}</div>
-            </a>
-          </Menu.Item>
-        );
-      });
-    };
-
-    return (
-      <Menu mode={mode} className="text-lg font-light">
-        {menuItems(menuData)}
-      </Menu>
-    );
-  };
-
-  const [isOpenMenu, setIsOpenMenu] = useState(false);
-  const scope = useMenuAnimation(isOpenMenu);
-  function useMenuAnimation(isOpenMenu) {
-    const [scope, animate] = useAnimate();
-    useEffect(() => {
-      const menuAnimations = isOpenMenu
-        ? [
-          [
-            "nav",
-            { transform: "translateX(0%)" },
-            { ease: [0.08, 0.65, 0.53, 0.96], duration: 0.2 },
-          ],
-          [
-            "li",
-            { transform: "scale(1)", opacity: 1, filter: "blur(0px)" },
-            { delay: stagger(0.01), at: "-0.1" },
-          ],
-        ]
-        : [
-          [
-            "li",
-            { transform: "scale(0.5)", opacity: 0, filter: "blur(10px)" },
-            { delay: stagger(0.01, { from: "last" }), at: "<" },
-          ],
-          ["nav", { transform: "translateX(-100%)" }, { at: "-0.1" }],
-        ];
-
-      animate([
-        [
-          "path.top",
-          { d: isOpenMenu ? "M 3 16.5 L 17 2.5" : "M 2 2.5 L 20 2.5" },
-          { at: "<" },
-        ],
-        ["path.middle", { opacity: isOpenMenu ? 0 : 1 }, { at: "<" }],
-        [
-          "path.bottom",
-          { d: isOpenMenu ? "M 3 2.5 L 17 16.346" : "M 2 16.346 L 20 16.346" },
-          { at: "<" },
-        ],
-        ...menuAnimations,
-      ]);
-    }, [isOpenMenu]);
-
-    return scope;
-  }
-
-  if (isOpenMenu && typeof document !== "undefined") {
-    document.body.style.overflow = "hidden";
-  } else if (typeof document !== "undefined") {
-    document.body.style.overflow = "auto";
-  }
   const [openCart, setOpenCart] = useState(false);
   const showDrawer = () => {
     setOpenCart(true);
@@ -205,8 +114,9 @@ const Header = () => {
   };
   return (
     <header
-      className={`${scrollPosition > 0 ? "shadow-md py-2" : "shadow-sm lg:py-4 py-2"
-        }  w-full bg-[#fafafa]  px-2 fixed top-0 z-30 transition-all duration-500`}
+      className={`${
+        scrollPosition > 0 ? "shadow-md py-2" : "shadow-sm lg:py-4 py-2"
+      }  w-full bg-[#fafafa]  px-2 fixed top-0 z-30 transition-all duration-500`}
     >
       <Head>
         <link rel="canonical" href={canonicalURL} />
@@ -219,10 +129,11 @@ const Header = () => {
         <div className="border border-b-[#e5e7eb]">
           <div className="flex lg:grid lg:grid-cols-12  justify-center items-center">
             <div
-              className=" block lg:hidden absolute top-16 left-5 px-3 py-2 border rounded hover:text-teal-200 border-gray-300 cursor-pointer"
-              onClick={() => setIsOpenMenu(!isOpenMenu)}
+              className={`${
+                scrollPosition > 0 ? "top-12" : "top-16"
+              }  block lg:hidden absolute  left-5 px-3 py-2 border rounded hover:text-teal-200 border-gray-300 cursor-pointer duration-300 transition-all`}
             >
-              <MenuOutlined />
+              <SideBar data={dataTree} />
             </div>
             <div className="col-span-2">
               <a
@@ -239,7 +150,6 @@ const Header = () => {
               </a>
             </div>
             <div className="col-span-8 hidden lg:block">
-              {/* <MenuHeader menuData={dataTree} mode="horizontal" /> */}
               <NavBar data={dataTree} />
             </div>
             <div className="col-span-2 lg:flex justify-center gap-4 hidden">
@@ -258,28 +168,14 @@ const Header = () => {
               </Dropdown>
             </div>
           </div>
-          <div ref={scope} className="block lg:hidden rounded-b-lg z-50">
-            <nav className="shadow-lg absolute top-32 left-0  w-80 -translate-x-full will-change-transform bg-white rounded-b-lg ">
-              <CloseOutlined
-                className="absolute top-1 right-1 px-3 py-2 hover:border hover:rounded-full hover:cursor-pointer"
-                onClick={() => setIsOpenMenu(false)}
-              />
-
-              <ul className="flex flex-col justify-center gap-4 p-4 ">
-                <MenuHeader menuData={dataTree} mode="inline" />
-                <div className="flex justify-center gap-4 pt-4">
-                  <ShoppingCartOutlined
-                    style={{ fontSize: "30px" }}
-                    onClick={showDrawer}
-                  />
-                  <UserOutlined style={{ fontSize: "30px" }} />
-                </div>
-              </ul>
-            </nav>
-          </div>
         </div>
       </div>
-      <Cart onClose={onCloseCart} open={openCart} className="no-scrollbar" />
+      <Cart
+        onClose={onCloseCart}
+        open={openCart}
+        placement="right"
+        className="no-scrollbar"
+      />
     </header>
   );
 };

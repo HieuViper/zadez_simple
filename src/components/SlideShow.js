@@ -19,6 +19,7 @@ const SlideShow = (props) => {
           "--swiper-pagination-color": "#fff",
         }}
         loop={true}
+        lazyPreloadPrevNext={2}
         spaceBetween={10}
         navigation={true}
         grabCursor={true}
@@ -37,6 +38,7 @@ const SlideShow = (props) => {
         onSwiper={setThumbsSwiper}
         loop={true}
         // spaceBetween={1}
+        lazyPreloadPrevNext={2}
         slidesPerView={4}
         freeMode={true}
         grabCursor={true}
