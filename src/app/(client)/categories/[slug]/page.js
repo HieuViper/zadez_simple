@@ -140,7 +140,8 @@ const Category = ({ params }) => {
     error,
     mutate,
   } = useSWRData(
-    `/api/products?limit=100&${productType ? `type=${productType}` : `categoryId=${id}`
+    `/api/products?limit=100&${
+      productType ? `type=${productType}` : `categoryId=${id}`
     }`
   );
 
@@ -292,7 +293,11 @@ const Category = ({ params }) => {
             <div className="flex flex-col gap-2 p-2 ">
               <div className="text-lg font-medium">Tình trạng:</div>
               <div className="flex">
-                <Checkbox value="in" checked={isInStock} onChange={handleInStock}>
+                <Checkbox
+                  value="in"
+                  checked={isInStock}
+                  onChange={handleInStock}
+                >
                   <div className="text-base">Còn hàng</div>
                 </Checkbox>
                 <Checkbox
@@ -312,7 +317,10 @@ const Category = ({ params }) => {
           {sortedProducts ? (
             <div className="border grid grid-cols-12  gap-2 md:gap-4 lg:gap-8">
               {sortedProducts?.map((item, i) => (
-                <div key={i} className="col-span-12 md:col-span-6 lg:col-span-4">
+                <div
+                  key={i}
+                  className="col-span-12 md:col-span-6 lg:col-span-4"
+                >
                   <ProductCard data={item} key={i} />
                 </div>
               ))}
