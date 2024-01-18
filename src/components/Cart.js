@@ -6,7 +6,7 @@ import { Button, Divider, Drawer, Tag } from "antd";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 
-const Cart = ({ onClose, open }) => {
+const Cart = ({ onClose, open, placement }) => {
   const {
     cartState: data,
     increseAmount,
@@ -19,7 +19,7 @@ const Cart = ({ onClose, open }) => {
     <>
       <Drawer
         title="Giỏ hàng"
-        placement="right"
+        placement={placement}
         onClose={onClose}
         open={open}
         width={520}

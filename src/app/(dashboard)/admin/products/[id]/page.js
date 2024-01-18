@@ -78,7 +78,7 @@ const ProductForm = ({ params }) => {
           modified_by: null,
           product_author: "",
           manufacturerId: null,
-          description: value.description == null || "",
+          description: value.description == null ? "" : value.description,
         };
         // console.log("product add:", product);
         createData(product).then((res) => {
@@ -633,7 +633,7 @@ const ProductForm = ({ params }) => {
               fileList={fileList}
               multiple={true}
               onChange={onChangeListImage}
-              // onPreview={onPreview}
+            // onPreview={onPreview}
             >
               + Upload
             </Upload>

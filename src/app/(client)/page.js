@@ -20,7 +20,7 @@ async function getNewProducts() {
   return res.json()
 }
 async function getBestSeller() {
-  const res = await fetch(`${process.env.BASE_URL}/api/products?status=outstanding`)
+  const res = await fetch(`${process.env.BASE_URL}/api/products?status=best`)
   if (!res.ok) {
     throw new Error('Failed to fetch data')
   }

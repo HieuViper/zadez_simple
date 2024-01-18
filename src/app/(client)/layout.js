@@ -31,12 +31,21 @@ export const metadata = {
     icon: "/zadez_logo_title.jpg",
   },
 };
+async function getAllCategories() {
+  const res = await fetch(`${process.env.BASE_URL}/api/categories/get-all`, { cache: 'no-cache' })
+  if (!res.ok) {
+    throw new Error('Failed to fetch data')
+  }
+  return res.json()
+}
 
-export default function RootLayout({ children, params }) {
+export default async function RootLayout({ children, params }) {
+  const categories = await getAllCategories()
+
   return (
     <html>
       <body className={inter.className}>
-        <Header />
+        <Header categories={categories} />
         <div className="px-6 lg:px-16 xl:px-24 pt-28 pb-10 bg-[url('/images/bg-white.webp')] bg-contain overflow-x-hidden">
           {children}
         </div>
