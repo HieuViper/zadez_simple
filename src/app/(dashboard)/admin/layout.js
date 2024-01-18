@@ -24,7 +24,7 @@ import {
 import Image from "next/image";
 import Link from "next/link";
 import { redirect, usePathname, useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 
 const DashboardLayout = (props) => {
   const router = useRouter();
@@ -56,7 +56,9 @@ const DashboardLayout = (props) => {
       getItem(
         "/admin/products/0",
         null,
-        <Link href="/admin/products/0?previousPage=1&previousLimit=10">Add Products</Link>
+        <Link href="/admin/products/0?previousPage=1&previousLimit=10">
+          Add Products
+        </Link>
       ),
     ]),
     getItem("Categories", "Categories", <AppstoreOutlined />, [
@@ -68,7 +70,9 @@ const DashboardLayout = (props) => {
       getItem(
         "/admin/categories/0",
         null,
-        <Link href="/admin/categories/0?previousPage=1&previousLimit=10">Add Categories</Link>
+        <Link href="/admin/categories/0?previousPage=1&previousLimit=10">
+          Add Categories
+        </Link>
       ),
     ]),
     getItem("Orders", "Orders", <ShoppingCartOutlined />, [
@@ -244,7 +248,7 @@ const DashboardLayout = (props) => {
             background: colorBgContainer,
           }}
         >
-          {props.children}
+          <Suspense fallback={<div>Loading...</div>}>{props.children}</Suspense>
         </Layout.Content>
       </Layout>
     </Layout>

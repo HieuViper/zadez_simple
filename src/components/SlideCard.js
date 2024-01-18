@@ -11,8 +11,8 @@ const SlideCard = ({ data }) => {
   return (
     <Swiper
       // onSwiper={setThumbsSwiper}
+      // loop={true}
       lazyPreloadPrevNext={2}
-      loop={true}
       spaceBetween={24}
       slidesPerView={4}
       freeMode={true}
@@ -38,12 +38,11 @@ const SlideCard = ({ data }) => {
         },
       }}
     >
-      {data &&
-        data?.map((item, i) => (
-          <SwiperSlide key={i}>
-            <ProductCard data={item} key={i} />
-          </SwiperSlide>
-        ))}
+      {data.map((item, i) => (
+        <SwiperSlide key={i}>
+          <ProductCard data={item} key={i} />
+        </SwiperSlide>
+      ))}
     </Swiper>
   );
 };

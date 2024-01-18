@@ -1,3 +1,4 @@
+import GoogleAnalystic from "@/components/GoogleAnalystic";
 import Footer from "../../components/Footer";
 import Header from "../../components/Header";
 // import './globals.css'
@@ -10,23 +11,6 @@ export const metadata = {
   title: "Welcome to ZADEZ - ZADEZ Vietnam",
   description:
     "Chơi game là niềm đam mê của bạn và phục vụ cho niềm đam mê đó là sứ mệnh của chúng tôi. Chuyên trang giới thiệu phụ kiện Gaming của ZADEZ: Bàn phím cơ, chuột gaming, tai nghe gaming, đế treo tai nghe, miếng lót gaming... bảo hành điện tử theo Serial Number.",
-  openGraph: {
-    type: "website",
-    title: "Welcome to ZADEZ - ZADEZ Vietnam",
-    description:
-      "Chơi game là niềm đam mê của bạn và phục vụ cho niềm đam mê đó là sứ mệnh của chúng tôi. Chuyên trang giới thiệu phụ kiện Gaming của ZADEZ: Bàn phím cơ, chuột gaming, tai nghe gaming, đế treo tai nghe, miếng lót gaming... bảo hành điện tử theo Serial Number.",
-    site_name: "ZADEZ Vietnam",
-    image: `/images/logo-zadez.png`,
-    url: `zadez.vn`,
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Welcome to ZADEZ - ZADEZ Vietna",
-    description:
-      "Chơi game là niềm đam mê của bạn và phục vụ cho niềm đam mê đó là sứ mệnh của chúng tôi. Chuyên trang giới thiệu phụ kiện Gaming của ZADEZ: Bàn phím cơ, chuột gaming, tai nghe gaming, đế treo tai nghe, miếng lót gaming... bảo hành điện tử theo Serial Number.",
-    creator: "Zadez",
-    images: `/Logo-ZADEZ.png`,
-  },
   icons: {
     icon: "/zadez_logo_title.jpg",
   },
@@ -44,6 +28,7 @@ export default async function RootLayout({ children, params }) {
 
   return (
     <html>
+      <GoogleAnalystic GA_TRACKING_ID={process.env.GA_TRACKING_ID} />
       <body className={inter.className}>
         <Header categories={categories} />
         <div className="px-6 lg:px-16 xl:px-24 pt-28 pb-10 bg-[url('/images/bg-white.webp')] bg-contain overflow-x-hidden">

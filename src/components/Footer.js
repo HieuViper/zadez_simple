@@ -19,7 +19,7 @@ const Footer = () => {
     <footer>
       <div className="text-[#AAAAAA] bg-[#1D1D1D] flex lg:flex-row lg:justify-around flex-col justify-center items-center gap-8 pt-20 pb-32 px-10">
         <div className="lg:w-1/3 p-6 lg:p-28">
-          <Image src={logo} width={200} height={80} alt="Zadez" />
+          <Image src={logo} width={195} height={64} alt="Zadez" />
         </div>
         <div className="lg:w-1/3 p-6">
           <div className="text-white font-bold mb-7">{introFooter?.name}</div>
@@ -53,12 +53,7 @@ const Footer = () => {
         href="https://zalo.me/3126944695787017498"
         target="_blank"
       >
-        <Image
-          width={50}
-          height={50}
-          src="/images/icon-zalo.svg"
-          alt="zalo"
-        />
+        <Image width={50} height={50} src="/images/icon-zalo.svg" alt="zalo" />
       </a>
     </footer>
   );

@@ -155,7 +155,6 @@ const RegisterForm = ({ handleRegisterSuccess }) => {
             message.success("Đăng ký thành công");
             form.resetFields();
             handleRegisterSuccess();
-            setLoading(false);
           } else if (rs?.code === "phone") {
             form.setFields([
               {
@@ -171,6 +170,7 @@ const RegisterForm = ({ handleRegisterSuccess }) => {
               },
             ]);
           }
+          setLoading(false);
         });
       })
       .catch((error) => {

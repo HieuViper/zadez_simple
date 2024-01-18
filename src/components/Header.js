@@ -149,7 +149,7 @@ const Header = ({ categories }) => {
                 <Image
                   src={logo}
                   width={scrollPosition > 0 ? 80 : 100}
-                  height={scrollPosition > 0 ? 60 : 80}
+                  height={scrollPosition > 0 ? 80 : 100}
                   className="hover:opacity-80 cursor-pointer duration-300 transition-all "
                   alt="Zadez"
                 />
