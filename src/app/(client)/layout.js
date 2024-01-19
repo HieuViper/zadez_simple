@@ -6,6 +6,7 @@ import AuthenPopup from "@/components/AuthenPopup";
 import db from "@/models";
 import dynamic from "next/dynamic";
 import { Inter } from "next/font/google";
+import { AOSInit } from "./_components/AOS";
 const Header = dynamic(() => import("@/components/Header"), {
   loading: () => <p>Loading...</p>,
 });
@@ -40,6 +41,7 @@ export default async function RootLayout({ children, params }) {
   return (
     <html>
       <GoogleAnalystic GA_TRACKING_ID={process.env.GA_TRACKING_ID} />
+      <AOSInit />
       <body className={inter.className}>
         <Header categories={categories} />
         <div className="px-6 lg:px-16 xl:px-24 pt-28 pb-10 bg-[url('/images/bg-white.webp')] bg-contain overflow-x-hidden">

@@ -1,6 +1,3 @@
-// import SlideBanner from "@/components/SlideBanner";
-// import SlideCard from "@/components/SlideCard";
-// import SlideImage from "@/components/SlideImage";
 const SlideBanner = dynamic(() => import("@/components/SlideBanner"), {
   loading: () => <p>Loading...</p>,
 });
@@ -14,6 +11,69 @@ import db from "@/models";
 import dynamic from "next/dynamic";
 import Image from "next/image";
 import Link from "next/link";
+
+//
+const slideBanners = [
+  { name: "Zadez", image: "/images/banner1.webp" },
+  { name: "Zadez", image: "/images/banner2.webp" },
+  { name: "Zadez", image: "/images/banner3.webp" },
+];
+
+// Danh mục sản phẩm
+const menuCategory = [
+  {
+    name: "Chuột",
+    image: "/images/categories/mouse.webp",
+    type: "mouse",
+  },
+  {
+    name: "Bàn phím",
+    image: "/images/categories/keyboard.webp",
+    type: "keyboard",
+  },
+  {
+    name: "Âm thanh",
+    image: "/images/categories/audio.webp",
+    type: "audio",
+  },
+  {
+    name: "Đồng hồ thông minh",
+    image: "/images/categories/smartwatch.webp",
+    type: "smartwatch",
+  },
+  {
+    name: "Phụ kiện",
+    image: "/images/categories/accessories.webp",
+    type: "accessories",
+  },
+];
+// ZADEZ GAMING
+// const introProduct = [
+//   { image: "/images/categories/keyboard.webp", name: "Bàn Phím Cơ", short: "Sử dụng switch cơ cao cấp dành cho Game thủ chuyên nghiệp, đa dạng lựa chọn với Blue/ Red/ Brown/ Black switch đáp ứng cảm giác gõ cho từng nhu cầu sử dụng. Thiết kế chuẩn Full size hoặc TKL, hỗ trợ thiết lập macro qua driver chuyên dụng.", link: "" },
+//   { image: "/images/categories/keyboard2.webp", name: "Bàn Phím Membrane", short: "Bàn phím gaming dành cho game thủ trong giai đoạn khởi đầu. Sử dụng switch cao su (membrane) hỗ trợ tính năng kháng nước mà vẫn cho cảm giác gõ tương tự switch cơ dòng Brown, đồng thời thiết lập macro qua driver chuyên dụng (*)", link: "" },
+//   { image: "/images/categories/mouse.webp", name: "Chuột Gaming", short: 'Nổi bật với dòng GT dành cho Game thủ chuyên nghiệp và dòng G là lựa chọn cho sự khởi đầu hoàn hảo. Trang bị chipset cao cấp, switch bền bỉ và hỗ trợ thiết lập macro (GT), các sản phẩm Gaming mouse của ZADEZ sẽ mang đến trải nghiệm chơi game tuyệt vời nhất', link: "" },
+//   { image: "/images/categories/headset.webp", name: "Tai Nghe Gaming", short: "Âm thanh vòm 7.1 chân thật sẽ giúp các game thủ xác định phương hướng rõ ràng, đồng thời trao đổi cùng đồng đội kịp thời qua micro lọc âm. Driver chuyên dụng hỗ trợ thay đổi tần số hoặc chế độ nghe Music/ Cinema tiện dụng (*)", link: "" },
+//   { image: "/images/categories/pad.jpg", name: "Gaming Pad", short: "Chất liệu cao cấp và tăng cường độ chính xác khi sử dụng chuột, miếng lót Gaming pad là phụ kiện không thể thiếu của Game thủ chuyên nghiệp. Không phải tất cả các Gaming pad đều giống nhau, vì ZADEZ luôn tạo nên sự khác biệt.", link: "" },
+//   { image: "/images/categories/headstand.jpg", name: "Khung Treo Tai Nghe", short: "Khung treo tai nghe với thiết kế độc quyền của ZADEZ, mang đến sự tinh tế cho không gian trải nghiệm game đẳng cấp. Hãy trải nghiệm và tận hưởng các tính năng độc đáo khác của đế treo tai nghe ZADEZ (* tùy thuộc từng model)", link: "" },
+// ]
+// The New Story of GAMING
+const newStoryGaming = [
+  {
+    image: "/images/ZADEZ-Gaming-Wireless-Mouse.webp",
+    name: "Bàn Phím Cơ",
+  },
+  { image: "/images/ZADEZ-Gaming-Headset.webp", name: "Bàn Phím Membrane" },
+  { image: "/images/ZADEZ-Headset-Stand.webp", name: "Chuột Gaming" },
+  {
+    image: "/images/ZADEZ-Gaming-Wireless-Mouse-2.webp",
+    name: "Tai Nghe Gaming",
+  },
+  { image: "/images/ZADEZ-Gaming-Keyboard.webp", name: "Gaming Pad" },
+  {
+    image: "/images/ZADEZ-Headset-Stand-Ps5.webp",
+    name: "Khung Treo Tai Nghe",
+  },
+];
 
 async function getProductsByStatus(status) {
   const res = await db.Products.findAll({
@@ -30,85 +90,22 @@ export default async function Home() {
   const newProducts = await getProductsByStatus("new");
   const bestSeller = await getProductsByStatus("best");
 
-  //
-  const slideBanners = [
-    { name: "Zadez", image: "/images/banner1.webp" },
-    { name: "Zadez", image: "/images/banner2.webp" },
-    { name: "Zadez", image: "/images/banner3.webp" },
-  ];
-
-  // Danh mục sản phẩm
-  const menuCategory = [
-    {
-      name: "Chuột",
-      image: "/images/categories/mouse.webp",
-      type: "mouse",
-    },
-    {
-      name: "Bàn phím",
-      image: "/images/categories/keyboard.webp",
-      type: "keyboard",
-    },
-    {
-      name: "Âm thanh",
-      image: "/images/categories/audio.webp",
-      type: "audio",
-    },
-    {
-      name: "Đồng hồ thông minh",
-      image: "/images/categories/smartwatch.webp",
-      type: "smartwatch",
-    },
-    {
-      name: "Phụ kiện",
-      image: "/images/categories/accessories.webp",
-      type: "accessories",
-    },
-  ];
-  // ZADEZ GAMING
-  // const introProduct = [
-  //   { image: "/images/categories/keyboard.webp", name: "Bàn Phím Cơ", short: "Sử dụng switch cơ cao cấp dành cho Game thủ chuyên nghiệp, đa dạng lựa chọn với Blue/ Red/ Brown/ Black switch đáp ứng cảm giác gõ cho từng nhu cầu sử dụng. Thiết kế chuẩn Full size hoặc TKL, hỗ trợ thiết lập macro qua driver chuyên dụng.", link: "" },
-  //   { image: "/images/categories/keyboard2.webp", name: "Bàn Phím Membrane", short: "Bàn phím gaming dành cho game thủ trong giai đoạn khởi đầu. Sử dụng switch cao su (membrane) hỗ trợ tính năng kháng nước mà vẫn cho cảm giác gõ tương tự switch cơ dòng Brown, đồng thời thiết lập macro qua driver chuyên dụng (*)", link: "" },
-  //   { image: "/images/categories/mouse.webp", name: "Chuột Gaming", short: 'Nổi bật với dòng GT dành cho Game thủ chuyên nghiệp và dòng G là lựa chọn cho sự khởi đầu hoàn hảo. Trang bị chipset cao cấp, switch bền bỉ và hỗ trợ thiết lập macro (GT), các sản phẩm Gaming mouse của ZADEZ sẽ mang đến trải nghiệm chơi game tuyệt vời nhất', link: "" },
-  //   { image: "/images/categories/headset.webp", name: "Tai Nghe Gaming", short: "Âm thanh vòm 7.1 chân thật sẽ giúp các game thủ xác định phương hướng rõ ràng, đồng thời trao đổi cùng đồng đội kịp thời qua micro lọc âm. Driver chuyên dụng hỗ trợ thay đổi tần số hoặc chế độ nghe Music/ Cinema tiện dụng (*)", link: "" },
-  //   { image: "/images/categories/pad.jpg", name: "Gaming Pad", short: "Chất liệu cao cấp và tăng cường độ chính xác khi sử dụng chuột, miếng lót Gaming pad là phụ kiện không thể thiếu của Game thủ chuyên nghiệp. Không phải tất cả các Gaming pad đều giống nhau, vì ZADEZ luôn tạo nên sự khác biệt.", link: "" },
-  //   { image: "/images/categories/headstand.jpg", name: "Khung Treo Tai Nghe", short: "Khung treo tai nghe với thiết kế độc quyền của ZADEZ, mang đến sự tinh tế cho không gian trải nghiệm game đẳng cấp. Hãy trải nghiệm và tận hưởng các tính năng độc đáo khác của đế treo tai nghe ZADEZ (* tùy thuộc từng model)", link: "" },
-  // ]
-  // The New Story of GAMING
-  const newStoryGaming = [
-    {
-      image: "/images/ZADEZ-Gaming-Wireless-Mouse.webp",
-      name: "Bàn Phím Cơ",
-    },
-    { image: "/images/ZADEZ-Gaming-Headset.webp", name: "Bàn Phím Membrane" },
-    { image: "/images/ZADEZ-Headset-Stand.webp", name: "Chuột Gaming" },
-    {
-      image: "/images/ZADEZ-Gaming-Wireless-Mouse-2.webp",
-      name: "Tai Nghe Gaming",
-    },
-    { image: "/images/ZADEZ-Gaming-Keyboard.webp", name: "Gaming Pad" },
-    {
-      image: "/images/ZADEZ-Headset-Stand-Ps5.webp",
-      name: "Khung Treo Tai Nghe",
-    },
-  ];
-
   return (
     <main className="w-full">
       {/* BANNER */}
       {/* <section id="banner" className="w-full m-auto -mt-10">
-        <Image
-          src={banner?.image}
-          width={1400}
-          height={300}
-          alt={banner.name}
-          sizes="100vw"
-          style={{
-            width: "100%",
-            height: "auto",
-          }}
-        />
-      </section> */}
+      <Image
+        src={banner?.image}
+        width={1400}
+        height={300}
+        alt={banner.name}
+        sizes="100vw"
+        style={{
+          width: "100%",
+          height: "auto",
+        }}
+      />
+    </section> */}
       {/* SLIDE BANNER */}
       <section id="slide-banner" className="w-full my-4">
         <SlideBanner data={slideBanners} width={1200} height={300} />
@@ -145,7 +142,7 @@ export default async function Home() {
         </div>
       )}
       {/* DANH MỤC SẢN PHẨM */}
-      <section id="categories" className="py-10rounded-md p-4 my-4 ">
+      <section id="categories" className="py-10rounded-md p-4 my-4">
         <h3 className="text-2xl font-bold text-red-500">Danh mục sản phẩm</h3>
         <div className="mx-2 lg:mx-20 grid grid-cols-4 md:grid-cols-5 gap-2 ">
           {menuCategory.map((item, i) => (
@@ -181,22 +178,22 @@ export default async function Home() {
       </div>
       {/* intro product */}
       {/* <div className='grid grid-cols-1 md:grid-cols-2 gap-8 my-8'>
-        {introProduct?.map((item, i) => (
-          <div key={i} className='col-span-2 md:col-span-1 grid-cols-3 flex shadow-md rounded-lg '>
-            <div className='col-span-3 md:col-span-1  overflow-hidden rounded-md hover:transform hover:scale-105 transition-transform duration-300 ease-in-out'>
-              <Image width={218} height={272} alt={item.name} src={item.image} sizes="100vw" style={{
-                width: "100%",
-                height: "auto",
-                objectFit: "contain"
-              }} />
-            </div>
-            <div className='col-span-3 md:col-span-2 px-4'>
-              <h4 className='text-red-500'>{item.name}</h4>
-              <p>{item.short}</p>
-            </div>
+      {introProduct?.map((item, i) => (
+        <div key={i} className='col-span-2 md:col-span-1 grid-cols-3 flex shadow-md rounded-lg '>
+          <div className='col-span-3 md:col-span-1  overflow-hidden rounded-md hover:transform hover:scale-105 transition-transform duration-300 ease-in-out'>
+            <Image width={218} height={272} alt={item.name} src={item.image} sizes="100vw" style={{
+              width: "100%",
+              height: "auto",
+              objectFit: "contain"
+            }} />
           </div>
-        ))}
-      </div> */}
+          <div className='col-span-3 md:col-span-2 px-4'>
+            <h4 className='text-red-500'>{item.name}</h4>
+            <p>{item.short}</p>
+          </div>
+        </div>
+      ))}
+    </div> */}
       {/* The New Story of GAMING */}
       <div className="flex flex-col justify-center items-center text-center my-4 p-4">
         <h5 className="text-2xl text-red-500">The New Story of GAMING</h5>
@@ -209,7 +206,7 @@ export default async function Home() {
       {/* LOGO CHÍNH THỨC ZADEZ */}
       <div className="my-4 p-4">
         <div className="flex flex-col justify-center items-center">
-          <h6 className="text-2xl text-red-500">Logo Chính Thức ZADEZ</h6>
+          <h6 className="text-2xl my-8 text-red-500">Logo Chính Thức ZADEZ</h6>
           <p className="text-base ">
             Hãy tham khảo logo chính thức của ZADEZ và sử dụng hệ thống tra cứu
             thông tin sản phẩm bằng Serial Number để nhận diện được sản phẩm

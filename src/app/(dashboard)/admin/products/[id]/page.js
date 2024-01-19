@@ -496,6 +496,7 @@ const ProductForm = ({ params }) => {
                         file.type === "image/jpeg" ||
                         file.type === "image/jpg" ||
                         file.type === "image/png" ||
+                        file.type === "image/webp" ||
                         file.type === "image/gif";
                       if (!isImg) {
                         message.error("You can only upload images");
@@ -578,6 +579,7 @@ const ProductForm = ({ params }) => {
                         file.type === "image/jpeg" ||
                         file.type === "image/jpg" ||
                         file.type === "image/png" ||
+                        file.type === "image/webp" ||
                         file.type === "image/gif";
                       if (!isImg) {
                         message.error("You can only upload images");
@@ -633,7 +635,7 @@ const ProductForm = ({ params }) => {
               fileList={fileList}
               multiple={true}
               onChange={onChangeListImage}
-            // onPreview={onPreview}
+              // onPreview={onPreview}
             >
               + Upload
             </Upload>

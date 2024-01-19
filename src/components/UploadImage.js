@@ -22,6 +22,7 @@ const UploadImage = ({ setPreviewPic, picURL }) => {
             file.type === "image/jpeg" ||
             file.type === "image/jpg" ||
             file.type === "image/png" ||
+            file.type === "image/webp" ||
             file.type === "image/gif";
           if (!isImg) {
             message.error("You can only upload images");

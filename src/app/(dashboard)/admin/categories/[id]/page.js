@@ -266,12 +266,12 @@ const CategoriesForm = ({ params }) => {
         <Form.Item
           label={<span className="font-medium ">Type</span>}
           name={`type`}
-        // rules={[
-        //     {
-        //         required: true,
-        //         message: "Please input type!",
-        //     },
-        // ]}
+          // rules={[
+          //     {
+          //         required: true,
+          //         message: "Please input type!",
+          //     },
+          // ]}
         >
           {/* <Input placeholder="Input type" /> */}
           <Select placeholder="Select type">
@@ -331,6 +331,7 @@ const CategoriesForm = ({ params }) => {
                       file.type === "image/jpeg" ||
                       file.type === "image/jpg" ||
                       file.type === "image/png" ||
+                      file.type === "image/webp" ||
                       file.type === "image/gif";
                     if (!isImg) {
                       message.error("You can only upload images");
