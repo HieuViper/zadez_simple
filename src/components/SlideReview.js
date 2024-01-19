@@ -9,20 +9,21 @@ import { Navigation, Autoplay } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 const SlideReview = ({ width, height }) => {
-    const { Meta } = Card;
-    const data = [{ name: "Pon Phan", image: "https://zadez.vn/wp-content/uploads/2023/06/ChIJ6x_Cv5QldTERvjLUPgnKG6s_8e0bf1b93e681e3747619fc097ca1a00.jpg", rate: 5, description: "Trung tâm hỗ trợ rất nhiệt tình. Nhân viên hướng dẫn chi tiết và cụ thể.Mình mất receiver của con chuột. May mà tt hỗ trợ chứ ko là vất rồi.Cảm ơn các bạn rất nhiều." },
-    { name: "Đăng Khoa Huỳnh ", image: "https://zadez.vn/wp-content/uploads/2023/06/ChIJ6x_Cv5QldTERvjLUPgnKG6s_d86e8041c763c1ecf62da501dc185e68.jpg", rate: 5, description: "Dịch vụ chăm sóc khách hàng qua FB rất nhiệt tình, hỗ trợ cả khi máy đã hết hạn bảo hành rất chi tiết" },
-    { name: "Minh D. Phan", image: "https://zadez.vn/wp-content/uploads/2023/06/ChIJ6x_Cv5QldTERvjLUPgnKG6s_d25bebd2e362edc2743651792b38238f.jpg", rate: 4, description: "Văn phòng mới rộng rãi thoáng mát. Đặc biệt là thuận tiện đậu xe hơn văn phòng trước đây." },
-    { name: "Đăng Khoa Huỳnh", image: "https://zadez.vn/wp-content/uploads/2023/06/ChIJ6x_Cv5QldTERvjLUPgnKG6s_d86e8041c763c1ecf62da501dc185e68.jpg", rate: 5, description: "Dịch vụ chăm sóc khách hàng qua FB rất nhiệt tình, hỗ trợ cả khi máy đã hết hạn bảo hành rất chi tiết" },
-    { name: "Linh Tố", image: "https://lh3.googleusercontent.com/a-/AD5-WCmslxeKB1vwDmW_ZrGlgR-jI7jwVilO-pWVI4ltUg=s56-c0x00000000-cc-rp-mo", rate: 5, description: "Hãng chăm sóc khách hàng tốt, trả lời tin nhắn nhanh, giải quyết vấn đề nhanh chóng." }]
-
+    const data = [
+        { name: "Huỳnh Như ", image: "/images/review1.webp", rate: 5, description: "Nhiệt tình, thân thiện!Sản phẩm chất lượng tốt!" },
+        { name: "Linh Tố", image: "/images/review2.webp", rate: 5, description: "Hãng chăm sóc khách hàng tốt, trả lời tin nhắn nhanh, giải quyết vấn đề nhanh chóng." },
+        { name: "Mai Uyên Lâm", image: "/images/review3.webp", rate: 5, description: "Công ty chăm sóc khách hàng rất tốt và tận tâm, hỗ trợ kịp thời cho mình. Nên mình cảm thấy rất an tâm và đúng đắn khi chọn mua sản phẩm ở Zadez." },
+        { name: "Ruby Nguyen", image: "/images/review4.webp", rate: 4, description: "Văn phòng mới rộng rãi thoáng mát. Đặc biệt là thuận tiện đậu xe hơn văn phòng trước đây." },
+        { name: "Đăng Khoa Huỳnh", image: "/images/review5.webp", rate: 5, description: "Dịch vụ chăm sóc khách hàng qua FB rất nhiệt tình, hỗ trợ cả khi máy đã hết hạn bảo hành rất chi tiết" },
+        { name: "Lan Tran", image: "/images/review6.webp", rate: 5, description: "Bảo hành rất chu đáo: hướng dẫn gửi sản phẩm ra sao, hồi đáp nhanh chóng qua messenger, gửi trả sản phẩm bảo hành trong chưa đầy 24 giờ. Ưng lắm luôn!" },
+    ]
     return (
         <Swiper
             // onSwiper={setThumbsSwiper}
             lazyPreloadPrevNext={2}
             loop={true}
             spaceBetween={4}
-            slidesPerView={4}
+            // slidesPerView={4}
             freeMode={true}
             grabCursor={true}
             watchSlidesProgress={true}
@@ -36,7 +37,7 @@ const SlideReview = ({ width, height }) => {
                 0: {
                     slidesPerView: 1,
                 },
-                768: {
+                640: {
                     slidesPerView: 2,
                 },
                 820: {
@@ -45,7 +46,7 @@ const SlideReview = ({ width, height }) => {
                 1024: {
                     slidesPerView: 4,
                 },
-                1280: {
+                1536: {
                     slidesPerView: 5,
                 },
             }}
@@ -56,19 +57,14 @@ const SlideReview = ({ width, height }) => {
                         <Card
                             hoverable
                             style={{
-                                width: 260,
                                 height: 280
                             }}
                         >
-                            {/* <Meta
-                                avatar={<Avatar src={item.image} size={50} />}
-                                title={item.name}
-                            /> */}
                             <div className="flex ">
                                 <Avatar src={item.image} size={50} />
-                                <div className="text-base text-cyan-600 font-semibold ml-4 flex items-center">{item.name}</div>
+                                <div className="text-base text-cyan-600 font-semibold ml-4 ">{item.name}</div>
                             </div>
-                            <div className="mt-6" >
+                            <div className="mt-4 mb-2" >
                                 <Rate value={item.rate} disabled={true} />
                             </div>
                             <div>{item.description}</div>

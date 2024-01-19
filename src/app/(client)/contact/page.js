@@ -1,7 +1,9 @@
 'use client'
 import { Button } from 'antd'
 import Image from 'next/image'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const Contact = () => {
     const QRCode = [
@@ -10,17 +12,19 @@ const Contact = () => {
         { image: "/images/QRCode-Messenger.png", name: "Tư Vấn Qua Facebook Chat", short: "Đây là kênh tư vấn và hỗ trợ khách hàng trực tuyến thông qua Fanpage chính thức của ZADEZ Việt Nam, vui lòng scan QR code hoặc nhấn vào nút bên dưới để bắt đầu kết nối.", button: "TƯ VẤN QUA MESSENGER", link: "https://www.messenger.com/" },
         { image: "/images/QRCode-Youtube.png", name: "Hướng Dẫn Qua YouTube", short: "Đây là kênh Youtube chính thức của ZADEZ Việt Nam, cập nhật những clip giới thiệu về sản phẩm cũng như hướng dẫn xử lý các sự cố thường gặp. Quý khách hàng vui lòng scan QR code hoặc nhấn vào link để kết nối.", button: "XEM HƯỚNG DẪN TẠI YOUTUBE", link: "https://www.youtube.com/zadezvietnam" },
     ]
-
+    useEffect(() => {
+        AOS.init({ once: true });
+    });
     return (
         <div>
 
-            <section className='flex flex-col justify-center items-center text-center md:mx-20 lg:mx-40'>
+            <section className='flex flex-col justify-center items-center text-center md:mx-20 lg:mx-40' data-aos="fade-down" data-aos-duration="400">
                 <h1 className='text-4xl text-red-500'>
                     Trung Tâm Bảo Hành – Chăm Sóc Khách Hàng
                 </h1>
                 <p className='text-base'>Chào mừng Quý khách hàng đến với Trung tâm bảo hành và Chăm sóc khách hàng của ZADEZ tại Việt Nam. Quý khách hàng có thể yêu cầu tư vấn/ hỗ trợ trực tuyến thông qua các kênh CSKH chính thức của ZADEZ hoặc liên hệ trực tiếp đến Trung tâm CSKH.</p>
             </section>
-            <section className='flex flex-col justify-center items-center text-center'>
+            <section className='flex flex-col justify-center items-center text-center' data-aos="fade-up" data-aos-duration="500">
                 <h4 className='text-2xl text-red-500'>Trung Tâm Bảo Hành & CSKH Tại Tp. Hồ Chí Minh</h4>
                 <iframe
                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3920.0378510093133!2d106.73422791474857!3d10.731564092352032!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752594bfc21feb%3A0xab1bca093ed432be!2sZadez%20Vietnam%20Customer%20services!5e0!3m2!1sen!2s!4v1666859573479!5m2!1sen!2s"
@@ -33,7 +37,7 @@ const Contact = () => {
                     title='Bản đồ Zadez'
                 />
             </section>
-            <section className='grid grid-cols-4 p-8 shadow-md mt-8'>
+            <section className='grid grid-cols-4 p-8 shadow-md mt-8' data-aos="fade-up" data-aos-duration="500">
                 <div className='col-span-4 md:col-span-1'>
                     <Image width={295} height={295} alt='Chăm sóc khách hàng' src='/images/customer-service.png' />
                 </div>
@@ -49,7 +53,7 @@ const Contact = () => {
                     <p>– Thời gian làm việc buổi chiều: <span className='text-red-500'>từ 13h30 đến 18h00</span></p>
                 </div>
             </section>
-            <section className='p-8 '>
+            <section className='p-8 ' data-aos="fade-up" data-aos-duration="500">
                 <p className='font-medium'>Quý khách hàng nếu có vấn đề chưa hài lòng về chất lượng phục vụ hoặc cần khiếu nại về thái độ làm việc của nhân viên tại các trung tâm Chăm sóc Khách hàng, xin vui lòng gửi email về địa chỉ <span className='text-red-500'>chamsockhachhang@zadez.vn</span> .</p>
                 <p className='font-medium'>Rất hân hạnh được phục vụ quý khách hàng.</p>
                 <div className='grid grid-cols-1 md:grid-cols-2 gap-8'>

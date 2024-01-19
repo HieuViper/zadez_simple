@@ -18,24 +18,24 @@ const ClientSide = () => {
   const productBlack = {
     list_image: [
       {
-        url: "/images/landing-page/gp-803/GP_803B/GP-803B-1.png",
-        name: "GP-803B-1.png"
+        url: "/images/landing-page/gp-803/GP_803B/GP-803B-1.webp",
+        name: "GP-803B-1.webp"
       },
       {
-        url: "/images/landing-page/gp-803/GP_803B/GP-803B-2.png",
-        name: "GP-803B-2.png"
+        url: "/images/landing-page/gp-803/GP_803B/GP-803B-2.webp",
+        name: "GP-803B-2.webp"
       },
       {
-        url: "/images/landing-page/gp-803/GP_803B/GP-803B-3.png",
-        name: "GP-803B-3.png"
+        url: "/images/landing-page/gp-803/GP_803B/GP-803B-3.webp",
+        name: "GP-803B-3.webp"
       },
       {
-        url: "/images/landing-page/gp-803/GP_803B/GP-803B-4.png",
-        name: "GP-803B-4.png"
+        url: "/images/landing-page/gp-803/GP_803B/GP-803B-4.webp",
+        name: "GP-803B-4.webp"
       },
       {
-        url: "/images/landing-page/gp-803/GP_803B/GP-803B-5.png",
-        name: "GP-803B-5.png"
+        url: "/images/landing-page/gp-803/GP_803B/GP-803B-5.webp",
+        name: "GP-803B-5.webp"
       }
     ],
     id: 5,
@@ -63,24 +63,24 @@ const ClientSide = () => {
   const productWhite = {
     list_image: [
       {
-        url: "/images/landing-page/gp-803/GP-803BW/GP-803GW-1.png",
-        name: "GP-803B-1.png"
+        url: "/images/landing-page/gp-803/GP-803BW/GP-803GW-1.webp",
+        name: "GP-803B-1.webp"
       },
       {
-        url: "/images/landing-page/gp-803/GP-803BW/GP-803GW-2.png",
-        name: "GP-803B-2.png"
+        url: "/images/landing-page/gp-803/GP-803BW/GP-803GW-2.webp",
+        name: "GP-803B-2.webp"
       },
       {
-        url: "/images/landing-page/gp-803/GP-803BW/GP-803GW-3.png",
-        name: "GP-803B-3.png"
+        url: "/images/landing-page/gp-803/GP-803BW/GP-803GW-3.webp",
+        name: "GP-803B-3.webp"
       },
       {
-        url: "/images/landing-page/gp-803/GP-803BW/GP-803GW-4.png",
-        name: "GP-803B-4.png"
+        url: "/images/landing-page/gp-803/GP-803BW/GP-803GW-4.webp",
+        name: "GP-803B-4.webp"
       },
       {
-        url: "/images/landing-page/gp-803/GP-803BW/GP-803GW-5.png",
-        name: "GP-803B-5.png"
+        url: "/images/landing-page/gp-803/GP-803BW/GP-803GW-5.webp",
+        name: "GP-803B-5.webp"
       }
     ],
     id: 6,
@@ -130,7 +130,7 @@ const ClientSide = () => {
   };
 
   useEffect(() => {
-    AOS.init({ duration: 2000 });
+    AOS.init({ once: true });
   });
   return (
     <div>
@@ -145,7 +145,7 @@ const ClientSide = () => {
           </button>
         </div>
         <div className='col-span-2 md:col-span-1 flex justify-center items-center' data-aos="zoom-in" data-aos-duration="500">
-          <Image width={400} height={400} src='/images/landing-page/gp-803/img1.png' alt='GP-803' sizes="100vw"
+          <Image width={400} height={400} src='/images/landing-page/gp-803/img1.webp' alt='GP-803' sizes="100vw"
             style={{
               width: "100%",
               height: "auto",
@@ -157,12 +157,12 @@ const ClientSide = () => {
       <section id="section2" className="relative">
         <div className="absolute grid grid-cols-2 gap-4  shadow-2xl -top-36 xl:-top-44 left-[4%] md:left-[7%] -mt-10 w-10/12 h-80 xl:h-96 bg-gray-200 p-4">
           <div
-            className="col-span-2 md:col-span-1"
+            className="col-span-2 md:col-span-1 hidden md:block"
             style={{ height: "inherit" }}
           >
             <div className="relative w-full h-full ">
               <Image
-                src="/images/landing-page/gp-803/img2.png"
+                src="/images/landing-page/gp-803/img2.webp"
                 alt="GP-803"
                 fill
                 objectFit="contain"
@@ -170,7 +170,7 @@ const ClientSide = () => {
             </div>
           </div>
           <div className="col-span-2 md:col-span-1 md:p-6 lg:p-10 xl:p-20">
-            <h2 className="text-5xl font-bold uppercase text-yellow-400">
+            <h2 className="mt-2 text-5xl md:text-3xl lg:text-4xl xl:text-5xl font-bold uppercase text-yellow-400">
               ULTRA LIGHT 176 GRAM
             </h2>
             <p>
@@ -186,9 +186,9 @@ const ClientSide = () => {
       </section>
 
       {/*  */}
-      <section id='section3' className="grid grid-cols-2 gap-8 pt-64 pb-8 md:pb-16 lg:pb-32 bg-[url('/images/landing-page/gp-803/bg1.png')] bg-center lg:-ml-16 lg:-mr-16 xl:-ml-24 xl:-mr-24">
+      <section id='section3' className="grid grid-cols-2 gap-8 pt-64 pb-8 md:pb-16 lg:pb-32 bg-[url('/images/landing-page/gp-803/bg1.webp')] bg-center lg:-ml-16 lg:-mr-16 xl:-ml-24 xl:-mr-24">
         <div className='col-span-2 md:col-span-1 flex justify-center items-center' data-aos="zoom-in-right" data-aos-duration="500">
-          <Image width={200} height={200} src='/images/landing-page/gp-803/img1.png' alt='GP-803'
+          <Image width={200} height={200} src='/images/landing-page/gp-803/img1.webp' alt='GP-803'
             sizes="100vw"
             style={{
               width: "100%",
@@ -196,7 +196,7 @@ const ClientSide = () => {
             }}
           />
         </div>
-        <div className='col-span-2 md:col-span-1 text-right px-2 md:px-4 lg:px-10' data-aos="zoom-in-left" data-aos-duration="900">
+        <div className='col-span-2 md:col-span-1 text-right px-2 md:px-4 lg:px-10 xl:pl-40' data-aos="zoom-in-left" data-aos-duration="900">
           <h2 className='text-3xl md:text-4xl lg:text-6xl font-bold uppercase text-yellow-400 '>ENC-KHỬ ỒN CAO CẤP</h2>
           <p className='text-white'>ENC - Environmental Noise Cancellation là công nghệ khử ồn cao cấp, có thể hạn chế đến 96% tạp âm đến từ môi trường bên ngoài.</p>
           <p className='text-white'>Chế độ EQ có 2 chế độ tùy chỉnh âm thanh HIFI hoặc BASS, đáp ứng nhu cầu thưởng thức âm nhạc và điện ảnh trong điều kiện tốt nhất.</p>
@@ -209,7 +209,7 @@ const ClientSide = () => {
       </section >
       {/*  */}
       <section id='section4' className='col-span-2 md:col-span-1 grid grid-cols-2 py-2 lg:p-20 gap-2' >
-        <Image className='col-span-2 md:col-span-1 shadow-2xl' width={300} height={300} src='/images/landing-page/gp-803/img3.png' alt='GP-803'
+        <Image className='col-span-2 md:col-span-1 shadow-2xl' width={300} height={300} src='/images/landing-page/gp-803/img3.webp' alt='GP-803'
           sizes="100vw"
           style={{
             width: "100%",
@@ -229,7 +229,7 @@ const ClientSide = () => {
         />
       </section>
       {/*  */}
-      <section id='section 5' className="bg-[url('/images/landing-page/gp-803/bg2.png')] bg-center py-4 md:py-10 lg:py-20 lg:-ml-16 lg:-mr-16 xl:-ml-24 xl:-mr-24">
+      <section id='section 5' className="bg-[url('/images/landing-page/gp-803/bg2.webp')] bg-center py-4 md:py-10 lg:py-20 lg:-ml-16 lg:-mr-16 xl:-ml-24 xl:-mr-24">
         <div className='w-full lg:w-4/6 m-auto'>
           <Tabs
             defaultActiveKey="1"
@@ -273,7 +273,7 @@ const ClientSide = () => {
           }}
         /></section>
       {/*  */}
-      <section id='params' className="bg-[url('/images/landing-page/gp-803/bg3.png')] bg-center px-2 py-4 md:py-10  lg:py-32 lg:-ml-16 lg:-mr-16 xl:-ml-24 xl:-mr-24 ">
+      <section id='params' className="bg-[url('/images/landing-page/gp-803/bg3.webp')] bg-center px-2 py-4 md:py-10  lg:py-32 lg:-ml-16 lg:-mr-16 xl:-ml-24 xl:-mr-24 ">
         <div className='flex flex-col justify-center items-center md:px-10'>
           <h4 className='text-red-500 text-4xl font-bold mb-2' data-aos="fade-down" data-aos-duration="400">ENC Bluetooth Headphone</h4>
           <div class="relative flex py-5 items-center w-full" data-aos="fade-down" data-aos-duration="600">
@@ -343,14 +343,14 @@ const ClientSide = () => {
           </button>
         </div>
         <div className='col-span-2 md:col-span-1 grid grid-cols-2 justify-center items-center' data-aos="fade-up" data-aos-duration="900">
-          <Image className='col-span-2 md:col-span-1' width={300} height={300} src='/images/landing-page/gp-803/GP-803BW/GP-803GW-1.png' alt='GP-803GW'
+          <Image className='col-span-2 md:col-span-1' width={300} height={300} src='/images/landing-page/gp-803/GP-803BW/GP-803GW-1.webp' alt='GP-803GW'
             sizes="100vw"
             style={{
               width: "100%",
               height: "auto",
             }}
           />
-          <Image className='col-span-2 md:col-span-1' width={300} height={300} src='/images/landing-page/gp-803/GP_803B/GP-803B-3.png' alt='GP-803B'
+          <Image className='col-span-2 md:col-span-1' width={300} height={300} src='/images/landing-page/gp-803/GP_803B/GP-803B-3.webp' alt='GP-803B'
             sizes="100vw"
             style={{
               width: "100%",
@@ -382,28 +382,28 @@ const ClientSide = () => {
         <div className='w-full bg-gray-100 my-10 lg:px-16 xl:px-24 lg:-ml-16 lg:-mr-16 xl:-ml-24 xl:-mr-24'>
           <div className='text-2xl md:text-3xl lg:text-4xl font-bold my-4'>Đánh giá của khách hàng</div>
           <div className=' flex-grow border-t border-solid border-yellow-400  mb-8'></div>
-          {/* <div className='w-full m-auto'> */}
-          <SlideReview />
-          {/* </div> */}
+          <div className='mx-auto'>
+            <SlideReview />
+          </div>
         </div>
         {/*  */}
       </section >
-      <section id='follow us' className="flex justify-center items-center ">
-        <div className="w-full md:w-10/12 bg-[url('/images/bg-contact.png')] bg-cover rounded-xl flex flex-col justify-center items-center p-4">
+      <section id='follow us' className="flex justify-center items-center bg-[#1d1d1d] lg:px-16 xl:px-24 lg:-ml-16 lg:-mr-16 xl:-ml-24 xl:-mr-24 -mb-10 p-10 rounded-t-xl">
+        <div className="w-full md:w-10/12 bg-gray-100 bg-cover rounded-xl flex flex-col justify-center items-center gap-4 p-4">
           <div className='text-xl md:text-3xl font-bold mb-2'>Theo dõi chúng tôi</div>
-          <p className='mb-4'>Thông báo,events,khuyến mãi... Tất cả đều có ở đây</p>
+          <span className='mb-4'>Thông báo,events,khuyến mãi... Tất cả đều có ở đây</span>
           <div className='flex gap-10 pb-8'>
             <Link href='https://www.facebook.com/ZadezTechnology' target='_blank'>
-              <Image className='hover:scale-110 duration-200' width={50} height={50} src='/images/icon-logo/facebook.png' alt='facebook' />
+              <Image className='hover:scale-110 duration-200' width={50} height={50} src='/images/icon-logo/facebook.webp' alt='facebook' />
             </Link>
             <Link href='https://www.instagram.com/zadez_official/' target='_blank'>
-              <Image className='hover:scale-110 duration-200' width={50} height={50} src='/images/icon-logo/instagram.png' alt='instagram' />
+              <Image className='hover:scale-110 duration-200' width={50} height={50} src='/images/icon-logo/instagram.webp' alt='instagram' />
             </Link>
             <Link href='https://www.youtube.com/zadezvietnam' target='_blank'>
-              <Image className='hover:scale-110 duration-200' width={50} height={50} src='/images/icon-logo/youtube.png' alt='youtube' />
+              <Image className='hover:scale-110 duration-200' width={50} height={50} src='/images/icon-logo/youtube.webp' alt='youtube' />
             </Link>
             <Link href='' target='_blank'>
-              <Image className='hover:scale-110 duration-200' width={50} height={50} src='/images/icon-logo/tik-tok.png' alt='tiktok' />
+              <Image className='hover:scale-110 duration-200' width={50} height={50} src='/images/icon-logo/tik-tok.webp' alt='tiktok' />
             </Link>
           </div>
         </div>
@@ -424,7 +424,7 @@ const ClientSide = () => {
               setActiveCard(1);
             }
             }>
-            <Image className='col-span-2 md:col-span-1' width={300} height={300} src='/images/landing-page/gp-803/GP_803B/GP-803B-3.png' alt='GP-803B'
+            <Image className='col-span-2 md:col-span-1' width={300} height={300} src='/images/landing-page/gp-803/GP_803B/GP-803B-3.webp' alt='GP-803B'
               sizes="100vw"
               style={{
                 width: "100%",
@@ -438,7 +438,7 @@ const ClientSide = () => {
               setActiveCard(2);
             }
             }>
-            <Image className='col-span-2 md:col-span-1' width={300} height={300} src='/images/landing-page/gp-803/GP-803BW/GP-803GW-1.png' alt='GP-803GW'
+            <Image className='col-span-2 md:col-span-1' width={300} height={300} src='/images/landing-page/gp-803/GP-803BW/GP-803GW-1.webp' alt='GP-803GW'
               sizes="100vw"
               style={{
                 width: "100%",
