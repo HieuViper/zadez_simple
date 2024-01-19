@@ -2,8 +2,13 @@ import GoogleAnalystic from "@/components/GoogleAnalystic";
 import Footer from "../../components/Footer";
 // import './globals.css'
 import AuthenPopup from "@/components/AuthenPopup";
-import Header from "@/components/Header";
+// import Header from "@/components/Header";
+import db from "@/models";
+import dynamic from "next/dynamic";
 import { Inter } from "next/font/google";
+const Header = dynamic(() => import("@/components/Header"), {
+  loading: () => <p>Loading...</p>,
+});
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -16,13 +21,17 @@ export const metadata = {
   },
 };
 async function getAllCategories() {
-  const res = await fetch(`${process.env.BASE_URL}/api/categories/get-all`, {
-    cache: "no-cache",
+  const res = await db.Categories.findAll({
+    include: [
+      {
+        model: db.Products,
+        as: "products",
+      },
+    ],
+    raw: true,
+    nest: true,
   });
-  if (!res.ok) {
-    throw new Error("Failed to fetch data");
-  }
-  return res.json();
+  return res;
 }
 
 export default async function RootLayout({ children, params }) {

@@ -103,7 +103,7 @@ const Header = ({ categories }) => {
     });
     return categoryTree;
   }
-  const dataTree = categories && buildCategoryTree(categories?.data);
+  const dataTree = categories && buildCategoryTree(categories);
 
   const [openCart, setOpenCart] = useState(false);
   const showDrawer = () => {
