@@ -5,19 +5,17 @@ import store from "./zustand/store";
 
 export const useSWRData = (endpoint, params = {}) => {
   const { userState } = store();
-  // const headers = {};
-  // if (userState.token) {
-  //   headers["Authorization"] = `${userState.token}`;
-  // }
+  const headers = {};
+  if (userState.token) {
+    headers["Authorization"] = `${userState.token}`;
+  }
   // const fetcher = (url) =>
   //   fetch(url, {
   //     headers: headers,
   //   }).then((r) => r.json());
 
   const fetcher = (url, token) =>
-    axios
-      .get(url, { headers: { Authorization: token } })
-      .then((res) => res.data);
+    axios.get(url, { headers: headers }).then((res) => res.data);
   const { id, ...otherParams } = params; // Extract 'id' from params
   const queryString =
     Object.keys(otherParams).length > 0
@@ -26,10 +24,7 @@ export const useSWRData = (endpoint, params = {}) => {
   const key = id
     ? `${endpoint}/${id}?${queryString}`
     : `${endpoint}${queryString && `?${queryString}`}`;
-  const { data, isLoading, error, mutate } = useSWR(
-    [key, userState.token || null],
-    fetcher
-  );
+  const { data, isLoading, error, mutate } = useSWR(key, fetcher);
 
   const createData = async (newData) => {
     // Perform POST request to create data
