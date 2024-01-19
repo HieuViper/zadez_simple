@@ -1,8 +1,8 @@
 import GoogleAnalystic from "@/components/GoogleAnalystic";
 import Footer from "../../components/Footer";
-import Header from "../../components/Header";
 // import './globals.css'
 import AuthenPopup from "@/components/AuthenPopup";
+import Header from "@/components/Header";
 import { Inter } from "next/font/google";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -16,15 +16,17 @@ export const metadata = {
   },
 };
 async function getAllCategories() {
-  const res = await fetch(`${process.env.BASE_URL}/api/categories/get-all`, { cache: 'no-cache' })
+  const res = await fetch(`${process.env.BASE_URL}/api/categories/get-all`, {
+    cache: "no-cache",
+  });
   if (!res.ok) {
-    throw new Error('Failed to fetch data')
+    throw new Error("Failed to fetch data");
   }
-  return res.json()
+  return res.json();
 }
 
 export default async function RootLayout({ children, params }) {
-  const categories = await getAllCategories()
+  const categories = await getAllCategories();
 
   return (
     <html>

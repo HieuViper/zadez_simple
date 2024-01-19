@@ -1,17 +1,11 @@
 "use client";
 // import { useSWRData } from "@/library/api";
 import store from "@/library/zustand/store";
-import {
-  CloseOutlined,
-  LogoutOutlined,
-  MenuOutlined,
-  ShoppingCartOutlined,
-  UserOutlined,
-} from "@ant-design/icons";
-import { Button, Dropdown, Menu, message } from "antd";
+import { LogoutOutlined, UserOutlined } from "@ant-design/icons";
+import { Button, Dropdown, message } from "antd";
 import dynamic from "next/dynamic";
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Cart from "./Cart";
 import NavBar from "./NavBar";
 import logo from "/public/images/logo-zadez.png";
@@ -120,8 +114,9 @@ const Header = ({ categories }) => {
   };
   return (
     <header
-      className={`${scrollPosition > 0 ? "shadow-md py-2" : "shadow-sm lg:py-4 py-2"
-        }  w-full bg-[#fafafa]  px-2 fixed top-0 z-30 transition-all duration-500`}
+      className={`${
+        scrollPosition > 0 ? "shadow-md py-2" : "shadow-sm lg:py-4 py-2"
+      }  w-full bg-[#fafafa]  px-2 fixed top-0 z-30 transition-all duration-500`}
     >
       <Head>
         <link rel="canonical" href={canonicalURL} />
@@ -134,12 +129,11 @@ const Header = ({ categories }) => {
         <div className="border border-b-[#e5e7eb]">
           <div className="flex lg:grid lg:grid-cols-12  justify-center items-center">
             <div
-              className=
-              {`${scrollPosition > 0 ? "top-12" : "top-16"
-                }  block lg:hidden absolute  left-5 px-3 py-2 border rounded hover:text-teal-200 border-gray-300 cursor-pointer duration-300 transition-all`}
+              className={`${
+                scrollPosition > 0 ? "top-12" : "top-16"
+              }  block lg:hidden absolute  left-5 px-3 py-2 border rounded hover:text-teal-200 border-gray-300 cursor-pointer duration-300 transition-all`}
             >
               <SideBar data={dataTree} />
-
             </div>
             <div className="col-span-2">
               <a
@@ -176,7 +170,12 @@ const Header = ({ categories }) => {
           </div>
         </div>
       </div>
-      <Cart onClose={onCloseCart} open={openCart} placement='right' className="no-scrollbar" />
+      <Cart
+        onClose={onCloseCart}
+        open={openCart}
+        placement="right"
+        className="no-scrollbar"
+      />
     </header>
   );
 };
