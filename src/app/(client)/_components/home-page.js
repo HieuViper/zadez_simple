@@ -1,10 +1,12 @@
 "use client";
-
+import React, { useEffect, useState } from 'react'
 import SlideBanner from "@/components/SlideBanner";
 import SlideCard from "@/components/SlideCard";
 import SlideImage from "@/components/SlideImage";
 import Image from "next/image";
 import Link from "next/link";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 export default function HomePage({
   outstandingProducts,
@@ -74,6 +76,9 @@ export default function HomePage({
       name: "Khung Treo Tai Nghe",
     },
   ];
+  useEffect(() => {
+    AOS.init({ once: true });
+  });
   return (
     <main className="w-full">
       {/* BANNER */}
@@ -91,7 +96,7 @@ export default function HomePage({
         />
       </section> */}
       {/* SLIDE BANNER */}
-      <section id="slide-banner" className="w-full my-4">
+      <section id="slide-banner" className="w-full my-4" data-aos="fade-down" data-aos-duration="500">
         <SlideBanner data={slideBanners} width={1200} height={300} />
       </section>
       {/* SẢN PHẨM NỔI BẬT */}
@@ -99,6 +104,7 @@ export default function HomePage({
         <div
           id="outstanding-products"
           className="bg-gray-100 rounded-md p-4 mb-4 bg-[url('/images/outstanding-products.webp')] bg-cover"
+          data-aos="fade-up" data-aos-duration="500"
         >
           <h1 className="invisible m-0 text-xs">ZADEZ VIỆT NAM</h1>
           <h2 className="text-2xl font-bold text-red-500">Sản phẩm nổi bật</h2>
@@ -110,6 +116,7 @@ export default function HomePage({
         <div
           id="new-products"
           className="bg-gray-100 rounded-md p-4 mb-4 bg-[url('/images/new-products.webp')] bg-cover"
+          data-aos="fade-up" data-aos-duration="500"
         >
           <h2 className="text-2xl font-bold text-red-500">Sản phẩm mới</h2>
           <SlideCard data={newProducts} />
@@ -120,13 +127,14 @@ export default function HomePage({
         <div
           id="best-seller"
           className="bg-gray-100 rounded-md p-4 mb-4 bg-[url('/images/best-seller.webp')] bg-cover"
+          data-aos="fade-up" data-aos-duration="500"
         >
           <h2 className="text-2xl font-bold text-red-500">Top bán chạy</h2>
           <SlideCard data={bestSeller} />
         </div>
       )}
       {/* DANH MỤC SẢN PHẨM */}
-      <section id="categories" className="py-10rounded-md p-4 my-4 ">
+      <section id="categories" className="py-10rounded-md p-4 my-4 " data-aos="fade-up" data-aos-duration="500">
         <h3 className="text-2xl font-bold text-red-500">Danh mục sản phẩm</h3>
         <div className="mx-2 lg:mx-20 grid grid-cols-4 md:grid-cols-5 gap-2 ">
           {menuCategory.map((item, i) => (
@@ -149,7 +157,7 @@ export default function HomePage({
       </section>
       {/* ZADEZ */}
       <div className="flex flex-col justify-start items-center text-center h-[600px] bg-[url('/images/banner-zadez.jpg')] bg-center rounded-xl">
-        <div className="mx-4 md:w-1/2 ">
+        <div className="mx-4 md:w-1/2 " data-aos="zoom-in" data-aos-duration="500">
           <h4 className="text-2xl text-red-500 mt-10 md:mt-32">ZADEZ GAMING</h4>
           <p className="text-base text-white">
             Game là niềm đam mê của bạn và phục vụ cho niềm đam mê đó là sứ mệnh
@@ -179,7 +187,7 @@ export default function HomePage({
         ))}
       </div> */}
       {/* The New Story of GAMING */}
-      <div className="flex flex-col justify-center items-center text-center my-4 p-4">
+      <div className="flex flex-col justify-center items-center text-center my-4 p-4" data-aos="fade-down" data-aos-duration="500">
         <h5 className="text-2xl text-red-500">The New Story of GAMING</h5>
         <p className="text-base ">
           ZADEZ hân hạnh giới thiệu đến Quý khách hàng những sản phẩm mới nhất
@@ -189,8 +197,8 @@ export default function HomePage({
       <SlideImage data={newStoryGaming} width={400} height={295} />
       {/* LOGO CHÍNH THỨC ZADEZ */}
       <div className="my-4 p-4">
-        <div className="flex flex-col justify-center items-center">
-          <h6 className="text-2xl text-red-500">Logo Chính Thức ZADEZ</h6>
+        <div className="flex flex-col justify-center items-center" data-aos="fade-down" data-aos-duration="500">
+          <h6 className="text-2xl my-8 text-red-500">Logo Chính Thức ZADEZ</h6>
           <p className="text-base ">
             Hãy tham khảo logo chính thức của ZADEZ và sử dụng hệ thống tra cứu
             thông tin sản phẩm bằng Serial Number để nhận diện được sản phẩm
@@ -198,7 +206,7 @@ export default function HomePage({
           </p>
         </div>
         <div className="grid grid-cols-2 gap-4">
-          <div className="col-span-2 md:col-span-1 ">
+          <div className="col-span-2 md:col-span-1 " data-aos="fade-up" data-aos-duration="500">
             <div className="text-lg text-red-500 font-medium ">
               Ý Nghĩa Biểu Tượng
             </div>
@@ -232,7 +240,7 @@ export default function HomePage({
               <b>ZADEZ - Make Life Easier</b>
             </p>
           </div>
-          <div className="col-span-2 md:col-span-1 flex items-center">
+          <div className="col-span-2 md:col-span-1 flex items-center" data-aos="zoom-out" data-aos-duration="800">
             <Image
               sizes="100vw"
               style={{

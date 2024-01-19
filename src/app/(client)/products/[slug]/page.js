@@ -110,7 +110,7 @@ const Product = ({ params }) => {
           </div>
         </div>
       </div>
-      <div className="editor">
+      <div className="editor mt-8">
         <div dangerouslySetInnerHTML={{ __html: product?.description }} />
       </div>
       {/* SIMILAR PRODUCT */}

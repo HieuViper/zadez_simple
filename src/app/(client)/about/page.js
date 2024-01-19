@@ -9,7 +9,9 @@ import {
 } from "@ant-design/icons";
 import { Divider } from "antd";
 import Image from "next/image";
-// import a from 'next/link';
+import { useEffect } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const About = () => {
   const youKnow = [
@@ -58,10 +60,13 @@ const About = () => {
       description: "",
     },
   ];
+  useEffect(() => {
+    AOS.init({ once: true });
+  });
   return (
     <div className="mb-20">
       {/* Banner */}
-      <div className="flex flex-col justify-center items-center text-center my-8">
+      <div className="flex flex-col justify-center items-center text-center my-8" data-aos="fade-down" data-aos-duration="500">
         <h1 className="text-4xl text-red-500">ZADEZ-Make Life Easier</h1>
         <p className="text-base text-[#999999]">
           Đã có mặt tại Việt Nam từ năm 2007, nhưng đây có thể là lần đầu tiên
@@ -81,9 +86,10 @@ const About = () => {
           width={1225}
           height={788}
           alt="ZADEZ Factory Vinh Long"
+          data-aos="zoom-out" data-aos-duration="500"
         />
         <div className="grid grid-cols-3 gap-2 mt-6">
-          <div className="col-span-3 md:col-span-1">
+          <div className="col-span-3 md:col-span-1" data-aos="zoom-in" data-aos-duration="400">
             <Image
               sizes="100vw"
               style={{
@@ -96,7 +102,7 @@ const About = () => {
               alt="ZADEZ Factory Vinh Long"
             />
           </div>
-          <div className="col-span-3 md:col-span-1">
+          <div className="col-span-3 md:col-span-1" data-aos="zoom-in" data-aos-duration="600">
             <Image
               sizes="100vw"
               style={{
@@ -109,7 +115,7 @@ const About = () => {
               alt="ZADEZ Factory Vinh Long"
             />
           </div>
-          <div className="col-span-3 md:col-span-1">
+          <div className="col-span-3 md:col-span-1" data-aos="zoom-in" data-aos-duration="800">
             <Image
               sizes="100vw"
               style={{
@@ -159,7 +165,7 @@ const About = () => {
         </div>
       </section>
       {/* Và Bạn Có Biết */}
-      <section className="">
+      <section className="" data-aos="fade-up" data-aos-duration="500">
         <div className="flex gap-4">
           <BulbOutlined style={{ fontSize: 32, color: "red" }} />
           <h4 className="text-xl text-red-500 font-semibold my-2">
@@ -205,7 +211,7 @@ const About = () => {
         </div>
       </section>
       {/* Trải Nghiệm Sự Khác Biệt */}
-      <section className="mt-8">
+      <section className="mt-8" data-aos="fade-up" data-aos-duration="500">
         <div className=" flex gap-4 border border-b-red-500">
           <HeartOutlined style={{ fontSize: 32, color: "red" }} />
           <h4 className="text-xl text-red-500 font-semibold my-2">
@@ -249,7 +255,7 @@ const About = () => {
         </div>
       </section>
       {/* ZADEZ VIETNAM Channel */}
-      <section className="my-8">
+      <section className="my-8" data-aos="fade-up" data-aos-duration="500">
         <div className="flex gap-4">
           <YoutubeOutlined style={{ fontSize: 32, color: "red" }} />
           <h4 className="text-xl text-red-500 font-semibold my-2">
@@ -277,7 +283,7 @@ const About = () => {
         </div>
       </section>
       {/* Lịch Sử Phát Triển */}
-      <section>
+      <section data-aos="fade-up" data-aos-duration="500">
         <div className="flex gap-4">
           <HistoryOutlined style={{ fontSize: 32, color: "red" }} />
           <h4 className="text-xl text-red-500 font-semibold my-2">
@@ -321,7 +327,7 @@ const About = () => {
         </div>
       </section>
       {/*Hệ Thống Nhận Diện Thương Hiệu */}
-      <section>
+      <section data-aos="fade-up" data-aos-duration="500">
         <div className="flex gap-4 mt-6">
           <StarOutlined style={{ fontSize: 32, color: "red" }} />
           <h4 className="text-xl text-red-500 font-semibold my-2">
