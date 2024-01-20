@@ -541,7 +541,7 @@ const ClientSide = () => {
                 className="hover:scale-110 duration-200"
                 width={50}
                 height={50}
-                src="/images/icon-logo/facebook.webp"
+                src="/images/icon/facebook.webp"
                 alt="facebook"
               />
             </Link>
@@ -553,7 +553,7 @@ const ClientSide = () => {
                 className="hover:scale-110 duration-200"
                 width={50}
                 height={50}
-                src="/images/icon-logo/instagram.webp"
+                src="/images/icon/instagram.webp"
                 alt="instagram"
               />
             </Link>
@@ -562,7 +562,7 @@ const ClientSide = () => {
                 className="hover:scale-110 duration-200"
                 width={50}
                 height={50}
-                src="/images/icon-logo/youtube.webp"
+                src="/images/icon/youtube.webp"
                 alt="youtube"
               />
             </Link>
@@ -571,7 +571,7 @@ const ClientSide = () => {
                 className="hover:scale-110 duration-200"
                 width={50}
                 height={50}
-                src="/images/icon-logo/tik-tok.webp"
+                src="/images/icon/tik-tok.webp"
                 alt="tiktok"
               />
             </Link>
@@ -595,11 +595,10 @@ const ClientSide = () => {
       >
         <div className="grid grid-cols-2 gap-2">
           <div
-            className={`flex flex-col justify-center items-center cursor-pointer rounded-lg border  hover:border-solid hover:border-cyan-500 ${
-              activeCard == 1
+            className={`flex flex-col justify-center items-center cursor-pointer rounded-lg border  hover:border-solid hover:border-cyan-500 ${activeCard == 1
                 ? "border-solid border-cyan-500 duration-100 shadow-xl"
                 : ""
-            }`}
+              }`}
             onClick={() => {
               setActiveCard(1);
             }}
@@ -619,11 +618,10 @@ const ClientSide = () => {
             <p className={`${activeCard === 1 ? "font-bold" : ""}`}>Đen</p>
           </div>
           <div
-            className={`flex flex-col justify-center items-center cursor-pointer rounded-lg border hover:border-solid hover:border-cyan-500 ${
-              activeCard == 2
+            className={`flex flex-col justify-center items-center cursor-pointer rounded-lg border hover:border-solid hover:border-cyan-500 ${activeCard == 2
                 ? "border-solid border-cyan-500 duration-100 shadow-xl"
                 : ""
-            }`}
+              }`}
             onClick={() => {
               setActiveCard(2);
             }}

@@ -74,6 +74,29 @@ const newStoryGaming = [
     name: "Khung Treo Tai Nghe",
   },
 ];
+const aboutZadez = [
+  {
+    name: "Thấu Hiểu Khách Hàng",
+    image: "/images/technology.webp",
+    short:
+      "Nắm bắt, thấu hiểu nhu cầu và làm hài lòng khách hàng là kim chỉ nam trong quy trình hoạt động của ZADEZ. Khách hàng là trung tâm của tất cả các dự án và ZADEZ cam kết mang đến cho khách hàng những sản phẩm có giá trị sử dụng với giá hợp lý nhất.",
+    description: "",
+  },
+  {
+    name: "Dữ Liệu Số",
+    image: "/images/quality.jpg",
+    short:
+      "ZADEZ đã thực hiện quy trình chuyển đổi số ứng dụng từ sản xuất đến dịch vụ khách hàng. Tất cả sản phẩm ZADEZ đều được cấp mã số định danh Serial Number riêng biệt, thuận tiện cho việc tra cứu dữ liệu trực tuyến và bảo hành điện tử.",
+    description: "",
+  },
+  {
+    name: "Công Nghệ Cao",
+    image: "/images/factory.jpg",
+    short:
+      "CHẤT LƯỢNG - yếu tố trọng tâm & có tính chất quyết định trong quy trình sản xuất của ZADEZ. Hệ thống máy móc tự động hóa, linh kiện chất lượng cao và dữ liệu số của mỗi sản phẩm luôn được hoàn thiện để phục vụ khách hàng tốt hơn.",
+    description: "",
+  },
+];
 
 async function getProductsByStatus(status) {
   const res = await db.Products.findAll({
@@ -86,184 +109,183 @@ async function getProductsByStatus(status) {
 }
 
 export default async function Home() {
-  const outstandingProducts = await getProductsByStatus("outstanding");
-  const newProducts = await getProductsByStatus("new");
-  const bestSeller = await getProductsByStatus("best");
+
 
   return (
-    <main className="w-full">
-      {/* BANNER */}
-      {/* <section id="banner" className="w-full m-auto -mt-10">
-      <Image
-        src={banner?.image}
-        width={1400}
-        height={300}
-        alt={banner.name}
-        sizes="100vw"
-        style={{
-          width: "100%",
-          height: "auto",
-        }}
-      />
-    </section> */}
-      {/* SLIDE BANNER */}
+    <main className="w-full m-auto md:max-w-3xl lg:max-w-7xl">
       <section id="slide-banner" className="w-full my-4">
         <SlideBanner data={slideBanners} width={1200} height={300} />
       </section>
-      {/* SẢN PHẨM NỔI BẬT */}
-      {outstandingProducts?.length > 0 && (
-        <div
-          id="outstanding-products"
-          className="bg-gray-100 rounded-md p-4 mb-4 bg-[url('/images/outstanding-products.webp')] bg-cover"
-        >
-          <h1 className="invisible m-0 text-xs">ZADEZ VIỆT NAM</h1>
-          <h2 className="text-2xl font-bold text-red-500">Sản phẩm nổi bật</h2>
-          <SlideCard data={outstandingProducts} />
+      <section className="">
+        <h2 className="text-3xl text-red-500 font-bold text-center mt-6 mb-2">Danh mục sản phẩm</h2>
+        <div className="grid grid-cols-3 my-4">
+          <div
+            className="col-span-3 md:col-span-1 flex flex-col justify-center items-center bg-stone-200 rounded-2xl m-1 md:m-2 lg:m-4 cursor-pointer  text-center"
+          >
+            <Link style={{ textDecoration: 'none' }} href='/danh-muc-san-pham/0?type=headset'
+              className="hover:transform hover:scale-105 transition-transform duration-300 ease-in-out text-black hover:text-red-500 hover:font-semibold">
+              <Image
+                sizes="100vw"
+                style={{
+                  width: "100%",
+                  height: "auto",
+                }}
+                width={200}
+                height={200}
+                src="/images/categories/headset.webp"
+                alt="Tai nghe"
+              />
+              <div className="mb-4">Tai nghe</div>
+            </Link>
+          </div>
+          <div className="col-span-3 md:col-span-1 grid grid-cols-2">
+            <div
+              className=" col-span-1 flex flex-col justify-center items-center bg-stone-200 rounded-2xl m-1 md:m-2 lg:m-4 cursor-pointer hover:text-red-500 text-center"
+            >
+              <Link style={{ textDecoration: 'none' }} href='/danh-muc-san-pham/0?type=mouse'
+                className="hover:transform hover:scale-105 transition-transform duration-300 ease-in-out text-black hover:text-red-500 hover:font-semibold">
+                <Image
+                  sizes="100vw"
+                  style={{
+                    width: "100%",
+                    height: "auto",
+                  }}
+                  width={200}
+                  height={200}
+                  src="/images/categories/mouse.webp"
+                  alt="Chuột"
+                />
+                <div className="mb-4">Chuột</div>
+              </Link>
+            </div>
+            <div
+              className="col-span-1 flex flex-col justify-center items-center bg-stone-200 rounded-2xl m-1 md:m-2 lg:m-4 cursor-pointer hover:text-red-500 text-center"
+            >
+              <Link style={{ textDecoration: 'none' }} href='/danh-muc-san-pham/0?type=keyboard'
+                className="hover:transform hover:scale-105 transition-transform duration-300 ease-in-out text-black hover:text-red-500 hover:font-semibold">
+                <Image
+                  sizes="100vw"
+                  style={{
+                    width: "100%",
+                    height: "auto",
+                  }}
+                  width={200}
+                  height={200}
+                  src="/images/categories/keyboard.webp"
+                  alt="Bàn phím"
+                />
+                <div className="mb-4">Bàn phím</div>
+              </Link>
+            </div>
+            <div
+              className=" col-span-1 flex flex-col justify-center items-center bg-stone-200 rounded-2xl m-1 md:m-2 lg:m-4 cursor-pointer hover:text-red-500 text-center"
+            >
+              <Link style={{ textDecoration: 'none' }} href='/danh-muc-san-pham/0?type=bag'
+                className="hover:transform hover:scale-105 transition-transform duration-300 ease-in-out text-black hover:text-red-500 hover:font-semibold">
+                <Image
+                  sizes="100vw"
+                  style={{
+                    width: "100%",
+                    height: "auto",
+                  }}
+                  width={200}
+                  height={200}
+                  src="/images/categories/bag.webp"
+                  alt="Túi chống sốc"
+                />
+                <div className="mb-4">Túi chống sốc</div>
+              </Link>
+            </div>
+            <div
+              className="col-span-1 flex flex-col justify-center items-center bg-stone-200 rounded-2xl m-1 md:m-2 lg:m-4 cursor-pointer hover:text-red-500 hover:transform text-center"
+            >
+              <Link style={{ textDecoration: 'none' }} href='/danh-muc-san-pham/0?type=accessories'
+                className="hover:transform hover:scale-105 transition-transform duration-300 ease-in-out text-black hover:text-red-500 hover:font-semibold">
+                <Image
+                  sizes="100vw"
+                  style={{
+                    width: "100%",
+                    height: "auto",
+                  }}
+                  width={200}
+                  height={200}
+                  src="/images/categories/accessories.webp"
+                  alt="Phụ kiện"
+                />
+                <div className="mb-4">Phụ kiện</div>
+              </Link>
+            </div>
+          </div>
+          <div
+            className="col-span-3 md:col-span-1 flex flex-col justify-center items-center bg-stone-200 rounded-2xl m-1 md:m-2 lg:m-4 cursor-pointer hover:text-red-500 hover:transform text-center"
+          >
+            <Link style={{ textDecoration: 'none' }} href='/danh-muc-san-pham/0?type=speaker'
+              className="hover:transform hover:scale-105 transition-transform duration-300 ease-in-out text-black hover:text-red-500 hover:font-semibold">
+              <Image
+                sizes="100vw"
+                style={{
+                  width: "100%",
+                  height: "auto",
+                }}
+                width={200}
+                height={200}
+                src="/images/categories/audio.webp"
+                alt="Loa"
+              />
+              <div className="mb-4">Loa</div>
+            </Link>
+          </div>
+        </div></section>
+      <section>
+        <div className="flex flex-col justify-center items-center text-center my-4 p-4">
+          <h4 className="text-2xl text-red-500 my-2">The New Story of GAMING</h4>
+          <p className="text-base ">
+            ZADEZ hân hạnh giới thiệu đến Quý khách hàng những sản phẩm mới nhất
+            trong dòng phụ kiện Gaming, sẽ được ra mắt từ quý 2 năm 2023.
+          </p>
         </div>
-      )}
-      {/* SẢN PHẨM MỚI */}
-      {newProducts?.length > 0 && (
-        <div
-          id="new-products"
-          className="bg-gray-100 rounded-md p-4 mb-4 bg-[url('/images/new-products.webp')] bg-cover"
-        >
-          <h2 className="text-2xl font-bold text-red-500">Sản phẩm mới</h2>
-          <SlideCard data={newProducts} />
-        </div>
-      )}
-      {/* TOP BÁN CHẠY */}
-      {bestSeller?.length > 0 && (
-        <div
-          id="best-seller"
-          className="bg-gray-100 rounded-md p-4 mb-4 bg-[url('/images/best-seller.webp')] bg-cover"
-        >
-          <h2 className="text-2xl font-bold text-red-500">Top bán chạy</h2>
-          <SlideCard data={bestSeller} />
-        </div>
-      )}
-      {/* DANH MỤC SẢN PHẨM */}
-      <section id="categories" className="py-10rounded-md p-4 my-4">
-        <h3 className="text-2xl font-bold text-red-500">Danh mục sản phẩm</h3>
-        <div className="mx-2 lg:mx-20 grid grid-cols-4 md:grid-cols-5 gap-2 ">
-          {menuCategory.map((item, i) => (
-            <Link
-              href={`/danh-muc-san-pham/0?type=${item.type}`}
+        <SlideImage data={newStoryGaming} width={400} height={295} />
+      </section>
+      <section className="text-center mt-4">
+        <h5 className="text-3xl text-red-500 font-semibold my-2">
+          ZADEZ
+        </h5>
+        <p className="text-base text-[#999999] mx-8 mb-4">
+          ZADEZ là thương hiệu phụ kiện duy nhất tại thị trường Việt Nam quản lý
+          từng sản phẩm theo mã số định danh – Serial Number (tương tự với
+          smartphone/ notebook v.v.), điều này cho phép ZADEZ quản lý và giám
+          sát chất lượng sản phẩm theo tiêu chuẩn cao nhất. Đồng thời, bạn có
+          thể tra cứu thông tin về sản phẩm một cách dễ dàng thông qua hệ thống
+          kích hoạt bảo hành trực tuyến
+          <a className="text-red-500 no-underline" target="_blank" href="https://psi.zadez.vn">
+            PSI.ZADEZ.VN
+          </a>
+        </p>
+        <div className="grid grid-cols-3 gap-4">
+          {aboutZadez?.map((item, i) => (
+            <div
               key={i}
-              className="hover:text-red-500 cursor-pointer no-underline text-black col-span-2 md:col-span-1 flex flex-col justify-center items-center hover:transform hover:scale-105 transition-transform duration-300 ease-in-out"
+              className="col-span-3 md:col-span-1 shadow-xl rounded-lg"
             >
               <Image
+                sizes="100vw"
+                style={{
+                  width: "100%",
+                  height: "auto",
+                }}
                 src={item.image}
-                alt={item.image}
-                width={128}
-                height={128}
-                className=""
+                width={398}
+                height={287}
+                alt="ZADEZ Technology"
               />
-              <div>{item.name}</div>
-            </Link>
+              <div className="p-7">
+                <h4 className="text-red-500 text-base mt-0">{item.name}</h4>
+                <p className="text-sm text-[#999999]">{item.short}</p>
+              </div>
+            </div>
           ))}
-        </div>
-      </section>
-      {/* ZADEZ */}
-      <div className="flex flex-col justify-start items-center text-center h-[600px] bg-[url('/images/banner-zadez.jpg')] bg-center rounded-xl">
-        <div className="mx-4 md:w-1/2 ">
-          <h4 className="text-2xl text-red-500 mt-10 md:mt-32">ZADEZ GAMING</h4>
-          <p className="text-base text-white">
-            Game là niềm đam mê của bạn và phục vụ cho niềm đam mê đó là sứ mệnh
-            của chúng tôi. Hãy trải nghiệm các phụ kiện Gaming của ZADEZ với
-            thiết kế tinh tế, tính năng - trợ năng - hiệu năng ấn tượng, cùng sự
-            bền bỉ & chính sách chăm sóc khách hàng vượt trội. ZADEZ - Mang Đến
-            Sự Hài Lòng !
-          </p>
-        </div>
-      </div>
-      {/* intro product */}
-      {/* <div className='grid grid-cols-1 md:grid-cols-2 gap-8 my-8'>
-      {introProduct?.map((item, i) => (
-        <div key={i} className='col-span-2 md:col-span-1 grid-cols-3 flex shadow-md rounded-lg '>
-          <div className='col-span-3 md:col-span-1  overflow-hidden rounded-md hover:transform hover:scale-105 transition-transform duration-300 ease-in-out'>
-            <Image width={218} height={272} alt={item.name} src={item.image} sizes="100vw" style={{
-              width: "100%",
-              height: "auto",
-              objectFit: "contain"
-            }} />
-          </div>
-          <div className='col-span-3 md:col-span-2 px-4'>
-            <h4 className='text-red-500'>{item.name}</h4>
-            <p>{item.short}</p>
-          </div>
-        </div>
-      ))}
-    </div> */}
-      {/* The New Story of GAMING */}
-      <div className="flex flex-col justify-center items-center text-center my-4 p-4">
-        <h5 className="text-2xl text-red-500">The New Story of GAMING</h5>
-        <p className="text-base ">
-          ZADEZ hân hạnh giới thiệu đến Quý khách hàng những sản phẩm mới nhất
-          trong dòng phụ kiện Gaming, sẽ được ra mắt từ quý 2 năm 2023.
-        </p>
-      </div>
-      <SlideImage data={newStoryGaming} width={400} height={295} />
-      {/* LOGO CHÍNH THỨC ZADEZ */}
-      <div className="my-4 p-4">
-        <div className="flex flex-col justify-center items-center">
-          <h6 className="text-2xl my-8 text-red-500">Logo Chính Thức ZADEZ</h6>
-          <p className="text-base ">
-            Hãy tham khảo logo chính thức của ZADEZ và sử dụng hệ thống tra cứu
-            thông tin sản phẩm bằng Serial Number để nhận diện được sản phẩm
-            ZADEZ chính hãng.
-          </p>
-        </div>
-        <div className="grid grid-cols-2 gap-4">
-          <div className="col-span-2 md:col-span-1 ">
-            <div className="text-lg text-red-500 font-medium ">
-              Ý Nghĩa Biểu Tượng
-            </div>
-            <p className="text-base">
-              Logo chính thức của ZADEZ bao gồm phần biểu tượng thể hiện chữ Z
-              cách điệu và ký tự &ldquo;ZADEZ&rdquo;. Hình tượng chữ Z biểu
-              trưng cho sự tuần hoàn, sự hài hòa và sự kết hợp của &ldquo;lưỡng
-              nghi&rdquo; trong quan niệm của người Á Đông. Cùng với biểu tượng
-              &ldquo;tiêu điểm&rdquo;, ZADEZ luôn hoạch định mục tiêu phát triển
-              rõ ràng và có trọng tâm ngay từ lúc khởi đầu các dự án, trên nền
-              tảng cân đối tổng thể các nguồn lực cũng như điều kiện tác động.
-            </p>
-            <div className="text-lg text-red-500 font-medium ">
-              Ý Nghĩa Ký Tự
-            </div>
-            <p className="text-base">
-              - Chữ A: Accessories - Phụ kiện, nền tảng kinh doanh cốt lõi của
-              ZADEZ.
-              <br />
-              - Chữ D: Digital - Kỹ thuật số, yếu tố quan trọng trong tất cả quy
-              trình & sản phẩm của ZADEZ.
-              <br />
-              - Chữ E: Easier & Elegant - sự Tiện dụng & Tinh tế, thể hiện khát
-              khao mang đến sự hài lòng cho khách hàng khi trải nghiệm sản phẩm
-              ZADEZ.
-              <br />
-              - Chữ Z: biểu tượng của logo và là ký tự cuối cùng trong bảng chữ
-              cái, thể hiện cam kết hoàn tất những việc đã được hoạch định. Tại
-              ZADEZ, không có khái niệm bỏ cuộc.
-              <br />
-              <b>ZADEZ - Make Life Easier</b>
-            </p>
-          </div>
-          <div className="col-span-2 md:col-span-1 flex items-center">
-            <Image
-              sizes="100vw"
-              style={{
-                width: "100%",
-                height: "auto",
-              }}
-              src="/images/logo-description.jpg"
-              width={500}
-              height={500}
-              alt="ZADEZ logo"
-              className="rounded-lg shadow-md"
-            />
-          </div>
-        </div>
-      </div>
+        </div></section>
+
     </main>
   );
 }

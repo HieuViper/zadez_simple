@@ -195,7 +195,7 @@ const Categories = () => {
                 </div>
             </div>
             {/* NEW PRODUCT */}
-            {/* <h2 className="text-4xl pt-4 font-bold">Sản phẩm mới</h2>
+            <h2 className="text-4xl pt-4 font-bold">Sản phẩm mới</h2>
             <div className="grid grid-cols-12 gap-4">
                 {products &&
                     products.map((item, i) => (
@@ -216,7 +216,7 @@ const Categories = () => {
                             />
                         </div>
                     ))}
-            </div> */}
+            </div>
         </div>
     );
 };
