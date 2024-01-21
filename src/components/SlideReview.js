@@ -54,10 +54,12 @@ const SlideReview = ({ width, height }) => {
   return (
     <Swiper
       // onSwiper={setThumbsSwiper}
-      lazyPreloadPrevNext={2}
+      lazyPreloadPrevNext={1}
+      lazyPreloaderClass="swiper-lazy-preloader"
       loop={true}
       spaceBetween={4}
       // slidesPerView={4}
+      
       freeMode={true}
       grabCursor={true}
       watchSlidesProgress={true}

@@ -269,7 +269,7 @@ export default async function Home() {
         <h5 className="text-2xl text-primary font-semibold my-2">
           About Zadez
         </h5>
-        <p className="text-base text-[#999999] mx-8 mb-4">
+        <p className="text-base mx-8 mb-4">
           ZADEZ là thương hiệu phụ kiện duy nhất tại thị trường Việt Nam quản lý
           từng sản phẩm theo mã số định danh – Serial Number (tương tự với
           smartphone/ notebook v.v.), điều này cho phép ZADEZ quản lý và giám
@@ -300,7 +300,7 @@ export default async function Home() {
               />
               <div className="p-7">
                 <h4 className="text-primary text-base mt-0">{item.name}</h4>
-                <p className="text-sm text-[#999999]">{item.short}</p>
+                <p className="text-sm">{item.short}</p>
               </div>
             </div>
           ))}

@@ -19,7 +19,8 @@ const SlideShow = (props) => {
           "--swiper-pagination-color": "#fff",
         }}
         loop={true}
-        lazyPreloadPrevNext={2}
+        lazyPreloadPrevNext={1}
+        lazyPreloaderClass="swiper-lazy-preloader"
         spaceBetween={10}
         navigation={true}
         grabCursor={true}
@@ -60,7 +61,7 @@ const SlideShow = (props) => {
         {listImage &&
           listImage?.map((item, index) => (
             <SwiperSlide key={index}>
-              <Image src={item.url} width={500} height={500} alt="Zadez" priority={true} />
+              <Image src={item.url} width={500} height={500} alt="Zadez" priority={true} loading="lazy" />
             </SwiperSlide>
           ))}
       </Swiper>

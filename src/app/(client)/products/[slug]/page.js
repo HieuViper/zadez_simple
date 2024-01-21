@@ -115,7 +115,7 @@ const Product = ({ params }) => {
         className="bg-[#e5e7eb] rounded-lg px-2 py-2 md:py-4 lg:py-6  "
       >
         <div className="flex flex-col justify-center items-center md:px-10">
-          <h4 className="text-red-500 text-4xl font-bold my-4">
+          <h4 className="text-red-500 text-4xl font-bold my-4 text-center">
             {product?.title_parameter}
           </h4>
           <div className="relative flex py-5 items-center w-full">

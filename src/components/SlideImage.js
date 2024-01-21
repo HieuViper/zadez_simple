@@ -12,6 +12,8 @@ const SlideImage = ({ data, width, height }) => {
         <Swiper
             // onSwiper={setThumbsSwiper}
             loop={true}
+            lazyPreloadPrevNext={1}
+            lazyPreloaderClass="swiper-lazy-preloader"
             spaceBetween={4}
             slidesPerView={4}
             freeMode={true}
@@ -46,6 +48,7 @@ const SlideImage = ({ data, width, height }) => {
                             alt={item.name}
                             width={width}
                             height={height}
+                            loading="lazy"
                         // sizes="100vw"
                         // style={{
                         //     width: "100%",
