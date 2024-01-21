@@ -33,6 +33,7 @@ const ProductCard = ({ data }) => {
               height={190}
               className="rounded-lg"
               alt={data.name}
+              loading="lazy"
             />
           </Link>
         </div>

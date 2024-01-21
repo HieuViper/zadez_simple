@@ -13,7 +13,8 @@ const SlideCard = ({ data }) => {
       // onSwiper={setThumbsSwiper}
       // loop={true}
       navigation={true}
-      lazyPreloadPrevNext={2}
+      lazyPreloadPrevNext={1}
+      lazyPreloaderClass="swiper-lazy-preloader"
       spaceBetween={24}
       slidesPerView={4}
       freeMode={true}
