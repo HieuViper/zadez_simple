@@ -130,6 +130,34 @@ module.exports = (sequelize, DataTypes) => {
       driver: DataTypes.STRING,
       type: DataTypes.STRING,
       stock: DataTypes.STRING,
+      order: DataTypes.INTEGER,
+      title_parameter: DataTypes.STRING,
+      parameter: {
+        type: DataTypes.TEXT, 
+        allowNull: true,
+        get() {
+          const parameter = this.getDataValue("parameter");
+          if (parameter == null) {
+            return [];
+          }
+          const result = parameter.split(";").map((item) => {
+            return JSON.parse(item);
+          });
+
+          return result;
+        },
+        set(value) {
+          if (value == null) {
+            this.setDataValue("parameter", null);
+            return;
+          }
+          const result = value.map((item) => {
+            return JSON.stringify(item);
+          });
+
+          this.setDataValue("parameter", result.join(";"));
+        },
+      },
     },
     { tableName: "products" }
   );

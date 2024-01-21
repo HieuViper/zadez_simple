@@ -104,28 +104,32 @@ async function getProductsByStatus(status) {
       status: status,
     },
     raw: true,
+    nest:true,
   });
   return res;
+  
 }
 
 export default async function Home() {
-
+  const newProducts = await getProductsByStatus("new");
 
   return (
     <main className="w-full m-auto md:max-w-3xl lg:max-w-7xl">
+      {/* BANNER */}
       <section id="slide-banner" className="w-full my-4">
         <SlideBanner data={slideBanners} width={1200} height={300} />
       </section>
+      {/* DANH MỤC SẢN PHẨM */}
       <section className="">
-        <h2 className="text-3xl text-red-500 font-bold text-center mt-6 mb-2">Danh mục sản phẩm</h2>
+        <h2 className="text-3xl text-primary font-bold text-center mt-6 mb-2">Danh mục sản phẩm</h2>
         <div className="grid grid-cols-3 my-4">
           <div
-            className="col-span-3 md:col-span-1 flex flex-col justify-center items-center bg-stone-200 rounded-2xl m-1 md:m-2 lg:m-4 cursor-pointer  text-center"
+            className="col-span-3 md:col-span-1 flex flex-col justify-center items-center bg-[#e5e7eb] rounded-2xl m-1 md:m-2 lg:m-4 cursor-pointer  text-center"
           >
             <Link style={{ textDecoration: 'none' }} href='/danh-muc-san-pham/0?type=headset'
-              className="hover:transform hover:scale-105 transition-transform duration-300 ease-in-out text-black hover:text-red-500 hover:font-semibold">
+              className=" hover:transform hover:scale-105 transition-transform duration-300 ease-in-out text-black hover:text-primary hover:font-semibold">
               <Image
-                sizes="100vw"
+                // sizes="100vw"
                 style={{
                   width: "100%",
                   height: "auto",
@@ -134,16 +138,17 @@ export default async function Home() {
                 height={200}
                 src="/images/categories/headset.webp"
                 alt="Tai nghe"
+                className="w-32 h-32 md:w-full md:h-full"
               />
               <div className="mb-4">Tai nghe</div>
             </Link>
           </div>
           <div className="col-span-3 md:col-span-1 grid grid-cols-2">
             <div
-              className=" col-span-1 flex flex-col justify-center items-center bg-stone-200 rounded-2xl m-1 md:m-2 lg:m-4 cursor-pointer hover:text-red-500 text-center"
+              className=" col-span-1 flex flex-col justify-center items-center bg-[#e5e7eb] rounded-2xl m-1 md:m-2 lg:m-4 cursor-pointer hover:text-primary text-center"
             >
               <Link style={{ textDecoration: 'none' }} href='/danh-muc-san-pham/0?type=mouse'
-                className="hover:transform hover:scale-105 transition-transform duration-300 ease-in-out text-black hover:text-red-500 hover:font-semibold">
+                className="hover:transform hover:scale-105 transition-transform duration-300 ease-in-out text-black hover:text-primary hover:font-semibold">
                 <Image
                   sizes="100vw"
                   style={{
@@ -159,10 +164,10 @@ export default async function Home() {
               </Link>
             </div>
             <div
-              className="col-span-1 flex flex-col justify-center items-center bg-stone-200 rounded-2xl m-1 md:m-2 lg:m-4 cursor-pointer hover:text-red-500 text-center"
+              className="col-span-1 flex flex-col justify-center items-center bg-[#e5e7eb] rounded-2xl m-1 md:m-2 lg:m-4 cursor-pointer hover:text-primary text-center"
             >
               <Link style={{ textDecoration: 'none' }} href='/danh-muc-san-pham/0?type=keyboard'
-                className="hover:transform hover:scale-105 transition-transform duration-300 ease-in-out text-black hover:text-red-500 hover:font-semibold">
+                className="hover:transform hover:scale-105 transition-transform duration-300 ease-in-out text-black hover:text-primary hover:font-semibold">
                 <Image
                   sizes="100vw"
                   style={{
@@ -178,10 +183,10 @@ export default async function Home() {
               </Link>
             </div>
             <div
-              className=" col-span-1 flex flex-col justify-center items-center bg-stone-200 rounded-2xl m-1 md:m-2 lg:m-4 cursor-pointer hover:text-red-500 text-center"
+              className=" col-span-1 flex flex-col justify-center items-center bg-[#e5e7eb] rounded-2xl m-1 md:m-2 lg:m-4 cursor-pointer hover:text-primary text-center"
             >
               <Link style={{ textDecoration: 'none' }} href='/danh-muc-san-pham/0?type=bag'
-                className="hover:transform hover:scale-105 transition-transform duration-300 ease-in-out text-black hover:text-red-500 hover:font-semibold">
+                className="hover:transform hover:scale-105 transition-transform duration-300 ease-in-out text-black hover:text-primary hover:font-semibold">
                 <Image
                   sizes="100vw"
                   style={{
@@ -197,10 +202,10 @@ export default async function Home() {
               </Link>
             </div>
             <div
-              className="col-span-1 flex flex-col justify-center items-center bg-stone-200 rounded-2xl m-1 md:m-2 lg:m-4 cursor-pointer hover:text-red-500 hover:transform text-center"
+              className="col-span-1 flex flex-col justify-center items-center bg-[#e5e7eb] rounded-2xl m-1 md:m-2 lg:m-4 cursor-pointer hover:text-primary hover:transform text-center"
             >
               <Link style={{ textDecoration: 'none' }} href='/danh-muc-san-pham/0?type=accessories'
-                className="hover:transform hover:scale-105 transition-transform duration-300 ease-in-out text-black hover:text-red-500 hover:font-semibold">
+                className="hover:transform hover:scale-105 transition-transform duration-300 ease-in-out text-black hover:text-primary hover:font-semibold">
                 <Image
                   sizes="100vw"
                   style={{
@@ -217,10 +222,10 @@ export default async function Home() {
             </div>
           </div>
           <div
-            className="col-span-3 md:col-span-1 flex flex-col justify-center items-center bg-stone-200 rounded-2xl m-1 md:m-2 lg:m-4 cursor-pointer hover:text-red-500 hover:transform text-center"
+            className="col-span-3 md:col-span-1 flex flex-col justify-center items-center bg-[#e5e7eb] rounded-2xl m-1 md:m-2 lg:m-4 cursor-pointer hover:text-primary hover:transform text-center"
           >
             <Link style={{ textDecoration: 'none' }} href='/danh-muc-san-pham/0?type=speaker'
-              className="hover:transform hover:scale-105 transition-transform duration-300 ease-in-out text-black hover:text-red-500 hover:font-semibold">
+              className="hover:transform hover:scale-105 transition-transform duration-300 ease-in-out text-black hover:text-primary hover:font-semibold">
               <Image
                 sizes="100vw"
                 style={{
@@ -235,10 +240,24 @@ export default async function Home() {
               <div className="mb-4">Loa</div>
             </Link>
           </div>
-        </div></section>
-      <section>
+        </div>
+        </section>
+              {/* SẢN PHẨM MỚI */}
+      {newProducts?.length > 0 && (
+        <div
+          id="new-products"
+          className=" bg-[#e5e7eb] rounded-md p-4 mb-4 text-center"
+        >
+          <h2 className="text-2xl font-bold text-primary">Sản Phẩm Mới</h2>
+        <div className="">
+          
+          <SlideCard data={newProducts} />
+        </div>
+        </div>
+      )}
+      <section className="">
         <div className="flex flex-col justify-center items-center text-center my-4 p-4">
-          <h4 className="text-2xl text-red-500 my-2">The New Story of GAMING</h4>
+          <h4 className="text-2xl text-primary my-2">The New Story Of GAMING</h4>
           <p className="text-base ">
             ZADEZ hân hạnh giới thiệu đến Quý khách hàng những sản phẩm mới nhất
             trong dòng phụ kiện Gaming, sẽ được ra mắt từ quý 2 năm 2023.
@@ -246,9 +265,9 @@ export default async function Home() {
         </div>
         <SlideImage data={newStoryGaming} width={400} height={295} />
       </section>
-      <section className="text-center mt-4">
-        <h5 className="text-3xl text-red-500 font-semibold my-2">
-          ZADEZ
+      <section className="text-center mt-8">
+        <h5 className="text-2xl text-primary font-semibold my-2">
+          About Zadez
         </h5>
         <p className="text-base text-[#999999] mx-8 mb-4">
           ZADEZ là thương hiệu phụ kiện duy nhất tại thị trường Việt Nam quản lý
@@ -256,9 +275,9 @@ export default async function Home() {
           smartphone/ notebook v.v.), điều này cho phép ZADEZ quản lý và giám
           sát chất lượng sản phẩm theo tiêu chuẩn cao nhất. Đồng thời, bạn có
           thể tra cứu thông tin về sản phẩm một cách dễ dàng thông qua hệ thống
-          kích hoạt bảo hành trực tuyến
-          <a className="text-red-500 no-underline" target="_blank" href="https://psi.zadez.vn">
-            PSI.ZADEZ.VN
+          kích hoạt bảo hành trực tuyến&nbsp;
+          <a className="text-primary no-underline" target="_blank" href="https://psi.zadez.vn">
+             PSI.ZADEZ.VN
           </a>
         </p>
         <div className="grid grid-cols-3 gap-4">
@@ -277,14 +296,16 @@ export default async function Home() {
                 width={398}
                 height={287}
                 alt="ZADEZ Technology"
+                className="rounded-lg"
               />
               <div className="p-7">
-                <h4 className="text-red-500 text-base mt-0">{item.name}</h4>
+                <h4 className="text-primary text-base mt-0">{item.name}</h4>
                 <p className="text-sm text-[#999999]">{item.short}</p>
               </div>
             </div>
           ))}
-        </div></section>
+        </div>
+        </section>
 
     </main>
   );

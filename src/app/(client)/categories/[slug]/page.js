@@ -174,7 +174,7 @@ const Category = ({ params }) => {
         ))}
       </div> */}
 
-      <div className="flex justify-center items-center gap-8 p-2">
+      <div className="flex flex-wrap justify-center items-center gap-8 p-2">
         {menuCategory.map((item, i) => (<div key={i} className="p-2 flex flex-col justify-center items-center hover:transform hover:scale-105 transition-transform duration-300 ease-in-out hover:text-red-500 cursor-pointer"
           onClick={() => {
             setProductType(item.type);
@@ -193,9 +193,9 @@ const Category = ({ params }) => {
           </div>
         </div>))}
       </div>
-      <div className="grid grid-cols-3 md:grid-cols-4 gap-6 py-10">
+      <div className="grid grid-cols-3 lg:grid-cols-4 gap-6 py-10">
         {/* FILTER */}
-        <div className="col-span-1 border hidden md:block">
+        <div className="col-span-1 border hidden lg:block">
           <div className="flex flex-col gap-4 p-4 ">
             <h5 className="text-xl font-medium">Tình trạng:</h5>
             <Checkbox value="in" checked={isInStock} onChange={handleInStock}>
@@ -231,7 +231,7 @@ const Category = ({ params }) => {
               <Option value="highest-price">Giá cao nhất</Option>
             </Select>
           </div>
-          <div className="block md:hidden">
+          <div className="block lg:hidden">
             <div className="flex flex-col gap-2 p-2 ">
               <div className="text-lg font-medium">Tình trạng:</div>
               <div className="flex">
@@ -261,7 +261,7 @@ const Category = ({ params }) => {
               {sortedProducts?.map((item, i) => (
                 <div
                   key={i}
-                  className="col-span-12 md:col-span-6 lg:col-span-4"
+                  className="col-span-12 md:col-span-4"
                 >
                   <ProductCard data={item} key={i} />
                 </div>

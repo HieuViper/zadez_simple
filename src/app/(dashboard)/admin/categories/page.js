@@ -32,9 +32,7 @@ const ProductList = () => {
       keyword: search,
     }
   );
-  const { data: categories } = useSWRData("/api/categories", {
-    limit: 1000,
-  });
+
   if (error) return <div>failed to load</div>;
   if (isLoading) return <div>loading...123</div>;
 

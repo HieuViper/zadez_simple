@@ -27,11 +27,7 @@ export async function DELETE(body, req) {
 }
 export async function GET(req, { params }) {
     try {
-        const searchParams = req.nextUrl.searchParams;
-        const opLang = searchParams.has("lang") ? {
-            code: searchParams.get("lang")
 
-        } : {};
         let category = await db.Categories.findOne({
             where: { id: params.id },
             include: [

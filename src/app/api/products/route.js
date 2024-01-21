@@ -99,6 +99,12 @@ export async function GET(req, { params }) {
           status: searchParams.get("status"),
         })
       : {};
+      searchParams.has("product_code")
+      ? (option = {
+          ...option,
+          product_code: searchParams.get("product_code"),
+        })
+      : {};
 
     let { count, rows } = await db.Products.findAndCountAll({
       where: option,

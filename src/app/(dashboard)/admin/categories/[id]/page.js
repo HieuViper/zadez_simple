@@ -35,9 +35,7 @@ const CategoriesForm = ({ params }) => {
     isAddMode ? {} : { id: params.id }
   );
 
-  const { data: categories } = useSWRData("/api/categories", {
-    limit: 1000,
-  });
+  const { data: categories } = useSWRData("/api/categories/get-all");
 
   const { uploadFormData: uploadImage } = useSWRUpload(
     `/api/products/image`,

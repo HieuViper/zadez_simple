@@ -9,10 +9,7 @@ export const useSWRData = (endpoint, params = {}) => {
   if (userState.token) {
     headers["Authorization"] = `${userState.token}`;
   }
-  const headers = {};
-  if (userState.token) {
-    headers["Authorization"] = `${userState.token}`;
-  }
+
   // const fetcher = (url) =>
   //   fetch(url, {
   //     headers: headers,

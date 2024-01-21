@@ -12,6 +12,7 @@ const SlideCard = ({ data }) => {
     <Swiper
       // onSwiper={setThumbsSwiper}
       // loop={true}
+      navigation={true}
       lazyPreloadPrevNext={2}
       spaceBetween={24}
       slidesPerView={4}
@@ -19,7 +20,7 @@ const SlideCard = ({ data }) => {
       grabCursor={true}
       watchSlidesProgress={true}
       modules={[Navigation]}
-      className="mySwiperCard "
+      className="mySwiperCard btn-swiper "
       breakpoints={{
         0: {
           slidesPerView: 1,
@@ -33,9 +34,7 @@ const SlideCard = ({ data }) => {
         1024: {
           slidesPerView: 4,
         },
-        1536: {
-          slidesPerView: 5,
-        },
+
       }}
     >
       {data.map((item, i) => (

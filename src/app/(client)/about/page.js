@@ -64,7 +64,7 @@ const About = () => {
     AOS.init({ once: true });
   });
   return (
-    <div className="mb-20">
+    <div className="mb-20 m-auto md:max-w-3xl lg:max-w-7xl">
       {/* Banner */}
       <div className="flex flex-col justify-center items-center text-center my-8" data-aos="fade-down" data-aos-duration="500">
         <h1 className="text-4xl text-red-500">ZADEZ-Make Life Easier</h1>

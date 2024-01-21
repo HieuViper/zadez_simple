@@ -25,7 +25,7 @@ const SlideShow = (props) => {
         grabCursor={true}
         thumbs={{ swiper: thumbsSwiper }}
         modules={[FreeMode, Navigation, Thumbs]}
-        className="mySwiper"
+        className="mySwiper btn-swiper"
       >
         {listImage &&
           listImage?.map((item, index) => (

@@ -17,7 +17,7 @@ const SlideBanner = ({ data, width, height }) => {
         grabCursor={true}
         watchSlidesProgress={true}
         modules={[Navigation, Autoplay]}
-        className="mySwiperBanner"
+        className="mySwiperBanner btn-swiper"
         navigation={true}
         autoplay={{
           delay: 5000,

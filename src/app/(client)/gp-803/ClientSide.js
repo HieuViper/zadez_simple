@@ -9,7 +9,8 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
-const ClientSide = () => {
+const ClientSide = ({GP803B,
+  GP803BW}) => {
   const { addToCart } = store();
   const [activeCard, setActiveCard] = useState(1);
   const router = useRouter();
@@ -36,27 +37,7 @@ const ClientSide = () => {
         name: "GP-803B-5.webp",
       },
     ],
-    id: 5,
-    product_code: "black",
-    name: "black",
-    short: null,
-    description: "",
-    main_image: "/uploads/jan2024/ZADEZ-G-613M-BLACK--WEBSITE-1024_(12).jpg",
-    sub_image: "/uploads/jan2024/ZADEZ-G-151M-BLACK-WEBSITE-1024_(9).jpg",
-    price: 10000,
-    discount_price: null,
-    product_author: "",
-    modified_by: null,
-    product_position: 0,
-    active: null,
-    status: null,
-    color: null,
-    driver: null,
-    type: "mouse",
-    stock: "in",
-    createdAt: "2024-01-12T08:28:10.000Z",
-    updatedAt: "2024-01-13T17:21:58.000Z",
-    categoryId: 3,
+
   };
   const productWhite = {
     list_image: [
@@ -81,35 +62,9 @@ const ClientSide = () => {
         name: "GP-803B-5.webp",
       },
     ],
-    id: 6,
-    product_code: "white",
-    name: "white",
-    short: null,
-    description: "",
-    main_image: "/uploads/jan2024/ZADEZ-G-613M-BLACK--WEBSITE-1024_(12).jpg",
-    sub_image: "/uploads/jan2024/ZADEZ-G-151M-BLACK-WEBSITE-1024_(9).jpg",
-    price: 10000,
-    discount_price: null,
-    product_author: "",
-    modified_by: null,
-    product_position: 0,
-    active: null,
-    status: null,
-    color: null,
-    driver: null,
-    type: "mouse",
-    stock: "in",
-    createdAt: "2024-01-12T08:28:10.000Z",
-    updatedAt: "2024-01-13T17:21:58.000Z",
-    categoryId: 3,
+    
   };
 
-  const onFinish = (values) => {
-    console.log("Success:", values);
-  };
-  const onFinishFailed = (errorInfo) => {
-    console.log("Failed:", errorInfo);
-  };
   const [isModalOpen, setIsModalOpen] = useState(false);
   const showModal = () => {
     setIsModalOpen(true);
@@ -117,9 +72,9 @@ const ClientSide = () => {
   const handleOk = () => {
     // setIsModalOpen(false);
     if (activeCard == 1) {
-      addToCart(productBlack);
+      GP803B && addToCart(GP803B);
     } else if (activeCard == 2) {
-      addToCart(productWhite);
+      GP803BW &&addToCart(GP803BW);
     }
     router.push("/gio-hang");
   };
@@ -128,7 +83,7 @@ const ClientSide = () => {
   };
 
   return (
-    <div>
+    <div className="m-auto md:max-w-3xl lg:max-w-7xl">
       <section id="section1" className="grid grid-cols-2 gap-4 pb-64">
         <div
           className="col-span-2 md:col-span-1 p-2 lg:p-10 xl:p-20"
@@ -178,7 +133,7 @@ const ClientSide = () => {
       >
         <div className="absolute grid grid-cols-2 gap-4  shadow-2xl -top-36 xl:-top-44 left-[4%] md:left-[7%] -mt-10 w-10/12 h-80 xl:h-96 bg-gray-200 p-4">
           <div
-            className="col-span-2 md:col-span-1 hidden md:block"
+            className="col-span-2 md:col-span-1 "
             style={{ height: "inherit" }}
           >
             <div className="relative w-full h-full ">
@@ -190,7 +145,7 @@ const ClientSide = () => {
               />
             </div>
           </div>
-          <div className="col-span-2 md:col-span-1 md:p-6 lg:p-10 xl:p-20">
+          <div className="col-span-2 md:col-span-1 md:p-6 lg:p-10 xl:p-20 hidden md:block">
             <h2 className="mt-2 text-5xl md:text-3xl lg:text-4xl xl:text-5xl font-bold uppercase text-yellow-400">
               ULTRA LIGHT 176 GRAM
             </h2>
@@ -219,7 +174,7 @@ const ClientSide = () => {
           <Image
             width={200}
             height={200}
-            src="/images/landing-page/gp-803/img1.webp"
+            src="/images/landing-page/gp-803/img7.webp"
             alt="GP-803"
             sizes="100vw"
             style={{
@@ -331,9 +286,6 @@ const ClientSide = () => {
             ]}
           />
         </div>
-        {/* <div className="w-3/5 bg-white px-10 rounded-lg">
-                    <SlideShow listImage={productBlack?.list_image} />
-                </div> */}
         <div className="flex flex-col justify-center items-center p-2">
           <h3 className="text-xl md:text-3xl my-4">GP-803 BLACK & WHITE</h3>
           <p>
