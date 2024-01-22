@@ -19,8 +19,8 @@ const SlideShow = (props) => {
           "--swiper-pagination-color": "#fff",
         }}
         loop={true}
-        lazyPreloadPrevNext={1}
-        lazyPreloaderClass="swiper-lazy-preloader"
+        // lazyPreloadPrevNext={1}
+        // lazyPreloaderClass="swiper-lazy-preloader"
         spaceBetween={10}
         navigation={true}
         grabCursor={true}

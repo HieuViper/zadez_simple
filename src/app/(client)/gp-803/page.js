@@ -19,13 +19,13 @@ async function getProductsByStatus(product_code) {
       cache: "no-store",
     }
   );
-  const data = await res.json();
+  const {data} = await res.json();
   return data;
 }
 const LadingPageOne = async () => {
   const GP803B = await getProductsByStatus("zadez-gp-803b");
   const GP803BW = await getProductsByStatus("zadez-gp-803bW");
-  return <ClientSide GP803B={GP803B} GP803BW={GP803BW} />;
+  return <ClientSide GP803B={GP803B[0]} GP803BW={GP803BW[0]} />;
 };
 
 export default LadingPageOne;
