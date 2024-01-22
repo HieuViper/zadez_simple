@@ -137,7 +137,7 @@ const Header = () => {
                 href="/"
               >
                 <Image
-                  src={"/images/logo-zadez.png"}
+                  src={"/Logo-ZADEZ.webp"}
                   width={80}
                   height={80}
                   className="hover:opacity-80 cursor-pointer duration-300 transition-all "

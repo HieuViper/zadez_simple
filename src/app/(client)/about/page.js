@@ -24,14 +24,14 @@ const About = () => {
     },
     {
       name: "Dữ Liệu Số",
-      image: "/images/quality.jpg",
+      image: "/images/quality.webp",
       short:
         "ZADEZ đã thực hiện quy trình chuyển đổi số ứng dụng từ sản xuất đến dịch vụ khách hàng. Tất cả sản phẩm ZADEZ đều được cấp mã số định danh Serial Number riêng biệt, thuận tiện cho việc tra cứu dữ liệu trực tuyến và bảo hành điện tử.",
       description: "",
     },
     {
       name: "Công Nghệ Cao",
-      image: "/images/factory.jpg",
+      image: "/images/factory.webp",
       short:
         "CHẤT LƯỢNG - yếu tố trọng tâm & có tính chất quyết định trong quy trình sản xuất của ZADEZ. Hệ thống máy móc tự động hóa, linh kiện chất lượng cao và dữ liệu số của mỗi sản phẩm luôn được hoàn thiện để phục vụ khách hàng tốt hơn.",
       description: "",

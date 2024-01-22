@@ -1,4 +1,5 @@
 "use client";
+import Image from "next/image";
 import "swiper/css";
 import "swiper/css/free-mode";
 import "swiper/css/navigation";
@@ -28,11 +29,14 @@ const SlideBanner = ({ data, width, height }) => {
         {data &&
           data?.map((item, i) => (
             <SwiperSlide key={i}>
-              <img
+             <Image
+                sizes="100vw"
                 style={{
-                  width,
-                  height,
+                  width: "100%",
+                  height: "auto",
                 }}
+                width={width}
+                height={height}
                 src={item.image}
                 alt={item.name}
                 className="rounded-lg"
