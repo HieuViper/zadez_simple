@@ -108,7 +108,7 @@ const ClientSide = ({ GP803B, GP803BW }) => {
           data-aos-duration="500"
         >
           <Image
-            width={400}
+            width={600}
             height={400}
             src="/images/landing-page/gp-803/img1.webp"
             alt="GP-803"
@@ -117,7 +117,7 @@ const ClientSide = ({ GP803B, GP803BW }) => {
               width: "100%",
               height: "auto",
             }}
-            loading="lazy"
+            priority={true}
           />
         </div>
       </section>

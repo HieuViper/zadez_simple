@@ -102,7 +102,7 @@ async function getProductsByStatus(status) {
     `${process.env.BASE_URL}/api/products?status=${status}`,
     { cache: "no-store" }
   );
-  const data = await res.json();
+  const {data} = await res.json();
   return data;
   // const res = await db.Products.findAll({
   //   where: {
@@ -256,7 +256,7 @@ export default async function Home() {
         </div>
       </section>
       {/* SẢN PHẨM MỚI */}
-      {newProducts?.length > 0 && (
+      { newProducts?.length > 0 && (
         <div
           id="new-products"
           className=" bg-[#e5e7eb] rounded-md p-4 mb-4 text-center"
