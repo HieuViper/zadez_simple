@@ -1,12 +1,7 @@
-import GoogleAnalystic from "@/components/GoogleAnalystic";
 // import Footer from "../../components/Footer";
-// import './globals.css'
 import AuthenPopup from "@/components/AuthenPopup";
-import db from "@/models";
-import { revalidatePath } from "next/cache";
 import dynamic from "next/dynamic";
 import { Inter } from "next/font/google";
-import { AOSInit } from "./_components/AOS";
 const Header = dynamic(() => import("@/components/Header"), {
   loading: () => <p>Loading...</p>,
 });
@@ -25,30 +20,36 @@ export const metadata = {
   },
 };
 
-async function getAllCategories() {
-  let res = await db.Categories.findAll({
-    include: [
-      {
-        model: db.Products,
-        as: "products",
-      },
-    ],
-  });
-  res = JSON.stringify(res);
-  res = JSON.parse(res);
-  return res;
-}
+// async function getAllCategories() {
+//   let res = await db.Categories.findAll({
+//     include: [
+//       {
+//         model: db.Products,
+//         as: "products",
+//       },
+//     ],
+//   });
+//   res = JSON.stringify(res);
+//   res = JSON.parse(res);
+//   return res;
+// }
 
 export default async function RootLayout({ children, params }) {
-  const categories = await getAllCategories();
-  revalidatePath("/");
+  // const file = await fs.readFile(
+  //   process.cwd() + "/src/jsonCache/CateJson.json",
+  //   "utf8"
+  // );
+  // const categories = JSON.parse(file);
+  // console.log("🚀 ~ RootLayout ~ categories:", categories);
+
+  // const categories = await getAllCategories();
 
   return (
     <html>
-      <GoogleAnalystic GA_TRACKING_ID={process.env.GA_TRACKING_ID} />
-      <AOSInit />
+      {/* <GoogleAnalystic GA_TRACKING_ID={process.env.GA_TRACKING_ID} />
+      <AOSInit /> */}
       <body className={inter.className}>
-        <Header categories={categories} />
+        <Header />
         <div
           className="px-6 lg:px-16 xl:px-24 pt-28 pb-10 overflow-x-hidden"
           style={{

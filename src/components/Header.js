@@ -1,4 +1,5 @@
 "use client";
+import { useSWRData } from "@/library/api";
 import store from "@/library/zustand/store";
 import { LogoutOutlined, UserOutlined } from "@ant-design/icons";
 import { Button, Dropdown, message } from "antd";
@@ -13,11 +14,13 @@ const BadgeCart = dynamic(() => import("../components/BadgeCart"), {
   ssr: false,
 });
 
-const Header = ({ categories }) => {
+const Header = () => {
   const { userState, cartState, toggleModal, resetUserState } = store();
   const site = "https://zadez.vn";
   const pathname = usePathname();
   const canonicalURL = site + pathname;
+  const { data: categories } = useSWRData(`/api/categories/get-all`);
+  console.log("🚀 ~ Header ~ categories:", categories);
   // const {
   //   data: categories,
   //   isLoading,
@@ -99,7 +102,7 @@ const Header = ({ categories }) => {
     });
     return categoryTree;
   }
-  const dataTree = categories && buildCategoryTree(categories);
+  const dataTree = categories && buildCategoryTree(categories.data);
 
   const [openCart, setOpenCart] = useState(false);
   const showDrawer = () => {

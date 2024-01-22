@@ -1,0 +1,182 @@
+[
+  {
+    "id": 13,
+    "name": "tetes",
+    "category_code": "tetes",
+    "image": "",
+    "parent": 0,
+    "type": null,
+    "order": null,
+    "description": null,
+    "createdAt": "2024-01-16T07:34:26.000Z",
+    "updatedAt": "2024-01-16T07:34:26.000Z",
+    "products": []
+  },
+  {
+    "id": 11,
+    "name": "testzxc",
+    "category_code": "testzxc",
+    "image": "",
+    "parent": 0,
+    "type": null,
+    "order": null,
+    "description": null,
+    "createdAt": "2024-01-16T07:33:17.000Z",
+    "updatedAt": "2024-01-16T07:33:17.000Z",
+    "products": []
+  },
+  {
+    "id": 10,
+    "name": "ok",
+    "category_code": "ok",
+    "image": "",
+    "parent": 0,
+    "type": null,
+    "order": null,
+    "description": null,
+    "createdAt": "2024-01-16T07:25:30.000Z",
+    "updatedAt": "2024-01-16T07:25:30.000Z",
+    "products": []
+  },
+  {
+    "id": 9,
+    "name": "CATEEEEEEEEE",
+    "category_code": "cateeeeeeeee",
+    "image": "",
+    "parent": null,
+    "type": null,
+    "order": null,
+    "description": null,
+    "createdAt": "2024-01-13T17:13:56.000Z",
+    "updatedAt": "2024-01-13T17:13:56.000Z",
+    "products": []
+  },
+  {
+    "id": 8,
+    "name": "PHỤ KIỆN MÁY TÍNH",
+    "category_code": "phu-kien-may-tinh",
+    "image": "",
+    "parent": null,
+    "type": null,
+    "order": null,
+    "description": null,
+    "createdAt": "2024-01-13T17:12:54.000Z",
+    "updatedAt": "2024-01-13T17:12:54.000Z",
+    "products": []
+  },
+  {
+    "id": 7,
+    "name": "PHỤ KIỆN GAMING",
+    "category_code": "phu-kien-gaming",
+    "image": "",
+    "parent": 4,
+    "type": null,
+    "order": 1,
+    "description": null,
+    "createdAt": "2024-01-13T17:12:41.000Z",
+    "updatedAt": "2024-01-15T01:54:49.000Z",
+    "products": []
+  },
+  {
+    "id": 5,
+    "name": "CƠ HỘI NGHỀ NGHIEP",
+    "category_code": "co-hoi-nghe-nghiep",
+    "image": "",
+    "parent": null,
+    "type": "",
+    "order": 6,
+    "description": null,
+    "createdAt": "2024-01-12T08:16:34.000Z",
+    "updatedAt": "2024-01-12T10:39:15.000Z",
+    "products": []
+  },
+  {
+    "id": 4,
+    "name": "PHỤ KIỆN MÁY TÍNH",
+    "category_code": "tests",
+    "image": "",
+    "parent": null,
+    "type": null,
+    "order": 2,
+    "description": null,
+    "createdAt": "2024-01-12T07:52:56.000Z",
+    "updatedAt": "2024-01-15T01:51:28.000Z",
+    "products": []
+  },
+  {
+    "id": 3,
+    "name": "GFFFFFFFFFFFFFFFFFF",
+    "category_code": "g",
+    "image": "/uploads/jan2024/ZADEZ-G-613M-BLACK--WEBSITE-1024_(6).jpg",
+    "parent": 4,
+    "type": "",
+    "order": 2,
+    "description": null,
+    "createdAt": "2024-01-12T07:21:38.000Z",
+    "updatedAt": "2024-01-15T03:04:02.000Z",
+    "products": [
+      {
+        "list_image": [
+          {
+            "url": "/api/image?path=/src/uploads/jan2024/ZADEZ_GP-803B_Black_(4)-1705820061455.png",
+            "name": "ZADEZ_GP-803B_Black_(4)-1705820061455.png"
+          }
+        ],
+        "parameter": [
+          {
+            "name": "Bluetooth",
+            "param": "Chuẩn V5.2"
+          },
+          {
+            "name": "Tương thích",
+            "param": "iOS, Android, Windows OS, MacOS (kết nối Bluetooth tương thích)."
+          },
+          {
+            "name": "Đệm tai nghe",
+            "param": "Bọc vải cao cấp thoáng khí"
+          },
+          {
+            "name": "Trọng lượng",
+            "param": "176 g (tai nghe)"
+          }
+        ],
+        "id": 27,
+        "product_code": "ok",
+        "name": "ok",
+        "short": null,
+        "description": "",
+        "main_image": "/api/image?path=/src/uploads/jan2024/ZADEZ_GP-803B_Black_(4)-1705820060901.png",
+        "sub_image": "/api/image?path=/src/uploads/jan2024/ZADEZ_GP-803B_Black_(5)-1705820060926.png",
+        "price": 132,
+        "discount_price": null,
+        "product_author": "",
+        "modified_by": null,
+        "product_position": 0,
+        "active": null,
+        "status": "new",
+        "color": null,
+        "driver": null,
+        "type": "mouse",
+        "stock": "in",
+        "order": null,
+        "title_parameter": "ENC Bluetooth Headphone",
+        "createdAt": "2024-01-21T06:54:21.000Z",
+        "updatedAt": "2024-01-22T02:37:31.000Z",
+        "categoryId": 3
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "name": "CATALOGUE",
+    "category_code": "catalogue",
+    "image": "",
+    "parent": 1,
+    "type": null,
+    "order": null,
+    "description": null,
+    "createdAt": "2024-01-12T07:10:38.000Z",
+    "updatedAt": "2024-01-12T10:48:12.000Z",
+    "products": []
+  }
+]
