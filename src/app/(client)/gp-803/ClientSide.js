@@ -117,6 +117,7 @@ const ClientSide = ({ GP803B, GP803BW }) => {
               width: "100%",
               height: "auto",
             }}
+            loading="lazy"
           />
         </div>
       </section>

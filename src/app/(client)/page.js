@@ -84,14 +84,14 @@ const aboutZadez = [
   },
   {
     name: "Dữ Liệu Số",
-    image: "/images/quality.jpg",
+    image: "/images/quality.webp",
     short:
       "ZADEZ đã thực hiện quy trình chuyển đổi số ứng dụng từ sản xuất đến dịch vụ khách hàng. Tất cả sản phẩm ZADEZ đều được cấp mã số định danh Serial Number riêng biệt, thuận tiện cho việc tra cứu dữ liệu trực tuyến và bảo hành điện tử.",
     description: "",
   },
   {
     name: "Công Nghệ Cao",
-    image: "/images/factory.jpg",
+    image: "/images/factory.webp",
     short:
       "CHẤT LƯỢNG - yếu tố trọng tâm & có tính chất quyết định trong quy trình sản xuất của ZADEZ. Hệ thống máy móc tự động hóa, linh kiện chất lượng cao và dữ liệu số của mỗi sản phẩm luôn được hoàn thiện để phục vụ khách hàng tốt hơn.",
     description: "",
@@ -122,6 +122,7 @@ export default async function Home() {
       <section id="slide-banner" className="w-full my-4">
         <SlideBanner data={slideBanners} width={1200} height={300} />
       </section>
+      <h1 className="invisible m-0 text-xs">ZADEZ VIỆT NAM</h1>
       {/* DANH MỤC SẢN PHẨM */}
       <section className="">
         <h2 className="text-3xl text-primary font-bold text-center mt-6 mb-2">
@@ -143,7 +144,7 @@ export default async function Home() {
                 width={200}
                 height={200}
                 src="/images/categories/headset.webp"
-                alt="Tai nghe"
+                alt="Tai nghe zadez"
                 className="w-32 h-32 md:w-full md:h-full"
               />
               <div className="mb-4">Tai nghe</div>
@@ -165,7 +166,7 @@ export default async function Home() {
                   width={200}
                   height={200}
                   src="/images/categories/mouse.webp"
-                  alt="Chuột"
+                  alt="Chuột zadez"
                 />
                 <div className="mb-4">Chuột</div>
               </Link>
@@ -185,7 +186,7 @@ export default async function Home() {
                   width={200}
                   height={200}
                   src="/images/categories/keyboard.webp"
-                  alt="Bàn phím"
+                  alt="Bàn phím zadez"
                 />
                 <div className="mb-4">Bàn phím</div>
               </Link>
@@ -205,7 +206,7 @@ export default async function Home() {
                   width={200}
                   height={200}
                   src="/images/categories/bag.webp"
-                  alt="Túi chống sốc"
+                  alt="Túi chống sốc zadez"
                 />
                 <div className="mb-4">Túi chống sốc</div>
               </Link>
@@ -225,7 +226,7 @@ export default async function Home() {
                   width={200}
                   height={200}
                   src="/images/categories/accessories.webp"
-                  alt="Phụ kiện"
+                  alt="Phụ kiện zadez"
                 />
                 <div className="mb-4">Phụ kiện</div>
               </Link>
@@ -246,7 +247,7 @@ export default async function Home() {
                 width={200}
                 height={200}
                 src="/images/categories/audio.webp"
-                alt="Loa"
+                alt="Loa zadez"
               />
               <div className="mb-4">Loa</div>
             </Link>
@@ -259,7 +260,7 @@ export default async function Home() {
           id="new-products"
           className=" bg-[#e5e7eb] rounded-md p-4 mb-4 text-center"
         >
-          <h2 className="text-2xl font-bold text-primary">Sản Phẩm Mới</h2>
+          <h3 className="text-2xl font-bold text-primary">Sản Phẩm Mới</h3>
           <div className="">
             <SlideCard data={newProducts} />
           </div>
@@ -315,7 +316,7 @@ export default async function Home() {
                 className="rounded-lg"
               />
               <div className="p-7">
-                <h4 className="text-primary text-base mt-0">{item.name}</h4>
+                <div className="text-primary text-base mt-0">{item.name}</div>
                 <p className="text-sm">{item.short}</p>
               </div>
             </div>
