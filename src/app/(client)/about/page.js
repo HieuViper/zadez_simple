@@ -293,7 +293,7 @@ const About = () => {
             height="551"
             src="https://www.youtube.com/embed/3itpgGB9Z_w"
             title="Giới thiệu về ZADEZ Technology Corp. và ZADEZ VIỆT NAM LTD."
-            frameborder="0"
+            frameBorder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             allowfullscreen
           ></iframe>{" "}

@@ -7,7 +7,6 @@ const SlideCard = dynamic(() => import("@/components/SlideCard"), {
 const SlideImage = dynamic(() => import("@/components/SlideImage"), {
   loading: () => <p>Loading...</p>,
 });
-import db from "@/models";
 import dynamic from "next/dynamic";
 import Image from "next/image";
 import Link from "next/link";
@@ -99,18 +98,20 @@ const aboutZadez = [
 ];
 
 async function getProductsByStatus(status) {
-  // const res = await fetch(
-  //   `${process.env.BASE_URL}/api/products?status=${status}`,
-  //   { cache: "no-store" }
-  // );
-  const res = await db.Products.findAll({
-    where: {
-      status: status,
-    },
-    raw: true,
-    nest: true,
-  });
-  return res;
+  const res = await fetch(
+    `${process.env.BASE_URL}/api/products?status=${status}`,
+    { cache: "no-store" }
+  );
+  const data = await res.json();
+  return data;
+  // const res = await db.Products.findAll({
+  //   where: {
+  //     status: status,
+  //   },
+  //   raw: true,
+  //   nest: true,
+  // });
+  // return res;
 }
 
 export default async function Home() {
