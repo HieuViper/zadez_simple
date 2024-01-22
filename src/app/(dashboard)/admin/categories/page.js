@@ -7,7 +7,7 @@ import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useState } from "react";
 
-const ProductList = () => {
+const CateList = () => {
   const [loadingChangePage, setLoadingChangePage] = useState(false);
   const [loadingBulkDelete, setLoadingBulkDelete] = useState(false);
   const [search, setSearch] = useState("");
@@ -32,9 +32,7 @@ const ProductList = () => {
       keyword: search,
     }
   );
-  const { data: categories } = useSWRData("/api/categories", {
-    limit: 1000,
-  });
+
   if (error) return <div>failed to load</div>;
   if (isLoading) return <div>loading...123</div>;
 
@@ -229,13 +227,13 @@ const ProductList = () => {
         loading={isLoading}
         expandable={{ defaultExpandAllRows: true }}
         key={dataTree?.length}
-      // pagination={{ ...pagination, disabled: loadingChangePage }}
-      // scroll={{
-      //     x: 1300,
-      // }}
+        // pagination={{ ...pagination, disabled: loadingChangePage }}
+        // scroll={{
+        //     x: 1300,
+        // }}
       />
     </div>
   );
 };
 
-export default ProductList;
+export default CateList;

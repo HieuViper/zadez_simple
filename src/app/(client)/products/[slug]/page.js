@@ -28,7 +28,7 @@ const Product = ({ params }) => {
 
   const similarProductsFilter = similarProducts?.data.filter(item => item.id !== product?.id);
   return (
-    <div className=" py-4 ">
+    <div className=" py-4 m-auto md:max-w-3xl lg:max-w-7xl">
       <div className="grid grid-cols-5 gap-5">
         <div className="col-span-5 md:col-span-3 mx-10">
           <SlideShow listImage={product?.list_image} />
@@ -110,6 +110,32 @@ const Product = ({ params }) => {
           </div>
         </div>
       </div>
+      <section
+        id="params"
+        className="bg-[#e5e7eb] rounded-lg px-2 py-2 md:py-4 lg:py-6  "
+      >
+        <div className="flex flex-col justify-center items-center md:px-10">
+          <h4 className="text-red-500 text-4xl font-bold my-4 text-center">
+            {product?.title_parameter}
+          </h4>
+          <div className="relative flex py-5 items-center w-full">
+            <div className="flex-grow border-t border-solid border-red-500 "></div>
+            <span className="flex-shrink mx-4 text-2xl font-semibold">
+            {product?.name}
+            </span>
+            <div className="flex-grow border-t border-solid border-red-500  "></div>
+          </div>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-center">
+          {product?.parameter.map((item,i) => (
+            <div className="col-span-1 " key={i}>
+              <p className="text-red-500 text-xl font-bold my-2">{item?.name}</p>
+              <p className="font-semibold">{item?.param}</p>
+            </div>
+          ))}
+
+        </div>
+      </section>
       <div className="editor mt-8">
         <div dangerouslySetInnerHTML={{ __html: product?.description }} />
       </div>

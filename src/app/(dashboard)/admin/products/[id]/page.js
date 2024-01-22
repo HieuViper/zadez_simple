@@ -4,13 +4,17 @@ import {
   DeleteOutlined,
   SwapLeftOutlined,
   UploadOutlined,
+  MinusCircleOutlined,
+PlusOutlined
 } from "@ant-design/icons";
 import {
   Button,
   Form,
   Image,
   Input,
+  InputNumber,
   Select,
+  Space,
   TreeSelect,
   Upload,
   message,
@@ -33,15 +37,11 @@ const ProductForm = ({ params }) => {
   );
   const { uploadFormData: uploadImage } = useSWRUpload(
     `/api/products/image`,
-    isAddMode ? {} : { id: params.id }
   );
   const { uploadFormData: uploadMultipleImage } = useSWRUpload(
     `/api/products/images`,
-    isAddMode ? {} : { id: params.id }
   );
-  const { data: categories } = useSWRData("/api/categories", {
-    limit: 1000,
-  });
+  const { data: categories } = useSWRData("/api/categories/get-all");
 
   const { Option } = Select;
   const { id } = useParams();
@@ -424,10 +424,12 @@ const ProductForm = ({ params }) => {
               name="type"
             >
               <Select placeholder="Select type">
-                <Option value={"mouse"}>Mouse</Option>
-                <Option value={"keyboard"}>Keyboard</Option>
-                <Option value={"audio"}>Audio</Option>
-                <Option value={"smartwatch"}>Smart Watch</Option>
+                <Option value={"mouse"}>Chuột</Option>
+                <Option value={"keyboard"}>Tai nghe</Option>
+                <Option value={"speaker"}>Loa</Option>
+                <Option value={"headset"}>Tai nghe</Option>
+                <Option value={"bag"}>Túi chống sốc</Option>
+                <Option value={"pad"}>Lót chuột</Option>
                 <Option value={"accessories"}>Accessories</Option>
               </Select>
             </Form.Item>
@@ -442,6 +444,12 @@ const ProductForm = ({ params }) => {
                 options={optionsColor}
                 placeholder="Select Color"
               />
+            </Form.Item>
+            <Form.Item
+              label={<span className="font-medium">Order</span>}
+              name="order"
+            >
+              <InputNumber placeholder="Order"/>
             </Form.Item>
           </div>
         </div>
@@ -641,6 +649,79 @@ const ProductForm = ({ params }) => {
             </Upload>
           </Form.Item>
         </div>
+        {/* FORM LIST */}
+<div className="flex flex-col justify-center items-center">
+  
+<Form.Item
+              label={<span className="font-medium">Title Parameter</span>}
+              name="title_parameter"
+              rules={[
+                {
+                  required: true,
+                  message: "Please input title parameter!",
+                },
+              ]}
+              labelCol={24}
+              wrapperCol={24}
+            >
+              <Input placeholder="Input title parameter" />
+            </Form.Item>
+<div className="text-xl mb-4 font-semibold ">Input Parameter</div>
+        <Form.List name="parameter" >
+      {(fields, { add, remove }) => (
+        <>
+          {fields.map(({ key, name, ...restField }) => (
+            <Space
+              key={key}
+              style={{
+                display: 'flex',
+                marginBottom: 8,
+              }}
+              align="baseline"
+            >
+              <Form.Item
+              wrapperCol={{
+                span: 24,
+              }}
+                {...restField}
+                name={[name, 'name']}
+                rules={[
+                  {
+                    required: true,
+                    message: "Please input name parameter",
+                  },
+                ]}
+              >
+                <Input placeholder="Input Name" />
+              </Form.Item>
+              <Form.Item
+              wrapperCol={{
+                span: 24,
+              }}
+                {...restField}
+                name={[name, 'param']}
+                rules={[
+                  {
+                    required: true,
+                    message: "Please input parameter",
+                  },
+                ]}
+              >
+                <Input placeholder="Input Param" />
+              </Form.Item>
+              <MinusCircleOutlined onClick={() => remove(name)} />
+            </Space>
+          ))}
+          <Form.Item>
+            <Button type="dashed" onClick={() => add()}  icon={<PlusOutlined />}>
+              Add field
+            </Button>
+          </Form.Item>
+        </>
+      )}
+    </Form.List>
+</div>
+
         <Form.Item
           label={<span className="font-medium">Short</span>}
           name={`short`}

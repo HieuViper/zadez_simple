@@ -1,5 +1,5 @@
 import GoogleAnalystic from "@/components/GoogleAnalystic";
-import Footer from "../../components/Footer";
+// import Footer from "../../components/Footer";
 // import './globals.css'
 import AuthenPopup from "@/components/AuthenPopup";
 import db from "@/models";
@@ -8,6 +8,9 @@ import dynamic from "next/dynamic";
 import { Inter } from "next/font/google";
 import { AOSInit } from "./_components/AOS";
 const Header = dynamic(() => import("@/components/Header"), {
+  loading: () => <p>Loading...</p>,
+});
+const Footer = dynamic(() => import("@/components/Footer"), {
   loading: () => <p>Loading...</p>,
 });
 

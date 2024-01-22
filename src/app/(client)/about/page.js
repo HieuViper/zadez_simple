@@ -8,10 +8,10 @@ import {
   YoutubeOutlined,
 } from "@ant-design/icons";
 import { Divider } from "antd";
-import Image from "next/image";
-import { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import Image from "next/image";
+import { useEffect } from "react";
 
 const About = () => {
   const youKnow = [
@@ -64,9 +64,13 @@ const About = () => {
     AOS.init({ once: true });
   });
   return (
-    <div className="mb-20">
+    <div className="mb-20 m-auto md:max-w-3xl lg:max-w-7xl">
       {/* Banner */}
-      <div className="flex flex-col justify-center items-center text-center my-8" data-aos="fade-down" data-aos-duration="500">
+      <div
+        className="flex flex-col justify-center items-center text-center my-8"
+        data-aos="fade-down"
+        data-aos-duration="500"
+      >
         <h1 className="text-4xl text-red-500">ZADEZ-Make Life Easier</h1>
         <p className="text-base text-[#999999]">
           Đã có mặt tại Việt Nam từ năm 2007, nhưng đây có thể là lần đầu tiên
@@ -86,10 +90,15 @@ const About = () => {
           width={1225}
           height={788}
           alt="ZADEZ Factory Vinh Long"
-          data-aos="zoom-out" data-aos-duration="500"
+          data-aos="zoom-out"
+          data-aos-duration="500"
         />
         <div className="grid grid-cols-3 gap-2 mt-6">
-          <div className="col-span-3 md:col-span-1" data-aos="zoom-in" data-aos-duration="400">
+          <div
+            className="col-span-3 md:col-span-1"
+            data-aos="zoom-in"
+            data-aos-duration="400"
+          >
             <Image
               sizes="100vw"
               style={{
@@ -102,7 +111,11 @@ const About = () => {
               alt="ZADEZ Factory Vinh Long"
             />
           </div>
-          <div className="col-span-3 md:col-span-1" data-aos="zoom-in" data-aos-duration="600">
+          <div
+            className="col-span-3 md:col-span-1"
+            data-aos="zoom-in"
+            data-aos-duration="600"
+          >
             <Image
               sizes="100vw"
               style={{
@@ -115,7 +128,11 @@ const About = () => {
               alt="ZADEZ Factory Vinh Long"
             />
           </div>
-          <div className="col-span-3 md:col-span-1" data-aos="zoom-in" data-aos-duration="800">
+          <div
+            className="col-span-3 md:col-span-1"
+            data-aos="zoom-in"
+            data-aos-duration="800"
+          >
             <Image
               sizes="100vw"
               style={{
@@ -158,7 +175,7 @@ const About = () => {
             height="551"
             src="https://www.youtube.com/embed/RUDJmC5dZYI"
             title="ZADEZ - Năng Lực Sản Xuất Thực Tế"
-            frameborder="0"
+            frameBorder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             allowfullscreen
           ></iframe>
@@ -347,12 +364,12 @@ const About = () => {
             </h4>
             <p className="text-base text-[#999999]">
               Logo chính thức của ZADEZ bao gồm phần biểu tượng thể hiện chữ Z
-              cách điệu và ký tự &ldquo;ZADEZ&rdquo;. Hình tượng chữ Z biểu trưng cho sự
-              tuần hoàn, sự hài hòa và sự kết hợp của &ldquo;lưỡng nghi&rdquo; trong quan
-              niệm của người Á Đông. Cùng với biểu tượng &ldquo;tiêu điểm&rdquo;, ZADEZ luôn
-              hoạch định mục tiêu phát triển rõ ràng và có trọng tâm ngay từ lúc
-              khởi đầu các dự án, trên nền tảng cân đối tổng thể các nguồn lực
-              cũng như điều kiện tác động.
+              cách điệu và ký tự &ldquo;ZADEZ&rdquo;. Hình tượng chữ Z biểu
+              trưng cho sự tuần hoàn, sự hài hòa và sự kết hợp của &ldquo;lưỡng
+              nghi&rdquo; trong quan niệm của người Á Đông. Cùng với biểu tượng
+              &ldquo;tiêu điểm&rdquo;, ZADEZ luôn hoạch định mục tiêu phát triển
+              rõ ràng và có trọng tâm ngay từ lúc khởi đầu các dự án, trên nền
+              tảng cân đối tổng thể các nguồn lực cũng như điều kiện tác động.
             </p>
             <h4 className="text-base text-red-500 font-medium ">
               Ý Nghĩa Ký Tự

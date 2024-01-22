@@ -1,4 +1,5 @@
 "use client";
+import Image from "next/image";
 import "swiper/css";
 import "swiper/css/free-mode";
 import "swiper/css/navigation";
@@ -11,11 +12,12 @@ const SlideImage = ({ data, width, height }) => {
     <Swiper
       // onSwiper={setThumbsSwiper}
       loop={true}
+      lazyPreloadPrevNext={1}
+      lazyPreloaderClass="swiper-lazy-preloader"
+      // lazy={true}
       spaceBetween={4}
       slidesPerView={4}
       freeMode={true}
-      cssMode={true}
-      lazyPreloadPrevNext={1}
       grabCursor={true}
       watchSlidesProgress={true}
       modules={[Navigation, Autoplay]}
@@ -41,15 +43,18 @@ const SlideImage = ({ data, width, height }) => {
     >
       {data &&
         data?.map((item, i) => (
-          <SwiperSlide key={i} lazy={true}>
-            <img
-              style={{
-                width,
-                height,
-              }}
+          <SwiperSlide key={i}>
+            <Image
               src={item.image}
               alt={item.name}
-              className="rounded-lg"
+              width={width}
+              height={height}
+              loading="lazy"
+              // sizes="100vw"
+              // style={{
+              //     width: "100%",
+              //     height: "auto",
+              // }}
             />
           </SwiperSlide>
         ))}

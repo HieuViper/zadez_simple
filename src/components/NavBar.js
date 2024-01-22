@@ -36,7 +36,7 @@ const NavBar = ({ data }) => {
               )}
               {item?.children && (
                 <div
-                  className={`absolute top-12hidden group-hover:md:block hover:md:block bg-white mt-5 py-2 pl-2 gap-10  rounded-xl shadow-lg  ease-in-out transition-all duration-500`}
+                  className={`absolute top-12 hidden group-hover:md:block hover:md:block bg-white mt-5 py-2 pl-2 gap-10  rounded-xl shadow-lg  ease-in-out transition-all duration-500`}
                 >
                   {item?.children &&
                     item?.children.map((item, i) => (

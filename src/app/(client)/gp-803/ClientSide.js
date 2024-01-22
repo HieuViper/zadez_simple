@@ -9,7 +9,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
-const ClientSide = () => {
+const ClientSide = ({ GP803B, GP803BW }) => {
   const { addToCart } = store();
   const [activeCard, setActiveCard] = useState(1);
   const router = useRouter();
@@ -36,27 +36,6 @@ const ClientSide = () => {
         name: "GP-803B-5.webp",
       },
     ],
-    id: 5,
-    product_code: "black",
-    name: "black",
-    short: null,
-    description: "",
-    main_image: "/uploads/jan2024/ZADEZ-G-613M-BLACK--WEBSITE-1024_(12).jpg",
-    sub_image: "/uploads/jan2024/ZADEZ-G-151M-BLACK-WEBSITE-1024_(9).jpg",
-    price: 10000,
-    discount_price: null,
-    product_author: "",
-    modified_by: null,
-    product_position: 0,
-    active: null,
-    status: null,
-    color: null,
-    driver: null,
-    type: "mouse",
-    stock: "in",
-    createdAt: "2024-01-12T08:28:10.000Z",
-    updatedAt: "2024-01-13T17:21:58.000Z",
-    categoryId: 3,
   };
   const productWhite = {
     list_image: [
@@ -81,35 +60,8 @@ const ClientSide = () => {
         name: "GP-803B-5.webp",
       },
     ],
-    id: 6,
-    product_code: "white",
-    name: "white",
-    short: null,
-    description: "",
-    main_image: "/uploads/jan2024/ZADEZ-G-613M-BLACK--WEBSITE-1024_(12).jpg",
-    sub_image: "/uploads/jan2024/ZADEZ-G-151M-BLACK-WEBSITE-1024_(9).jpg",
-    price: 10000,
-    discount_price: null,
-    product_author: "",
-    modified_by: null,
-    product_position: 0,
-    active: null,
-    status: null,
-    color: null,
-    driver: null,
-    type: "mouse",
-    stock: "in",
-    createdAt: "2024-01-12T08:28:10.000Z",
-    updatedAt: "2024-01-13T17:21:58.000Z",
-    categoryId: 3,
   };
 
-  const onFinish = (values) => {
-    console.log("Success:", values);
-  };
-  const onFinishFailed = (errorInfo) => {
-    console.log("Failed:", errorInfo);
-  };
   const [isModalOpen, setIsModalOpen] = useState(false);
   const showModal = () => {
     setIsModalOpen(true);
@@ -117,9 +69,9 @@ const ClientSide = () => {
   const handleOk = () => {
     // setIsModalOpen(false);
     if (activeCard == 1) {
-      addToCart(productBlack);
+      GP803B && addToCart(GP803B);
     } else if (activeCard == 2) {
-      addToCart(productWhite);
+      GP803BW && addToCart(GP803BW);
     }
     router.push("/gio-hang");
   };
@@ -128,7 +80,7 @@ const ClientSide = () => {
   };
 
   return (
-    <div>
+    <div className="m-auto md:max-w-3xl lg:max-w-7xl">
       <section id="section1" className="grid grid-cols-2 gap-4 pb-64">
         <div
           className="col-span-2 md:col-span-1 p-2 lg:p-10 xl:p-20"
@@ -178,7 +130,7 @@ const ClientSide = () => {
       >
         <div className="absolute grid grid-cols-2 gap-4  shadow-2xl -top-36 xl:-top-44 left-[4%] md:left-[7%] -mt-10 w-10/12 h-80 xl:h-96 bg-gray-200 p-4">
           <div
-            className="col-span-2 md:col-span-1 hidden md:block"
+            className="col-span-2 md:col-span-1 "
             style={{ height: "inherit" }}
           >
             <div className="relative w-full h-full ">
@@ -186,11 +138,11 @@ const ClientSide = () => {
                 src="/images/landing-page/gp-803/img2.webp"
                 alt="GP-803"
                 fill
-                objectFit="contain"
+                style={{ objectFit: "contain" }}
               />
             </div>
           </div>
-          <div className="col-span-2 md:col-span-1 md:p-6 lg:p-10 xl:p-20">
+          <div className="col-span-2 md:col-span-1 md:p-6 lg:p-10 xl:p-20 hidden md:block">
             <h2 className="mt-2 text-5xl md:text-3xl lg:text-4xl xl:text-5xl font-bold uppercase text-yellow-400">
               ULTRA LIGHT 176 GRAM
             </h2>
@@ -219,7 +171,7 @@ const ClientSide = () => {
           <Image
             width={200}
             height={200}
-            src="/images/landing-page/gp-803/img1.webp"
+            src="/images/landing-page/gp-803/img7.webp"
             alt="GP-803"
             sizes="100vw"
             style={{
@@ -331,9 +283,6 @@ const ClientSide = () => {
             ]}
           />
         </div>
-        {/* <div className="w-3/5 bg-white px-10 rounded-lg">
-                    <SlideShow listImage={productBlack?.list_image} />
-                </div> */}
         <div className="flex flex-col justify-center items-center p-2">
           <h3 className="text-xl md:text-3xl my-4">GP-803 BLACK & WHITE</h3>
           <p>
@@ -368,7 +317,7 @@ const ClientSide = () => {
         className="bg-[url('/images/landing-page/gp-803/bg3.webp')] bg-center px-2 py-4 md:py-10  lg:py-32 lg:-ml-16 lg:-mr-16 xl:-ml-24 xl:-mr-24 "
       >
         <div className="flex flex-col justify-center items-center md:px-10">
-          <h4 className="text-red-500 text-4xl font-bold mb-2">
+          <h4 className="text-red-500 text-4xl font-bold mb-2 text-center">
             ENC Bluetooth Headphone
           </h4>
           <div className="relative flex py-5 items-center w-full">
@@ -479,7 +428,6 @@ const ClientSide = () => {
             height={300}
             src="/images/landing-page/gp-803/GP_803B/GP-803B-3.webp"
             alt="GP-803B"
-            sizes="100vw"
             style={{
               width: "100%",
               height: "auto",
@@ -532,7 +480,7 @@ const ClientSide = () => {
           <span className="mb-4">
             Thông báo, events, khuyến mãi... Tất cả đều có ở đây
           </span>
-          <div className="flex gap-10 pb-8">
+          <div className="flex gap-2 md:gap-10 pb-8">
             <Link
               href="https://www.facebook.com/ZadezTechnology"
               target="_blank"
@@ -541,7 +489,7 @@ const ClientSide = () => {
                 className="hover:scale-110 duration-200"
                 width={50}
                 height={50}
-                src="/images/icon-logo/facebook.webp"
+                src="/images/icon/facebook.webp"
                 alt="facebook"
               />
             </Link>
@@ -553,7 +501,7 @@ const ClientSide = () => {
                 className="hover:scale-110 duration-200"
                 width={50}
                 height={50}
-                src="/images/icon-logo/instagram.webp"
+                src="/images/icon/instagram.webp"
                 alt="instagram"
               />
             </Link>
@@ -562,7 +510,7 @@ const ClientSide = () => {
                 className="hover:scale-110 duration-200"
                 width={50}
                 height={50}
-                src="/images/icon-logo/youtube.webp"
+                src="/images/icon/youtube.webp"
                 alt="youtube"
               />
             </Link>
@@ -571,7 +519,7 @@ const ClientSide = () => {
                 className="hover:scale-110 duration-200"
                 width={50}
                 height={50}
-                src="/images/icon-logo/tik-tok.webp"
+                src="/images/icon/tik-tok.webp"
                 alt="tiktok"
               />
             </Link>
@@ -610,7 +558,6 @@ const ClientSide = () => {
               height={300}
               src="/images/landing-page/gp-803/GP_803B/GP-803B-3.webp"
               alt="GP-803B"
-              sizes="100vw"
               style={{
                 width: "100%",
                 height: "auto",

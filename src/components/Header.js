@@ -1,10 +1,14 @@
 "use client";
 import store from "@/library/zustand/store";
-import { LogoutOutlined } from "@ant-design/icons";
-import { Button, message } from "antd";
+import { LogoutOutlined, UserOutlined } from "@ant-design/icons";
+import { Button, Dropdown, message } from "antd";
 import dynamic from "next/dynamic";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
+import Cart from "./Cart";
+import NavBar from "./NavBar";
+import SideBar from "./SideBar";
 const BadgeCart = dynamic(() => import("../components/BadgeCart"), {
   ssr: false,
 });
@@ -106,67 +110,67 @@ const Header = ({ categories }) => {
   };
 
   return (
-    // <header
-    //   className={`shadow-sm lg:py-4 py-2w-full bg-[#fafafa]  px-2 fixed top-0 z-30 transition-all duration-500`}
-    // >
-    //   {/* <Head>
-    //     <link rel="canonical" href={canonicalURL} />
-    //   </Head> */}
-    //   {/* <Head>
-    //             <script src="https://sp.zalo.me/plugins/sdk.js"></script>
-    //         </Head> */}
-    //   {/* {isOpenMenu && <div onClick={() => setIsOpenMenu(false)} className="fixed inset-0 top-32 bg-gray-200 bg-opacity-75 transition-opacity z-50  overflow-hidden"></div>} */}
-    //   <div className=" text-gray-600  border-b-[#e5e7eb] top-0 ">
-    //     <div className="border border-b-[#e5e7eb]">
-    //       <div className="flex lg:grid lg:grid-cols-12  justify-center items-center">
-    //         <div
-    //           className={`top-16 block lg:hidden absolute  left-5 px-3 py-2 border rounded hover:text-teal-200 border-gray-300 cursor-pointer duration-300 transition-all`}
-    //         >
-    //           <SideBar data={dataTree} />
-    //         </div>
-    //         <div className="col-span-2">
-    //           <a
-    //             className="flex justify-center font-medium items-center text-gray-900 mb-4 md:mb-0 cursor-pointer"
-    //             href="/"
-    //           >
-    //             <Image
-    //               src={"/images/logo-zadez.png"}
-    //               width={80}
-    //               height={80}
-    //               className="hover:opacity-80 cursor-pointer duration-300 transition-all "
-    //               alt="Zadez"
-    //             />
-    //           </a>
-    //         </div>
-    //         <div className="col-span-8 hidden lg:block">
-    //           <NavBar data={dataTree} />
-    //         </div>
-    //         <div className="col-span-2 lg:flex justify-center gap-4 hidden">
-    //           <BadgeCart cartState={cartState} showDrawer={showDrawer} />
-    //           <Dropdown
-    //             menu={{
-    //               items,
-    //             }}
-    //             trigger={["click"]}
-    //             disabled={userState?.token ? false : true}
-    //           >
-    //             <UserOutlined
-    //               style={{ fontSize: "30px" }}
-    //               onClick={handleOpenModalLogin}
-    //             />
-    //           </Dropdown>
-    //         </div>
-    //       </div>
-    //     </div>
-    //   </div>
-    //   <Cart
-    //     onClose={onCloseCart}
-    //     open={openCart}
-    //     placement="right"
-    //     className="no-scrollbar"
-    //   />
-    // </header>
-    <>header</>
+    <header
+      className={`shadow-sm lg:py-4 py-2 w-full bg-[#fafafa]  px-2 fixed top-0 z-30 transition-all duration-500`}
+    >
+      {/* <Head>
+        <link rel="canonical" href={canonicalURL} />
+      </Head> */}
+      {/* <Head>
+                <script src="https://sp.zalo.me/plugins/sdk.js"></script>
+            </Head> */}
+      {/* {isOpenMenu && <div onClick={() => setIsOpenMenu(false)} className="fixed inset-0 top-32 bg-gray-200 bg-opacity-75 transition-opacity z-50  overflow-hidden"></div>} */}
+      <div className=" text-gray-600  border-b-[#e5e7eb] top-0 ">
+        <div className="border border-b-[#e5e7eb]">
+          <div className="flex lg:grid lg:grid-cols-12  justify-center items-center">
+            <div
+              className={`top-16 block lg:hidden absolute  left-5 px-3 py-2 border rounded hover:text-teal-200 border-gray-300 cursor-pointer duration-300 transition-all`}
+            >
+              <SideBar data={dataTree} />
+            </div>
+            <div className="col-span-2">
+              <a
+                className="flex justify-center font-medium items-center text-gray-900 mb-4 md:mb-0 cursor-pointer"
+                href="/"
+              >
+                <Image
+                  src={"/images/logo-zadez.png"}
+                  width={80}
+                  height={80}
+                  className="hover:opacity-80 cursor-pointer duration-300 transition-all "
+                  alt="Zadez"
+                />
+              </a>
+            </div>
+            <div className="col-span-8 hidden lg:block">
+              <NavBar data={dataTree} />
+            </div>
+            <div className="col-span-2 lg:flex justify-center gap-4 hidden">
+              <BadgeCart cartState={cartState} showDrawer={showDrawer} />
+              <Dropdown
+                menu={{
+                  items,
+                }}
+                trigger={["click"]}
+                disabled={userState?.token ? false : true}
+              >
+                <UserOutlined
+                  style={{ fontSize: "30px" }}
+                  onClick={handleOpenModalLogin}
+                />
+              </Dropdown>
+            </div>
+          </div>
+        </div>
+      </div>
+      <Cart
+        onClose={onCloseCart}
+        open={openCart}
+        placement="right"
+        className="no-scrollbar"
+      />
+    </header>
+    // <>header</>
   );
 };
 
