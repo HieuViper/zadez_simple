@@ -2,8 +2,8 @@ import GoogleAnalystic from "@/components/GoogleAnalystic";
 import Footer from "../../components/Footer";
 // import './globals.css'
 import AuthenPopup from "@/components/AuthenPopup";
-// import Header from "@/components/Header";
 import db from "@/models";
+import { revalidatePath } from "next/cache";
 import dynamic from "next/dynamic";
 import { Inter } from "next/font/google";
 import { AOSInit } from "./_components/AOS";
@@ -21,22 +21,24 @@ export const metadata = {
     icon: "/zadez_logo_title.jpg",
   },
 };
+
 async function getAllCategories() {
-  const res = await db.Categories.findAll({
+  let res = await db.Categories.findAll({
     include: [
       {
         model: db.Products,
         as: "products",
       },
     ],
-    raw: true,
-    nest: true,
   });
+  res = JSON.stringify(res);
+  res = JSON.parse(res);
   return res;
 }
 
 export default async function RootLayout({ children, params }) {
   const categories = await getAllCategories();
+  revalidatePath("/");
 
   return (
     <html>
@@ -44,7 +46,13 @@ export default async function RootLayout({ children, params }) {
       <AOSInit />
       <body className={inter.className}>
         <Header categories={categories} />
-        <div className="px-6 lg:px-16 xl:px-24 pt-28 pb-10 bg-[url('/images/bg-white.webp')] bg-contain overflow-x-hidden">
+        <div
+          className="px-6 lg:px-16 xl:px-24 pt-28 pb-10 overflow-x-hidden"
+          style={{
+            backgroundImage: `url("/images/bg-white.webp")`,
+            backgroundSize: "contain",
+          }}
+        >
           {children}
         </div>
         <Footer />

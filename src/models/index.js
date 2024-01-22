@@ -12,7 +12,7 @@ let sequelize = new Sequelize(
   {
     host: process.env.DB_HOST,
     dialect: process.env.DB_DIALECT,
-    dialectModule: require('mysql2'),
+    dialectModule: require("mysql2"),
     pool: {
       max: 5,
       min: 0,
@@ -20,6 +20,7 @@ let sequelize = new Sequelize(
       idle: 10000,
     },
     timezone: "+07:00",
+    logging: false,
   }
 );
 const dirName = __dirname.includes(".next")

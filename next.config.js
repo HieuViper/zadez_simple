@@ -1,6 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: "standalone",
+  // output: "standalone",
   reactStrictMode: false,
   experimental: {
     serverComponentsExternalPackages: ["sequelize"],
@@ -9,10 +9,10 @@ const nextConfig = {
   env: {
     ROOT: __dirname,
   },
-  images: {
-    loader: "custom",
-    loaderFile: "./ImageLoaderProduction.js",
-  },
+  // images: {
+  //   loader: "custom",
+  //   loaderFile: "./ImageLoaderProduction.js",
+  // },
   pageExtensions: ["mdx", "md", "jsx", "js", "tsx", "ts"],
   async rewrites() {
     return [

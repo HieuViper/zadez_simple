@@ -1,10 +1,9 @@
 "use client";
-import Image from "next/image";
 import "swiper/css";
 import "swiper/css/free-mode";
 import "swiper/css/navigation";
 import "swiper/css/thumbs";
-import { Navigation, Autoplay } from "swiper/modules";
+import { Autoplay, Navigation } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 const SlideBanner = ({ data, width, height }) => {
@@ -14,6 +13,7 @@ const SlideBanner = ({ data, width, height }) => {
         loop={true}
         slidesPerView={1}
         freeMode={true}
+        lazyPreloadPrevNext={1}
         grabCursor={true}
         watchSlidesProgress={true}
         modules={[Navigation, Autoplay]}
@@ -26,15 +26,12 @@ const SlideBanner = ({ data, width, height }) => {
       >
         {data &&
           data?.map((item, i) => (
-            <SwiperSlide key={i}>
-              <Image
-                sizes="100vw"
+            <SwiperSlide key={i} lazy={true}>
+              <img
                 style={{
-                  width: "100%",
-                  height: "auto",
+                  width,
+                  height,
                 }}
-                width={width}
-                height={height}
                 src={item.image}
                 alt={item.name}
                 className="rounded-lg"

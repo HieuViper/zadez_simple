@@ -1,9 +1,9 @@
 "use client";
-import { useScrollPosition } from "@/library/useScrollPosition";
+// import { useScrollPosition } from "@/library/useScrollPosition";
 import Image from "next/image";
 import Link from "next/link";
 const NavBar = ({ data }) => {
-  const scrollPosition = useScrollPosition();
+  // const scrollPosition = useScrollPosition();
   return (
     <>
       <div className="md:flex hidden uppercase items-center justify-center gap-2">
@@ -36,16 +36,17 @@ const NavBar = ({ data }) => {
               )}
               {item?.children && (
                 <div
-                  className={`absolute ${scrollPosition > 0 ? "top-8" : "top-12"
-                    } hidden group-hover:md:block hover:md:block bg-white mt-5 py-2 pl-2 gap-10  rounded-xl shadow-lg  ease-in-out transition-all duration-500`}
+                  className={`absolute top-12hidden group-hover:md:block hover:md:block bg-white mt-5 py-2 pl-2 gap-10  rounded-xl shadow-lg  ease-in-out transition-all duration-500`}
                 >
                   {item?.children &&
                     item?.children.map((item, i) => (
                       <div key={i} className=" md:cursor-pointer group/item ">
                         <Link
-                          href={`${item.products.length > 0 ? `/danh-muc-san-pham` : ""
-                            }/${item.category_code}${item.products.length > 0 ? -`${item.id}` : ""
-                            }`}
+                          href={`${
+                            item.products.length > 0 ? `/danh-muc-san-pham` : ""
+                          }/${item.category_code}${
+                            item.products.length > 0 ? -`${item.id}` : ""
+                          }`}
                           style={{ textDecoration: "none", color: "black" }}
                         >
                           <div className="col-span-1 flex items-center justify-between group-hover/item:text-red-500 duration-300 transition mx-2">

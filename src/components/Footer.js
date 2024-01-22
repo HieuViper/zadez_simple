@@ -1,6 +1,6 @@
 "use client";
+
 import Image from "next/image";
-import logo from "/public/images/logo-white.png";
 
 const Footer = () => {
   // const introFooter =
@@ -19,7 +19,12 @@ const Footer = () => {
     <footer>
       <div className="text-[#AAAAAA] bg-[#1D1D1D] flex lg:flex-row lg:justify-around flex-col justify-center items-center gap-8 pt-20 pb-32 px-10">
         <div className="lg:w-1/3 p-6 lg:p-28">
-          <Image src={logo} width={195} height={64} alt="Zadez" />
+          <Image
+            src={"/images/logo-white.webp"}
+            width={195}
+            height={64}
+            alt="Zadez"
+          />
         </div>
         <div className="lg:w-1/3 p-6">
           <div className="text-white font-bold mb-7">{introFooter?.name}</div>
