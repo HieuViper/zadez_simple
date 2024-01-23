@@ -425,7 +425,7 @@ const ProductForm = ({ params }) => {
             >
               <Select placeholder="Select type">
                 <Option value={"mouse"}>Chuột</Option>
-                <Option value={"keyboard"}>Tai nghe</Option>
+                <Option value={"keyboard"}>Bàn phím</Option>
                 <Option value={"speaker"}>Loa</Option>
                 <Option value={"headset"}>Tai nghe</Option>
                 <Option value={"bag"}>Túi chống sốc</Option>
