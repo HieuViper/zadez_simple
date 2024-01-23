@@ -22,6 +22,7 @@ async function getProductsByStatus(product_code) {
   const data = await res.json();
   return data;
 }
+
 const LadingPageOne = async () => {
   const GP803B = await getProductsByStatus("zadez-gp-803b");
   const GP803BW = await getProductsByStatus("zadez-gp-803bW");

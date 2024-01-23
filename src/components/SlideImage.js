@@ -49,7 +49,8 @@ const SlideImage = ({ data, width, height }) => {
               alt={item.name}
               width={width}
               height={height}
-              loading="lazy"
+              priority={true}
+              // loading="lazy"
               // sizes="100vw"
               // style={{
               //     width: "100%",

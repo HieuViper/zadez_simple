@@ -12,8 +12,8 @@ const SlideBanner = ({ data, width, height }) => {
     <div>
       <Swiper
         loop={true}
-        lazyPreloadPrevNext={1}
-        lazyPreloaderClass="swiper-lazy-preloader"
+        // lazyPreloadPrevNext={1}
+        // lazyPreloaderClass="swiper-lazy-preloader"
         slidesPerView={1}
         freeMode={true}
         grabCursor={true}
@@ -29,7 +29,7 @@ const SlideBanner = ({ data, width, height }) => {
         {data &&
           data?.map((item, i) => (
             <SwiperSlide key={i}>
-             <Image
+              <Image
                 sizes="100vw"
                 style={{
                   width: "100%",
@@ -40,7 +40,8 @@ const SlideBanner = ({ data, width, height }) => {
                 src={item.image}
                 alt={item.name}
                 className="rounded-lg"
-                loading="lazy"
+                priority={true}
+                // loading="lazy"
               />
             </SwiperSlide>
           ))}
