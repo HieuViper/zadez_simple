@@ -207,10 +207,10 @@ const LadingPageOne = () => {
           </p>
           <div className="flex justify-end ">
             <button
-              className="bg-yellow-300 w-40 p-2 lg:p-4 flex justify-center items-center cursor-pointer"
+              className="bg-yellow-300 w-40 p-2 lg:p-4 flex justify-center items-center cursor-pointer hover:scale-110 duration-200"
               onClick={showModal}
             >
-              <span className="text-xl font-semibold">
+              <span className="text-xl font-semibold ">
                 Mua ngay
                 <RightOutlined />
               </span>
@@ -299,7 +299,7 @@ const LadingPageOne = () => {
             &ldquo;Trắng&rdquo; cho khách hàng lựa chọn
           </p>
           <button
-            className="bg-black w-40 flex justify-center items-center p-2 cursor-pointer"
+            className="bg-black w-40 flex justify-center items-center p-2 cursor-pointer hover:scale-110 duration-200"
             onClick={showModal}
           >
             <span className="text-xl font-semibold text-white">Mua ngay</span>
@@ -410,10 +410,10 @@ const LadingPageOne = () => {
             vị vận chuyển để mang đến sản phẩm tân tay cho quý khách.
           </p>
           <button
-            className="bg-black w-40 flex justify-center items-center p-2 cursor-pointer"
+            className="bg-black w-40 flex justify-center items-center p-2 cursor-pointer text-white hover:scale-110 duration-200"
             onClick={showModal}
           >
-            <span className="text-base md:text-xl font-semibold text-white">
+            <span className="text-base md:text-xl font-semibold ">
               Đặt hàng ngay
             </span>
           </button>
@@ -447,7 +447,7 @@ const LadingPageOne = () => {
       {/*  */}
       <section
         id="contact"
-        className="py-2 lg:py-10 flex flex-col justify-center items-center text-center"
+        className="py-2 lg:py-4 flex flex-col justify-center items-center text-center"
       >
         <iframe
           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3920.0378510093133!2d106.73422791474857!3d10.731564092352032!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752594bfc21feb%3A0xab1bca093ed432be!2sZadez%20Vietnam%20Customer%20services!5e0!3m2!1sen!2s!4v1666859573479!5m2!1sen!2s"
@@ -462,13 +462,20 @@ const LadingPageOne = () => {
         <div className=" mt-10 flex flex-col justify-center items-center text-center">
           <h6 className="text-3xl my-2 md:my-4 ">CONTACT</h6>
           <p>Trung tâm chăm sóc khách hàng ZADEZ VIETNAM</p>
-          <button className="bg-black w-40 flex justify-center items-center p-2">
+          <Link
+              href="/lien-he"
+              target="_blank"
+              prefetch={false}
+              style={{ textDecoration: 'none' }}
+            >
+          <button className="bg-black w-40 flex justify-center items-center p-2 cursor-pointer hover:scale-110 duration-200">
             <span className="md:text-xl font-semibold text-white">Contact</span>
           </button>
+          </Link>
         </div>
         {/* RATE */}
-        <div className="w-full bg-gray-100 my-10 lg:px-16 xl:px-24 lg:-ml-16 lg:-mr-16 xl:-ml-24 xl:-mr-24">
-          <div className="text-2xl md:text-3xl lg:text-4xl font-bold my-4">
+        <div className="w-full bg-gray-100 my-8 lg:px-16 xl:px-24 lg:-ml-16 lg:-mr-16 xl:-ml-24 xl:-mr-24">
+          <div className="text-2xl md:text-3xl lg:text-4xl font-bold my-6">
             Đánh giá của khách hàng
           </div>
           <div className=" flex-grow border-t border-solid border-yellow-400  mb-8"></div>
@@ -480,16 +487,15 @@ const LadingPageOne = () => {
       </section>
       <section
         id="follow us"
-        className="flex justify-center items-center bg-[#1d1d1d] lg:px-16 xl:px-24 lg:-ml-16 lg:-mr-16 xl:-ml-24 xl:-mr-24 -mb-10 p-10 rounded-t-xl"
+        className="flex flex-col justify-center items-center bg-white bg-cover rounded-xl  gap-4 py-16"
       >
-        <div className="w-full md:w-10/12 bg-gray-100 bg-cover rounded-xl flex flex-col justify-center items-center gap-4 p-4">
           <div className="text-xl md:text-3xl font-bold mb-2">
             Theo dõi chúng tôi
           </div>
           <span className="mb-4">
             Thông báo, events, khuyến mãi... Tất cả đều có ở đây
           </span>
-          <div className="flex gap-2 md:gap-10 pb-8">
+          <div className="flex gap-2 md:gap-10 ">
             <Link
               href="https://www.facebook.com/ZadezTechnology"
               target="_blank"
@@ -538,7 +544,6 @@ const LadingPageOne = () => {
               />
             </Link>
           </div>
-        </div>
       </section>
 
       <Modal
