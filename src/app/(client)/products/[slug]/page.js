@@ -5,6 +5,7 @@ import { useSWRData } from "@/library/api";
 import { moneyToString } from "@/library/util";
 import store from "@/library/zustand/store";
 import { Button, Spin, Tag } from "antd";
+import {DownloadOutlined } from "@ant-design/icons";
 import { useRouter } from "next/navigation";
 
 const Product = ({ params }) => {
@@ -136,6 +137,11 @@ const Product = ({ params }) => {
 
         </div>
       </section>
+     { product?.driver && <div className="flex justify-center items-center mt-8">
+        <Button type="primary" shape="round" icon={<DownloadOutlined />} size="large" 
+        href={product.driver} target="_blank">
+            TẢI DRIVER
+          </Button></div>}
       <div className="editor mt-8">
         <div dangerouslySetInnerHTML={{ __html: product?.description }} />
       </div>

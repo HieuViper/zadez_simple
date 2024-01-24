@@ -25,14 +25,14 @@ const Category = ({ params }) => {
       type: "keyboard",
     },
     {
-      name: "Loa",
-      image: "/images/icon/speaker.webp",
-      type: "speaker",
-    },
-    {
       name: "Tai nghe",
       image: "/images/icon/headset.webp",
       type: "headset",
+    },
+    {
+      name: "Đế treo tai nghe",
+      image: "/images/icon/headstand.webp",
+      type: "headstand",
     },
     {
       name: "Túi chống sốc",
@@ -48,6 +48,11 @@ const Category = ({ params }) => {
       name: "Phụ kiện",
       image: "/images/icon/accessories.webp",
       type: "accessories",
+    },
+    {
+      name: "Loa",
+      image: "/images/icon/speaker.webp",
+      type: "speaker",
     },
 
   ];

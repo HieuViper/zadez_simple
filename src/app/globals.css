@@ -200,6 +200,10 @@ body {
     align-items: center;
   }
 }
+.editor a{
+    text-decoration: none;
+    color: black;
+}
 
 .zalo-chat-widget {
   z-index: 1000;

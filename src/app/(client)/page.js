@@ -146,7 +146,6 @@ export default async function Home() {
                 height={200}
                 src="/images/categories/headset.webp"
                 alt="Tai nghe zadez"
-                className="w-32 h-32 md:w-full md:h-full"
               />
               <div className="mb-4">Tai nghe</div>
             </Link>
@@ -302,7 +301,7 @@ export default async function Home() {
           {aboutZadez?.map((item, i) => (
             <div
               key={i}
-              className="col-span-3 md:col-span-1 shadow-xl rounded-lg"
+              className="col-span-3 md:col-span-1 duration-200 hover:-translate-y-2 ease-in hover:shadow-2xl shadow-md rounded-lg"
             >
               <Image
                 sizes="100vw"
