@@ -14,7 +14,7 @@ const Footer = () => {
   };
   return (
     <footer>
-      <div className="text-[#AAAAAA] bg-[#1D1D1D] grid grid-cols-3  justify-center gap-4 md:gap-10 lg:gap-20 pt-16 pb-24 px-10">
+      <div className="text-[#AAAAAA] bg-[#141414] grid grid-cols-3  justify-center gap-4 md:gap-10 lg:gap-20 pt-16 pb-24 px-10">
         <div className="col-span-3 lg:col-span-1 flex flex-col justify-center items-center mx-auto">
           <Image src={"/logo-white.webp"} width={195} height={64} alt="Zadez" />
           <div className="">
@@ -54,7 +54,7 @@ const Footer = () => {
           </div>
         </div>
         <div className="col-span-3 lg:col-span-1">
-          <div className="text-red-500 font-semibold">VỀ ZADEZ</div>
+          <div className="text-[#F88686] font-semibold">VỀ ZADEZ</div>
           <div className="text-sm">
             <p className="leading-6">
               -ZADEZ là thương hiệu phụ kiện công nghệ đầu tiên triển khai hệ
@@ -74,7 +74,7 @@ const Footer = () => {
           </div>
         </div>
         <div className="col-span-3 lg:col-span-1">
-        <div className="text-red-500 font-semibold">THÔNG TIN LIÊN HỆ</div>
+        <div className="text-[#F88686] font-semibold">THÔNG TIN LIÊN HỆ</div>
           <div className="text-sm">
             <p className="leading-6">
               - Tổng đài CSKH: (028) 7777.0053 - 1900.0053 (phục vụ từ
@@ -86,7 +86,7 @@ const Footer = () => {
                 target="_blank"
                 
               >
-                <span className="hover:text-red-500 font-semibold"> PSI.ZADEZ.VN</span>
+                <span className="hover:text-[#F88686] font-semibold"> PSI.ZADEZ.VN</span>
               </Link>
               <br />- Fanpage: 
               <Link
@@ -95,7 +95,7 @@ const Footer = () => {
                 target="_blank"
                 
               >
-                <span className="hover:text-red-500 font-semibold"> Facebook.com/ZadezTechnology</span>
+                <span className="hover:text-[#F88686] font-semibold"> Facebook.com/ZadezTechnology</span>
               </Link>
               <br /> - Youtube: <Link
                 style={{ textDecoration: "none", color: "#AAAAAA" }}
@@ -103,32 +103,32 @@ const Footer = () => {
                 target="_blank"
                 
               >
-                <span className="hover:text-red-500 font-semibold">ZADEZ Vietnam</span>
+                <span className="hover:text-[#F88686] font-semibold">ZADEZ Vietnam</span>
               </Link>
               <br />- Messeger: <Link
                 style={{ textDecoration: "none", color: "#AAAAAA" }}
                 href="https://m.me/ZadezTechnology"
                 target="_blank"
-                className="hover:text-red-500"
+                className="hover:text-[#F88686]"
               >
-                <span className="hover:text-red-500 font-semibold">ZADEZ Vietnam</span>
+                <span className="hover:text-[#F88686] font-semibold">ZADEZ Vietnam</span>
               </Link>
               <br />- Tài khoản Zalo Official Account: <Link
                 style={{ textDecoration: "none", color: "#AAAAAA" }}
                 href="https://Zalo.me/3126944695787017498"
                 target="_blank"
-                className="hover:text-red-500"
+                className="hover:text-[#F88686]"
               >
-                <span className="hover:text-red-500 font-semibold">ZADEZ Vietnam</span>
+                <span className="hover:text-[#F88686] font-semibold">ZADEZ Vietnam</span>
               </Link>
               <br />- Trung tâm CSKH: 
               <Link
                 style={{ textDecoration: "none", color: "#AAAAAA" }}
                 href="https://goo.gl/maps/YDnra6Dx3oVrLnGT8"
                 target="_blank"
-                className="hover:text-red-500"
+                className="hover:text-[#F88686]"
               >
-                <span className="hover:text-red-500 font-semibold"> B97 Phú Thuận, phường Phú Thuận, Quận 7,
+                <span className="hover:text-[#F88686] font-semibold"> B97 Phú Thuận, phường Phú Thuận, Quận 7,
               Tp. Hồ Chí Minh</span>
               </Link>
             </p>
