@@ -7,10 +7,16 @@ import dynamic from "next/dynamic";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
-import Cart from "./Cart";
-import NavBar from "./NavBar";
-import SideBar from "./SideBar";
 const BadgeCart = dynamic(() => import("../components/BadgeCart"), {
+  ssr: false,
+});
+const Cart = dynamic(() => import("./Cart"), {
+  ssr: false,
+});
+const NavBar = dynamic(() => import("./NavBar"), {
+  ssr: false,
+});
+const SideBar = dynamic(() => import("./SideBar"), {
   ssr: false,
 });
 
@@ -20,13 +26,6 @@ const Header = () => {
   const pathname = usePathname();
   const canonicalURL = site + pathname;
   const { data: categories } = useSWRData(`/api/categories/get-all`);
-  console.log("🚀 ~ Header ~ categories:", categories);
-  // const {
-  //   data: categories,
-  //   isLoading,
-  //   error,
-  //   mutate,
-  // } = useSWRData(`/api/categories/get-all`);
   // const scrollPosition = useScrollPosition();
   // handle open modal login
   const handleOpenModalLogin = () => {

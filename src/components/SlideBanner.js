@@ -1,9 +1,5 @@
 "use client";
 import Image from "next/image";
-import "swiper/css";
-import "swiper/css/free-mode";
-import "swiper/css/navigation";
-import "swiper/css/thumbs";
 import { Autoplay, Navigation } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 
@@ -29,7 +25,7 @@ const SlideBanner = ({ data, width, height }) => {
         {data &&
           data?.map((item, i) => (
             <SwiperSlide key={i}>
-             <Image
+              <Image
                 sizes="100vw"
                 style={{
                   width: "100%",
@@ -41,6 +37,7 @@ const SlideBanner = ({ data, width, height }) => {
                 alt={item.name}
                 className="rounded-lg"
                 priority={true}
+                // loading="lazy"
               />
             </SwiperSlide>
           ))}

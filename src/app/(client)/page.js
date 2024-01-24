@@ -1,10 +1,13 @@
 const SlideBanner = dynamic(() => import("@/components/SlideBanner"), {
-  loading: () => <p>Loading...</p>,
-});
-const SlideCard = dynamic(() => import("@/components/SlideCard"), {
+  ssr: false,
   loading: () => <p>Loading...</p>,
 });
 const SlideImage = dynamic(() => import("@/components/SlideImage"), {
+  ssr: false,
+  loading: () => <p>Loading...</p>,
+});
+const NewProducts = dynamic(() => import("./_components/NewProducts"), {
+  ssr: false,
   loading: () => <p>Loading...</p>,
 });
 import dynamic from "next/dynamic";
@@ -97,26 +100,7 @@ const aboutZadez = [
   },
 ];
 
-async function getProductsByStatus(status) {
-  const res = await fetch(
-    `${process.env.BASE_URL}/api/products?status=${status}`,
-    { cache: "no-store" }
-  );
-  const {data} = await res.json();
-  return data;
-  // const res = await db.Products.findAll({
-  //   where: {
-  //     status: status,
-  //   },
-  //   raw: true,
-  //   nest: true,
-  // });
-  // return res;
-}
-
 export default async function Home() {
-  const newProducts = await getProductsByStatus("new");
-
   return (
     <main className="w-full m-auto md:max-w-3xl lg:max-w-7xl">
       {/* BANNER */}
@@ -135,6 +119,7 @@ export default async function Home() {
               style={{ textDecoration: "none" }}
               href="/danh-muc-san-pham/0?type=headset"
               className=" hover:transform hover:scale-105 transition-transform duration-300 ease-in-out text-black hover:text-primary hover:font-semibold"
+              prefetch={false}
             >
               <Image
                 // sizes="100vw"
@@ -146,6 +131,7 @@ export default async function Home() {
                 height={200}
                 src="/images/categories/headset.webp"
                 alt="Tai nghe zadez"
+                priority={true}
               />
               <div className="mb-4">Tai nghe</div>
             </Link>
@@ -156,6 +142,7 @@ export default async function Home() {
                 style={{ textDecoration: "none" }}
                 href="/danh-muc-san-pham/0?type=mouse"
                 className="hover:transform hover:scale-105 transition-transform duration-300 ease-in-out text-black hover:text-primary hover:font-semibold"
+                prefetch={false}
               >
                 <Image
                   sizes="100vw"
@@ -167,6 +154,7 @@ export default async function Home() {
                   height={200}
                   src="/images/categories/mouse.webp"
                   alt="Chuột zadez"
+                  priority={true}
                 />
                 <div className="mb-4">Chuột</div>
               </Link>
@@ -176,6 +164,7 @@ export default async function Home() {
                 style={{ textDecoration: "none" }}
                 href="/danh-muc-san-pham/0?type=keyboard"
                 className="hover:transform hover:scale-105 transition-transform duration-300 ease-in-out text-black hover:text-primary hover:font-semibold"
+                prefetch={false}
               >
                 <Image
                   sizes="100vw"
@@ -187,6 +176,7 @@ export default async function Home() {
                   height={200}
                   src="/images/categories/keyboard.webp"
                   alt="Bàn phím zadez"
+                  priority={true}
                 />
                 <div className="mb-4">Bàn phím</div>
               </Link>
@@ -196,6 +186,7 @@ export default async function Home() {
                 style={{ textDecoration: "none" }}
                 href="/danh-muc-san-pham/0?type=bag"
                 className="hover:transform hover:scale-105 transition-transform duration-300 ease-in-out text-black hover:text-primary hover:font-semibold"
+                prefetch={false}
               >
                 <Image
                   sizes="100vw"
@@ -207,6 +198,7 @@ export default async function Home() {
                   height={200}
                   src="/images/categories/bag.webp"
                   alt="Túi chống sốc zadez"
+                  priority={true}
                 />
                 <div className="mb-4">Túi chống sốc</div>
               </Link>
@@ -216,6 +208,7 @@ export default async function Home() {
                 style={{ textDecoration: "none" }}
                 href="/danh-muc-san-pham/0?type=accessories"
                 className="hover:transform hover:scale-105 transition-transform duration-300 ease-in-out text-black hover:text-primary hover:font-semibold"
+                prefetch={false}
               >
                 <Image
                   sizes="100vw"
@@ -227,6 +220,7 @@ export default async function Home() {
                   height={200}
                   src="/images/categories/accessories.webp"
                   alt="Phụ kiện zadez"
+                  priority={true}
                 />
                 <div className="mb-4">Phụ kiện</div>
               </Link>
@@ -237,6 +231,7 @@ export default async function Home() {
               style={{ textDecoration: "none" }}
               href="/danh-muc-san-pham/0?type=speaker"
               className="hover:transform hover:scale-105 transition-transform duration-300 ease-in-out text-black hover:text-primary hover:font-semibold"
+              prefetch={false}
             >
               <Image
                 sizes="100vw"
@@ -248,6 +243,7 @@ export default async function Home() {
                 height={200}
                 src="/images/categories/audio.webp"
                 alt="Loa zadez"
+                priority={true}
               />
               <div className="mb-4">Loa</div>
             </Link>
@@ -255,17 +251,8 @@ export default async function Home() {
         </div>
       </section>
       {/* SẢN PHẨM MỚI */}
-      { newProducts?.length > 0 && (
-        <div
-          id="new-products"
-          className=" bg-[#e5e7eb] rounded-md p-4 mb-4 text-center"
-        >
-          <h3 className="text-2xl font-bold text-primary">Sản Phẩm Mới</h3>
-          <div className="">
-            <SlideCard data={newProducts} />
-          </div>
-        </div>
-      )}
+      <NewProducts />
+
       <section className="">
         <div className="flex flex-col justify-center items-center text-center my-4 p-4">
           <h4 className="text-2xl text-primary my-2">

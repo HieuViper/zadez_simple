@@ -1,8 +1,4 @@
 "use client";
-import "swiper/css";
-import "swiper/css/free-mode";
-import "swiper/css/navigation";
-import "swiper/css/thumbs";
 import { Navigation } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import ProductCard from "./ProductCard";
@@ -35,7 +31,6 @@ const SlideCard = ({ data }) => {
         1024: {
           slidesPerView: 4,
         },
-
       }}
     >
       {data.map((item, i) => (

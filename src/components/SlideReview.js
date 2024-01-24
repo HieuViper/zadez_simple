@@ -1,9 +1,5 @@
 "use client";
 import { Avatar, Card, Rate } from "antd";
-import "swiper/css";
-import "swiper/css/free-mode";
-import "swiper/css/navigation";
-import "swiper/css/thumbs";
 import { Autoplay, Navigation } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 
@@ -59,7 +55,7 @@ const SlideReview = ({ width, height }) => {
       loop={true}
       spaceBetween={4}
       // slidesPerView={4}
-      
+
       freeMode={true}
       grabCursor={true}
       watchSlidesProgress={true}

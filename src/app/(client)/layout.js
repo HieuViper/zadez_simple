@@ -1,15 +1,20 @@
 // import Footer from "../../components/Footer";
 import AuthenPopup from "@/components/AuthenPopup";
+import GoogleAnalytics from "@/components/GoogleAnalystic";
 import dynamic from "next/dynamic";
-import { Inter } from "next/font/google";
+import "swiper/css";
+import "swiper/css/free-mode";
+import "swiper/css/navigation";
+import "swiper/css/thumbs";
+import { AOSInit } from "./_components/AOS";
 const Header = dynamic(() => import("@/components/Header"), {
   loading: () => <p>Loading...</p>,
+  ssr: false,
 });
 const Footer = dynamic(() => import("@/components/Footer"), {
   loading: () => <p>Loading...</p>,
+  ssr: false,
 });
-
-const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
   title: "Welcome to ZADEZ - ZADEZ Vietnam",
@@ -20,36 +25,13 @@ export const metadata = {
   },
 };
 
-// async function getAllCategories() {
-//   let res = await db.Categories.findAll({
-//     include: [
-//       {
-//         model: db.Products,
-//         as: "products",
-//       },
-//     ],
-//   });
-//   res = JSON.stringify(res);
-//   res = JSON.parse(res);
-//   return res;
-// }
-
 export default async function RootLayout({ children, params }) {
-  // const file = await fs.readFile(
-  //   process.cwd() + "/src/jsonCache/CateJson.json",
-  //   "utf8"
-  // );
-  // const categories = JSON.parse(file);
-  // console.log("🚀 ~ RootLayout ~ categories:", categories);
-
-  // const categories = await getAllCategories();
-
   return (
-    <html>
-      {/* <GoogleAnalystic GA_TRACKING_ID={process.env.GA_TRACKING_ID} />
-      <AOSInit /> */}
-      <body className={inter.className}>
-        <Header />
+    <>
+      <AOSInit />
+      <GoogleAnalytics />
+      <Header />
+      <main>
         <div
           className="px-6 lg:px-16 xl:px-24 pt-28 pb-10 overflow-x-hidden"
           style={{
@@ -59,11 +41,11 @@ export default async function RootLayout({ children, params }) {
         >
           {children}
         </div>
-        <Footer />
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50">
           <AuthenPopup />
         </div>
-      </body>
-    </html>
+      </main>
+      <Footer />
+    </>
   );
 }

@@ -1,9 +1,5 @@
 "use client";
 import Image from "next/image";
-import "swiper/css";
-import "swiper/css/free-mode";
-import "swiper/css/navigation";
-import "swiper/css/thumbs";
 import { Autoplay, Navigation } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 
@@ -49,7 +45,8 @@ const SlideImage = ({ data, width, height }) => {
               alt={item.name}
               width={width}
               height={height}
-              loading="lazy"
+              priority={true}
+              // loading="lazy"
               // sizes="100vw"
               // style={{
               //     width: "100%",
