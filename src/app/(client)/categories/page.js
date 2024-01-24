@@ -6,60 +6,60 @@ import Image from "next/image";
 import { useSWRData } from "@/library/api";
 import { useRouter } from "next/navigation";
 const Categories = () => {
-    const router = useRouter();
-    const products = [
-        {
-            product_code: "999",
-            main_image: "/images/categories/audio.webp",
-            price: 9,
-            discount_price: 1,
-            status: "in",
-            name: "aGaming",
+    // const router = useRouter();
+    // const products = [
+    //     {
+    //         product_code: "999",
+    //         main_image: "/images/categories/audio.webp",
+    //         price: 9,
+    //         discount_price: 1,
+    //         status: "in",
+    //         name: "aGaming",
 
-        },
-        {
-            product_code: "999",
-            main_image: "/images/categories/audio.webp",
-            price: 99,
-            discount_price: 1,
-            status: "in",
-            name: "bGaming",
+    //     },
+    //     {
+    //         product_code: "999",
+    //         main_image: "/images/categories/audio.webp",
+    //         price: 99,
+    //         discount_price: 1,
+    //         status: "in",
+    //         name: "bGaming",
 
-        },
-        {
-            product_code: "999",
-            main_image: "/images/categories/audio.webp",
-            price: 999,
-            discount_price: 1,
-            status: "in",
-            name: "cGaming",
+    //     },
+    //     {
+    //         product_code: "999",
+    //         main_image: "/images/categories/audio.webp",
+    //         price: 999,
+    //         discount_price: 1,
+    //         status: "in",
+    //         name: "cGaming",
 
-        },
-        {
-            product_code: "999",
-            main_image: "/images/categories/audio.webp",
-            price: 9999,
-            discount_price: 1,
-            status: "in",
-            name: "dGaming",
+    //     },
+    //     {
+    //         product_code: "999",
+    //         main_image: "/images/categories/audio.webp",
+    //         price: 9999,
+    //         discount_price: 1,
+    //         status: "in",
+    //         name: "dGaming",
 
-        },
-        {
-            product_code: "999",
-            main_image: "/images/categories/audio.webp",
-            price: 999999,
-            discount_price: 1,
-            status: "in",
-            name: "eGaming",
+    //     },
+    //     {
+    //         product_code: "999",
+    //         main_image: "/images/categories/audio.webp",
+    //         price: 999999,
+    //         discount_price: 1,
+    //         status: "in",
+    //         name: "eGaming",
 
-        },
-    ];
-    const {
-        data: product,
-        isLoading,
-        error,
-        mutate,
-    } = useSWRData(`/api/products`, { limit: 6, status: "new" });
+    //     },
+    // ];
+    // const {
+    //     data: product,
+    //     isLoading,
+    //     error,
+    //     mutate,
+    // } = useSWRData(`/api/products`, { limit: 6, status: "new" });
     // console.log('product :', product?.data);
     const banners = [
         { name: "Zadez", image: "/images/banner1.webp" },
