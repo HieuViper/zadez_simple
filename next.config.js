@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 
 const nextConfig = {
-  // output: "standalone",
+  output: "standalone",
   reactStrictMode: false,
   experimental: {
     serverComponentsExternalPackages: ["sequelize"],
@@ -60,6 +60,10 @@ const nextConfig = {
       {
         source: "/danh-muc-san-pham/:slug",
         destination: "/categories/:slug",
+      },
+      {
+        source: "/zadez-gp-803b",
+        destination: "/gp-803",
       },
     ];
   },
