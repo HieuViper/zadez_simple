@@ -8,26 +8,36 @@ import "swiper/css/navigation";
 import "swiper/css/thumbs";
 import { AOSInit } from "./_components/AOS";
 const Header = dynamic(() => import("@/components/Header"), {
-  loading: () =>
+  loading: () => (
     <div className="flex justify-around items-center w-full h-[112px] z-30 fixed top-0 bg-white">
-<div role="status" class="w-40 flex items-center justify-center rounded-lg animate-pulse dark:bg-gray-700">
-<svg class="w-10 h-10 text-gray-200 dark:text-gray-600" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 18">
-            <path d="M18 0H2a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2Zm-5.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Zm4.376 10.481A1 1 0 0 1 16 15H4a1 1 0 0 1-.895-1.447l3.5-7A1 1 0 0 1 7.468 6a.965.965 0 0 1 .9.5l2.775 4.757 1.546-1.887a1 1 0 0 1 1.618.1l2.541 4a1 1 0 0 1 .028 1.011Z"/>
+      <div
+        role="status"
+        className="w-40 flex items-center justify-center rounded-lg animate-pulse dark:bg-gray-700"
+      >
+        <svg
+          className="w-10 h-10 text-gray-200 dark:text-gray-600"
+          aria-hidden="true"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="currentColor"
+          viewBox="0 0 20 18"
+        >
+          <path d="M18 0H2a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2Zm-5.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Zm4.376 10.481A1 1 0 0 1 16 15H4a1 1 0 0 1-.895-1.447l3.5-7A1 1 0 0 1 7.468 6a.965.965 0 0 1 .9.5l2.775 4.757 1.546-1.887a1 1 0 0 1 1.618.1l2.541 4a1 1 0 0 1 .028 1.011Z" />
         </svg>
-</div>
-    <div class="lg:flex hidden items-center justify-between gap-2">
-        <div class="lg:w-24 xl:w-32 h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 me-3"></div>
-        <div class="lg:w-24 xl:w-32 h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 me-3"></div>
-        <div class="lg:w-24 xl:w-32 h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 me-3"></div>
-        <div class="lg:w-24 xl:w-32 h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 me-3"></div>
-        <div class="lg:w-24 xl:w-32 h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 me-3"></div>
-        <div class="lg:w-24 xl:w-32 h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 me-3"></div>
+      </div>
+      <div className="lg:flex hidden items-center justify-between gap-2">
+        <div className="lg:w-24 xl:w-32 h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 me-3"></div>
+        <div className="lg:w-24 xl:w-32 h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 me-3"></div>
+        <div className="lg:w-24 xl:w-32 h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 me-3"></div>
+        <div className="lg:w-24 xl:w-32 h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 me-3"></div>
+        <div className="lg:w-24 xl:w-32 h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 me-3"></div>
+        <div className="lg:w-24 xl:w-32 h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 me-3"></div>
+      </div>
+      <div className="lg:flex hidden  items-center justify-center gap-2">
+        <div className="w-8 bg-gray-300 h-8 rounded-full "></div>
+        <div className="w-8 bg-gray-300 h-8 rounded-full "></div>
+      </div>
     </div>
-    <div class="lg:flex hidden  items-center justify-center gap-2">
-    <div class="w-8 bg-gray-300 h-8 rounded-full "></div>
-    <div class="w-8 bg-gray-300 h-8 rounded-full "></div>
-    </div>
-    </div>,
+  ),
   ssr: false,
 });
 const Footer = dynamic(() => import("@/components/Footer"), {

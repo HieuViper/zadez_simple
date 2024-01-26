@@ -10,7 +10,6 @@ import { useEffect, useState } from "react";
 
 const ProfileUser = () => {
   const { userState } = store();
-  console.log("🚀 ~ ProfileUser ~ userState:", userState);
   const [form] = Form.useForm();
   const router = useRouter();
 
