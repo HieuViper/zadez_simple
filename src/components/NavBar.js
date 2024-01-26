@@ -14,6 +14,7 @@ const NavBar = ({ data }) => {
                 <Link
                   href={`/${item.category_code}`}
                   style={{ textDecoration: "none", color: "black" }}
+                  prefetch={false}
                 >
                   <span className="py-2 flex justify-between items-center md:pr-0 pr-5 text-sm lg:text-xs 2xl:text-base font-medium md:cursor-pointer group-hover:text-red-500 text-black duration-300 transition">
                     {item.name}
@@ -48,6 +49,7 @@ const NavBar = ({ data }) => {
                             item.products.length > 0 ? -`${item.id}` : ""
                           }`}
                           style={{ textDecoration: "none", color: "black" }}
+                          prefetch={false}
                         >
                           <div className="col-span-1 flex items-center justify-between group-hover/item:text-red-500 duration-300 transition mx-2">
                             <div className="flex items-center justify-center flex-wrap">
@@ -88,6 +90,7 @@ const NavBar = ({ data }) => {
                                     textDecoration: "none",
                                     color: "black",
                                   }}
+                                  prefetch={false}
                                 >
                                   <div className="flex items-center  hover:text-red-500 duration-300 transition">
                                     {item?.main_image && (

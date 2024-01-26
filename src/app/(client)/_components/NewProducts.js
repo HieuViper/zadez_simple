@@ -15,7 +15,7 @@ const NewProducts = () => {
       </div>
     </div>
   ) : (
-    <>Loading...</>
+    <></>
   );
 };
 
