@@ -5,6 +5,7 @@ import { LogoutOutlined, UserOutlined } from "@ant-design/icons";
 import { Button, Dropdown, message } from "antd";
 import dynamic from "next/dynamic";
 import Image from "next/image";
+import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 const BadgeCart = dynamic(() => import("../components/BadgeCart"), {
@@ -45,7 +46,11 @@ const Header = () => {
       key: "0",
     },
     {
-      label: "Hồ sơ cá nhân",
+      label: (
+        <Link href="/profile" prefetch={false}>
+          Thông tin cá nhân
+        </Link>
+      ),
       key: "1",
     },
     {

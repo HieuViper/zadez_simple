@@ -1,11 +1,12 @@
 import { RootStyleRegistry } from "@/library/RootStyleRegistry";
 import { ConfigProvider } from "antd";
-import { Open_Sans } from "next/font/google";
+import { Roboto } from "next/font/google";
 import "./globals.css";
 
 // const inter = Inter({ subsets: ["latin"] });
-export const open_sans = Open_Sans({
+export const roboto = Roboto({
   subsets: ["latin"],
+  weight: ["100", "300", "400", "500", "700", "900"],
 });
 
 export const metadata = {
@@ -22,7 +23,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={open_sans.className}>
+      <body className={roboto.className}>
         <ConfigProvider
           theme={{
             token: {
