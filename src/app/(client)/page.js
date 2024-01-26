@@ -1,14 +1,19 @@
 const SlideBanner = dynamic(() => import("@/components/SlideBanner"), {
   ssr: false,
-  loading: () => <p>Loading...</p>,
+  loading: () => 
+    <div role="status" class="h-[8rem] md:h-[20rem] lg:h-[24rem]  xl:h-[28rem] h- flex items-center justify-center  bg-gray-300 rounded-lg animate-pulse dark:bg-gray-700">
+ <svg class="w-10 h-10 text-gray-200 dark:text-gray-600" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 18">
+            <path d="M18 0H2a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2Zm-5.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Zm4.376 10.481A1 1 0 0 1 16 15H4a1 1 0 0 1-.895-1.447l3.5-7A1 1 0 0 1 7.468 6a.965.965 0 0 1 .9.5l2.775 4.757 1.546-1.887a1 1 0 0 1 1.618.1l2.541 4a1 1 0 0 1 .028 1.011Z"/>
+        </svg>
+</div>,
 });
 const SlideImage = dynamic(() => import("@/components/SlideImage"), {
   ssr: false,
-  loading: () => <p>Loading...</p>,
+  loading: () => <div ></div>,
 });
 const NewProducts = dynamic(() => import("./_components/NewProducts"), {
   ssr: false,
-  loading: () => <p>Loading...</p>,
+  loading: () => <div></div>,
 });
 import dynamic from "next/dynamic";
 import Image from "next/image";
@@ -110,7 +115,7 @@ export default async function Home() {
       <h1 className="invisible m-0 text-xs">ZADEZ VIỆT NAM</h1>
       {/* DANH MỤC SẢN PHẨM */}
       <section className="">
-        <h2 className="text-3xl text-primary font-bold text-center mt-6 mb-2">
+        <h2 className="text-2xl text-primary font-bold text-center mt-6 mb-2">
           Danh mục sản phẩm
         </h2>
         <div className="grid grid-cols-3 my-4">
@@ -255,7 +260,7 @@ export default async function Home() {
 
       <section className="">
         <div className="flex flex-col justify-center items-center text-center my-4 p-4">
-          <h4 className="text-2xl text-primary my-2">
+          <h4 className="text-2xl text-primary font-bold my-2">
             The New Story Of GAMING
           </h4>
           <p className="text-base ">
@@ -266,7 +271,7 @@ export default async function Home() {
         <SlideImage data={newStoryGaming} width={400} height={295} />
       </section>
       <section className="text-center mt-8">
-        <h5 className="text-2xl text-primary font-semibold my-2">
+        <h5 className="text-2xl text-primary font-bold my-2">
           About Zadez
         </h5>
         <p className="text-base mx-8 mb-4">

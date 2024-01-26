@@ -56,7 +56,6 @@ const Category = ({ params }) => {
     },
 
   ];
-
   // CALL API
   const [productType, setProductType] = useState(type);
   // const { data: products, isLoading, error, mutate } = useSWRData(
@@ -182,7 +181,7 @@ const Category = ({ params }) => {
       <div className="flex flex-wrap justify-center items-center gap-8 p-2">
         {menuCategory.map((item, i) => (<div key={i} className="p-2 flex flex-col justify-center items-center hover:transform hover:scale-105 transition-transform duration-300 ease-in-out hover:text-red-500 cursor-pointer"
           onClick={() => {
-            setProductType(item.type);
+            setProductType(item.type)
           }}>
           <div className="mb-4 ">
             <Image
@@ -193,7 +192,9 @@ const Category = ({ params }) => {
               className=""
             />
           </div>
-          <div className="flex flex-wrap w-[63px]text-xl font-light leading-7">
+          <div className= {`flex flex-wrap  font-light leading-7 
+          ${item?.type == productType ? ' text-primary font-medium' : 'text-black' }
+        `}>
             {item.name}
           </div>
         </div>))}
