@@ -11,8 +11,9 @@ const nextConfig = {
     ROOT: __dirname,
   },
   images: {
-    loader: "custom",
-    loaderFile: "./ImageLoaderProduction.js",
+    // loader: "custom",
+    // loaderFile: "./ImageLoaderProduction.js",
+    formats: ["image/avif", "image/webp"],
   },
   pageExtensions: ["mdx", "md", "jsx", "js", "tsx", "ts"],
   async rewrites() {

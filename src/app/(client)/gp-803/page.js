@@ -86,6 +86,7 @@ const LadingPageOne = () => {
   const handleCancel = () => {
     setIsModalOpen(false);
   };
+
   return (
     <div className="m-auto md:max-w-3xl lg:max-w-7xl">
       <section id="section1" className="grid grid-cols-2 gap-4 pb-64">
@@ -498,7 +499,7 @@ const LadingPageOne = () => {
           Thông báo, events, khuyến mãi... Tất cả đều có ở đây
         </span>
         <div className="flex gap-2 md:gap-10 ">
-          <a
+          <Link
             href="https://www.facebook.com/ZadezTechnology"
             target="_blank"
             prefetch={false}
@@ -510,8 +511,11 @@ const LadingPageOne = () => {
               src="/images/icon/facebook.webp"
               alt="facebook"
             />
-          </a>
-          <a href="https://www.instagram.com/zadez_official/" target="_blank">
+          </Link>
+          <Link
+            href="https://www.instagram.com/zadez_official/"
+            target="_blank"
+          >
             <Image
               className="hover:scale-110 duration-200"
               width={50}
@@ -519,8 +523,8 @@ const LadingPageOne = () => {
               src="/images/icon/instagram.webp"
               alt="instagram"
             />
-          </a>
-          <a
+          </Link>
+          <Link
             href="https://www.youtube.com/zadezvietnam"
             target="_blank"
             prefetch={false}
@@ -532,8 +536,8 @@ const LadingPageOne = () => {
               src="/images/icon/youtube.webp"
               alt="youtube"
             />
-          </a>
-          <a href="" target="_blank">
+          </Link>
+          <Link href="" target="_blank" prefetch={false}>
             <Image
               className="hover:scale-110 duration-200"
               width={50}
@@ -541,7 +545,7 @@ const LadingPageOne = () => {
               src="/images/icon/tik-tok.webp"
               alt="tiktok"
             />
-          </a>
+          </Link>
         </div>
       </section>
 

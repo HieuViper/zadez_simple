@@ -29,6 +29,13 @@ import dynamic from "next/dynamic";
 import Image from "next/image";
 import Link from "next/link";
 
+import ImageAccesories from "../../../public/images/categories/accessories.webp";
+import ImageAudio from "../../../public/images/categories/audio.webp";
+import ImageBag from "../../../public/images/categories/bag.webp";
+import ImageHeadset from "../../../public/images/categories/headset.webp";
+import ImageKeyboard from "../../../public/images/categories/keyboard.webp";
+import ImageMouse from "../../../public/images/categories/mouse.webp";
+
 //
 const slideBanners = [
   { name: "Zadez", image: "/images/banner1.webp" },
@@ -137,15 +144,18 @@ export default async function Home() {
               prefetch={false}
             >
               <Image
-                // sizes="100vw"
+                sizes="(min-width: 60em) 24vw,
+                    (min-width: 28em) 45vw,
+                    100vw"
                 style={{
                   width: "100%",
                   height: "auto",
                 }}
                 width={200}
                 height={200}
-                src="/images/categories/headset.webp"
+                src={ImageHeadset}
                 alt="Tai nghe zadez"
+                placeholder="blur"
                 priority={true}
               />
               <div className="mb-4">Tai nghe</div>
@@ -160,16 +170,19 @@ export default async function Home() {
                 prefetch={false}
               >
                 <Image
-                  sizes="100vw"
+                  sizes="(min-width: 60em) 24vw,
+                    (min-width: 28em) 45vw,
+                    100vw"
                   style={{
                     width: "100%",
                     height: "auto",
                   }}
                   width={200}
                   height={200}
-                  src="/images/categories/mouse.webp"
+                  src={ImageMouse}
                   alt="Chuột zadez"
                   priority={true}
+                  placeholder="blur"
                 />
                 <div className="mb-4">Chuột</div>
               </Link>
@@ -182,16 +195,19 @@ export default async function Home() {
                 prefetch={false}
               >
                 <Image
-                  sizes="100vw"
+                  sizes="(min-width: 60em) 24vw,
+                    (min-width: 28em) 45vw,
+                    100vw"
                   style={{
                     width: "100%",
                     height: "auto",
                   }}
                   width={200}
                   height={200}
-                  src="/images/categories/keyboard.webp"
+                  src={ImageKeyboard}
                   alt="Bàn phím zadez"
                   priority={true}
+                  placeholder="blur"
                 />
                 <div className="mb-4">Bàn phím</div>
               </Link>
@@ -204,16 +220,19 @@ export default async function Home() {
                 prefetch={false}
               >
                 <Image
-                  sizes="100vw"
+                  sizes="(min-width: 60em) 24vw,
+                    (min-width: 28em) 45vw,
+                    100vw"
                   style={{
                     width: "100%",
                     height: "auto",
                   }}
                   width={200}
                   height={200}
-                  src="/images/categories/bag.webp"
+                  src={ImageBag}
                   alt="Túi chống sốc zadez"
                   priority={true}
+                  placeholder="blur"
                 />
                 <div className="mb-4">Túi chống sốc</div>
               </Link>
@@ -226,14 +245,17 @@ export default async function Home() {
                 prefetch={false}
               >
                 <Image
-                  sizes="100vw"
+                  sizes="(min-width: 60em) 24vw,
+                    (min-width: 28em) 45vw,
+                    100vw"
                   style={{
                     width: "100%",
                     height: "auto",
                   }}
                   width={200}
                   height={200}
-                  src="/images/categories/accessories.webp"
+                  src={ImageAccesories}
+                  placeholder="blur"
                   alt="Phụ kiện zadez"
                   priority={true}
                 />
@@ -249,14 +271,17 @@ export default async function Home() {
               prefetch={false}
             >
               <Image
-                sizes="100vw"
+                sizes="(min-width: 60em) 24vw,
+                    (min-width: 28em) 45vw,
+                    100vw"
                 style={{
                   width: "100%",
                   height: "auto",
                 }}
                 width={200}
                 height={200}
-                src="/images/categories/audio.webp"
+                src={ImageAudio}
+                placeholder="blur"
                 alt="Loa zadez"
                 priority={true}
               />
@@ -304,7 +329,9 @@ export default async function Home() {
               className="col-span-3 md:col-span-1 duration-200 hover:-translate-y-2 ease-in hover:shadow-2xl shadow-md rounded-lg"
             >
               <Image
-                sizes="100vw"
+                sizes="(min-width: 60em) 24vw,
+                    (min-width: 28em) 45vw,
+                    100vw"
                 style={{
                   width: "100%",
                   height: "auto",
