@@ -78,11 +78,14 @@ body {
 }
 
 .mySwiper1 {
-  /* width: 100%; */
-  /* height: 20%; */
   height: fit-content;
   box-sizing: border-box;
   padding: 10px 0;
+}
+.mySwiper1.swiper-thumbs {
+  background: #d3d3d3;
+  @apply rounded-xl;
+  height: 120px;
 }
 
 .mySwiper1 .swiper-slide {
@@ -127,10 +130,11 @@ body {
 .mySwiperCard .swiper-wrapper {
   padding-bottom: 4px;
 }
-/* .swiper-button-prev,
-.swiper-button-next {
-  visibility: hidden;
-} */
+.swiper-wrapper {
+  align-items: center;
+  height: 120px;
+  @apply rounded-xl;
+}
 
 .btn-swiper .swiper-button-prev {
   color: red;

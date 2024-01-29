@@ -82,6 +82,12 @@ const ProductList = () => {
       ),
     },
     {
+      title: "Code",
+      dataIndex: "product_code",
+      key: "code",
+      width: 50,
+    },
+    {
       title: "Image",
       width: 100,
       dataIndex: "main_image",

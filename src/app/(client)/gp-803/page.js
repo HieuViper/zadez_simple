@@ -272,7 +272,7 @@ const LadingPageOne = () => {
                   </span>
                 ),
                 children: (
-                  <div className=" bg-white px-4 rounded-lg m-auto">
+                  <div className=" bg-white px-4 pb-4 rounded-lg m-auto">
                     <SlideShow listImage={productBlack?.list_image} />
                   </div>
                 ),
@@ -285,7 +285,7 @@ const LadingPageOne = () => {
                   </span>
                 ),
                 children: (
-                  <div className=" bg-white px-4 rounded-lg m-auto">
+                  <div className=" bg-white px-4 pb-4 rounded-lg m-auto">
                     <SlideShow listImage={productWhite?.list_image} />
                   </div>
                 ),

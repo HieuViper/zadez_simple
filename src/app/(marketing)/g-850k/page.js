@@ -2,8 +2,7 @@
 
 import Footer from "@/components/Footer";
 import Image from "next/image";
-import { useEffect, useState } from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
+import { useEffect } from "react";
 import Img2 from "../../../../public/images/landing-page/g-850k/2.webp";
 import Img3 from "../../../../public/images/landing-page/g-850k/3.webp";
 import Img4 from "../../../../public/images/landing-page/g-850k/4.webp";
@@ -19,12 +18,56 @@ import "swiper/css/free-mode";
 import "swiper/css/navigation";
 import "swiper/css/thumbs";
 // import required modules
-import { FreeMode, Navigation, Thumbs } from "swiper/modules";
+import PreLoader from "@/components/PreLoader";
+import { useSWRData } from "@/library/api";
+import store from "@/library/zustand/store";
+import dynamic from "next/dynamic";
+import { useRouter } from "next/navigation";
+const SlideReview = dynamic(() => import("@/components/SlideReview"), {
+  loading: () => <div></div>,
+  ssr: false,
+});
+const SlideShow = dynamic(() => import("@/components/SlideShow"), {
+  loading: () => <div></div>,
+  ssr: false,
+});
+
+const productItem = {
+  list_image: [
+    {
+      url: "/images/landing-page/g-850k/1.webp",
+      name: "g-850k-1.webp",
+    },
+    {
+      url: "/images/landing-page/g-850k/2.webp",
+      name: "g-850k-2.webp",
+    },
+    {
+      url: "/images/landing-page/g-850k/1.webp",
+      name: "g-850k-3.webp",
+    },
+    {
+      url: "/images/landing-page/g-850k/0.webp",
+      name: "g-850k-4.webp",
+    },
+    {
+      url: "/images/landing-page/g-850k/3.webp",
+      name: "g-850k-5.webp",
+    },
+  ],
+};
 
 const G850KPage = () => {
-  const [thumbsSwiper, setThumbsSwiper] = useState(null);
+  const { addToCart } = store();
+  const { data } = useSWRData(`/api/products?product_code=zadez-g-850k-gen-2`);
+  const router = useRouter();
+
+  const handleAddToCart = () => {
+    addToCart(data.data[0]);
+    router.push("/gio-hang");
+  };
+
   useEffect(() => {
-    //logic for desktop
     (async () => {
       const LocomotiveScroll = (await import("locomotive-scroll")).default;
       const locomotiveScroll = new LocomotiveScroll();
@@ -33,7 +76,7 @@ const G850KPage = () => {
 
   return (
     <>
-      {/* <PreLoader /> */}
+      <PreLoader />
       <HeaderG850K />
       <main className="mt-10 md:mt-40 mb-24 min-h-screen max-w-screen-3xl mx-auto">
         <section id="section-1">
@@ -62,7 +105,7 @@ const G850KPage = () => {
                 nghiệm ngay!
               </span>
               <div data-aos="fade-right" data-aos-delay="500">
-                <button className="button-gradient-1">
+                <button className="button-gradient-1" onClick={handleAddToCart}>
                   <span className="font-extrabold text-xl">850.000 VNĐ</span>
                 </button>
               </div>
@@ -152,7 +195,7 @@ const G850KPage = () => {
                 tác động từ môi trường xung quanh.
               </span>
               <div data-aos="fade-left" data-aos-delay="400">
-                <button className="button-gradient-1">
+                <button className="button-gradient-1" onClick={handleAddToCart}>
                   <span className="font-semibold text-lg">Mua ngay &gt;</span>
                 </button>
               </div>
@@ -226,8 +269,27 @@ const G850KPage = () => {
               </div>
             </div>
           </div> */}
-          <div className="abc">123</div>
-          <div className="wrapper-content  ">
+          <div className="bg-[url('/images/landing-page/g-850k/bg-2.webp')] bg-no-repeat bg-cover bg-center md:px-56 px-20 py-20">
+            <div className=" bg-white md:px-20 px-4 py-4 rounded-lg m-auto">
+              <SlideShow listImage={productItem?.list_image} />
+            </div>
+            <div className="flex flex-col justify-center items-center gap-4 text-center mt-5">
+              <span className="text-3xl font-bold uppercase">
+                keyboard gaming g-850k gen2
+              </span>
+              <span className="font-medium">
+                Sản phẩm này sẽ đáp ứng hoàn hảo nhu cầu và kỳ vọng của người
+                dùng trong quá trình chơi game.
+              </span>
+              <button
+                className="border-0 outline-none rounded-lg px-6 py-2 bg-black text-white hover:opacity-80 transition-all cursor-pointer"
+                onClick={handleAddToCart}
+              >
+                Mua ngay
+              </button>
+            </div>
+          </div>
+          {/* <div className="wrapper-content  ">
             <Swiper
               style={{
                 "--swiper-navigation-color": "#fff",
@@ -277,7 +339,7 @@ const G850KPage = () => {
                 <img src="https://swiperjs.com/demos/images/nature-2.jpg" />
               </SwiperSlide>
             </Swiper>
-          </div>
+          </div> */}
         </section>
 
         <section id="section-5">
@@ -430,18 +492,26 @@ const G850KPage = () => {
         </section>
 
         <section id="section-9">
-          <div className="wrapper-content flex flex-col gap-5 py-10">
+          <div
+            className="wrapper-content flex flex-col gap-5 py-10"
+            data-aos="fade-up"
+          >
             <span className="text-4xl font-extrabold text-center">
               Đánh giá của khách hàng
             </span>
             <div className="h-1 bg-yellow-300 w-full"></div>
-            <div className="">slider</div>
+            <div className="">
+              <SlideReview />
+            </div>
           </div>
         </section>
 
         <section id="section-10">
           <div className="flex flex-col justify-center items-center bg-white rounded-xl gap-4 py-10">
-            <div className="text-xl md:text-3xl font-bold">
+            <div
+              className="text-xl md:text-3xl font-bold"
+              data-aos="fade-right"
+            >
               Theo dõi chúng tôi
             </div>
 
@@ -449,6 +519,8 @@ const G850KPage = () => {
               <a
                 href="https://www.facebook.com/ZadezTechnology"
                 target="_blank"
+                data-aos="fade-up"
+                data-aos-duration="200"
               >
                 <Image
                   className="hover:scale-110 duration-200"
@@ -461,6 +533,8 @@ const G850KPage = () => {
               <a
                 href="https://www.instagram.com/zadez_official/"
                 target="_blank"
+                data-aos="fade-up"
+                data-aos-duration="300"
               >
                 <Image
                   className="hover:scale-110 duration-200"
@@ -470,7 +544,12 @@ const G850KPage = () => {
                   alt="instagram"
                 />
               </a>
-              <a href="https://www.youtube.com/zadezvietnam" target="_blank">
+              <a
+                href="https://www.youtube.com/zadezvietnam"
+                target="_blank"
+                data-aos="fade-up"
+                data-aos-duration="400"
+              >
                 <Image
                   className="hover:scale-110 duration-200"
                   width={50}
@@ -479,7 +558,12 @@ const G850KPage = () => {
                   alt="youtube"
                 />
               </a>
-              <a href="" target="_blank">
+              <a
+                href=""
+                target="_blank"
+                data-aos="fade-up"
+                data-aos-duration="500"
+              >
                 <Image
                   className="hover:scale-110 duration-200"
                   width={50}
@@ -490,7 +574,7 @@ const G850KPage = () => {
               </a>
             </div>
 
-            <span className="text-sm">
+            <span className="text-sm" data-aos="fade-left">
               Thông báo, events, khuyến mãi... Tất cả đều có ở đây
             </span>
           </div>
