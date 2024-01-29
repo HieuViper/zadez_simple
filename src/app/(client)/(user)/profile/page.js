@@ -53,8 +53,8 @@ const ProfileUser = () => {
   useEffect(() => {
     if (dataCustomer) {
       form.setFieldsValue(dataCustomer.data[0]);
-      setCityId(dataCustomer.data[0].cityId);
-      setDistrictId(dataCustomer.data[0].districtId);
+      setCityId(dataCustomer.data[0]?.cityId);
+      setDistrictId(dataCustomer.data[0]?.districtId);
     }
     if (!userState.token) {
       router.push("/");

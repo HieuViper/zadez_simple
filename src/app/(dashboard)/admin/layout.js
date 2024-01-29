@@ -1,4 +1,5 @@
 "use client";
+import { RootStyleRegistry } from "@/library/RootStyleRegistry";
 import store from "@/library/zustand/store";
 import {
   AppstoreOutlined,
@@ -15,6 +16,7 @@ import {
 import {
   Avatar,
   Button,
+  ConfigProvider,
   Dropdown,
   Layout,
   Menu,
@@ -174,84 +176,101 @@ const DashboardLayout = (props) => {
     }
   }, []);
   return !isLoginPage ? (
-    <Layout hasSider style={{ minHeight: "100vh" }}>
-      <Layout.Sider
-        trigger={null}
-        collapsible
-        collapsed={collapsed}
-        width={210}
-      >
-        <div>
-          <Link
-            href="/admin"
-            target="_blank"
-            className="sidebar-logo p-3 flex justify-center items-center gap-2 text-red-600 hover:text-red-400"
+    <ConfigProvider
+      theme={{
+        token: {
+          colorPrimary: "#AF131C",
+        },
+      }}
+    >
+      <RootStyleRegistry>
+        <Layout hasSider style={{ minHeight: "100vh" }}>
+          <Layout.Sider
+            trigger={null}
+            collapsible
+            collapsed={collapsed}
+            width={210}
           >
-            <Image src="/Logo-ZADEZ.png" alt="logo" width={35} height={35} />
-            {!collapsed && (
-              <div className="font-semibold">ADMIN&nbsp;DASHBOARD</div>
-            )}
-          </Link>
-        </div>
-        <Menu
-          theme="dark"
-          mode="inline"
-          selectedKeys={[location]}
-          items={items}
-        />
-      </Layout.Sider>
-      <Layout>
-        <Layout.Header
-          style={{
-            padding: 0,
-            background: colorBgContainer,
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
-          }}
-        >
-          <Button
-            type="text"
-            icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
-            onClick={() => setCollapsed(!collapsed)}
-            style={{
-              fontSize: "16px",
-              width: 64,
-              height: 64,
-            }}
-          />
-          <div className="flex items-center pr-5 gap-2">
-            <DropdownAvatar userState={userState} />
-
-            <Popconfirm
-              title="Logout Action"
-              description="Are you sure to logout?"
-              onConfirm={() => {
-                resetUserState();
-                router.push("/admin/login");
+            <div>
+              <Link
+                href="/admin"
+                target="_blank"
+                className="sidebar-logo p-3 flex justify-center items-center gap-2 text-red-600 hover:text-red-400"
+              >
+                <Image
+                  src="/Logo-ZADEZ.png"
+                  alt="logo"
+                  width={35}
+                  height={35}
+                />
+                {!collapsed && (
+                  <div className="font-semibold">ADMIN&nbsp;DASHBOARD</div>
+                )}
+              </Link>
+            </div>
+            <Menu
+              theme="dark"
+              mode="inline"
+              selectedKeys={[location]}
+              items={items}
+            />
+          </Layout.Sider>
+          <Layout>
+            <Layout.Header
+              style={{
+                padding: 0,
+                background: colorBgContainer,
+                display: "flex",
+                justifyContent: "space-between",
+                alignItems: "center",
               }}
-              onCancel={() => {}}
-              okText="Yes"
-              cancelText="No"
             >
-              <Button type="dashed" icon={<LogoutOutlined />}>
-                Logout
-              </Button>
-            </Popconfirm>
-          </div>
-        </Layout.Header>
-        <Layout.Content
-          style={{
-            margin: "24px 16px",
-            padding: 24,
-            minHeight: 280,
-            background: colorBgContainer,
-          }}
-        >
-          <Suspense fallback={<div>Loading...</div>}>{props.children}</Suspense>
-        </Layout.Content>
-      </Layout>
-    </Layout>
+              <Button
+                type="text"
+                icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
+                onClick={() => setCollapsed(!collapsed)}
+                style={{
+                  fontSize: "16px",
+                  width: 64,
+                  height: 64,
+                }}
+              />
+              <div className="flex items-center pr-5 gap-2">
+                <DropdownAvatar userState={userState} />
+
+                <Popconfirm
+                  title="Logout Action"
+                  description="Are you sure to logout?"
+                  onConfirm={() => {
+                    resetUserState();
+                    router.push("/admin/login");
+                  }}
+                  onCancel={() => {}}
+                  okText="Yes"
+                  cancelText="No"
+                >
+                  <Button type="dashed" icon={<LogoutOutlined />}>
+                    Logout
+                  </Button>
+                </Popconfirm>
+              </div>
+            </Layout.Header>
+            <Layout.Content
+              style={{
+                margin: "24px 16px",
+                padding: 24,
+                minHeight: 280,
+                background: colorBgContainer,
+              }}
+            >
+              <Suspense fallback={<div>Loading...</div>}>
+                {props.children}
+              </Suspense>
+            </Layout.Content>
+          </Layout>
+        </Layout>
+      </RootStyleRegistry>
+    </ConfigProvider>
   ) : (
     <>{props.children}</>
   );
