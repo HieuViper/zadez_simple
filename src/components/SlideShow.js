@@ -37,7 +37,7 @@ const SlideShow = (props) => {
         // spaceBetween={1}
         lazyPreloadPrevNext={2}
         slidesPerView={4}
-        freeMode={true}
+        centeredSlides={true}
         grabCursor={true}
         watchSlidesProgress={true}
         modules={[FreeMode, Navigation, Thumbs]}

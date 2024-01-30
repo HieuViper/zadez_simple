@@ -205,23 +205,23 @@ const G850KPage = () => {
 
         <section id="section-3">
           <div className="grid grid-cols-1 md:grid-cols-2 items-center wrapper-content justify-center gap-2 py-20">
-            <div data-aos="fade-right">
+            <div data-aos="fade-right" className="overflow-hidden">
               <Image
                 width={300}
                 height={400}
                 src={Img8}
                 alt="Image 8"
-                className="object-cover w-full h-auto shadow-xl rounded-lg col-span-1 transform hover:scale-x-[-1] transition-transform duration-300"
+                className="object-cover w-full h-auto shadow-xl rounded-lg col-span-1 hover:scale-105 transition duration-300 ease-in-out"
                 sizes="(max-width: 425px) 50vw, 75vw"
               />
             </div>
-            <div data-aos="fade-left">
+            <div data-aos="fade-left" className="overflow-hidden">
               <Image
                 width={300}
                 height={400}
                 src={Img7}
                 alt="Image 7"
-                className="object-cover w-full h-auto shadow-xl rounded-lg col-span-1 transform hover:scale-x-[-1] transition-transform duration-300"
+                className="object-cover w-full h-auto shadow-xl rounded-lg col-span-1 hover:scale-105 transition duration-300 ease-in-out"
                 sizes="(max-width: 425px) 50vw, 75vw"
               />
             </div>
@@ -229,46 +229,6 @@ const G850KPage = () => {
         </section>
 
         <section id="section-4">
-          {/* <div class="swiper-container gallery-top">
-            <div class="swiper-wrapper">
-              <div class="swiper-slide">
-                <div class="swiper-slide-container">Slide 1</div>
-              </div>
-              <div class="swiper-slide">
-                <div class="swiper-slide-container">Slide 2</div>
-              </div>
-              <div class="swiper-slide">
-                <div class="swiper-slide-container">Slide 3</div>
-              </div>
-              <div class="swiper-slide">
-                <div class="swiper-slide-container">Slide 4</div>
-              </div>
-              <div class="swiper-slide">
-                <div class="swiper-slide-container">Slide 5</div>
-              </div>
-            </div>
-            <div class="swiper-button-next"></div>
-            <div class="swiper-button-prev"></div>
-          </div>
-          <div class="swiper-container gallery-thumbs">
-            <div class="swiper-wrapper">
-              <div class="swiper-slide">
-                <div class="swiper-slide-container">Slide 1</div>
-              </div>
-              <div class="swiper-slide">
-                <div class="swiper-slide-container">Slide 2</div>
-              </div>
-              <div class="swiper-slide">
-                <div class="swiper-slide-container">Slide 3</div>
-              </div>
-              <div class="swiper-slide">
-                <div class="swiper-slide-container">Slide 4</div>
-              </div>
-              <div class="swiper-slide">
-                <div class="swiper-slide-container">Slide 5</div>
-              </div>
-            </div>
-          </div> */}
           <div className="bg-[url('/images/landing-page/g-850k/bg-2.webp')] bg-no-repeat bg-cover bg-center md:px-56 px-20 py-20">
             <div className=" bg-white md:px-20 px-4 py-4 rounded-lg m-auto">
               <SlideShow listImage={productItem?.list_image} />
@@ -282,64 +242,24 @@ const G850KPage = () => {
                 dùng trong quá trình chơi game.
               </span>
               <button
-                className="border-0 outline-none rounded-lg px-6 py-2 bg-black text-white hover:opacity-80 transition-all cursor-pointer"
+                className="border-0 outline-none rounded-lg cursor-pointer relative inline-flex items-center justify-center px-6 py-3 overflow-hidden font-bold text-white  bg-black  shadow-2xl group"
                 onClick={handleAddToCart}
               >
-                Mua ngay
+                <span class="absolute inset-0 w-full h-full transition duration-300 ease-out opacity-0 bg-gradient-to-br from-pink-600 via-purple-700 to-blue-400 group-hover:opacity-100"></span>
+
+                <span class="absolute top-0 left-0 w-full bg-gradient-to-b from-white to-transparent opacity-5 h-1/3"></span>
+
+                <span class="absolute bottom-0 left-0 w-full h-1/3 bg-gradient-to-t from-white to-transparent opacity-5"></span>
+
+                <span class="absolute bottom-0 left-0 w-4 h-full bg-gradient-to-r from-white to-transparent opacity-5"></span>
+
+                <span class="absolute bottom-0 right-0 w-4 h-full bg-gradient-to-l from-white to-transparent opacity-5"></span>
+                <span class="absolute inset-0 w-full h-full border border-white rounded-md opacity-10"></span>
+                <span class="absolute w-0 h-0 transition-all duration-300 ease-out bg-white rounded-full group-hover:w-56 group-hover:h-56 opacity-5"></span>
+                <span class="relative">Mua ngay</span>
               </button>
             </div>
           </div>
-          {/* <div className="wrapper-content  ">
-            <Swiper
-              style={{
-                "--swiper-navigation-color": "#fff",
-                "--swiper-pagination-color": "#fff",
-              }}
-              loop={true}
-              spaceBetween={10}
-              navigation={true}
-              thumbs={{
-                swiper:
-                  thumbsSwiper && !thumbsSwiper.destroyed ? thumbsSwiper : null,
-              }}
-              modules={[FreeMode, Navigation, Thumbs]}
-              className="mySwiper2"
-            >
-              <SwiperSlide>
-                <Image
-                  src="/no-image.jpg"
-                  width={500}
-                  height={500}
-                  alt="Zadez1"
-                />
-              </SwiperSlide>
-              <SwiperSlide>
-                <Image
-                  src="/Logo-ZADEZ.png"
-                  width={500}
-                  height={500}
-                  alt="Zadez2"
-                />
-              </SwiperSlide>
-            </Swiper>
-            <Swiper
-              onSwiper={setThumbsSwiper}
-              loop={true}
-              spaceBetween={10}
-              slidesPerView={4}
-              freeMode={true}
-              watchSlidesProgress={true}
-              modules={[FreeMode, Navigation, Thumbs]}
-              className="mySwiper"
-            >
-              <SwiperSlide>
-                <img src="https://swiperjs.com/demos/images/nature-1.jpg" />
-              </SwiperSlide>
-              <SwiperSlide>
-                <img src="https://swiperjs.com/demos/images/nature-2.jpg" />
-              </SwiperSlide>
-            </Swiper>
-          </div> */}
         </section>
 
         <section id="section-5">
@@ -427,6 +347,7 @@ const G850KPage = () => {
         text-white cursor-pointer"
                 data-aos="fade-right"
                 data-aos-delay="400"
+                onClick={handleAddToCart}
               >
                 <span className="text-lg font-medium">Đặt hàng ngay</span>
               </button>
@@ -486,7 +407,13 @@ const G850KPage = () => {
                   <span className="relative inline-flex rounded-full h-3 w-3 bg-g-850k-green"></span>
                 </span>
               </div>
-              Contact
+              <a
+                href="/lien-he"
+                target="_blank"
+                className="no-underline text-white"
+              >
+                Contact
+              </a>
             </button>
           </div>
         </section>

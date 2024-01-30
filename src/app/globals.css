@@ -261,7 +261,7 @@ body {
   @apply bg-gradient-to-r from-g-850k-blue to-g-850k-green bg-clip-text text-transparent;
 }
 .link-item-header {
-  @apply text-lg font-bold no-underline text-black;
+  @apply text-lg font-bold no-underline text-black hover:opacity-80 duration-200;
 }
 .underline-link-item-header {
   @apply absolute -bottom-1 left-0 w-0 h-[3px] bg-gradient-to-br to-gray-400 from-black transition-all group-hover:w-full;
