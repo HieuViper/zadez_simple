@@ -14,11 +14,12 @@ const Product = ({ params }) => {
   const { addToCart } = store();
   const router = useRouter();
   const {
-    data: product,
+    data: productByCode,
     isLoading,
     error,
     mutate,
-  } = useSWRData(`/api/products`, { id });
+  } = useSWRData(`/api/products?product_code=${slug}`);
+  const product = productByCode?.data[0]
   const {
     data: similarProducts,
   } = useSWRData(`/api/products?categoryId=${product?.categoryId}`);

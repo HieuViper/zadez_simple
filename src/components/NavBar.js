@@ -79,12 +79,12 @@ const NavBar = ({ data }) => {
                           </div>
                         </Link>
                         {item.products.length > 0 && (
-                          <div className="absolute -mt-8 -right-[264px] m-2 w-60  hidden  group-hover/item:md:block hover:md:block bg-white p-2 gap-10  rounded-xl shadow-lg">
+                          <div className="absolute -mt-8 -right-[264px] m-2 w-60  hidden  group-hover/item:md:block hover:md:block bg-white p-2 gap-10  rounded-xl shadow-lg max-h-96 overflow-y-auto">
                             {item?.products.length > 0 &&
                               item?.products.map((item, i) => (
                                 <Link
                                   key={i}
-                                  href={`/san-pham/${item.product_code}-${item.id}`}
+                                  href={`/san-pham/${item.product_code}`}
                                   className="col-span-1"
                                   style={{
                                     textDecoration: "none",
