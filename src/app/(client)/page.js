@@ -1,15 +1,25 @@
 const SlideBanner = dynamic(() => import("@/components/SlideBanner"), {
   ssr: false,
-  loading: () => 
-    <div role="status" class="h-[8rem] md:h-[20rem] lg:h-[24rem]  xl:h-[28rem] h- flex items-center justify-center  bg-gray-300 rounded-lg animate-pulse dark:bg-gray-700">
- <svg class="w-10 h-10 text-gray-200 dark:text-gray-600" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 18">
-            <path d="M18 0H2a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2Zm-5.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Zm4.376 10.481A1 1 0 0 1 16 15H4a1 1 0 0 1-.895-1.447l3.5-7A1 1 0 0 1 7.468 6a.965.965 0 0 1 .9.5l2.775 4.757 1.546-1.887a1 1 0 0 1 1.618.1l2.541 4a1 1 0 0 1 .028 1.011Z"/>
-        </svg>
-</div>,
+  loading: () => (
+    <div
+      role="status"
+      className="h-[8rem] md:h-[20rem] lg:h-[24rem]  xl:h-[28rem] h- flex items-center justify-center  bg-gray-300 rounded-lg animate-pulse dark:bg-gray-700"
+    >
+      <svg
+        className="w-10 h-10 text-gray-200 dark:text-gray-600"
+        aria-hidden="true"
+        xmlns="http://www.w3.org/2000/svg"
+        fill="currentColor"
+        viewBox="0 0 20 18"
+      >
+        <path d="M18 0H2a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2Zm-5.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Zm4.376 10.481A1 1 0 0 1 16 15H4a1 1 0 0 1-.895-1.447l3.5-7A1 1 0 0 1 7.468 6a.965.965 0 0 1 .9.5l2.775 4.757 1.546-1.887a1 1 0 0 1 1.618.1l2.541 4a1 1 0 0 1 .028 1.011Z" />
+      </svg>
+    </div>
+  ),
 });
 const SlideImage = dynamic(() => import("@/components/SlideImage"), {
   ssr: false,
-  loading: () => <div ></div>,
+  loading: () => <div></div>,
 });
 const NewProducts = dynamic(() => import("./_components/NewProducts"), {
   ssr: false,
@@ -18,6 +28,13 @@ const NewProducts = dynamic(() => import("./_components/NewProducts"), {
 import dynamic from "next/dynamic";
 import Image from "next/image";
 import Link from "next/link";
+
+import ImageAccesories from "../../../public/images/categories/accessories.webp";
+import ImageAudio from "../../../public/images/categories/audio.webp";
+import ImageBag from "../../../public/images/categories/bag.webp";
+import ImageHeadset from "../../../public/images/categories/headset.webp";
+import ImageKeyboard from "../../../public/images/categories/keyboard.webp";
+import ImageMouse from "../../../public/images/categories/mouse.webp";
 
 //
 const slideBanners = [
@@ -127,15 +144,18 @@ export default async function Home() {
               prefetch={false}
             >
               <Image
-                // sizes="100vw"
+                sizes="(min-width: 60em) 24vw,
+                    (min-width: 28em) 45vw,
+                    100vw"
                 style={{
                   width: "100%",
                   height: "auto",
                 }}
                 width={200}
                 height={200}
-                src="/images/categories/headset.webp"
+                src={ImageHeadset}
                 alt="Tai nghe zadez"
+                placeholder="blur"
                 priority={true}
               />
               <div className="mb-4">Tai nghe</div>
@@ -150,16 +170,19 @@ export default async function Home() {
                 prefetch={false}
               >
                 <Image
-                  sizes="100vw"
+                  sizes="(min-width: 60em) 24vw,
+                    (min-width: 28em) 45vw,
+                    100vw"
                   style={{
                     width: "100%",
                     height: "auto",
                   }}
                   width={200}
                   height={200}
-                  src="/images/categories/mouse.webp"
+                  src={ImageMouse}
                   alt="Chuột zadez"
                   priority={true}
+                  placeholder="blur"
                 />
                 <div className="mb-4">Chuột</div>
               </Link>
@@ -172,16 +195,19 @@ export default async function Home() {
                 prefetch={false}
               >
                 <Image
-                  sizes="100vw"
+                  sizes="(min-width: 60em) 24vw,
+                    (min-width: 28em) 45vw,
+                    100vw"
                   style={{
                     width: "100%",
                     height: "auto",
                   }}
                   width={200}
                   height={200}
-                  src="/images/categories/keyboard.webp"
+                  src={ImageKeyboard}
                   alt="Bàn phím zadez"
                   priority={true}
+                  placeholder="blur"
                 />
                 <div className="mb-4">Bàn phím</div>
               </Link>
@@ -194,16 +220,19 @@ export default async function Home() {
                 prefetch={false}
               >
                 <Image
-                  sizes="100vw"
+                  sizes="(min-width: 60em) 24vw,
+                    (min-width: 28em) 45vw,
+                    100vw"
                   style={{
                     width: "100%",
                     height: "auto",
                   }}
                   width={200}
                   height={200}
-                  src="/images/categories/bag.webp"
+                  src={ImageBag}
                   alt="Túi chống sốc zadez"
                   priority={true}
+                  placeholder="blur"
                 />
                 <div className="mb-4">Túi chống sốc</div>
               </Link>
@@ -216,14 +245,17 @@ export default async function Home() {
                 prefetch={false}
               >
                 <Image
-                  sizes="100vw"
+                  sizes="(min-width: 60em) 24vw,
+                    (min-width: 28em) 45vw,
+                    100vw"
                   style={{
                     width: "100%",
                     height: "auto",
                   }}
                   width={200}
                   height={200}
-                  src="/images/categories/accessories.webp"
+                  src={ImageAccesories}
+                  placeholder="blur"
                   alt="Phụ kiện zadez"
                   priority={true}
                 />
@@ -239,14 +271,17 @@ export default async function Home() {
               prefetch={false}
             >
               <Image
-                sizes="100vw"
+                sizes="(min-width: 60em) 24vw,
+                    (min-width: 28em) 45vw,
+                    100vw"
                 style={{
                   width: "100%",
                   height: "auto",
                 }}
                 width={200}
                 height={200}
-                src="/images/categories/audio.webp"
+                src={ImageAudio}
+                placeholder="blur"
                 alt="Loa zadez"
                 priority={true}
               />
@@ -271,9 +306,7 @@ export default async function Home() {
         <SlideImage data={newStoryGaming} width={400} height={295} />
       </section>
       <section className="text-center mt-8">
-        <h5 className="text-2xl text-primary font-bold my-2">
-          About Zadez
-        </h5>
+        <h5 className="text-2xl text-primary font-bold my-2">About Zadez</h5>
         <p className="text-base mx-8 mb-4">
           ZADEZ là thương hiệu phụ kiện duy nhất tại thị trường Việt Nam quản lý
           từng sản phẩm theo mã số định danh – Serial Number (tương tự với
@@ -296,7 +329,9 @@ export default async function Home() {
               className="col-span-3 md:col-span-1 duration-200 hover:-translate-y-2 ease-in hover:shadow-2xl shadow-md rounded-lg"
             >
               <Image
-                sizes="100vw"
+                sizes="(min-width: 60em) 24vw,
+                    (min-width: 28em) 45vw,
+                    100vw"
                 style={{
                   width: "100%",
                   height: "auto",

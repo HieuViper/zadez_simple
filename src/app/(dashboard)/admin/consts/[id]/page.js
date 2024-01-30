@@ -1,5 +1,5 @@
 "use client";
-import Editor from "@/components/Editor";
+const Editor = dynamic(() => import("@/components/Editor"), { ssr: false });
 import UploadImage from "@/components/UploadImage";
 import { useSWRData, useSWRUpload } from "@/library/api";
 import { DeleteOutlined, SaveOutlined } from "@ant-design/icons";

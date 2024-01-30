@@ -55,7 +55,6 @@ const SlideReview = ({ width, height }) => {
       loop={true}
       spaceBetween={4}
       // slidesPerView={4}
-
       freeMode={true}
       grabCursor={true}
       watchSlidesProgress={true}
@@ -93,7 +92,7 @@ const SlideReview = ({ width, height }) => {
               }}
             >
               <div className="flex ">
-                <Avatar src={item.image} size={50} alt={item.name} />
+                <Avatar src={item.image} size={40} alt={item.name} />
                 <div className="text-base text-[#0B606F] font-semibold ml-4 ">
                   {item.name}
                 </div>

@@ -78,11 +78,14 @@ body {
 }
 
 .mySwiper1 {
-  /* width: 100%; */
-  /* height: 20%; */
   height: fit-content;
   box-sizing: border-box;
   padding: 10px 0;
+}
+.mySwiper1.swiper-thumbs {
+  background: #d3d3d3;
+  @apply rounded-xl;
+  height: 120px;
 }
 
 .mySwiper1 .swiper-slide {
@@ -127,10 +130,11 @@ body {
 .mySwiperCard .swiper-wrapper {
   padding-bottom: 4px;
 }
-/* .swiper-button-prev,
-.swiper-button-next {
-  visibility: hidden;
-} */
+.swiper-wrapper {
+  align-items: center;
+  height: 120px;
+  @apply rounded-xl;
+}
 
 .btn-swiper .swiper-button-prev {
   color: red;
@@ -200,9 +204,9 @@ body {
     align-items: center;
   }
 }
-.editor a{
-    text-decoration: none;
-    color: black;
+.editor a {
+  text-decoration: none;
+  color: black;
 }
 
 .zalo-chat-widget {
@@ -244,4 +248,21 @@ body {
 .ant-drawer-body {
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
+}
+
+/* g-850k landing page */
+.wrapper-content {
+  @apply px-5 md:px-48;
+}
+.button-gradient-1 {
+  @apply outline-none border-0 cursor-pointer w-fit rounded-xl py-2 px-5 transition-all duration-500 bg-gradient-to-br to-g-850k-blue via-g-850k-green from-g-850k-blue bg-[length:200%_200%] bg-[0%_0%] hover:bg-[100%_100%];
+}
+.text-gradient-1 {
+  @apply bg-gradient-to-r from-g-850k-blue to-g-850k-green bg-clip-text text-transparent;
+}
+.link-item-header {
+  @apply text-lg font-bold no-underline text-black hover:opacity-80 duration-200;
+}
+.underline-link-item-header {
+  @apply absolute -bottom-1 left-0 w-0 h-[3px] bg-gradient-to-br to-gray-400 from-black transition-all group-hover:w-full;
 }

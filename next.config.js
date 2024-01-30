@@ -1,5 +1,9 @@
 /** @type {import('next').NextConfig} */
 
+// const withBundleAnalyzer = require("@next/bundle-analyzer")({
+//   enabled: process.env.ANALYZE === "true",
+// });
+
 const nextConfig = {
   output: "standalone",
   reactStrictMode: false,
@@ -10,10 +14,11 @@ const nextConfig = {
   env: {
     ROOT: __dirname,
   },
-  // images: {
-  //   loader: "custom",
-  //   loaderFile: "./ImageLoaderProduction.js",
-  // },
+  images: {
+    // loader: "custom",
+    // loaderFile: "./ImageLoaderProduction.js",
+    formats: ["image/avif", "image/webp"],
+  },
   pageExtensions: ["mdx", "md", "jsx", "js", "tsx", "ts"],
   async rewrites() {
     return [
@@ -68,5 +73,9 @@ const nextConfig = {
     ];
   },
 };
+
+// module.exports = withBundleAnalyzer({
+//   nextConfig,
+// });
 
 module.exports = nextConfig;

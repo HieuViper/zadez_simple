@@ -86,6 +86,7 @@ const LadingPageOne = () => {
   const handleCancel = () => {
     setIsModalOpen(false);
   };
+
   return (
     <div className="m-auto md:max-w-3xl lg:max-w-7xl">
       <section id="section1" className="grid grid-cols-2 gap-4 pb-64">
@@ -271,7 +272,7 @@ const LadingPageOne = () => {
                   </span>
                 ),
                 children: (
-                  <div className=" bg-white px-4 rounded-lg m-auto">
+                  <div className=" bg-white px-4 pb-4 rounded-lg m-auto">
                     <SlideShow listImage={productBlack?.list_image} />
                   </div>
                 ),
@@ -284,7 +285,7 @@ const LadingPageOne = () => {
                   </span>
                 ),
                 children: (
-                  <div className=" bg-white px-4 rounded-lg m-auto">
+                  <div className=" bg-white px-4 pb-4 rounded-lg m-auto">
                     <SlideShow listImage={productWhite?.list_image} />
                   </div>
                 ),
@@ -463,14 +464,16 @@ const LadingPageOne = () => {
           <h6 className="text-3xl my-2 md:my-4 ">CONTACT</h6>
           <p>Trung tâm chăm sóc khách hàng ZADEZ VIETNAM</p>
           <Link
-              href="/lien-he"
-              target="_blank"
-              prefetch={false}
-              style={{ textDecoration: 'none' }}
-            >
-          <button className="bg-black w-40 flex justify-center items-center p-2 cursor-pointer hover:scale-110 duration-200">
-            <span className="md:text-xl font-semibold text-white">Contact</span>
-          </button>
+            href="/lien-he"
+            target="_blank"
+            prefetch={false}
+            style={{ textDecoration: "none" }}
+          >
+            <button className="bg-black w-40 flex justify-center items-center p-2 cursor-pointer hover:scale-110 duration-200">
+              <span className="md:text-xl font-semibold text-white">
+                Contact
+              </span>
+            </button>
           </Link>
         </div>
         {/* RATE */}
@@ -489,61 +492,61 @@ const LadingPageOne = () => {
         id="follow us"
         className="flex flex-col justify-center items-center bg-white bg-cover rounded-xl  gap-4 py-16"
       >
-          <div className="text-xl md:text-3xl font-bold mb-2">
-            Theo dõi chúng tôi
-          </div>
-          <span className="mb-4">
-            Thông báo, events, khuyến mãi... Tất cả đều có ở đây
-          </span>
-          <div className="flex gap-2 md:gap-10 ">
-            <Link
-              href="https://www.facebook.com/ZadezTechnology"
-              target="_blank"
-              prefetch={false}
-            >
-              <Image
-                className="hover:scale-110 duration-200"
-                width={50}
-                height={50}
-                src="/images/icon/facebook.webp"
-                alt="facebook"
-              />
-            </Link>
-            <Link
-              href="https://www.instagram.com/zadez_official/"
-              target="_blank"
-            >
-              <Image
-                className="hover:scale-110 duration-200"
-                width={50}
-                height={50}
-                src="/images/icon/instagram.webp"
-                alt="instagram"
-              />
-            </Link>
-            <Link
-              href="https://www.youtube.com/zadezvietnam"
-              target="_blank"
-              prefetch={false}
-            >
-              <Image
-                className="hover:scale-110 duration-200"
-                width={50}
-                height={50}
-                src="/images/icon/youtube.webp"
-                alt="youtube"
-              />
-            </Link>
-            <Link href="" target="_blank" prefetch={false}>
-              <Image
-                className="hover:scale-110 duration-200"
-                width={50}
-                height={50}
-                src="/images/icon/tik-tok.webp"
-                alt="tiktok"
-              />
-            </Link>
-          </div>
+        <div className="text-xl md:text-3xl font-bold mb-2">
+          Theo dõi chúng tôi
+        </div>
+        <span className="mb-4">
+          Thông báo, events, khuyến mãi... Tất cả đều có ở đây
+        </span>
+        <div className="flex gap-2 md:gap-10 ">
+          <Link
+            href="https://www.facebook.com/ZadezTechnology"
+            target="_blank"
+            prefetch={false}
+          >
+            <Image
+              className="hover:scale-110 duration-200"
+              width={50}
+              height={50}
+              src="/images/icon/facebook.webp"
+              alt="facebook"
+            />
+          </Link>
+          <Link
+            href="https://www.instagram.com/zadez_official/"
+            target="_blank"
+          >
+            <Image
+              className="hover:scale-110 duration-200"
+              width={50}
+              height={50}
+              src="/images/icon/instagram.webp"
+              alt="instagram"
+            />
+          </Link>
+          <Link
+            href="https://www.youtube.com/zadezvietnam"
+            target="_blank"
+            prefetch={false}
+          >
+            <Image
+              className="hover:scale-110 duration-200"
+              width={50}
+              height={50}
+              src="/images/icon/youtube.webp"
+              alt="youtube"
+            />
+          </Link>
+          <Link href="" target="_blank" prefetch={false}>
+            <Image
+              className="hover:scale-110 duration-200"
+              width={50}
+              height={50}
+              src="/images/icon/tik-tok.webp"
+              alt="tiktok"
+            />
+          </Link>
+        </div>
       </section>
 
       <Modal

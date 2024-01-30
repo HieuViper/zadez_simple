@@ -16,8 +16,10 @@ import dayjs from "dayjs";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import useSWR from "swr";
-import TableProductOrder from "./_components/TableProductOrder";
-const { Option } = Select;
+const TableProductOrder = dynamic(
+  () => import("./_components/TableProductOrder"),
+  { ssr: false }
+);
 
 const OrderForm = ({ params }) => {
   const isAddMode = params.id == 0 ? true : false;

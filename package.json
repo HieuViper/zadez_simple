@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "concurrently \"next dev\" \"node main.js\"",
-    "build": "next build",
+    "build": "cross-env ANALYZE=true next build",
     "start": "next start",
     "lint": "next lint"
   },
@@ -16,11 +16,12 @@
     "axios": "^1.6.2",
     "bcrypt": "^5.1.1",
     "browser-image-compression": "^2.0.2",
-    "cross-env": "^7.0.3",
     "dayjs": "^1.11.10",
     "dotenv": "^16.3.1",
     "framer-motion": "^10.16.16",
+    "gsap": "^3.12.5",
     "jsonwebtoken": "^9.0.2",
+    "locomotive-scroll": "^5.0.0-beta.11",
     "mysql2": "^3.6.5",
     "next": "14.0.4",
     "nodemailer": "^6.9.8",
@@ -35,7 +36,9 @@
     "zustand": "^4.4.7"
   },
   "devDependencies": {
+    "@next/bundle-analyzer": "^14.1.0",
     "autoprefixer": "^10.0.1",
+    "cross-env": "^7.0.3",
     "eslint": "^8",
     "eslint-config-next": "14.0.4",
     "postcss": "^8",
