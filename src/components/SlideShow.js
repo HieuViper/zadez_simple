@@ -62,7 +62,7 @@ const SlideShow = (props) => {
                 width={200}
                 height={200}
                 alt="Zadez"
-                className="scale-75"
+                className="scale-90"
               />
             </SwiperSlide>
           ))}
