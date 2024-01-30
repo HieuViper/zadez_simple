@@ -6,7 +6,7 @@ import { Button, Divider, Drawer, Tag } from "antd";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 
-const Cart = ({ onClose, open, placement }) => {
+const Cart = ({ onClose, open, placement ,setOpenCart}) => {
   const {
     cartState: data,
     increseAmount,
@@ -38,10 +38,10 @@ const Cart = ({ onClose, open, placement }) => {
                   <div className="text-sm font-light">Giảm giá</div>
                   <div className="text-sm font-light">0 ₫</div>
                 </div>
-                <div className="flex justify-between">
+                {/* <div className="flex justify-between">
                   <div className="text-sm font-light">Phí vận chuyển</div>
                   <div className="text-sm font-light">0 ₫</div>
-                </div>
+                </div> */}
                 <Divider />
                 <div className="flex justify-between">
                   <div className="text-base font-medium">Tổng cộng</div>
@@ -55,7 +55,7 @@ const Cart = ({ onClose, open, placement }) => {
                   type="primary"
                   size="large"
                   block
-                  onClick={() => router.push("/gio-hang")}
+                  onClick={() => {router.push("/gio-hang"),setOpenCart(false)}}
                 >
                   Thanh toán
                 </Button>
@@ -80,12 +80,12 @@ const Cart = ({ onClose, open, placement }) => {
                   />
                 </div>
                 <div className="col-span-2 ">
-                  <h3 className="text-lg font-medium mb-2">
+                  <span className="text-lg font-medium mb-2">
                     {item.products.name}
-                  </h3>
-                  <div className="mb-2">
+                  </span>
+                  <div className="my-2">
                     {item.products.color && (
-                      <Tag color={item.products.color}>
+                      <Tag color={item.products.color=='white' ? '' : item.products.color}>
                         {item.products.color}
                       </Tag>
                     )}

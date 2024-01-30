@@ -35,6 +35,10 @@ const SideBar = ({ data }) => {
             toggleModal(true);
         }
     };
+    const handleCloseAllDrawer = (boolean) => {
+        setOpenCart(boolean)
+        setOpen(boolean)
+    }
 
     // dropdown items profile
     const items = [
@@ -94,7 +98,7 @@ const SideBar = ({ data }) => {
                     </Dropdown>
                 </div>
                 <Accordion data={data} />
-                <Cart onClose={onCloseCart} open={openCart} placement='left' className="no-scrollbar" />
+                <Cart onClose={onCloseCart} open={openCart} setOpenCart={handleCloseAllDrawer} placement='left' className="no-scrollbar" />
             </Drawer>
         </div>
     )
@@ -177,7 +181,7 @@ const Accordion = ({ data }) => {
                                                         item?.products.map((item, i) => (
                                                             <Link
                                                                 key={i}
-                                                                href={`/san-pham/${item.product_code}-${item.id}`}
+                                                                href={`/san-pham/${item.product_code}`}
                                                                 className=""
                                                                 style={{
                                                                     textDecoration: "none",

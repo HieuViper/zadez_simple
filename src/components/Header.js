@@ -173,6 +173,7 @@ const Header = () => {
       <Cart
         onClose={onCloseCart}
         open={openCart}
+        setOpenCart={setOpenCart}
         placement="right"
         className="no-scrollbar"
       />

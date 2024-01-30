@@ -193,7 +193,7 @@ const Category = ({ params }) => {
             />
           </div>
           <div className= {`flex flex-wrap  font-light leading-7 
-          ${item?.type == productType ? ' text-primary font-medium' : 'text-black' }
+          ${item?.type == productType ? ' text-primary font-medium' : '' }
         `}>
             {item.name}
           </div>

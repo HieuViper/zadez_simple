@@ -2,7 +2,7 @@ import SelectLocations from "@/components/SelectLocations";
 import { useSWRData } from "@/library/api";
 import store from "@/library/zustand/store";
 import { ArrowLeftOutlined } from "@ant-design/icons";
-import { Button, Divider, Form, Input } from "antd";
+import { Button, Divider, Form, Input, Tag } from "antd";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -204,10 +204,10 @@ const CheckoutPageComp = () => {
                 <span>Giảm giá</span>
                 <span>-0.000</span>
               </div>
-              <div className="flex justify-between text-sm">
+              {/* <div className="flex justify-between text-sm">
                 <span>Phí giao hàng</span>
                 <span>Free</span>
-              </div>
+              </div> */}
               <Divider style={{ marginTop: 0, marginBottom: 0 }} />
               <div className="flex justify-between font-[500] text-xl">
                 <span>Tổng Hoá Đơn</span>
@@ -255,7 +255,14 @@ const Card = ({ data }) => {
         />
         <div className="flex flex-col gap-2 text-xs w-full">
           <span className="text-base">{data.products.name}</span>
-          <span>Black</span>
+          {/* <span>Black</span> */}
+          <div className="">
+                    {data.products.color && (
+                      <Tag color={data.products.color == 'white' ? '' : data.products.color}>
+                        {data.products.color}
+                      </Tag>
+                    )}
+                  </div>
           <span>x{data.amount}</span>
           <span className="text-right">
             {data.products.price.toLocaleString()}

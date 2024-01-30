@@ -22,7 +22,7 @@ const ProductCard = ({ data }) => {
       )}
       <div className="p-4">
         <div className=" h-[190px] transition duration-200 hover:-translate-y-2 ">
-          <Link href={`/san-pham/${data?.product_code}-${data.id}`}>
+          <Link href={`/san-pham/${data?.product_code}`}>
             <Image
               style={{
                 width:'100%',
@@ -38,7 +38,7 @@ const ProductCard = ({ data }) => {
           </Link>
         </div>
         <hr className="my-4 h-px border-t-0 bg-transparent bg-gradient-to-r from-transparent via-neutral-500 to-transparent opacity-25 dark:opacity-100" />
-        <Link style={{ textDecoration: "none", color: "#0C0C0C" }} href={`/san-pham/${data?.product_code}-${data.id}`}>
+        <Link style={{ textDecoration: "none", color: "#0C0C0C" }} href={`/san-pham/${data?.product_code}`}>
           <div className="mb-4 text-[#0C0C0C] text-start break-words">
             {data.name}
           </div>

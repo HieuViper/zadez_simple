@@ -1,6 +1,6 @@
 import store from "@/library/zustand/store";
 import { DeleteTwoTone, MinusOutlined, PlusOutlined } from "@ant-design/icons";
-import { Button, Divider, Tooltip, message } from "antd";
+import { Button, Divider, Tag, Tooltip, message } from "antd";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 const CartPageComp = () => {
@@ -71,8 +71,8 @@ const CartPageComp = () => {
               <span>-0.000</span>
             </div>
             <div className="flex justify-between text-sm">
-              <span>Phí vận chuyển</span>
-              <span>Free</span>
+              {/* <span>Phí vận chuyển</span>
+              <span>Free</span> */}
             </div>
             <Divider style={{ marginTop: 0, marginBottom: 0 }} />
             <div className="flex justify-between font-[500] text-xl">
@@ -105,13 +105,14 @@ const CartPageComp = () => {
   ) : (
     <div className="flex flex-col justify-center items-center gap-10 py-32">
       <Image
-        src="/images/empty-cart.png"
+        src="/images/cart-empty.png"
         width={100}
         height={100}
         alt="empty cart"
         className="w-1/3 h-1/3"
       />
-      <div className="text-xl">No Item Found In Cart</div>
+      <div className="text-xl">Không có sản phẩm trong giỏ hàng</div>
+      <Button type="primary" href='/'>Quay về Trang Chủ</Button>
     </div>
   );
 };
@@ -134,17 +135,24 @@ const Card = ({ data, increase, decrease, remove }) => {
         <div className="font-[500] uppercase text-xl">{data.products.name}</div>
 
         <div className="flex flex-col text-xs">
-          <div className="flex gap-2 items-center">
+          {/* <div className="flex gap-2 items-center">
             <div className="w-4 h-4 rounded-full bg-black"></div>
             Black
-          </div>
-          <div className="flex gap-2">Free Shipping</div>
-          <div className="flex gap-2">In Stock</div>
+          </div> */}
+           <div className="">
+                    {data.products.color && (
+                      <Tag color={data.products.color=='white' ? '' : data.products.color}>
+                        {data.products.color}
+                      </Tag>
+                    )}
+                  </div>
+          {/* <div className="flex gap-2">Free Shipping</div> */}
+          {/* <div className="flex gap-2">In Stock</div> */}
         </div>
 
         <div className="flex justify-between">
           <div className="flex gap-3 items-center">
-            <div className="line-through text-sm text-gray-300">1,230,000₫</div>
+            {/* <div className="line-through text-sm text-gray-300">1,230,000₫</div> */}
             <div className="text-lg font-[500]">
               {data.products.price.toLocaleString()}₫
             </div>
