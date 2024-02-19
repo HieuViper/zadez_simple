@@ -13,6 +13,7 @@ import {
   Typography,
 } from "antd";
 import dayjs from "dayjs";
+import dynamic from "next/dynamic";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import useSWR from "swr";

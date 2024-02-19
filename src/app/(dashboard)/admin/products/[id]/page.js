@@ -198,6 +198,8 @@ const ProductForm = ({ params }) => {
     { value: "white", label: "White" },
     { value: "grey", label: "Grey" },
     { value: "pink", label: "Pink" },
+    { value: "purple", label: "Purple" },
+    
   ];
   // TREE DATA
   function buildTreeData(data, parent = null) {
@@ -640,7 +642,9 @@ const ProductForm = ({ params }) => {
             ]}
           >
             <Upload
-              action="https://run.mocky.io/v3/435e224c-44fb-4773-9faf-380c5e6a2188"
+              beforeUpload={() => {
+                return false;
+              }}
               listType="picture-card"
               fileList={fileList}
               multiple={true}

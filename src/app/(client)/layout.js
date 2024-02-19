@@ -1,7 +1,7 @@
 // import Footer from "../../components/Footer";
 import { AOSInit } from "@/components/AOS";
 import AuthenPopup from "@/components/AuthenPopup";
-import GoogleAnalytics from "@/components/GoogleAnalystic";
+// import GoogleAnalytics from "@/components/GoogleAnalystic";
 import { RootStyleRegistry } from "@/library/RootStyleRegistry";
 import { ConfigProvider } from "antd";
 import dynamic from "next/dynamic";
@@ -9,6 +9,10 @@ import "swiper/css";
 import "swiper/css/free-mode";
 import "swiper/css/navigation";
 import "swiper/css/thumbs";
+
+const GoogleAnalytics = dynamic(() => import('@/components/GoogleAnalystic'), {
+  ssr: true,
+})
 const Header = dynamic(() => import("@/components/Header"), {
   loading: () => (
     <div className="flex justify-around items-center w-full h-[112px] z-30 fixed top-0 bg-white">
