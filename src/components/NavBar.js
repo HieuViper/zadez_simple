@@ -37,7 +37,7 @@ const NavBar = ({ data }) => {
               )}
               {item?.children && (
                 <div
-                  className={`absolute top-12 hidden group-hover:md:block hover:md:block bg-white mt-5 py-2 pl-2 gap-10  rounded-xl shadow-lg  ease-in-out transition-all duration-500`}
+                  className={`absolute top-20 invisible group-hover:md:visible hover:md:visible bg-white mt-5 py-2 pl-2 gap-10  rounded-xl shadow-lg  ease-in-out transition-all group-hover:md:-translate-y-6 duration-200 opacity-0 group-hover:opacity-100`}
                 >
                   {item?.children &&
                     item?.children.map((item, i) => (
@@ -79,7 +79,7 @@ const NavBar = ({ data }) => {
                           </div>
                         </Link>
                         {item.products.length > 0 && (
-                          <div className="absolute -mt-8 -right-[264px] m-2 w-60  hidden  group-hover/item:md:block hover:md:block bg-white p-2 gap-10  rounded-xl shadow-lg max-h-96 overflow-y-auto">
+                          <div className="absolute -mt-8 -right-[300px] m-2 w-60  invisible  group-hover/item:md:visible hover:md:visible bg-white p-2 gap-10  rounded-xl shadow-lg max-h-96 overflow-y-auto ease-in transition-all group-hover/item:md:-translate-x-9 duration-200 opacity-0 group-hover/item:opacity-100">
                             {item?.products.length > 0 &&
                               item?.products.map((item, i) => (
                                 <Link

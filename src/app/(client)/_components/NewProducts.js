@@ -9,7 +9,7 @@ const NewProducts = () => {
       id="new-products"
       className=" bg-[#e5e7eb] rounded-md p-4 mb-4 text-center"
     >
-      <h3 className="text-2xl font-bold text-primary">Sản Phẩm Mới</h3>
+      <h3 className="text-xl md:text-2xl font-bold text-primary">Sản Phẩm Mới</h3>
       <div className="">
         <SlideCard data={newProducts.data} />
       </div>
