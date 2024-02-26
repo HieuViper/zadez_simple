@@ -2,7 +2,7 @@ import dynamic from "next/dynamic";
 import Image from "next/image";
 
 const SlideBanner = dynamic(() => import("@/components/SlideBanner"), {
-  ssr: false,
+  ssr: true,
   loading: () => (
     <div
       role="status"
@@ -21,7 +21,7 @@ const SlideBanner = dynamic(() => import("@/components/SlideBanner"), {
   ),
 });
 const SlideImage = dynamic(() => import("@/components/SlideImage"), {
-  ssr: false,
+  ssr: true,
   loading: () =>   
   <div className="h-[16rem] flex items-center justify-center bg-gray-300 rounded-lg animate-pulse dark:bg-gray-700">
   <svg
@@ -36,7 +36,7 @@ const SlideImage = dynamic(() => import("@/components/SlideImage"), {
  </div>,
 });
 const NewProducts = dynamic(() => import("./_components/NewProducts"), {
-  ssr: false,
+  ssr: true,
   loading: () =>   <div
   id="new-products"
   className=" bg-[#e5e7eb] rounded-md p-4 mb-4 text-center"
@@ -48,7 +48,7 @@ const NewProducts = dynamic(() => import("./_components/NewProducts"), {
 </div>,
 });
 const CategoriesProduct = dynamic(() => import('./_components/CategoriesProduct'), {
-  ssr: false,
+  ssr: true,
   loading: () => 
   <div>
 <h2 className="text-xl md:text-2xl text-primary font-bold text-center m-0 mb-2">
@@ -144,7 +144,7 @@ export default async function Home() {
         </div>
         <SlideImage data={newStoryGaming} width={400} height={295} />
       </section>
-      <section className="flex flex-col justify-center items-center text-justify md:text-center mt-8">
+      <section className="flex flex-col justify-center items-center text-justify md:text-center md:mt-8">
         <h5 className="text-xl md:text-2xl text-primary font-bold my-2">About Zadez</h5>
         <p className="text-base mx-8 mb-4">
           ZADEZ là thương hiệu phụ kiện duy nhất tại thị trường Việt Nam quản lý
