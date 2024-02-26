@@ -37,7 +37,7 @@ const NavBar = ({ data }) => {
               )}
               {item?.children && (
                 <div
-                  className={`absolute top-20 invisible group-hover:md:visible hover:md:visible bg-white mt-5 py-2 pl-2 gap-10  rounded-xl shadow-lg  ease-in-out transition-all group-hover:md:-translate-y-6 duration-200 opacity-0 group-hover:opacity-100`}
+                  className={`absolute top-[75px] invisible group-hover:md:visible hover:md:visible bg-white mt-5 py-2 pl-2 gap-10  rounded-xl shadow-lg  ease-in-out transition-all group-hover:md:-translate-y-6 duration-200 opacity-0 group-hover:opacity-100`}
                 >
                   {item?.children &&
                     item?.children.map((item, i) => (

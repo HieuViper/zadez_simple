@@ -44,11 +44,11 @@ const Header = dynamic(() => import("@/components/Header"), {
       </div>
     </div>
   ),
-  ssr: false,
+  ssr: true,
 });
 const Footer = dynamic(() => import("@/components/Footer"), {
   loading: () => <div></div>,
-  ssr: false,
+  ssr: true,
 });
 
 export const metadata = {
@@ -82,8 +82,8 @@ export default async function RootLayout({ children, params }) {
             }}
           >
             <RootStyleRegistry>{children}</RootStyleRegistry>
-          </div>
-          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50">
+            </div>
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50">
             <AuthenPopup />
           </div>
         </main>

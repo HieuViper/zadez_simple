@@ -5,6 +5,7 @@ module.exports = (sequelize, DataTypes) => {
     {
       amount: DataTypes.INTEGER,
       price: DataTypes.FLOAT,
+      note: DataTypes.TEXT,
     },
     { tableName: "order_details" }
   );
