@@ -6,11 +6,7 @@ const Content = dynamic(() => import("./_components/DynamicContent"), {
   ssr: false,
   loading: () =><div
   id="content"
-  className="h-[600px]"
->
-  <div className=""></div>
-</div>,
-});
+  className="h-[600px]"></div>,});
 const page = () => {
 
   return (

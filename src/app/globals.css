@@ -217,6 +217,12 @@ body {
   bottom: 50px;
   right: 50px;
 }
+.phone-call {
+  z-index: 1000;
+  position: fixed;
+  bottom: 120px;
+  right: 50px;
+}
 
 .ant-menu-horizontal {
   border-bottom: none !important;
