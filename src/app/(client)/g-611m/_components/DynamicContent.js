@@ -10,77 +10,62 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
-const LadingPageOne = () => {
+const Content = () => {
     const { addToCart } = store();
     const [activeCard, setActiveCard] = useState(1);
     const router = useRouter();
-    const productBlack = {
+   
+    const product = {
       list_image: [
         {
-          url: "/images/landing-page/gp-803/GP_803B/GP-803B-1.webp",
-          name: "GP-803B-1.webp",
+          url: "/images/landing-page/g-611m/0.webp",
+          name: "G-611M-0.webp",
         },
         {
-          url: "/images/landing-page/gp-803/GP_803B/GP-803B-2.webp",
-          name: "GP-803B-2.webp",
+          url: "/images/landing-page/g-611m/1.webp",
+          name: "G-611M-1.webp",
         },
         {
-          url: "/images/landing-page/gp-803/GP_803B/GP-803B-3.webp",
-          name: "GP-803B-3.webp",
+          url: "/images/landing-page/g-611m/2.webp",
+          name: "G-611M-2.webp",
         },
         {
-          url: "/images/landing-page/gp-803/GP_803B/GP-803B-4.webp",
-          name: "GP-803B-4.webp",
+          url: "/images/landing-page/g-611m/3.webp",
+          name: "G-611M-3.webp",
         },
         {
-          url: "/images/landing-page/gp-803/GP_803B/GP-803B-5.webp",
-          name: "GP-803B-5.webp",
-        },
-      ],
-    };
-    const productWhite = {
-      list_image: [
-        {
-          url: "/images/landing-page/gp-803/GP-803BW/GP-803GW-1.webp",
-          name: "GP-803B-1.webp",
+          url: "/images/landing-page/g-611m/4.webp",
+          name: "G-611M-4.webp",
         },
         {
-          url: "/images/landing-page/gp-803/GP-803BW/GP-803GW-2.webp",
-          name: "GP-803B-2.webp",
+          url: "/images/landing-page/g-611m/5.webp",
+          name: "G-611M-5.webp",
         },
         {
-          url: "/images/landing-page/gp-803/GP-803BW/GP-803GW-3.webp",
-          name: "GP-803B-3.webp",
+          url: "/images/landing-page/g-611m/6.webp",
+          name: "G-611M-6.webp",
         },
         {
-          url: "/images/landing-page/gp-803/GP-803BW/GP-803GW-4.webp",
-          name: "GP-803B-4.webp",
+          url: "/images/landing-page/g-611m/7.webp",
+          name: "G-611M-8.webp",
         },
         {
-          url: "/images/landing-page/gp-803/GP-803BW/GP-803GW-5.webp",
-          name: "GP-803B-5.webp",
+          url: "/images/landing-page/g-611m/8.webp",
+          name: "G-611M-8.webp",
         },
       ],
     };
   
-    const { data: GP803B } = useSWRData(
-      `/api/products?product_code=zadez-gp-803b`
+    const { data: G611M } = useSWRData(
+      `/api/products?product_code=zadez-g-611m`
     );
-    const { data: GP803BW } = useSWRData(
-      `/api/products?product_code=zadez-gp-803bW`
-    );
-  
     const [isModalOpen, setIsModalOpen] = useState(false);
     const showModal = () => {
       setIsModalOpen(true);
     };
     const handleOk = () => {
       // setIsModalOpen(false);
-      if (activeCard == 1) {
-        GP803B && addToCart(GP803B.data[0]);
-      } else if (activeCard == 2) {
-        GP803BW && addToCart(GP803BW.data[0]);
-      }
+      G611M && addToCart(G611M.data[0]);
       router.push("/gio-hang");
     };
     const handleCancel = () => {
@@ -97,29 +82,26 @@ const LadingPageOne = () => {
           >
             <p className="text-sm mb-2 md:text-xl font-bold">ZADEZ NEW PRODUCT</p>
             <p className="text-xl md:text-3xl lg:text-4xl font-bold my-1">
-              ENC BLUETOOTH HEADPHONE
+              GAMING MOUSE ZADEZ
             </p>
-            <h1 className="text-2xl md:text-5xl font-bold m-0">GP-803 SERIES</h1>
+            <h1 className="text-2xl md:text-5xl font-bold m-0">G-611M</h1>
             <p>
-              Tai nghe không dây cao cấp với công nghệ ENC-Environmental Noise
-              Cancellation hiện đại, trọng lượng siêu nhẹ 176gram mang đến cảm
-              giác đeo thoải mái trong thời gian dài. Kết nối bluetooth 5.2 và chế
-              độ EQ Bass cho chất lượng âm thanh tuyệt hảo. Hãy trải nghiệm ngay!{" "}
+              Sự kết hợp tinh tế giữa thiết kế hiện đại và tính năng đa dạng đã giúp chuột Gaming Zadez G-611M trở thành một lựa chọn tuyệt vời cho game thủ. Ngoài ra, thiết kế công thái học mang đến trải nghiệm vận hành tốt nhất, phù hợp với các kiểu cầm Palm Grip và Claw Grip. Hãy trải nghiệm ngay!
             </p>
-            <button className="bg-yellow-300 w-40 flex justify-center items-center p-2">
-              <span className="text-xl font-semibold">850.000 VNĐ</span>
+            <button className="bg-gradient-to-l from-[#fedc45] to-[#fb7099] w-40 flex justify-center items-center p-2">
+              <span className="text-xl font-semibold ">850.000 VNĐ</span>
             </button>
           </div>
           <div
-            className="col-span-2 md:col-span-1 flex justify-center items-center"
+            className="col-span-2 md:col-span-1 flex justify-center items-center rotate-12"
             data-aos="zoom-in"
             data-aos-duration="500"
           >
             <Image
               width={600}
               height={400}
-              src="/images/landing-page/gp-803/img1.webp"
-              alt="GP-803"
+              src="/images/landing-page/g-611m/1.webp"
+              alt="G-611M"
               sizes="100vw"
               style={{
                 width: "100%",
@@ -144,22 +126,20 @@ const LadingPageOne = () => {
             >
               <div className="relative w-full h-full ">
                 <Image
-                  src="/images/landing-page/gp-803/img2.webp"
-                  alt="GP-803"
+                  src="/images/landing-page/g-611m/bg-4.webp"
+                  alt="G-611M"
                   fill
                   sizes="100%"
                   style={{ objectFit: "contain" }}
                 />
               </div>
             </div>
-            <div className="col-span-2 md:col-span-1 md:p-6 lg:p-10 xl:p-20 hidden md:block">
-              <h2 className="mt-2 text-5xl md:text-3xl lg:text-4xl xl:text-5xl font-bold uppercase text-yellow-400">
-                ULTRA LIGHT 176 GRAM
+            <div className="col-span-2 md:col-span-1 md:p-6 lg:p-10 xl:p-16 hidden md:block">
+              <h2 className="mt-2 text-5xl md:text-3xl lg:text-4xl xl:text-5xl font-bold uppercase bg-gradient-to-l from-[#fedc45] to-[#fb7099] bg-clip-text text-transparent ">
+              DRIVER CONTROL <br/>GAME & OFFICE
               </h2>
               <p>
-                Với chất liệu cao cấp và bền bỉ, ZADEZ GP-803B có trọng lượng siêu
-                nhẹ chỉ 176 gram, mang đến trải nghiệm âm nhạc tuyệt vời trong
-                thời gian dài.
+              Bạn có thể tùy chính các nút chức năng trong công việc hàng ngày (copy, paste, next/back, di chuyển nhanh về desktop...) và chuyển sang chế độ chơi game cực kỳ nhanh chóng (thiết lập các nút bắn liên tục, ngắm bắn, macro...) 
               </p>
               {/* <div className='bg-yellow-300 w-40 flex justify-center items-center p-2'>
                               <span className='text-xl font-semibold'>Xem thêm</span>
@@ -171,7 +151,7 @@ const LadingPageOne = () => {
         {/*  */}
         <section
           id="section3"
-          className="grid grid-cols-2 gap-8 pt-64 pb-8 md:pb-16 lg:pb-32 bg-[url('/images/landing-page/gp-803/bg1.webp')] bg-center lg:-ml-16 lg:-mr-16 xl:-ml-24 xl:-mr-24"
+          className="grid grid-cols-2 gap-8 pt-64 pb-8 md:pb-16 lg:pb-32 bg-[url('/images/landing-page/g-611m/bg-1.webp')] bg-center lg:-ml-16 lg:-mr-16 xl:-ml-24 xl:-mr-24"
         >
           <div
             className="col-span-2 md:col-span-1 flex justify-center items-center"
@@ -181,8 +161,8 @@ const LadingPageOne = () => {
             <Image
               width={200}
               height={200}
-              src="/images/landing-page/gp-803/img7.webp"
-              alt="GP-803"
+              src="/images/landing-page/g-611m/0.webp"
+              alt="G-611M"
               sizes="100vw"
               style={{
                 width: "100%",
@@ -195,20 +175,15 @@ const LadingPageOne = () => {
             data-aos="zoom-in-left"
             data-aos-duration="900"
           >
-            <h2 className="text-3xl md:text-4xl lg:text-6xl font-bold uppercase text-yellow-400 ">
-              ENC-KHỬ ỒN CAO CẤP
+            <h2 className="text-3xl md:text-4xl lg:text-6xl font-bold uppercase bg-gradient-to-l from-[#fedc45] to-[#fb7099] bg-clip-text text-transparent ">
+            Tùy chỉnh DPI 4 mức độ
             </h2>
             <p className="text-white">
-              ENC - Environmental Noise Cancellation là công nghệ khử ồn cao cấp,
-              có thể hạn chế đến 96% tạp âm đến từ môi trường bên ngoài.
-            </p>
-            <p className="text-white">
-              Chế độ EQ có 2 chế độ tùy chỉnh âm thanh HIFI hoặc BASS, đáp ứng nhu
-              cầu thưởng thức âm nhạc và điện ảnh trong điều kiện tốt nhất.
+            Đèn LED trên nút cuộn (con lăn) sẽ thay đổi màu sắc khi điều chỉnh DPU ở nút 6, mặc định màu sắc sẽ tương ứng với mức DPI như sau: Xanh lá: 1200 DPI, Cam: 2400 DPI, Đỏ: 4800 DPI, Xanh nhạt: 7200DPI
             </p>
             <div className="flex justify-end ">
               <button
-                className="bg-yellow-300 w-40 p-2 lg:p-4 flex justify-center items-center cursor-pointer hover:scale-110 duration-200"
+                className="bg-gradient-to-r from-[#fedc45] to-[#fb7099] w-40 p-2 lg:p-4 flex justify-center items-center cursor-pointer hover:scale-110 duration-200"
                 onClick={showModal}
               >
                 <span className="text-xl font-semibold ">
@@ -228,8 +203,8 @@ const LadingPageOne = () => {
             className="col-span-2 md:col-span-1 shadow-2xl"
             width={300}
             height={300}
-            src="/images/landing-page/gp-803/img3.webp"
-            alt="GP-803"
+            src="/images/landing-page/g-611m/9.webp"
+            alt="G-611M"
             sizes="100vw"
             style={{
               width: "100%",
@@ -242,8 +217,8 @@ const LadingPageOne = () => {
             className="col-span-2 md:col-span-1 shadow-2xl"
             width={300}
             height={300}
-            src="/images/landing-page/gp-803/img6.webp"
-            alt="GP-803"
+            src="/images/landing-page/g-611m/10.webp"
+            alt="G-611M"
             sizes="100vw"
             style={{
               width: "100%",
@@ -256,48 +231,17 @@ const LadingPageOne = () => {
         {/*  */}
         <section
           id="section5"
-          className="bg-[url('/images/landing-page/gp-803/bg2.webp')] bg-center py-4 md:py-10 lg:py-20 lg:-ml-16 lg:-mr-16 xl:-ml-24 xl:-mr-24"
+          className="bg-[url('/images/landing-page/g-611m/bg-2.webp')] bg-cover  py-4 md:py-10 lg:py-20 lg:-ml-16 lg:-mr-16 xl:-ml-24 xl:-mr-24"
         >
           <div className="w-full lg:w-4/6 m-auto">
-            <Tabs
-              defaultActiveKey="1"
-              centered
-              tabBarStyle={{ borderBottom: "none" }}
-              items={[
-                {
-                  key: "1",
-                  label: (
-                    <span className="text-base md:text-lg font-bold">
-                      GP-803 BLACK
-                    </span>
-                  ),
-                  children: (
-                    <div className=" bg-white px-4 md:px-20 pb-4 rounded-lg m-auto">
-                      <SlideShow listImage={productBlack?.list_image} />
-                    </div>
-                  ),
-                },
-                {
-                  key: "2",
-                  label: (
-                    <span className="text-base md:text-lg font-bold">
-                      GP-803 WHITE
-                    </span>
-                  ),
-                  children: (
-                    <div className=" bg-white px-4 md:px-20 pb-4 rounded-lg m-auto">
-                      <SlideShow listImage={productWhite?.list_image} />
-                    </div>
-                  ),
-                },
-              ]}
-            />
+          <div className=" bg-white px-4 md:px-20 pb-4 rounded-lg m-auto">
+                      <SlideShow listImage={product?.list_image} />
+          </div>
           </div>
           <div className="flex flex-col justify-center items-center p-2">
-            <h3 className="text-xl md:text-3xl my-4">GP-803 BLACK & WHITE</h3>
+            <h3 className="text-xl md:text-3xl my-4">MOUSE GAMING G-611M</h3>
             <p>
-              Tai nghe ZADEZ GP-803 Series có hai màu sắc &ldquo;Đen&rdquo; và
-              &ldquo;Trắng&rdquo; cho khách hàng lựa chọn
+            Sản phẩm này sẽ đáp ứng hoàn hảo nhu cầu và kỳ vọng của người dùng trong quá trình chơi game
             </p>
             <button
               className="bg-black w-40 flex justify-center items-center p-2 cursor-pointer hover:scale-110 duration-200"
@@ -312,8 +256,8 @@ const LadingPageOne = () => {
           <Image
             width={200}
             height={200}
-            src="/images/landing-page/gp-803/bg5.webp"
-            alt="GP-803"
+            src="/images/landing-page/g-611m/driver.webp"
+            alt="G-611M"
             sizes="100vw"
             style={{
               width: "100%",
@@ -341,57 +285,57 @@ const LadingPageOne = () => {
           <div className="grid grid-cols-3">
             <div className="col-span-3 md:col-span-1 text-center">
               <div>
-                <p className="text-red-500 text-xl font-bold mb-2">Bluetooth</p>
-                <p className="font-semibold">Chuẩn V5.2</p>
+                <p className="text-red-500 text-xl font-bold mb-2">Kích thước</p>
+                <p className="font-semibold">119.3 x 79.5 x 38.3 mm</p>
               </div>
               <div>
                 <p className="text-red-500 text-xl font-bold mb-2">Trọng lượng</p>
-                <p className="font-semibold">176 g (tai nghe)</p>
+                <p className="font-semibold">78g (chưa bao gồm cáp)</p>
               </div>
               <div>
                 <p className="text-red-500 text-xl font-bold mb-2">
-                  Dung lượng pin
+                Đèn LED
                 </p>
-                <p className="font-semibold">Li-Polymer 400 mAh</p>
+                <p className="font-semibold">4 màu</p>
               </div>
             </div>
   
             <div className="col-span-3 md:col-span-1 text-center">
               <div>
-                <p className="text-red-500 text-xl font-bold mb-2">Tương thích</p>
+                <p className="text-red-500 text-xl font-bold mb-2">Số nút chức năng</p>
                 <p className="font-semibold">
-                  iOS, Android, Windows OS, MacOS (kết nối Bluetooth tương thích).
+                6 nút chức năng
                 </p>
               </div>
               <div>
-                <p className="text-red-500 text-xl font-bold mb-2">Trở kháng</p>
-                <p className="font-semibold">23 ± 15%</p>
+                <p className="text-red-500 text-xl font-bold mb-2">Độ phân giải</p>
+                <p className="font-semibold">1200/ 2400/ 4800/ 7200 DPI</p>
               </div>
               <div>
                 <p className="text-red-500 text-xl font-bold mb-2">
-                  Độ nhạy của Micrô
+                Độ bền nút nhấn
                 </p>
-                <p className="font-semibold">40 ± 3dB</p>
+                <p className="font-semibold">3 triệu lần nhấn</p>
               </div>
             </div>
   
             <div className="col-span-3 md:col-span-1 text-center">
               <div>
                 <p className="text-red-500 text-xl font-bold mb-2">
-                  Đệm tai nghe
+                Phần mềm (driver)
                 </p>
-                <p className="font-semibold">Bọc vải cao cấp thoáng khí</p>
+                <p className="font-semibold">Hỗ trợ chỉnh DPI, đèn và thiết lập macro.</p>
               </div>
               <div>
                 <p className="text-red-500 text-xl font-bold mb-2">
                   Cổng kết nối
                 </p>
-                <p className="font-semibold">USB-C (Type-C)</p>
+                <p className="font-semibold">USB 2.0 với thiết bị chống nhiễu.</p>
               </div>
               <div>
                 <p className="text-red-500 text-xl font-bold mb-2">Bảo hành</p>
                 <p className="font-semibold">
-                  Kích hoạt bảo hành điện tử, 12 tháng (1 đổi 1)
+                Bảo hành điện tử, 12 tháng (1 đổi 1)
                 </p>
               </div>
             </div>
@@ -399,7 +343,7 @@ const LadingPageOne = () => {
         </section>
         <section
           id="form"
-          className="grid grid-cols-2 py-4 md:py-10 lg:py-20  bg-yellow-300 px-6 lg:px-16 xl:px-24 lg:-ml-16 lg:-mr-16 xl:-ml-24 xl:-mr-24"
+          className="grid grid-cols-2 py-4 md:py-10 lg:py-20  bg-gradient-to-r from-[#fedc45] to-[#fb7099]  px-6 lg:px-16 xl:px-24 lg:-ml-16 lg:-mr-16 xl:-ml-24 xl:-mr-24"
         >
           <div className="col-span-2 md:col-span-1">
             <h5 className="text-2xl md:text-3xl lg:text-4xl font-bold my-2 md:my-8">
@@ -418,28 +362,18 @@ const LadingPageOne = () => {
                 Đặt hàng ngay
               </span>
             </button>
+            <p className="text-xs">*Nếu không tin quảng cáo, hãy qua trực tiếp cửa hàng để tham khảo cũng như đánh giá chất lượng sản phẩm 1 cách tốt nhất</p>
           </div>
-          <div className="col-span-2 md:col-span-1 grid grid-cols-2 justify-center items-center">
+          <div className="col-span-2 md:col-span-1 flex justify-center items-center">
             <Image
-              className="col-span-2 md:col-span-1"
-              width={300}
-              height={300}
-              src="/images/landing-page/gp-803/GP-803BW/GP-803GW-1.webp"
+              className=""
+              width={100}
+              height={100}
+              src="/images/landing-page/g-611m/5.webp"
               alt="GP-803GW"
               sizes="100vw"
               style={{
-                width: "100%",
-                height: "auto",
-              }}
-            />
-            <Image
-              className="col-span-2 md:col-span-1"
-              width={300}
-              height={300}
-              src="/images/landing-page/gp-803/GP_803B/GP-803B-3.webp"
-              alt="GP-803B"
-              style={{
-                width: "100%",
+                width: "50%",
                 height: "auto",
               }}
             />
@@ -616,4 +550,4 @@ const LadingPageOne = () => {
       </div>
     );
   };
-  export default LadingPageOne;
+  export default Content;

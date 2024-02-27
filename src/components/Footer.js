@@ -164,6 +164,9 @@ const Footer = () => {
         Công ty TNHH ZADEZ Việt Nam triển khai theo bản quyền của ZADEZ AMERICA
         LLC. (USA)
       </div>
+      <a className="phone-call" href="tel:19000053">
+      <Image width={50} height={50} src="/images/phone-call.webp" alt="zalo" />
+      </a>
       <a
         className="zalo-chat-widget"
         href="https://zalo.me/3126944695787017498"
