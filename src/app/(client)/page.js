@@ -2,7 +2,7 @@ import dynamic from "next/dynamic";
 import Image from "next/image";
 
 const SlideBanner = dynamic(() => import("@/components/SlideBanner"), {
-  ssr: true,
+  ssr: false,
   loading: () => (
     <div
       role="status"
@@ -21,7 +21,7 @@ const SlideBanner = dynamic(() => import("@/components/SlideBanner"), {
   ),
 });
 const SlideImage = dynamic(() => import("@/components/SlideImage"), {
-  ssr: true,
+  ssr: false,
   loading: () =>   
   <div className="h-[16rem] flex items-center justify-center bg-gray-300 rounded-lg animate-pulse dark:bg-gray-700">
   <svg
@@ -36,7 +36,7 @@ const SlideImage = dynamic(() => import("@/components/SlideImage"), {
  </div>,
 });
 const NewProducts = dynamic(() => import("./_components/NewProducts"), {
-  ssr: true,
+  ssr: false,
   loading: () =>   <div
   id="new-products"
   className=" bg-[#e5e7eb] rounded-md p-4 mb-4 text-center"
@@ -48,7 +48,7 @@ const NewProducts = dynamic(() => import("./_components/NewProducts"), {
 </div>,
 });
 const CategoriesProduct = dynamic(() => import('./_components/CategoriesProduct'), {
-  ssr: true,
+  ssr: false,
   loading: () => 
   <div>
 <h2 className="text-xl md:text-2xl text-primary font-bold text-center m-0 mb-2">
