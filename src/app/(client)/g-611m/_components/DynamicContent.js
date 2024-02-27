@@ -12,7 +12,6 @@ import { useState } from "react";
 
 const Content = () => {
     const { addToCart } = store();
-    const [activeCard, setActiveCard] = useState(1);
     const router = useRouter();
    
     const product = {
@@ -59,18 +58,11 @@ const Content = () => {
     const { data: G611M } = useSWRData(
       `/api/products?product_code=zadez-g-611m`
     );
-    const [isModalOpen, setIsModalOpen] = useState(false);
-    const showModal = () => {
-      setIsModalOpen(true);
-    };
-    const handleOk = () => {
-      // setIsModalOpen(false);
+
+    const addCart = () => {
       G611M && addToCart(G611M.data[0]);
       router.push("/gio-hang");
-    };
-    const handleCancel = () => {
-      setIsModalOpen(false);
-    };
+    }
   
     return (
       <div className="m-auto md:max-w-3xl lg:max-w-7xl">
@@ -184,7 +176,7 @@ const Content = () => {
             <div className="flex justify-end ">
               <button
                 className="bg-gradient-to-r from-[#fedc45] to-[#fb7099] w-40 p-2 lg:p-4 flex justify-center items-center cursor-pointer hover:scale-110 duration-200"
-                onClick={showModal}
+                onClick={addCart}
               >
                 <span className="text-xl font-semibold ">
                   Mua ngay
@@ -245,7 +237,7 @@ const Content = () => {
             </p>
             <button
               className="bg-black w-40 flex justify-center items-center p-2 cursor-pointer hover:scale-110 duration-200"
-              onClick={showModal}
+              onClick={addCart}
             >
               <span className="text-xl font-semibold text-white">Mua ngay</span>
             </button>
@@ -356,7 +348,7 @@ const Content = () => {
             </p>
             <button
               className="bg-black w-40 flex justify-center items-center p-2 cursor-pointer text-white hover:scale-110 duration-200"
-              onClick={showModal}
+              onClick={addCart}
             >
               <span className="text-base md:text-xl font-semibold ">
                 Đặt hàng ngay
@@ -483,70 +475,7 @@ const Content = () => {
           </div>
         </section>
   
-        <Modal
-          title="Lựa chọn màu bạn muốn mua?"
-          open={isModalOpen}
-          onOk={handleOk}
-          onCancel={handleCancel}
-          footer={[
-            <Button key="back" onClick={handleCancel}>
-              Hủy
-            </Button>,
-            <Button key="submit" type="primary" onClick={handleOk}>
-              Đến giỏ hàng
-            </Button>,
-          ]}
-        >
-          <div className="grid grid-cols-2 gap-2">
-            <div
-              className={`flex flex-col justify-center items-center cursor-pointer rounded-lg border  hover:border-solid hover:border-cyan-500 ${
-                activeCard == 1
-                  ? "border-solid border-cyan-500 duration-100 shadow-xl"
-                  : ""
-              }`}
-              onClick={() => {
-                setActiveCard(1);
-              }}
-            >
-              <Image
-                className="col-span-2 md:col-span-1"
-                width={300}
-                height={300}
-                src="/images/landing-page/gp-803/GP_803B/GP-803B-3.webp"
-                alt="GP-803B"
-                style={{
-                  width: "100%",
-                  height: "auto",
-                }}
-              />
-              <p className={`${activeCard === 1 ? "font-bold" : ""}`}>Đen</p>
-            </div>
-            <div
-              className={`flex flex-col justify-center items-center cursor-pointer rounded-lg border hover:border-solid hover:border-cyan-500 ${
-                activeCard == 2
-                  ? "border-solid border-cyan-500 duration-100 shadow-xl"
-                  : ""
-              }`}
-              onClick={() => {
-                setActiveCard(2);
-              }}
-            >
-              <Image
-                className="col-span-2 md:col-span-1"
-                width={300}
-                height={300}
-                src="/images/landing-page/gp-803/GP-803BW/GP-803GW-1.webp"
-                alt="GP-803GW"
-                sizes="100vw"
-                style={{
-                  width: "100%",
-                  height: "auto",
-                }}
-              />
-              <p className={`${activeCard === 2 ? "font-bold" : ""}`}>Trắng</p>
-            </div>
-          </div>
-        </Modal>
+     
       </div>
     );
   };

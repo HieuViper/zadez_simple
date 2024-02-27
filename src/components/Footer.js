@@ -141,7 +141,7 @@ const Footer = () => {
               >
                 <span className="hover:text-[#F88686] font-semibold">
                   {" "}
-                  B97 Phú Thuận, phường Phú Thuận, Quận 7, Tp. Hồ Chí Minh
+                  B97 Phú Thuận, phường Phú Thuận, Quận 7, Tp. Hồ Chí Minh.
                 </span>
               </Link>
             </p>
