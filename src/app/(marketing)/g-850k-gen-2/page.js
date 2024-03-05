@@ -106,7 +106,7 @@ const G850KPage = () => {
               </span>
               <div data-aos="fade-right" data-aos-delay="500">
                 <button className="button-gradient-1" onClick={handleAddToCart}>
-                  <span className="font-extrabold text-xl">850.000 VNĐ</span>
+                  <span className="font-extrabold text-xl">390.000 VNĐ</span>
                 </button>
               </div>
             </div>
