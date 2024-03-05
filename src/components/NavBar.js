@@ -16,12 +16,12 @@ const NavBar = ({ data }) => {
                   style={{ textDecoration: "none", color: "black" }}
                   prefetch={false}
                 >
-                  <span className="py-2 flex justify-between items-center md:pr-0 pr-5 text-sm lg:text-xs 2xl:text-base font-medium md:cursor-pointer group-hover:text-red-500 text-black duration-300 transition">
+                  <span className="py-2 flex justify-between items-center md:pr-0 pr-5 text-sm lg:text-xs 2xl:text-base font-medium md:cursor-pointer group-hover:text-red-500 text-black duration-200 transition">
                     {item.name}
                   </span>
                 </Link>
               ) : (
-                <span className=" py-2 flex justify-between items-center md:pr-0 pr-5 text-sm lg:text-xs 2xl:text-base font-medium md:cursor-pointer group-hover:text-red-500 text-black duration-300 transition">
+                <span className=" py-2 flex justify-between items-center md:pr-0 pr-5 text-sm lg:text-xs 2xl:text-base font-medium md:cursor-pointer group-hover:text-red-500 text-black duration-200 transition">
                   {item.name}
                   {item?.children && (
                     <span className="text-xs md:mt-1 md:ml-2  md:block hidden transition-all transform group-hover:rotate-180 group-hover:-mt-2">
@@ -51,7 +51,7 @@ const NavBar = ({ data }) => {
                           style={{ textDecoration: "none", color: "black" }}
                           prefetch={false}
                         >
-                          <div className="col-span-1 flex items-center justify-between group-hover/item:text-red-500 duration-300 transition mx-2">
+                          <div className="col-span-1 flex items-center justify-between group-hover/item:text-red-500 duration-200 transition mx-2">
                             <div className="flex items-center justify-center flex-wrap">
                               {item?.image && (
                                 <Image
@@ -79,7 +79,7 @@ const NavBar = ({ data }) => {
                           </div>
                         </Link>
                         {item.products.length > 0 && (
-                          <div className="absolute -mt-8 -right-[300px] m-2 w-60  invisible  group-hover/item:md:visible hover:md:visible bg-white p-2 gap-10  rounded-xl shadow-lg max-h-96 overflow-y-auto ease-in transition-all group-hover/item:md:-translate-x-9 duration-200 opacity-0 group-hover/item:opacity-100">
+                          <div className="absolute -mt-8 -right-[300px] m-2 w-60  invisible  group-hover/item:md:visible hover:md:visible bg-white p-2 gap-10  rounded-xl shadow-lg max-h-96 overflow-y-auto ease-in transition-all group-hover/item:md:-translate-x-9 duration-100 opacity-0 group-hover/item:opacity-100">
                             {item?.products.length > 0 &&
                               item?.products.map((item, i) => (
                                 <Link
@@ -92,7 +92,7 @@ const NavBar = ({ data }) => {
                                   }}
                                   prefetch={false}
                                 >
-                                  <div className="flex items-center  hover:text-red-500 duration-300 transition">
+                                  <div className="flex items-center  hover:text-red-500 duration-200 transition">
                                     {item?.main_image && (
                                       <Image
                                         src={item.main_image}

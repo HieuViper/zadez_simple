@@ -12,6 +12,9 @@ module.exports = {
         "g-850k-blue": "#02a1f9",
         "g-850k-green": "#29f19c",
       },
+      fontFamily: {
+        'sans': ['Roboto', 'sans-serif'],
+      },
     },
     screens: {
       sm: "640px",

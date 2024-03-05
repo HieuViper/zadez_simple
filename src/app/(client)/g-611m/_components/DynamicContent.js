@@ -81,11 +81,11 @@ const Content = () => {
               Sự kết hợp tinh tế giữa thiết kế hiện đại và tính năng đa dạng đã giúp chuột Gaming Zadez G-611M trở thành một lựa chọn tuyệt vời cho game thủ. Ngoài ra, thiết kế công thái học mang đến trải nghiệm vận hành tốt nhất, phù hợp với các kiểu cầm Palm Grip và Claw Grip. Hãy trải nghiệm ngay!
             </p>
             <button className="bg-gradient-to-l from-[#fedc45] to-[#fb7099] w-40 flex justify-center items-center p-2">
-              <span className="text-xl font-semibold ">850.000 VNĐ</span>
+              <span className="text-xl font-semibold ">250.000 VNĐ</span>
             </button>
           </div>
           <div
-            className="col-span-2 md:col-span-1 flex justify-center items-center rotate-12"
+            className="col-span-2 md:col-span-1 flex justify-center items-center "
             data-aos="zoom-in"
             data-aos-duration="500"
           >
@@ -100,6 +100,7 @@ const Content = () => {
                 height: "auto",
               }}
               priority={true}
+              className="-rotate-12"
             />
           </div>
         </section>
@@ -260,16 +261,16 @@ const Content = () => {
         {/*  */}
         <section
           id="params"
-          className="bg-[url('/images/landing-page/gp-803/bg3.webp')] bg-center px-2 py-4 md:py-10  lg:py-32 lg:-ml-16 lg:-mr-16 xl:-ml-24 xl:-mr-24 "
+          className="bg-[url('/images/landing-page/g-611m/bg-3.webp')] bg-center px-2 py-4 md:py-10  lg:py-32 lg:-ml-16 lg:-mr-16 xl:-ml-24 xl:-mr-24 "
         >
           <div className="flex flex-col justify-center items-center md:px-10">
             <h4 className="text-red-500 text-4xl font-bold mb-2 text-center">
-              ENC Bluetooth Headphone
+              Gaming Mouse
             </h4>
             <div className="relative flex py-5 items-center w-full">
               <div className="flex-grow border-t border-solid border-red-500 "></div>
               <span className="flex-shrink mx-4 text-red-500 text-xl font-semibold">
-                ZADEZ GP-803B
+                ZADEZ G-611M
               </span>
               <div className="flex-grow border-t border-solid border-red-500  "></div>
             </div>

@@ -116,25 +116,11 @@ const Header = () => {
   const onCloseCart = () => {
     setOpenCart(false);
   };
-  const jsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'Product',
-    "name": "Zadez",
-    "url": "https://zadez.vn",
-    "logo": "https://zadez.vn/Logo-ZADEZ.webp",
-  }
+  
   return (
     <header
       className={`shadow-sm lg:py-4 py-2 w-full bg-[#fafafa]  px-2 fixed top-0 z-30 transition-all duration-500`}
     >
-      <Head>
-        {/* <link rel="canonical" href={canonicalURL} /> */}
-        <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-        key="product-jsonld"
-      />
-      </Head>
       {/* <Head>
                 <script src="https://sp.zalo.me/plugins/sdk.js"></script>
             </Head> */}
