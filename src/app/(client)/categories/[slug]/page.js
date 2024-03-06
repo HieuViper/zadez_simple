@@ -1,7 +1,7 @@
 "use client";
 import ProductCard from "@/components/ProductCard";
 import { useSWRData } from "@/library/api";
-import { Checkbox, Select, Spin, Switch } from "antd";
+import { Checkbox, Pagination, Select, Spin, Switch } from "antd";
 import Image from "next/image";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -72,7 +72,6 @@ const Category = ({ params }) => {
   );
 
   // FILTER
-
   const [isInStock, setIsInStock] = useState(false);
   const [isOutOfStock, setIsOutOfStock] = useState(false);
   const [isSale, setIsSale] = useState(false);
@@ -119,9 +118,7 @@ const Category = ({ params }) => {
     // console.log('event :', event);
     // const value = event;
     setSortBy(value);
-
     let sortedProducts = [...filteredProducts];
-
     switch (value) {
       case "best-selling":
         sortedProducts.sort((a, b) => b.order - a.order);
@@ -154,6 +151,16 @@ const Category = ({ params }) => {
 
     setSortedProducts(sortedProducts);
   };
+
+  // PAGINATION
+  const [currentPage, setCurrentPage] = useState(1);
+  const [pageSize, setPageSize] = useState(6);
+  const onPageChange = (page) => {
+    setCurrentPage(page);
+  };
+  const indexOfLastProduct = currentPage * pageSize;
+  const indexOfFirstProduct = indexOfLastProduct - pageSize;
+  const currentProducts= sortedProducts?.slice(indexOfFirstProduct, indexOfLastProduct);
   return (
     <div className="my-10 w-full m-auto max-w-xs md:max-w-3xl lg:max-w-7xl">
       {/* <div className="mx-2 lg:mx-20 grid grid-cols-4 md:grid-cols-5 gap-2 ">
@@ -262,9 +269,10 @@ const Category = ({ params }) => {
               <Switch checked={isSale} onChange={handleIsSale} />
             </div>
           </div>
-          {sortedProducts ? (
+          {currentProducts ? (
+            <>
             <div className="border grid grid-cols-12  gap-2 md:gap-4 lg:gap-8">
-              {sortedProducts?.map((item, i) => (
+              {currentProducts?.map((item, i) => (
                 <div
                   key={i}
                   className="col-span-12 md:col-span-4"
@@ -273,6 +281,15 @@ const Category = ({ params }) => {
                 </div>
               ))}
             </div>
+            <div className="flex justify-end mt-6">
+            <Pagination
+              current={currentPage}
+              pageSize={pageSize}
+              total={sortedProducts?.length}
+              onChange={onPageChange}
+             />
+        </div>
+            </>
           ) : (
             <div className="flex justify-center">
               <Spin />

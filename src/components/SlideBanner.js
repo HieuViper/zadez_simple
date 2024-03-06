@@ -25,7 +25,7 @@ const SlideBanner = ({ data, width, height }) => {
         {data &&
           data?.map((item, i) => (
             <SwiperSlide key={i}>
-              {i == 0 ? (
+              {i == data?.length - 1 ? (
                 <Image
                   sizes="100vw"
                   style={{
@@ -52,7 +52,6 @@ const SlideBanner = ({ data, width, height }) => {
                   src={item.image}
                   alt={item.name}
                   className="rounded-lg"
-                  // priority={true}
                   // loading="lazy"
                 />
               )}

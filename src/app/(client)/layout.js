@@ -62,31 +62,33 @@ export const metadata = {
 
 export default async function RootLayout({ children, params }) {
   return (
-    <ConfigProvider
-      theme={{
-        token: {
-          colorPrimary: "#AF131C",
-        },
-      }}
-    >
-      <AOSInit />
-      <GoogleAnalytics />
-      <Header />
-      <main>
-        <div
-          className="px-6 lg:px-16 xl:px-24 pt-28 pb-10 overflow-x-hidden"
-          style={{
-            backgroundImage: `url("/images/bg-white.webp")`,
-            backgroundSize: "contain",
-          }}
-        >
-          <RootStyleRegistry>{children}</RootStyleRegistry>
-        </div>
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50">
-          <AuthenPopup />
-        </div>
-      </main>
-      <Footer />
-    </ConfigProvider>
+    <>
+      <ConfigProvider
+        theme={{
+          token: {
+            colorPrimary: "#AF131C",
+          },
+        }}
+      >
+        <AOSInit />
+        <GoogleAnalytics />
+        <Header />
+        <main>
+          <div
+            className="px-6 lg:px-16 xl:px-24 pt-28 pb-10 overflow-x-hidden"
+            style={{
+              backgroundImage: `url("/images/bg-white.webp")`,
+              backgroundSize: "contain",
+            }}
+          >
+            <RootStyleRegistry>{children}</RootStyleRegistry>
+          </div>
+          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50">
+            <AuthenPopup />
+          </div>
+        </main>
+        <Footer />
+      </ConfigProvider>
+    </>
   );
 }
