@@ -2,7 +2,7 @@ import dynamic from "next/dynamic";
 import Image from "next/image";
 
 const SlideBanner = dynamic(() => import("@/components/SlideBanner"), {
-  ssr: false,
+  ssr: true,
   loading: () => (
     <div
       role="status"
@@ -21,59 +21,64 @@ const SlideBanner = dynamic(() => import("@/components/SlideBanner"), {
   ),
 });
 const SlideImage = dynamic(() => import("@/components/SlideImage"), {
-  ssr: false,
-  loading: () =>   
-  <div className="h-[16rem] flex items-center justify-center bg-gray-300 rounded-lg animate-pulse dark:bg-gray-700">
-  <svg
-   className="w-10 h-10 text-gray-200 dark:text-gray-600"
-   aria-hidden="true"
-   xmlns="http://www.w3.org/2000/svg"
-   fill="currentColor"
-   viewBox="0 0 20 18"
- >
-   <path d="M18 0H2a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2Zm-5.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Zm4.376 10.481A1 1 0 0 1 16 15H4a1 1 0 0 1-.895-1.447l3.5-7A1 1 0 0 1 7.468 6a.965.965 0 0 1 .9.5l2.775 4.757 1.546-1.887a1 1 0 0 1 1.618.1l2.541 4a1 1 0 0 1 .028 1.011Z" />
- </svg>
- </div>,
+  ssr: true,
+  loading: () => (
+    <div className="h-[16rem] flex items-center justify-center bg-gray-300 rounded-lg animate-pulse dark:bg-gray-700">
+      <svg
+        className="w-10 h-10 text-gray-200 dark:text-gray-600"
+        aria-hidden="true"
+        xmlns="http://www.w3.org/2000/svg"
+        fill="currentColor"
+        viewBox="0 0 20 18"
+      >
+        <path d="M18 0H2a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2Zm-5.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Zm4.376 10.481A1 1 0 0 1 16 15H4a1 1 0 0 1-.895-1.447l3.5-7A1 1 0 0 1 7.468 6a.965.965 0 0 1 .9.5l2.775 4.757 1.546-1.887a1 1 0 0 1 1.618.1l2.541 4a1 1 0 0 1 .028 1.011Z" />
+      </svg>
+    </div>
+  ),
 });
 const NewProducts = dynamic(() => import("./_components/NewProducts"), {
-  ssr: false,
-  loading: () =>   <div
-  id="new-products"
-  className=" bg-[#e5e7eb] rounded-md p-4 mb-4 text-center"
->
-  <h3 className="text-xl md:text-2xl font-bold text-primary">Sản Phẩm Mới</h3>
-  <div className="h-[22rem]  flex items-center justify-center bg-gray-300 rounded-lg animate-pulse dark:bg-gray-700">
-
-      </div>
-</div>,
+  ssr: true,
+  loading: () => (
+    <div
+      id="new-products"
+      className=" bg-[#e5e7eb] rounded-md p-4 mb-4 text-center"
+    >
+      <h3 className="text-xl md:text-2xl font-bold text-primary">
+        Sản Phẩm Mới
+      </h3>
+      <div className="h-[22rem]  flex items-center justify-center bg-gray-300 rounded-lg animate-pulse dark:bg-gray-700"></div>
+    </div>
+  ),
 });
-const CategoriesProduct = dynamic(() => import('./_components/CategoriesProduct'), {
-  ssr: false,
-  loading: () => 
-  <div>
-<h2 className="text-xl md:text-2xl text-primary font-bold text-center m-0 mb-2">
-      Danh Mục Sản Phẩm
-    </h2>
-  <div className="lg:h-[34rem] grid grid-cols-3 gap-2 md:gap-4 my-4">
-      <div className="h-[10rem] md:h-[20rem] lg:h-[22rem] col-span-3 md:col-span-1 flex items-center justify-center bg-gray-300 rounded-lg animate-pulse dark:bg-gray-700"></div>
-      <div className="h-[20rem] lg:h-[22rem]  col-span-3 md:col-span-1 grid grid-cols-2 gap-2 lg:gap-4 ">
-      <div className="col-span-1 bg-gray-300 animate-pulse dark:bg-gray-700 rounded-2xl"></div>
-      <div className="col-span-1 bg-gray-300 animate-pulse dark:bg-gray-700 rounded-2xl"></div>
-      <div className="col-span-1 bg-gray-300 animate-pulse dark:bg-gray-700 rounded-2xl"></div>
-      <div className="col-span-1 bg-gray-300 animate-pulse dark:bg-gray-700 rounded-2xl"></div>
+const CategoriesProduct = dynamic(
+  () => import("./_components/CategoriesProduct"),
+  {
+    ssr: true,
+    loading: () => (
+      <div>
+        <h2 className="text-xl md:text-2xl text-primary font-bold text-center m-0 mb-2">
+          Danh Mục Sản Phẩm
+        </h2>
+        <div className="lg:h-[34rem] grid grid-cols-3 gap-2 md:gap-4 my-4">
+          <div className="h-[10rem] md:h-[20rem] lg:h-[22rem] col-span-3 md:col-span-1 flex items-center justify-center bg-gray-300 rounded-lg animate-pulse dark:bg-gray-700"></div>
+          <div className="h-[20rem] lg:h-[22rem]  col-span-3 md:col-span-1 grid grid-cols-2 gap-2 lg:gap-4 ">
+            <div className="col-span-1 bg-gray-300 animate-pulse dark:bg-gray-700 rounded-2xl"></div>
+            <div className="col-span-1 bg-gray-300 animate-pulse dark:bg-gray-700 rounded-2xl"></div>
+            <div className="col-span-1 bg-gray-300 animate-pulse dark:bg-gray-700 rounded-2xl"></div>
+            <div className="col-span-1 bg-gray-300 animate-pulse dark:bg-gray-700 rounded-2xl"></div>
+          </div>
+          <div className="h-[10rem] md:h-[20rem] lg:h-[22rem]  col-span-3 md:col-span-1 flex items-center justify-center bg-gray-300 rounded-lg animate-pulse dark:bg-gray-700"></div>
+        </div>
       </div>
-      <div className="h-[10rem] md:h-[20rem] lg:h-[22rem]  col-span-3 md:col-span-1 flex items-center justify-center bg-gray-300 rounded-lg animate-pulse dark:bg-gray-700"></div>
-  </div>
-  </div>
-});
-
-
+    ),
+  }
+);
 
 //
 const slideBanners = [
-  { name: "Zadez", image: "/images/banner1.webp" },
-  { name: "Zadez", image: "/images/banner2.webp" },
-  { name: "Zadez", image: "/images/banner3.webp" },
+  { name: "Zadez", image: "/images/banner1.jpg" },
+  { name: "Zadez", image: "/images/banner2.jpg" },
+  { name: "Zadez", image: "/images/banner3.jpg" },
 ];
 
 // The New Story of GAMING
@@ -127,8 +132,8 @@ export default async function Home() {
       </section>
       <h1 className="invisible m-0 text-xs">ZADEZ VIỆT NAM</h1>
       {/* DANH MỤC SẢN PHẨM */}
-     <CategoriesProduct/>
-     
+      <CategoriesProduct />
+
       {/* SẢN PHẨM MỚI */}
       <NewProducts />
 
@@ -145,7 +150,9 @@ export default async function Home() {
         <SlideImage data={newStoryGaming} width={400} height={295} />
       </section>
       <section className="flex flex-col justify-center items-center text-justify md:text-center mt-8">
-        <h5 className="text-xl md:text-2xl text-primary font-bold my-2">About Zadez</h5>
+        <h5 className="text-xl md:text-2xl text-primary font-bold my-2">
+          About Zadez
+        </h5>
         <p className="text-base mx-8 mb-4">
           ZADEZ là thương hiệu phụ kiện duy nhất tại thị trường Việt Nam quản lý
           từng sản phẩm theo mã số định danh – Serial Number (tương tự với

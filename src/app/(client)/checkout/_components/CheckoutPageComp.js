@@ -36,7 +36,7 @@ const CheckoutPageComp = () => {
     });
     values.products = productsData;
     values.code = "test-code-order";
-    values.status = "Pending";
+    values.status = "pending";
     values.customerId = customerData.data[0].id;
     values.input_date = new Date().toISOString();
     console.log("🚀 ~ file: page.js:8 ~ onFinish ~ values:", values);
@@ -122,6 +122,7 @@ const CheckoutPageComp = () => {
                 required: true,
                 message: "Vui lòng nhập tên người nhận",
               },
+              { min: 5, message: "Tên người dùng phải có ít nhất 5 ký tự" },
             ]}
           >
             <Input placeholder="Nhập tên người nhận" />
@@ -257,12 +258,16 @@ const Card = ({ data }) => {
           <span className="text-base">{data.products.name}</span>
           {/* <span>Black</span> */}
           <div className="">
-                    {data.products.color && (
-                      <Tag color={data.products.color == 'white' ? '' : data.products.color}>
-                        {data.products.color}
-                      </Tag>
-                    )}
-                  </div>
+            {data.products.color && (
+              <Tag
+                color={
+                  data.products.color == "white" ? "" : data.products.color
+                }
+              >
+                {data.products.color}
+              </Tag>
+            )}
+          </div>
           <span>x{data.amount}</span>
           <span className="text-right">
             {data.products.price.toLocaleString()}

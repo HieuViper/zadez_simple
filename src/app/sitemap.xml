@@ -1,42 +1,40 @@
 <xml version="1.0" encoding="UTF-8">
-  <urlset
-    xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
-    <!--  created with Free Online Sitemap Generator www.xml-sitemaps.com  -->
-    <url>
-      <loc>https://dev.zadez.vn/</loc>
-      <lastmod>2024-01-23T09:46:07+00:00</lastmod>
-      <priority>1.00</priority>
-    </url>
-    <url>
-      <loc>https://dev.zadez.vn/danh-muc-san-pham/0?type=headset</loc>
-      <lastmod>2024-01-23T09:46:07+00:00</lastmod>
-      <priority>0.80</priority>
-    </url>
-    <url>
-      <loc>https://dev.zadez.vn/danh-muc-san-pham/0?type=mouse</loc>
-      <lastmod>2024-01-23T09:46:07+00:00</lastmod>
-      <priority>0.80</priority>
-    </url>
-    <url>
-      <loc>https://dev.zadez.vn/danh-muc-san-pham/0?type=keyboard</loc>
-      <lastmod>2024-01-23T09:46:07+00:00</lastmod>
-      <priority>0.80</priority>
-    </url>
-    <url>
-      <loc>https://dev.zadez.vn/danh-muc-san-pham/0?type=bag</loc>
-      <lastmod>2024-01-23T09:46:07+00:00</lastmod>
-      <priority>0.80</priority>
-    </url>
-    <url>
-      <loc>https://dev.zadez.vn/danh-muc-san-pham/0?type=accessories</loc>
-      <lastmod>2024-01-23T09:46:07+00:00</lastmod>
-      <priority>0.80</priority>
-    </url>
-    <url>
-      <loc>https://dev.zadez.vn/danh-muc-san-pham/0?type=speaker</loc>
-      <lastmod>2024-01-23T09:46:07+00:00</lastmod>
-      <priority>0.80</priority>
-    </url>
-  </urlset>
+  <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<!--  created with Free Online Sitemap Generator www.xml-sitemaps.com  -->
+<url>
+<loc>https://zadez.vn/</loc>
+<lastmod>2024-02-26T04:21:01+00:00</lastmod>
+<priority>1.00</priority>
+</url>
+<url>
+<loc>https://zadez.vn/danh-muc-san-pham/0?type=headset</loc>
+<lastmod>2024-02-26T04:21:01+00:00</lastmod>
+<priority>0.80</priority>
+</url>
+<url>
+<loc>https://zadez.vn/danh-muc-san-pham/0?type=mouse</loc>
+<lastmod>2024-02-26T04:21:01+00:00</lastmod>
+<priority>0.80</priority>
+</url>
+<url>
+<loc>https://zadez.vn/danh-muc-san-pham/0?type=keyboard</loc>
+<lastmod>2024-02-26T04:21:01+00:00</lastmod>
+<priority>0.80</priority>
+</url>
+<url>
+<loc>https://zadez.vn/danh-muc-san-pham/0?type=bag</loc>
+<lastmod>2024-02-26T04:21:01+00:00</lastmod>
+<priority>0.80</priority>
+</url>
+<url>
+<loc>https://zadez.vn/danh-muc-san-pham/0?type=accessories</loc>
+<lastmod>2024-02-26T04:21:01+00:00</lastmod>
+<priority>0.80</priority>
+</url>
+<url>
+<loc>https://zadez.vn/danh-muc-san-pham/0?type=speaker</loc>
+<lastmod>2024-02-26T04:21:01+00:00</lastmod>
+<priority>0.80</priority>
+</url>
+</urlset>
 </xml>

@@ -10,14 +10,23 @@ export async function GET(req, { params }) {
   const searchParams = req.nextUrl.searchParams;
   const page = searchParams.has("page") ? searchParams.get("page") - 1 : 0;
   const limit = searchParams.has("limit") ? searchParams.get("limit") : 20;
-  const option = searchParams.has("keyword")
+
+  let option = searchParams.has("keyword")
     ? {
         code: {
           [Op.like]: "%" + searchParams.get("keyword") + "%",
         },
       }
     : {};
+  (searchParams.has("status") && searchParams.get("status") == "all") ||
+  !searchParams.get("status")
+    ? (option = { ...option })
+    : (option = {
+        ...option,
+        status: searchParams.get("status"),
+      });
 
+  console.log(option);
   let { count, rows } = await db.Orders.findAndCountAll({
     where: option,
     offset: parseInt(page) * parseInt(limit),
