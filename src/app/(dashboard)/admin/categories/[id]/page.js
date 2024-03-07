@@ -208,8 +208,7 @@ const CategoriesForm = ({ params }) => {
             placeholder="Input name"
           />
         </Form.Item>
-        {isAddMode ? (
-          <Form.Item
+        <Form.Item
             label={<span className="font-medium">Code</span>}
             name="category_code"
             rules={[
@@ -224,25 +223,6 @@ const CategoriesForm = ({ params }) => {
               placeholder="Input category code"
             />
           </Form.Item>
-        ) : data?.type == "products" ? (
-          <Form.Item
-            label={<span className="font-medium">Code</span>}
-            name="category_code"
-            rules={[
-              {
-                required: true,
-                message: "Please input code!",
-              },
-            ]}
-          >
-            <Input
-              onChange={(e) => changeCode(e.target.value)}
-              placeholder="Input category code"
-            />
-          </Form.Item>
-        ) : (
-          <></>
-        )}
         <Form.Item
           label={<span className="font-medium ">Parent</span>}
           name={`parent`}
