@@ -1,11 +1,9 @@
 "use client";
-import React from "react";
-import dynamic from "next/dynamic";
-import Image from "next/image";
 import SlideBanner from "@/components/SlideBanner";
+import SlideCard from "@/components/SlideCard";
 import SlideImage from "@/components/SlideImage";
 import { useSWRData } from "@/library/api";
-import SlideCard from "@/components/SlideCard";
+import Image from "next/image";
 import Link from "next/link";
 import ImageAccesories from "../../../../public/images/categories/accessories-mobile.webp";
 import ImageAudio from "../../../../public/images/categories/audio-mobile.webp";
@@ -13,7 +11,6 @@ import ImageBag from "../../../../public/images/categories/bag-mobile.webp";
 import ImageHeadset from "../../../../public/images/categories/headset-mobile.webp";
 import ImageKeyboard from "../../../../public/images/categories/keyboard-mobile.webp";
 import ImageMouse from "../../../../public/images/categories/mouse-mobile.webp";
-import LogoGaming from "../../../../public/images/logo-gaming.webp";
 // const SlideBanner = dynamic(() => import("@/components/SlideBanner"), {
 //     ssr: true,
 //     loading: () => (

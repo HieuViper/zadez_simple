@@ -87,8 +87,8 @@ body {
   @apply rounded-xl;
   height: 120px;
 }
-.no-bg-thumbs .swiper-thumbs{
-  background: none ;
+.no-bg-thumbs .swiper-thumbs {
+  background: none;
 }
 .mySwiper1 .swiper-slide {
   /* width: 10%; */

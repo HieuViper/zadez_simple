@@ -1,5 +1,4 @@
 import Image from "next/image";
-import Link from "next/link";
 
 const Footer = () => {
   const introFooter = {
@@ -20,36 +19,36 @@ const Footer = () => {
           <div className="">
             <div className="mt-6">
               ZADEZ HONG KONG -{" "}
-              <Link
+              <a
                 style={{ textDecoration: "none", color: "#AAAAAA" }}
                 href="https://zadez.hk"
                 target="_blank"
                 className="font-bold"
               >
                 WWW.ZADEZ.HK
-              </Link>
+              </a>
             </div>
             <div className="mt-2">
               ZADEZ AMERICA -{" "}
-              <Link
+              <a
                 style={{ textDecoration: "none", color: "#AAAAAA" }}
                 href="https://zadez.us"
                 target="_blank"
                 className="font-bold"
               >
                 WWW.ZADEZ.US
-              </Link>
+              </a>
             </div>
             <div className="mt-2">
               ZADEZ VIETNAM -{" "}
-              <Link
+              <a
                 style={{ textDecoration: "none", color: "#AAAAAA" }}
                 href="https://zadez.vn"
                 target="_blank"
                 className="font-bold"
               >
                 WWW.ZADEZ.VN
-              </Link>
+              </a>
             </div>
           </div>
         </div>
@@ -79,7 +78,7 @@ const Footer = () => {
               - Tổng đài CSKH: (028) 7777.0053 - 1900.0053 (phục vụ từ
               8h30-17h30, T2-T6)
               <br />- Kích Hoạt &amp; Tra Cứu Bảo Hành: website
-              <Link
+              <a
                 style={{ textDecoration: "none", color: "#AAAAAA" }}
                 href="https://PSI.ZADEZ.VN"
                 target="_blank"
@@ -88,9 +87,9 @@ const Footer = () => {
                   {" "}
                   PSI.ZADEZ.VN
                 </span>
-              </Link>
+              </a>
               <br />- Fanpage:
-              <Link
+              <a
                 style={{ textDecoration: "none", color: "#AAAAAA" }}
                 href="https://www.facebook.com/ZadezTechnology"
                 target="_blank"
@@ -99,9 +98,9 @@ const Footer = () => {
                   {" "}
                   Facebook.com/ZadezTechnology
                 </span>
-              </Link>
+              </a>
               <br /> - Youtube:{" "}
-              <Link
+              <a
                 style={{ textDecoration: "none", color: "#AAAAAA" }}
                 href="https://www.youtube.com/zadezvietnam"
                 target="_blank"
@@ -109,9 +108,9 @@ const Footer = () => {
                 <span className="hover:text-[#F88686] font-semibold">
                   ZADEZ Vietnam
                 </span>
-              </Link>
+              </a>
               <br />- Messeger:{" "}
-              <Link
+              <a
                 style={{ textDecoration: "none", color: "#AAAAAA" }}
                 href="https://m.me/ZadezTechnology"
                 target="_blank"
@@ -120,9 +119,9 @@ const Footer = () => {
                 <span className="hover:text-[#F88686] font-semibold">
                   ZADEZ Vietnam
                 </span>
-              </Link>
+              </a>
               <br />- Tài khoản Zalo Official Account:{" "}
-              <Link
+              <a
                 style={{ textDecoration: "none", color: "#AAAAAA" }}
                 href="https://Zalo.me/3126944695787017498"
                 target="_blank"
@@ -131,9 +130,9 @@ const Footer = () => {
                 <span className="hover:text-[#F88686] font-semibold">
                   ZADEZ Vietnam
                 </span>
-              </Link>
+              </a>
               <br />- Trung tâm CSKH:
-              <Link
+              <a
                 style={{ textDecoration: "none", color: "#AAAAAA" }}
                 href="https://goo.gl/maps/YDnra6Dx3oVrLnGT8"
                 target="_blank"
@@ -143,10 +142,10 @@ const Footer = () => {
                   {" "}
                   B97 Phú Thuận, phường Phú Thuận, Quận 7, Tp. Hồ Chí Minh.
                 </span>
-              </Link>
+              </a>
             </p>
           </div>
-          <Link
+          <a
             style={{ textDecoration: "none", color: "#AAAAAA" }}
             href="http://online.gov.vn/Home/WebDetails/64180"
             target="_blank"
@@ -157,7 +156,7 @@ const Footer = () => {
               height={50}
               alt="Zadez"
             />
-          </Link>
+          </a>
         </div>
       </div>
       <div className="bg-[#161716] text-[#AAAAAA] text-xs p-4  text-center">
@@ -165,7 +164,12 @@ const Footer = () => {
         LLC. (USA)
       </div>
       <a className="phone-call" href="tel:19000053">
-      <Image width={50} height={50} src="/images/phone-call.webp" alt="zalo" />
+        <Image
+          width={50}
+          height={50}
+          src="/images/phone-call.webp"
+          alt="zalo"
+        />
       </a>
       <a
         className="zalo-chat-widget"

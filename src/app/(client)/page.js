@@ -1,14 +1,15 @@
 import dynamic from "next/dynamic";
+import Script from "next/script";
 
 const Content = dynamic(() => import("./_components/DynamicContent"), {
-  ssr: false,
   loading: () => <div id="content" className="h-[600px]"></div>,
 });
 
 export default async function Home() {
   return (
     <>
-      <script
+      <Script
+        id="schema"
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: `

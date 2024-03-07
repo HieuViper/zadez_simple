@@ -4,23 +4,14 @@ import store from "@/library/zustand/store";
 import { LogoutOutlined, UserOutlined } from "@ant-design/icons";
 import { Button, Dropdown, message } from "antd";
 import dynamic from "next/dynamic";
-import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
-const BadgeCart = dynamic(() => import("../components/BadgeCart"), {
-  ssr: false,
-});
-const Cart = dynamic(() => import("./Cart"), {
-  ssr: false,
-});
-const NavBar = dynamic(() => import("./NavBar"), {
-  ssr: false,
-});
-const SideBar = dynamic(() => import("./SideBar"), {
-  ssr: false,
-});
+const BadgeCart = dynamic(() => import("../components/BadgeCart"));
+const Cart = dynamic(() => import("./Cart"));
+const NavBar = dynamic(() => import("./NavBar"));
+const SideBar = dynamic(() => import("./SideBar"));
 
 const Header = () => {
   const { userState, cartState, toggleModal, resetUserState } = store();
@@ -116,7 +107,7 @@ const Header = () => {
   const onCloseCart = () => {
     setOpenCart(false);
   };
-  
+
   return (
     <header
       className={`shadow-sm lg:py-4 py-2 w-full bg-[#fafafa]  px-2 fixed top-0 z-30 transition-all duration-500`}

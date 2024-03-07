@@ -7,9 +7,7 @@ import "swiper/css/free-mode";
 import "swiper/css/navigation";
 import "swiper/css/thumbs";
 
-const AuthenPopup = dynamic(() => import("@/components/AuthenPopup"), {
-  ssr: true,
-});
+const AuthenPopup = dynamic(() => import("@/components/AuthenPopup"));
 const GoogleAnalytics = dynamic(() => import("@/components/GoogleAnalystic"), {
   ssr: true,
 });
