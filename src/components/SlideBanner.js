@@ -25,33 +25,36 @@ const SlideBanner = ({ data, width, height }) => {
         {data &&
           data?.map((item, i) => (
             <SwiperSlide key={i}>
-              {i == data?.length - 1 ? <Image
-                sizes="100vw"
-                style={{
-                  width: "100%",
-                  height: "auto",
-                }}
-                width={width}
-                height={height}
-                src={item.image}
-                alt={item.name}
-                className="rounded-lg"
-                priority={true}
-                // loading="lazy"
-              /> : <Image
-              sizes="100vw"
-              style={{
-                width: "100%",
-                height: "auto",
-              }}
-              width={width}
-              height={height}
-              src={item.image}
-              alt={item.name}
-              className="rounded-lg"
-              // loading="lazy"
-            />}
-              
+              {i == data?.length - 1 ? (
+                <Image
+                  sizes="100vw"
+                  style={{
+                    width: "100%",
+                    height: "auto",
+                  }}
+                  width={width}
+                  height={height}
+                  src={item.image}
+                  alt={item.name}
+                  className="rounded-lg"
+                  priority={true}
+                  // loading="lazy"
+                />
+              ) : (
+                <Image
+                  sizes="100vw"
+                  style={{
+                    width: "100%",
+                    height: "auto",
+                  }}
+                  width={width}
+                  height={height}
+                  src={item.image}
+                  alt={item.name}
+                  className="rounded-lg"
+                  // loading="lazy"
+                />
+              )}
             </SwiperSlide>
           ))}
       </Swiper>

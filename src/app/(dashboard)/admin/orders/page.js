@@ -1,6 +1,6 @@
 "use client";
 import { useSWRData } from "@/library/api";
-import { Button, Divider, Popconfirm, Space, Table } from "antd";
+import { Button, Divider, Popconfirm, Radio, Space, Table } from "antd";
 import Search from "antd/es/input/Search";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
@@ -17,12 +17,6 @@ const optTimeFormat = {
 
 const OrderList = () => {
   const router = useRouter();
-  const searchParams = useSearchParams();
-  const [search, setSearch] = useState("");
-  const page = Number(searchParams.get("page") || 1);
-  const limit = Number(searchParams.get("limit") || 10);
-  const [selectedRowKeys, setSelectedRowKeys] = useState([]);
-  const hasSelected = selectedRowKeys.length > 0;
 
   const columns = [
     {
@@ -99,11 +93,20 @@ const OrderList = () => {
     },
   ];
 
+  const searchParams = useSearchParams();
+  const [search, setSearch] = useState("");
+  const page = Number(searchParams.get("page") || 1);
+  const limit = Number(searchParams.get("limit") || 10);
+  const [selectedRowKeys, setSelectedRowKeys] = useState([]);
+  const hasSelected = selectedRowKeys.length > 0;
+  const status = searchParams.get("status") || "";
+
   const { data, error, isLoading, deleteData, bulkDeleteData } = useSWRData(
     "/api/orders",
     {
       page,
       limit,
+      status,
       keyword: search,
     }
   );
@@ -161,6 +164,24 @@ const OrderList = () => {
         </Popconfirm>
       </div>
 
+      <Radio.Group
+        buttonStyle="solid"
+        onChange={(e) => {
+          router.replace(
+            `/admin/orders?page=1&limit=10&status=${e.target.value}`
+          );
+        }}
+        defaultValue={status}
+        style={{ marginBottom: 16 }}
+      >
+        <Radio.Button value={"all"}>All</Radio.Button>
+        <Radio.Button value={"pending"}>Pending</Radio.Button>
+        <Radio.Button value={"confirmed"}>Confirmed</Radio.Button>
+        <Radio.Button value={"delivered"}>Delivered</Radio.Button>
+        <Radio.Button value={"done"}>Done</Radio.Button>
+        <Radio.Button value={"rejected"}>Rejected</Radio.Button>
+      </Radio.Group>
+
       <Table
         columns={columns}
         dataSource={data?.data}
@@ -181,7 +202,7 @@ const OrderList = () => {
         }}
         onChange={(e) => {
           router.replace(
-            `/admin/orders?page=${e.current}&limit=${e.pageSize}&keyword=${search}`
+            `/admin/orders?page=${e.current}&limit=${e.pageSize}&keyword=${search}&status=${status}`
           );
         }}
         rowKey="id"

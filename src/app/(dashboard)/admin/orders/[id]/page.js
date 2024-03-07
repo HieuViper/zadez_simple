@@ -8,10 +8,12 @@ import {
   Divider,
   Form,
   Input,
+  Popconfirm,
   Row,
   Select,
-  Typography,
+  message,
 } from "antd";
+import axios from "axios";
 import dayjs from "dayjs";
 import dynamic from "next/dynamic";
 import { useRouter, useSearchParams } from "next/navigation";
@@ -62,7 +64,7 @@ const OrderForm = ({ params }) => {
   };
   const onFinishFailed = () => {};
 
-  const { data, error, isLoading, createData, updateData } = useSWRData(
+  const { data, error, isLoading, createData, updateData, mutate } = useSWRData(
     "/api/orders",
     isAddMode ? {} : { id: params.id }
   );
@@ -98,7 +100,7 @@ const OrderForm = ({ params }) => {
   if (isLoading) return <div>loading...123</div>;
 
   return (
-    <Row type="flex" justify="center" align="middle">
+    <Row type="flex" justify="center" align="middle" className="relative">
       <Form
         form={form}
         name="basic"
@@ -136,17 +138,8 @@ const OrderForm = ({ params }) => {
           <Input disabled={!isAddMode} />
         </Form.Item>
 
-        <Form.Item
-          label="Status"
-          name="status"
-          rules={[
-            {
-              required: true,
-              message: "Please input order's status!",
-            },
-          ]}
-        >
-          <Select
+        <Form.Item label="Status" name="status">
+          {/* <Select
             options={[
               {
                 value: "pending",
@@ -173,7 +166,8 @@ const OrderForm = ({ params }) => {
                 label: <Typography.Text type="danger">Reject</Typography.Text>,
               },
             ]}
-          />
+          /> */}
+          <Input disabled />
         </Form.Item>
         <Form.Item
           label="Input Date"
@@ -245,6 +239,71 @@ const OrderForm = ({ params }) => {
           </Button>
         </Form.Item>
       </Form>
+      <div className="absolute top-0 right-0 flex flex-col gap-2">
+        <Popconfirm
+          title="Xác nhận huỷ đơn"
+          description="Chắc chắn muốn huỷ đơn này?"
+          onConfirm={() => {}}
+          onCancel={() => {}}
+          okText="HUỶ"
+          cancelText="Không"
+        >
+          <Button danger>Reject</Button>
+        </Popconfirm>
+
+        {data.status == "pending" ? (
+          <Popconfirm
+            title="Xác nhận đơn"
+            description="Đã gọi điện xác nhận đơn với KH?"
+            onConfirm={() => {
+              // let values = {...}
+              console.log(data);
+              axios
+                .put(`/api/orders/change-status/${data.id}`, {
+                  status: "confirmed",
+                })
+                .then((rs) => {
+                  console.log(rs);
+                  if (rs.status == 200) {
+                    message.success("Đơn đã được xác nhận");
+                    mutate();
+                  }
+                });
+            }}
+            onCancel={() => {}}
+            okText="Rồi"
+            cancelText="Chưa"
+          >
+            <Button type="primary">Confirmed</Button>
+          </Popconfirm>
+        ) : null}
+
+        {data.status == "confirmed" ? (
+          <Popconfirm
+            title="Vận chuyển đơn"
+            description="Đã chuyển đơn đến đội vận chuyển?"
+            onConfirm={() => {
+              console.log(data);
+              axios
+                .put(`/api/orders/change-status/${data.id}`, {
+                  status: "delivered",
+                })
+                .then((rs) => {
+                  console.log(rs);
+                  if (rs.status == 200) {
+                    message.success("Đơn xác nhận đã giao cho vận chuyển");
+                    mutate();
+                  }
+                });
+            }}
+            onCancel={() => {}}
+            okText="Rồi"
+            cancelText="Chưa"
+          >
+            <Button type="primary">Confirmed</Button>
+          </Popconfirm>
+        ) : null}
+      </div>
     </Row>
   );
 };

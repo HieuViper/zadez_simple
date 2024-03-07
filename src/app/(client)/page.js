@@ -1,20 +1,17 @@
-import dynamic from 'next/dynamic';
-import React from 'react'
+import dynamic from "next/dynamic";
 
 const Content = dynamic(() => import("./_components/DynamicContent"), {
   ssr: false,
-  loading: () =><div
-  id="content"
-  className="h-[600px]"></div>,});
-
+  loading: () => <div id="content" className="h-[600px]"></div>,
+});
 
 export default async function Home() {
   return (
     <>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: `
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: `
               {
                 "@context": "https://schema.org",
                 "@type": "Organization",
@@ -22,10 +19,10 @@ export default async function Home() {
                 "url": "https://zadez.vn",
                 "logo": "https://zadez.vn/Logo-ZADEZ.webp"
               }
-            `
-          }}
-        />
-    <Content/>
+            `,
+        }}
+      />
+      <Content />
     </>
   );
 }

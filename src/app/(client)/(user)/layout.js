@@ -2,6 +2,7 @@
 import { ShoppingCartOutlined, UserOutlined } from "@ant-design/icons";
 import { Menu } from "antd";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 function getItem(label, key, icon, children, type) {
   return {
     key,
@@ -15,14 +16,14 @@ function getItem(label, key, icon, children, type) {
 const items = [
   getItem(
     "Thông tin cá nhân",
-    "1",
+    "/profile",
     <Link href="/profile" prefetch={false}>
       <UserOutlined />
     </Link>
   ),
   getItem(
-    "Lịch sử đặt hàng",
-    "2",
+    "Lịch sử đơn hàng",
+    "/order-history",
     <Link href="/order-history" prefetch={false}>
       <ShoppingCartOutlined />
     </Link>
@@ -30,6 +31,7 @@ const items = [
 ];
 
 const LayoutUser = ({ children }) => {
+  const location = usePathname();
   return (
     <div className="grid grid-cols-12 mt-10">
       <div className="col-span-3">
@@ -38,7 +40,8 @@ const LayoutUser = ({ children }) => {
             width: 256,
             padding: 8,
           }}
-          defaultSelectedKeys={["1"]}
+          // defaultSelectedKeys={["1"]}
+          selectedKeys={[location]}
           mode="inline"
           items={items}
         />

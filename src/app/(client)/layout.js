@@ -1,7 +1,4 @@
-// import Footer from "../../components/Footer";
 import { AOSInit } from "@/components/AOS";
-import AuthenPopup from "@/components/AuthenPopup";
-// import GoogleAnalytics from "@/components/GoogleAnalystic";
 import { RootStyleRegistry } from "@/library/RootStyleRegistry";
 import { ConfigProvider } from "antd";
 import dynamic from "next/dynamic";
@@ -10,9 +7,12 @@ import "swiper/css/free-mode";
 import "swiper/css/navigation";
 import "swiper/css/thumbs";
 
-const GoogleAnalytics = dynamic(() => import('@/components/GoogleAnalystic'), {
+const AuthenPopup = dynamic(() => import("@/components/AuthenPopup"), {
   ssr: true,
-})
+});
+const GoogleAnalytics = dynamic(() => import("@/components/GoogleAnalystic"), {
+  ssr: true,
+});
 const Header = dynamic(() => import("@/components/Header"), {
   loading: () => (
     <div className="flex justify-around items-center w-full h-[112px] z-30 fixed top-0 bg-white">
@@ -82,8 +82,8 @@ export default async function RootLayout({ children, params }) {
             }}
           >
             <RootStyleRegistry>{children}</RootStyleRegistry>
-            </div>
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50">
+          </div>
+          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50">
             <AuthenPopup />
           </div>
         </main>

@@ -69,15 +69,48 @@ export async function GET(req, { params }) {
   });
 }
 
+function removeAscent(str) {
+  if (str === null || str === undefined) return str;
+  str = str.toLowerCase();
+  str = str.replace(/à|á|ạ|ả|ã|â|ầ|ấ|ậ|ẩ|ẫ|ă|ằ|ắ|ặ|ẳ|ẵ/g, "a");
+  str = str.replace(/è|é|ẹ|ẻ|ẽ|ê|ề|ế|ệ|ể|ễ/g, "e");
+  str = str.replace(/ì|í|ị|ỉ|ĩ/g, "i");
+  str = str.replace(/ò|ó|ọ|ỏ|õ|ô|ồ|ố|ộ|ổ|ỗ|ơ|ờ|ớ|ợ|ở|ỡ/g, "o");
+  str = str.replace(/ù|ú|ụ|ủ|ũ|ư|ừ|ứ|ự|ử|ữ/g, "u");
+  str = str.replace(/ỳ|ý|ỵ|ỷ|ỹ/g, "y");
+  str = str.replace(/đ/g, "d");
+  return str;
+}
+
 export async function POST(body, req) {
   const bodyJSON = await body.json();
   let customer = bodyJSON;
 
-  let customerResult = await db.Customers.create(customer);
-  return NextResponse.json({
-    result: "success",
-    message: "customer created successfully",
-  });
+  // validate name customer
+  let result = validateVietnameseName(customer.name);
+  console.log(result);
+
+  function validateVietnameseName(name) {
+    var regex = /^[a-zA-Z\u00C0-\u1EF9\s]+$/;
+
+    if (regex.test(name)) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  if (!result) {
+    return NextResponse.json({
+      result: "error",
+    });
+  } else {
+    let customerResult = await db.Customers.create(customer);
+    return NextResponse.json({
+      result: "success",
+      message: "customer created successfully",
+    });
+  }
 }
 
 export async function DELETE(body, req) {
