@@ -7,8 +7,26 @@ export async function GET(req, { params }) {
   const searchParams = req.nextUrl.searchParams;
   const page = searchParams.has("page") ? searchParams.get("page") - 1 : 0;
   const limit = searchParams.has("limit") ? searchParams.get("limit") : 10;
-  const option = searchParams.has("keyword")
-    ? {
+  // const option = searchParams.has("keyword")
+  //   ? {
+  //       [Op.or]: [
+  //         {
+  //           title: {
+  //             [Op.like]: "%" + searchParams.get("keyword") + "%",
+  //           },
+  //         },
+  //         {
+  //           value: {
+  //             [Op.like]: "%" + searchParams.get("keyword") + "%",
+  //           },
+  //         },
+  //       ],
+  //     }
+  //   : {};
+  let option = {};
+    if (searchParams.has("keyword")) {
+      option = {
+        ...option,
         [Op.or]: [
           {
             title: {
@@ -21,8 +39,17 @@ export async function GET(req, { params }) {
             },
           },
         ],
+      };
+    } else {
+      {
       }
-    : {};
+    }
+    searchParams.has("value")
+      ? (option = {
+          ...option,
+          value: searchParams.get("value"),
+        })
+      : {};
 
   let { count, rows } = await db.Articles.findAndCountAll({
     where: option,

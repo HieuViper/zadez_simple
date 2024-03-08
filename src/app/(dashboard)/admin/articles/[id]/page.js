@@ -141,19 +141,19 @@ const ArticlesForm = ({ params }) => {
         <Form.Item
           label="Value"
           name="value"
-          rules={[
-            {
-              required: true,
-              message: "Please input value!",
-            },
-          ]}
+          // rules={[
+          //   {
+          //     required: true,
+          //     message: "Please input value!",
+          //   },
+          // ]}
         >
           <Input />
         </Form.Item>
 
-        <Form.Item label="Order" name="order">
+        {/* <Form.Item label="Order" name="order">
           <InputNumber />
-        </Form.Item>
+        </Form.Item> */}
 
         <Form.Item
           name="isActive"
@@ -176,7 +176,7 @@ const ArticlesForm = ({ params }) => {
         <Form.Item name="title" label="Title" rules={[{ required: true }]}>
           <Input />
         </Form.Item>
-        <Form.Item name="short" label="Short" rules={[{ required: true }]}>
+        <Form.Item name="short" label="Short">
           <Input />
         </Form.Item>
         <Form.Item name="description" label="Description">

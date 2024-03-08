@@ -154,7 +154,7 @@ const Category = ({ params }) => {
 
   // PAGINATION
   const [currentPage, setCurrentPage] = useState(1);
-  const [pageSize, setPageSize] = useState(6);
+  const [pageSize, setPageSize] = useState(12);
   const onPageChange = (page) => {
     setCurrentPage(page);
   };
