@@ -7,6 +7,7 @@ import {
   LogoutOutlined,
   MenuFoldOutlined,
   MenuUnfoldOutlined,
+  ProfileOutlined,
   SettingOutlined,
   ShoppingCartOutlined,
   TeamOutlined,
@@ -116,6 +117,20 @@ const DashboardLayout = (props) => {
         null,
         <Link href="/admin/consts/0?previousPage=1&previousLimit=10">
           Add Consts
+        </Link>
+      ),
+    ]),
+    getItem("Articles", "Articles", <ProfileOutlined />, [
+      getItem(
+        "/admin/articles",
+        null,
+        <Link href="/admin/articles">Articles List</Link>
+      ),
+      getItem(
+        "/admin/articles/0",
+        null,
+        <Link href="/admin/articles/0?previousPage=1&previousLimit=10">
+          Add Articles
         </Link>
       ),
     ]),
