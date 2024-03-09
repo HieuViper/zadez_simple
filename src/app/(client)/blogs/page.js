@@ -2,6 +2,7 @@
 import { useSWRData } from "@/library/api";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import Banner from "./_components/Banner";
 
 const BlogsPage = () => {
   const arr = Array.apply(null, Array(4)).map(Number.prototype.valueOf, 0);
@@ -14,14 +15,18 @@ const BlogsPage = () => {
 
   return (
     <div className="wrapper">
+      <div className=" bg-white md:px-20 px-4 py-4 rounded-lg m-auto">
+        <Banner listImage={data?.data} />
+      </div>
+
       <div
         style={{
           backgroundImage: `url("${data?.data[0].mainImageURL}")`,
         }}
-        className="h-[70%] relative -mx-6 lg:-mx-16 xl:-mx-24 text-white sm:pl-10 lg:pl-20 py-16 grid grid-cols-12 bg-no-repeat bg-cover"
+        className="h-[70%] sm:grid hidden relative -mx-6 lg:-mx-16 xl:-mx-24 text-white sm:pl-10 lg:pl-20 py-16 grid-cols-12 bg-no-repeat bg-cover"
       >
         <div
-          className="cursor-pointer flex flex-col gap-4 col-start-1 sm:col-span-7 lg:col-span-4 justify-center h-full z-10"
+          className="cursor-pointer sm:flex hidden flex-col gap-4 col-start-1 sm:col-span-7 lg:col-span-4 justify-center h-full z-10"
           onClick={() =>
             router.push(
               "/blogs/" +
@@ -91,7 +96,7 @@ const BlogsPage = () => {
         <div className="absolute inset-0 bg-gray-900 bg-opacity-30 rounded-lg"></div>
       </div>
 
-      <div className="grid grid-cols-2 gap-8 py-16">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 py-6 sm:py-16">
         {data?.data.map((item, index) => (
           <div
             key={index}
@@ -112,7 +117,7 @@ const BlogsPage = () => {
               {item.title}
             </div>
             <div
-              className="absolute inset-0 bg-gray-900 bg-opacity-30 rounded-lg transition-all bg-cover scale-100 hover:scale-110"
+              className="absolute inset-0 bg-gray-900 bg-opacity-30 rounded-lg transition-all bg-cover bg-center scale-100 hover:scale-110"
               style={{ backgroundImage: `url('${item.mainImageURL}')` }}
             />
           </div>
