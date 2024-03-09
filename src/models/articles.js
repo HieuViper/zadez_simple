@@ -8,7 +8,7 @@ module.exports = (sequelize, DataTypes) => {
       isActive: DataTypes.BOOLEAN,
       title: DataTypes.STRING,
       short: DataTypes.STRING,
-      description: DataTypes.STRING,
+      description: DataTypes.TEXT,
       status: DataTypes.STRING,
     },
     { tableName: "articles" }
