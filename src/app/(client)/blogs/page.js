@@ -15,7 +15,7 @@ const BlogsPage = () => {
 
   return (
     <div className="wrapper">
-      <div className=" bg-white md:px-20 px-4 py-4 rounded-lg m-auto">
+      <div className=" bg-white md:px-20 px-4 py-4 rounded-lg m-auto sm:hidden block">
         <Banner listImage={data?.data} />
       </div>
 
