@@ -5,25 +5,28 @@ import { useRouter } from "next/navigation";
 import Banner from "./_components/Banner";
 
 const BlogsPage = () => {
-  const arr = Array.apply(null, Array(4)).map(Number.prototype.valueOf, 0);
   const router = useRouter();
 
   const { data, isLoading } = useSWRData("/api/articles");
-  console.log("🚀 ~ BlogsPage ~ data:", data);
+  // console.log("🚀 ~ BlogsPage ~ data:", data);
 
   if (isLoading) return <div>loading..</div>;
 
   return (
     <div className="wrapper">
-      <div className=" bg-white md:px-20 px-4 py-4 rounded-lg m-auto">
+      <div className="sm:hidden block bg-white md:px-20 px-4 py-4 rounded-lg m-auto">
         <Banner listImage={data?.data} />
       </div>
 
       <div
         style={{
-          backgroundImage: `url("${data?.data[0].mainImageURL}")`,
+          backgroundImage: `url("${
+            data?.data[0]?.mainImageURL
+              ? data?.data[0]?.mainImageURL
+              : "/no-image.jpg"
+          }")`,
         }}
-        className="h-[70%] sm:grid hidden relative -mx-6 lg:-mx-16 xl:-mx-24 text-white sm:pl-10 lg:pl-20 py-16 grid-cols-12 bg-no-repeat bg-cover"
+        className="h-[70%] sm:grid hidden relative -mx-6 lg:-mx-16 xl:-mx-24 text-white sm:pl-10 lg:pl-20 py-16 grid-cols-12 bg-no-repeat bg-cover bg-center"
       >
         <div
           className="cursor-pointer sm:flex hidden flex-col gap-4 col-start-1 sm:col-span-7 lg:col-span-4 justify-center h-full z-10"
@@ -39,23 +42,27 @@ const BlogsPage = () => {
             )
           }
         >
-          <div className="text-3xl font-semibold">{data?.data[0].title}</div>
+          <div className="text-3xl font-semibold">{data?.data[0]?.title}</div>
           <Image
-            src={"/background.jpg"}
+            src={
+              data?.data[0]?.mainImageURL
+                ? data?.data[0]?.mainImageURL
+                : "/no-image.jpg"
+            }
             width={600}
             height={300}
             alt="ok"
             className="object-cover"
           />
-          <div className="text-xs">{data?.data[0].short}</div>
+          <div className="text-xs">{data?.data[0]?.short}</div>
         </div>
 
         <div className="col-end-13 col-span-4 z-10">
           <div className="flex flex-col">
-            {data?.data.map((item, index) => (
+            {data?.data.slice(0,4).map((item, index) => (
               <div
                 className={`flex items-center gap-4 py-4 cursor-pointer hover:bg-[rgba(0,0,0,0.2)] ${
-                  index != arr.length - 1
+                  index != data.data.slice(0,4).length - 1
                     ? "border-solid border-0 border-b border-gray-500"
                     : ""
                 }`}
@@ -72,20 +79,27 @@ const BlogsPage = () => {
                   )
                 }
               >
-                <Image
-                  src={item.mainImageURL}
-                  width={100}
-                  height={70}
-                  alt="ok"
-                />
+                <div
+                  className="w-[100px] h-[70px]"
+                  style={{ position: "relative" }}
+                >
+                  <Image
+                    src={
+                      item?.mainImageURL ? item?.mainImageURL : "/no-image.jpg"
+                    }
+                    alt=""
+                    fill
+                    className="rounded-lg object-cover object-center"
+                  />
+                </div>
                 <div className="flex flex-col gap-3">
                   <div className="font-bold">
                     {item.title.slice(0, 20) +
                       (item.title.length > 20 ? "..." : "")}
                   </div>
                   <div className="italic text-sm">
-                    {item.short.slice(0, 20) +
-                      (item.short.length > 20 ? "..." : "")}
+                    {item?.short?.slice(0, 20) +
+                      (item?.short?.length > 20 ? "..." : "")}
                   </div>
                 </div>
               </div>
@@ -118,7 +132,11 @@ const BlogsPage = () => {
             </div>
             <div
               className="absolute inset-0 bg-gray-900 bg-opacity-30 rounded-lg transition-all bg-cover bg-center scale-100 hover:scale-110"
-              style={{ backgroundImage: `url('${item.mainImageURL}')` }}
+              style={{
+                backgroundImage: `url('${
+                  item?.mainImageURL ? item?.mainImageURL : "/no-image.jpg"
+                }')`,
+              }}
             />
           </div>
         ))}

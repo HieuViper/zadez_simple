@@ -4,6 +4,7 @@ import UploadImage from "@/components/UploadImage";
 import { useSWRData, useSWRUpload } from "@/library/api";
 import { DeleteOutlined, SaveOutlined } from "@ant-design/icons";
 import { Button, Form, Input, InputNumber, Row, Select } from "antd";
+import dynamic from "next/dynamic";
 import Image from "next/image";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";

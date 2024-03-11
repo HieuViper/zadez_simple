@@ -52,7 +52,7 @@ const Footer = dynamic(() => import("@/components/Footer"), {
 export const metadata = {
   title: "Welcome to ZADEZ - ZADEZ Vietnam",
   description:
-    "Chơi game là niềm đam mê của bạn và phục vụ cho niềm đam mê đó là sứ mệnh của chúng tôi. Chuyên trang giới thiệu phụ kiện Gaming của ZADEZ: Bàn phím cơ, chuột gaming, tai nghe gaming, đế treo tai nghe, miếng lót gaming... bảo hành điện tử theo Serial Number.",
+    "Chơi game là niềm đam mê của bạn và phục vụ cho niềm đam mê đó là sứ mệnh của chúng tôi. Chuyên trang giới thiệu phụ kiện Gaming của ZADEZ: Bàn phím cơ, chuột gaming, tai nghe gaming, đế treo tai nghe, miếng lót gaming.",
   icons: {
     icon: "/zadez_logo_title.jpg",
   },
@@ -69,7 +69,7 @@ export default async function RootLayout({ children, params }) {
         }}
       >
         <AOSInit />
-        <GoogleAnalytics />
+        {/* <GoogleAnalytics /> */}
         <Header />
         <main>
           <div
