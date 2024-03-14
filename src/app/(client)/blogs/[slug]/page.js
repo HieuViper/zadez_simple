@@ -9,14 +9,16 @@ export async function generateMetadata({ params, searchParams }, parent) {
   const article = await fetch(
     `${process.env.BASE_URL}/api/articles/${id}`
   ).then((res) => res.json());
+  console.log("🚀 ~ generateMetadata ~ article:", article);
 
   return {
     title: article.title,
     description: article.short,
+    keywords: article.keywords,
     openGraph: {
       title: article.title,
       description: article.short,
-      url: global?.window && window.location.origin,
+      url: global?.window && window.location.href,
       siteName: "Zadez VietNam",
       images: [
         {

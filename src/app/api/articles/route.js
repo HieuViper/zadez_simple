@@ -24,32 +24,32 @@ export async function GET(req, { params }) {
   //     }
   //   : {};
   let option = {};
-    if (searchParams.has("keyword")) {
-      option = {
-        ...option,
-        [Op.or]: [
-          {
-            title: {
-              [Op.like]: "%" + searchParams.get("keyword") + "%",
-            },
+  if (searchParams.has("keyword")) {
+    option = {
+      ...option,
+      [Op.or]: [
+        {
+          title: {
+            [Op.like]: "%" + searchParams.get("keyword") + "%",
           },
-          {
-            value: {
-              [Op.like]: "%" + searchParams.get("keyword") + "%",
-            },
+        },
+        {
+          value: {
+            [Op.like]: "%" + searchParams.get("keyword") + "%",
           },
-        ],
-      };
-    } else {
-      {
-      }
+        },
+      ],
+    };
+  } else {
+    {
     }
-    searchParams.has("value")
-      ? (option = {
-          ...option,
-          value: searchParams.get("value"),
-        })
-      : {};
+  }
+  searchParams.has("value")
+    ? (option = {
+        ...option,
+        value: searchParams.get("value"),
+      })
+    : {};
 
   let { count, rows } = await db.Articles.findAndCountAll({
     where: option,
@@ -74,7 +74,6 @@ export async function POST(body, req) {
   let articles = bodyJSON;
 
   let articlesResult = await db.Articles.create(articles);
-  console.log("🚀 ~ file: route.js:55 ~ POST ~ articlesResult:", articlesResult);
   return NextResponse.json({
     result: "success",
     message: "articles created successfully",
