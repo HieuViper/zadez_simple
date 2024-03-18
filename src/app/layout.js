@@ -1,8 +1,33 @@
-import { Roboto } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
-export const roboto = Roboto({
-  subsets: ["vietnamese"],
-  weight: ["100", "300", "400", "500", "700", "900"],
+const roboto = localFont({
+  src: [
+    {
+      path: "../../public/font/Roboto-Light.ttf",
+      weight: "300",
+      style: "light",
+    },
+    {
+      path: "../../public/font/Roboto-Regular.ttf",
+      weight: "400",
+      style: "normal",
+    },
+    {
+      path: "../../public/font/Roboto-Italic.ttf",
+      weight: "400",
+      style: "italic",
+    },
+    {
+      path: "../../public/font/Roboto-Medium.ttf",
+      weight: "500",
+      style: "medium",
+    },
+    {
+      path: "../../public/font/Roboto-Bold.ttf",
+      weight: "700",
+      style: "normal",
+    },
+  ],
 });
 
 export const metadata = {
