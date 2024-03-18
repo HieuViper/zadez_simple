@@ -25,7 +25,7 @@ const SlideBanner = ({ data, width, height }) => {
         {data &&
           data?.map((item, i) => (
             <SwiperSlide key={i}>
-              {i == data?.length - 1 ? (
+              {i == 0 ? (
                 <Image
                   sizes="40vw"
                   style={{

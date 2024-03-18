@@ -129,7 +129,7 @@ const ModalSearch = () => {
           ))}
         </div>
       </Modal>
-      <SearchOutlined style={{ fontSize: "26px" }} onClick={() => setIsModalOpen(true)} />
+      <SearchOutlined style={{ fontSize: "24px" }} onClick={() => setIsModalOpen(true)} />
 
     </>
   );

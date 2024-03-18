@@ -11,6 +11,7 @@ import { useEffect, useState } from "react";
 
 const ArticlesForm = ({ params }) => {
   const isAddMode = params.id == 0 ? true : false;
+  console.log("🚀 ~ ArticlesForm ~ isAddMode:", isAddMode);
   const searchParams = useSearchParams();
   const router = useRouter();
   const [form] = Form.useForm();

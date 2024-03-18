@@ -18,9 +18,27 @@ export const metadata = {
   },
 };
 
+
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
+      <head>
+      <script
+        id="schema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: `
+              {
+                "@context": "https://schema.org",
+                "@type": "Organization",
+                "name": "Organization",
+                "url": "https://zadez.vn",
+                "logo": "https://zadez.vn/Logo-ZADEZ.webp"
+              }
+            `,
+        }}
+      />
+      </head>
       <body className={roboto.className}>{children}</body>
     </html>
   );

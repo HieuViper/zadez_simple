@@ -4,7 +4,7 @@ import { Badge } from "antd";
 const BadgeCart = ({ cartState, showDrawer }) => {
   return (
     <Badge count={cartState.cartItems.length}>
-      <ShoppingCartOutlined style={{ fontSize: "30px" }} onClick={showDrawer} />
+      <ShoppingCartOutlined style={{ fontSize: "24px" }} onClick={showDrawer} />
     </Badge>
   );
 };

@@ -83,7 +83,7 @@ const SideBar = ({ data }) => {
         <div>
             <MenuOutlined onClick={showSideBar} />
             <Drawer title="Zadez Việt Nam" onClose={onClose} open={open} placement="left" >
-                <div className=" flex justify-center gap-4 mb-2 ">
+                <div className=" flex justify-center items-center gap-4 mb-2 ">
                 <ModalSearch/>
                     <BadgeCart cartState={cartState} showDrawer={showDrawer} />
                     <Dropdown
@@ -94,7 +94,7 @@ const SideBar = ({ data }) => {
                         disabled={userState?.token ? false : true}
                     >
                         <UserOutlined
-                            style={{ fontSize: "30px" }}
+                            style={{ fontSize: "26px" }}
                             onClick={handleOpenModalLogin}
                         />
                     </Dropdown>

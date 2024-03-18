@@ -8,7 +8,7 @@ const Content = dynamic(() => import("./_components/DynamicContent"), {
 export default async function Home() {
   return (
     <>
-      <Script
+      {/* <Script
         id="schema"
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -22,7 +22,7 @@ export default async function Home() {
               }
             `,
         }}
-      />
+      /> */}
       <Content />
     </>
   );
