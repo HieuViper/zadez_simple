@@ -96,7 +96,7 @@ const ArticlesForm = ({ params }) => {
       setArticlesPicURL(data.mainImageURL);
       setKeywords(data.keywords);
     }
-  }, []);
+  }, [data]);
 
   if (error) return <div>failed to load</div>;
   if (isLoading) return <div>loading...123</div>;
@@ -200,13 +200,13 @@ const ArticlesForm = ({ params }) => {
         <Form.Item name="title" label="Title" rules={[{ required: true }]}>
           <Input />
         </Form.Item>
-        <Form.Item name="short" label="Short">
-          <Input />
+        <Form.Item name="short" label="Short" rules={[{ required: true },
+            { min: 160, message: 'Short must be minimum 160 characters.' }]}>
+          <Input.TextArea showCount={true} rows={4} />
         </Form.Item>
         <Form.Item name="description" label="Description">
           <Editor />
         </Form.Item>
-
         <Form.Item
           name="keywords"
           label="Keywords"

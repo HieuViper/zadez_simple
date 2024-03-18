@@ -55,17 +55,7 @@ export async function GET(req, { params }) {
             },
           },
           {
-            short: {
-              [Op.like]: "%" + searchParams.get("keyword") + "%",
-            },
-          },
-          {
-            description: {
-              [Op.like]: "%" + searchParams.get("keyword") + "%",
-            },
-          },
-          {
-            status: {
+            value_search: {
               [Op.like]: "%" + searchParams.get("keyword") + "%",
             },
           },

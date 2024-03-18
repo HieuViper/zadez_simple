@@ -6,11 +6,13 @@ import "swiper/css";
 import "swiper/css/free-mode";
 import "swiper/css/navigation";
 import "swiper/css/thumbs";
+import { GoogleAnalytics, GoogleTagManager } from '@next/third-parties/google'
+
 
 const AuthenPopup = dynamic(() => import("@/components/AuthenPopup"));
-const GoogleAnalytics = dynamic(() => import("@/components/GoogleAnalystic"), {
-  ssr: true,
-});
+// const GoogleAnalytics = dynamic(() => import("@/components/GoogleAnalystic"), {
+//   ssr: true,
+// });
 const Header = dynamic(() => import("@/components/Header"), {
   loading: () => (
     <div className="flex justify-around items-center w-full h-[112px] z-30 fixed top-0 bg-white">
@@ -69,7 +71,8 @@ export default async function RootLayout({ children, params }) {
         }}
       >
         <AOSInit />
-        {/* <GoogleAnalytics /> */}
+        <GoogleTagManager gtmId={process.env.NEXT_PUBLIC_GTM_ID} />
+        <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_TRACKING_ID}  />
         <Header />
         <main>
           <div

@@ -8,6 +8,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
+import ModalSearch from "./SearchProducts";
 const BadgeCart = dynamic(() => import("../components/BadgeCart"));
 const Cart = dynamic(() => import("./Cart"));
 const NavBar = dynamic(() => import("./NavBar"));
@@ -142,6 +143,7 @@ const Header = () => {
               <NavBar data={dataTree} />
             </div>
             <div className="col-span-2 lg:flex justify-center gap-4 hidden">
+            <ModalSearch/>
               <BadgeCart cartState={cartState} showDrawer={showDrawer} />
               <Dropdown
                 menu={{

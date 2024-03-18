@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import useSWRInfinite from "swr/infinite";
 import Banner from "./_components/Banner";
+import Loading from "@/components/Loading";
 
 const PAGE_SIZE = 4;
 
@@ -24,7 +25,7 @@ const BlogsPage = () => {
   const isEmpty = data?.[0]?.length === 0;
   const isReachingEnd =
     isEmpty || (data && data[data.length - 1]?.length < PAGE_SIZE);
-  if (isLoading) return <div>loading..</div>;
+  if (isLoading) return <div><Loading/></div>;
 
   return (
     <div className="wrapper">

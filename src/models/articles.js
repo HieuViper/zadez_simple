@@ -7,14 +7,14 @@ module.exports = (sequelize, DataTypes) => {
       value: DataTypes.STRING,
       isActive: DataTypes.BOOLEAN,
       title: DataTypes.STRING,
-      short: DataTypes.STRING,
+      short: DataTypes.TEXT,
       description: DataTypes.TEXT,
       status: DataTypes.STRING,
       keywords: {
         type: DataTypes.STRING,
         allowNull: false,
         get() {
-          return this.getDataValue("keywords").length == 0
+          return !this.getDataValue("keywords")
             ? []
             : this.getDataValue("keywords").split(";");
         },

@@ -10,6 +10,7 @@ import Link from 'next/link';
 import dynamic from 'next/dynamic';
 import store from '@/library/zustand/store';
 import Cart from './Cart';
+import ModalSearch from './SearchProducts';
 const BadgeCart = dynamic(() => import("../components/BadgeCart"), {
     ssr: false,
 });
@@ -83,6 +84,7 @@ const SideBar = ({ data }) => {
             <MenuOutlined onClick={showSideBar} />
             <Drawer title="Zadez Việt Nam" onClose={onClose} open={open} placement="left" >
                 <div className=" flex justify-center gap-4 mb-2 ">
+                <ModalSearch/>
                     <BadgeCart cartState={cartState} showDrawer={showDrawer} />
                     <Dropdown
                         menu={{
@@ -153,7 +155,7 @@ const Accordion = ({ data }) => {
                                             >
                                                 <div className="col-span-1 flex items-center justify-between group-hover/item:text-red-500 duration-300 transition mx-2  ml-4">
                                                     <div className="flex items-center justify-center ml-8">
-                                                        {item?.image && (
+                                                        {/* {item?.image && (
                                                             <Image
                                                                 src={item.image}
                                                                 width={40}
@@ -161,7 +163,7 @@ const Accordion = ({ data }) => {
                                                                 className="p-1"
                                                                 alt={item.name}
                                                             />
-                                                        )}
+                                                        )} */}
                                                         <span className="text-base font-medium my-1 mr-2">
                                                             {item.name}
                                                         </span>
@@ -188,8 +190,8 @@ const Accordion = ({ data }) => {
                                                                     color: "black",
                                                                 }}
                                                             >
-                                                                <div className="flex items-center hover:text-red-500 duration-300 transition ml-20 shadow-sm rounded-md">
-                                                                    {item?.main_image && (
+                                                                <div className="flex items-center my-4 hover:text-red-500 duration-300 transition ml-20 shadow-sm rounded-md">
+                                                                    {/* {item?.main_image && (
                                                                         <Image
                                                                             src={item.main_image}
                                                                             width={40}
@@ -197,7 +199,7 @@ const Accordion = ({ data }) => {
                                                                             className="p-1"
                                                                             alt={item.name}
                                                                         />
-                                                                    )}
+                                                                    )} */}
                                                                     <span className="text-xs 2xl:text-base font-medium my-1">
                                                                         {item.name}
                                                                     </span>

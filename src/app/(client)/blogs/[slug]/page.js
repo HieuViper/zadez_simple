@@ -7,7 +7,7 @@ export async function generateMetadata({ params, searchParams }, parent) {
 
   // fetch data
   const article = await fetch(
-    `${process.env.BASE_URL}/api/articles/${id}`
+    `${process.env.BASE_URL}/api/articles/${id}`,{cache: 'no-store'}
   ).then((res) => res.json());
   console.log("🚀 ~ generateMetadata ~ article:", article);
 

@@ -158,6 +158,7 @@ module.exports = (sequelize, DataTypes) => {
           this.setDataValue("parameter", result.join(";"));
         },
       },
+      value_search:DataTypes.STRING
     },
     { tableName: "products" }
   );

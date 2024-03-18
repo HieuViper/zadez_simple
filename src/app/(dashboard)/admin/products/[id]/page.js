@@ -378,6 +378,12 @@ const ProductForm = ({ params }) => {
             >
               <Input placeholder="Input Driver" />
             </Form.Item>
+            <Form.Item
+              label={<span className="font-medium">Value Search</span>}
+              name="value_search"
+            >
+              <Input placeholder="Input Value Search" />
+            </Form.Item>
           </div>
           <div id="col-2" className="">
             <Form.Item
