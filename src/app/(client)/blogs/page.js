@@ -1,4 +1,5 @@
 "use client";
+import { toSlug } from "@/library/util";
 import axios from "axios";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
@@ -24,6 +25,7 @@ const BlogsPage = () => {
   const isEmpty = data?.[0]?.length === 0;
   const isReachingEnd =
     isEmpty || (data && data[data.length - 1]?.length < PAGE_SIZE);
+
   if (isLoading) return <div>loading..</div>;
 
   return (
@@ -44,13 +46,7 @@ const BlogsPage = () => {
           className="cursor-pointer sm:flex hidden flex-col gap-4 col-start-1 sm:col-span-7 lg:col-span-4 justify-center h-full z-10"
           onClick={() =>
             router.push(
-              "/blogs/" +
-                blogs?.[0].title
-                  .toLowerCase()
-                  .replace(/ /g, "-")
-                  .replace(/[^\w-]+/g, "") +
-                "-" +
-                blogs?.[0].id
+              "/blogs/" + toSlug(blogs?.[0].title + " " + blogs?.[0].id)
             )
           }
         >
@@ -80,15 +76,7 @@ const BlogsPage = () => {
                 }`}
                 key={index}
                 onClick={() =>
-                  router.push(
-                    "/blogs/" +
-                      item.title
-                        .toLowerCase()
-                        .replace(/ /g, "-")
-                        .replace(/[^\w-]+/g, "") +
-                      "-" +
-                      item.id
-                  )
+                  router.push("/blogs/" + toSlug(item.title + " " + item.id))
                 }
               >
                 <div
@@ -128,15 +116,7 @@ const BlogsPage = () => {
             key={index}
             className={`h-[350px] cursor-pointer rounded-lg bg-opacity-15 bg-cover bg-no-repeat relative shadow overflow-hidden`}
             onClick={() =>
-              router.push(
-                "/blogs/" +
-                  item.title
-                    .toLowerCase()
-                    .replace(/ /g, "-")
-                    .replace(/[^\w-]+/g, "") +
-                  "-" +
-                  item.id
-              )
+              router.push("/blogs/" + toSlug(item.title + " " + item.id))
             }
           >
             <div className="absolute bottom-8 left-8 text-xl text-white font-semibold z-10">

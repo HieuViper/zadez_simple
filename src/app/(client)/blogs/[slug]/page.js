@@ -1,3 +1,4 @@
+import { toSlug } from "@/library/util";
 import DetailBlogPage from "../_components/DetailBlogPage";
 
 export async function generateMetadata({ params, searchParams }, parent) {
@@ -15,6 +16,11 @@ export async function generateMetadata({ params, searchParams }, parent) {
     title: article.title,
     description: article.short,
     keywords: article.keywords,
+    alternates: {
+      canonical: `${process.env.BASE_URL}/bai-viet/${toSlug(
+        article.title + " " + article.id
+      )}`,
+    },
     openGraph: {
       title: article.title,
       description: article.short,
