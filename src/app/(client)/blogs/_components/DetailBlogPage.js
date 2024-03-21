@@ -27,7 +27,7 @@ const DetailBlogPage = ({ params }) => {
       <div className="pt-3 pl-3">
         <Link href={`/blogs`}>
           <Button type="dashed" icon={<SwapLeftOutlined />}>
-            Quay lại trang blogs
+            Quay lại trang bài viết
           </Button>
         </Link>
       </div>
@@ -152,6 +152,387 @@ const DetailBlogPage = ({ params }) => {
             </div>
           ))}
         </div>
+      </div>
+      <div className="hidden">
+        ZADEZ GAMING Game là niềm đam mê của bạn và phục vụ cho niềm đam mê đó
+        là sứ mệnh của chúng tôi. Hãy trải nghiệm các phụ kiện Gaming của ZADEZ
+        với thiết kế tinh tế, tính năng - trợ năng - hiệu năng ấn tượng, cùng sự
+        bền bỉ & chính sách chăm sóc khách hàng vượt trội. ZADEZ - Mang Đến Sự
+        Hài Lòng ! Bàn Phím Cơ Sử dụng switch cơ cao cấp dành cho Game thủ
+        chuyên nghiệp, đa dạng lựa chọn với Blue/ Red/ Brown/ Black switch đáp
+        ứng cảm giác gõ cho từng nhu cầu sử dụng. Thiết kế chuẩn Full size hoặc
+        TKL, hỗ trợ thiết lập macro qua driver chuyên dụng. Bàn Phím Membrane
+        Bàn phím gaming dành cho game thủ trong giai đoạn khởi đầu. Sử dụng
+        switch cao su (membrane) hỗ trợ tính năng kháng nước mà vẫn cho cảm giác
+        gõ tương tự switch cơ dòng Brown, đồng thời thiết lập macro qua driver
+        chuyên dụng (*). Chuột Gaming Nổi bật với dòng GT dành cho Game thủ
+        chuyên nghiệp và dòng G là lựa chọn cho sự khởi đầu hoàn hảo. Trang bị
+        chipset cao cấp, switch bền bỉ và hỗ trợ thiết lập macro (GT), các sản
+        phẩm Gaming mouse của ZADEZ sẽ mang đến trải nghiệm chơi game tuyệt vời
+        nhất. Tai Nghe Gaming Âm thanh vòm 7.1 chân thật sẽ giúp các game thủ
+        xác định phương hướng rõ ràng, đồng thời trao đổi cùng đồng đội kịp thời
+        qua micro lọc âm. Driver chuyên dụng hỗ trợ thay đổi tần số hoặc chế độ
+        nghe Music/ Cinema tiện dụng (*) Gaming Pad Chất liệu cao cấp và tăng
+        cường độ chính xác khi sử dụng chuột, miếng lót Gaming pad là phụ kiện
+        không thể thiếu của Game thủ chuyên nghiệp. Không phải tất cả các Gaming
+        pad đều giống nhau, vì ZADEZ luôn tạo nên sự khác biệt. Khung Treo Tai
+        Nghe Khung treo tai nghe với thiết kế độc quyền của ZADEZ, mang đến sự
+        tinh tế cho không gian trải nghiệm game đẳng cấp. Hãy trải nghiệm và tận
+        hưởng các tính năng độc đáo khác của đế treo tai nghe ZADEZ (* tùy thuộc
+        từng model)ZADEZ GAMING Game là niềm đam mê của bạn và phục vụ cho niềm
+        đam mê đó là sứ mệnh của chúng tôi. Hãy trải nghiệm các phụ kiện Gaming
+        của ZADEZ với thiết kế tinh tế, tính năng - trợ năng - hiệu năng ấn
+        tượng, cùng sự bền bỉ & chính sách chăm sóc khách hàng vượt trội. ZADEZ
+        - Mang Đến Sự Hài Lòng ! Bàn Phím Cơ Sử dụng switch cơ cao cấp dành cho
+        Game thủ chuyên nghiệp, đa dạng lựa chọn với Blue/ Red/ Brown/ Black
+        switch đáp ứng cảm giác gõ cho từng nhu cầu sử dụng. Thiết kế chuẩn Full
+        size hoặc TKL, hỗ trợ thiết lập macro qua driver chuyên dụng. Bàn Phím
+        Membrane Bàn phím gaming dành cho game thủ trong giai đoạn khởi đầu. Sử
+        dụng switch cao su (membrane) hỗ trợ tính năng kháng nước mà vẫn cho cảm
+        giác gõ tương tự switch cơ dòng Brown, đồng thời thiết lập macro qua
+        driver chuyên dụng (*). Chuột Gaming Nổi bật với dòng GT dành cho Game
+        thủ chuyên nghiệp và dòng G là lựa chọn cho sự khởi đầu hoàn hảo. Trang
+        bị chipset cao cấp, switch bền bỉ và hỗ trợ thiết lập macro (GT), các
+        sản phẩm Gaming mouse của ZADEZ sẽ mang đến trải nghiệm chơi game tuyệt
+        vời nhất. Tai Nghe Gaming Âm thanh vòm 7.1 chân thật sẽ giúp các game
+        thủ xác định phương hướng rõ ràng, đồng thời trao đổi cùng đồng đội kịp
+        thời qua micro lọc âm. Driver chuyên dụng hỗ trợ thay đổi tần số hoặc
+        chế độ nghe Music/ Cinema tiện dụng (*) Gaming Pad Chất liệu cao cấp và
+        tăng cường độ chính xác khi sử dụng chuột, miếng lót Gaming pad là phụ
+        kiện không thể thiếu của Game thủ chuyên nghiệp. Không phải tất cả các
+        Gaming pad đều giống nhau, vì ZADEZ luôn tạo nên sự khác biệt. Khung
+        Treo Tai Nghe Khung treo tai nghe với thiết kế độc quyền của ZADEZ, mang
+        đến sự tinh tế cho không gian trải nghiệm game đẳng cấp. Hãy trải nghiệm
+        và tận hưởng các tính năng độc đáo khác của đế treo tai nghe ZADEZ (*
+        tùy thuộc từng model)ZADEZ GAMING Game là niềm đam mê của bạn và phục vụ
+        cho niềm đam mê đó là sứ mệnh của chúng tôi. Hãy trải nghiệm các phụ
+        kiện Gaming của ZADEZ với thiết kế tinh tế, tính năng - trợ năng - hiệu
+        năng ấn tượng, cùng sự bền bỉ & chính sách chăm sóc khách hàng vượt
+        trội. ZADEZ - Mang Đến Sự Hài Lòng ! Bàn Phím Cơ Sử dụng switch cơ cao
+        cấp dành cho Game thủ chuyên nghiệp, đa dạng lựa chọn với Blue/ Red/
+        Brown/ Black switch đáp ứng cảm giác gõ cho từng nhu cầu sử dụng. Thiết
+        kế chuẩn Full size hoặc TKL, hỗ trợ thiết lập macro qua driver chuyên
+        dụng. Bàn Phím Membrane Bàn phím gaming dành cho game thủ trong giai
+        đoạn khởi đầu. Sử dụng switch cao su (membrane) hỗ trợ tính năng kháng
+        nước mà vẫn cho cảm giác gõ tương tự switch cơ dòng Brown, đồng thời
+        thiết lập macro qua driver chuyên dụng (*). Chuột Gaming Nổi bật với
+        dòng GT dành cho Game thủ chuyên nghiệp và dòng G là lựa chọn cho sự
+        khởi đầu hoàn hảo. Trang bị chipset cao cấp, switch bền bỉ và hỗ trợ
+        thiết lập macro (GT), các sản phẩm Gaming mouse của ZADEZ sẽ mang đến
+        trải nghiệm chơi game tuyệt vời nhất. Tai Nghe Gaming Âm thanh vòm 7.1
+        chân thật sẽ giúp các game thủ xác định phương hướng rõ ràng, đồng thời
+        trao đổi cùng đồng đội kịp thời qua micro lọc âm. Driver chuyên dụng hỗ
+        trợ thay đổi tần số hoặc chế độ nghe Music/ Cinema tiện dụng (*) Gaming
+        Pad Chất liệu cao cấp và tăng cường độ chính xác khi sử dụng chuột,
+        miếng lót Gaming pad là phụ kiện không thể thiếu của Game thủ chuyên
+        nghiệp. Không phải tất cả các Gaming pad đều giống nhau, vì ZADEZ luôn
+        tạo nên sự khác biệt. Khung Treo Tai Nghe Khung treo tai nghe với thiết
+        kế độc quyền của ZADEZ, mang đến sự tinh tế cho không gian trải nghiệm
+        game đẳng cấp. Hãy trải nghiệm và tận hưởng các tính năng độc đáo khác
+        của đế treo tai nghe ZADEZ (* tùy thuộc từng model)ZADEZ GAMING Game là
+        niềm đam mê của bạn và phục vụ cho niềm đam mê đó là sứ mệnh của chúng
+        tôi. Hãy trải nghiệm các phụ kiện Gaming của ZADEZ với thiết kế tinh tế,
+        tính năng - trợ năng - hiệu năng ấn tượng, cùng sự bền bỉ & chính sách
+        chăm sóc khách hàng vượt trội. ZADEZ - Mang Đến Sự Hài Lòng ! Bàn Phím
+        Cơ Sử dụng switch cơ cao cấp dành cho Game thủ chuyên nghiệp, đa dạng
+        lựa chọn với Blue/ Red/ Brown/ Black switch đáp ứng cảm giác gõ cho từng
+        nhu cầu sử dụng. Thiết kế chuẩn Full size hoặc TKL, hỗ trợ thiết lập
+        macro qua driver chuyên dụng. Bàn Phím Membrane Bàn phím gaming dành cho
+        game thủ trong giai đoạn khởi đầu. Sử dụng switch cao su (membrane) hỗ
+        trợ tính năng kháng nước mà vẫn cho cảm giác gõ tương tự switch cơ dòng
+        Brown, đồng thời thiết lập macro qua driver chuyên dụng (*). Chuột
+        Gaming Nổi bật với dòng GT dành cho Game thủ chuyên nghiệp và dòng G là
+        lựa chọn cho sự khởi đầu hoàn hảo. Trang bị chipset cao cấp, switch bền
+        bỉ và hỗ trợ thiết lập macro (GT), các sản phẩm Gaming mouse của ZADEZ
+        sẽ mang đến trải nghiệm chơi game tuyệt vời nhất. Tai Nghe Gaming Âm
+        thanh vòm 7.1 chân thật sẽ giúp các game thủ xác định phương hướng rõ
+        ràng, đồng thời trao đổi cùng đồng đội kịp thời qua micro lọc âm. Driver
+        chuyên dụng hỗ trợ thay đổi tần số hoặc chế độ nghe Music/ Cinema tiện
+        dụng (*) Gaming Pad Chất liệu cao cấp và tăng cường độ chính xác khi sử
+        dụng chuột, miếng lót Gaming pad là phụ kiện không thể thiếu của Game
+        thủ chuyên nghiệp. Không phải tất cả các Gaming pad đều giống nhau, vì
+        ZADEZ luôn tạo nên sự khác biệt. Khung Treo Tai Nghe Khung treo tai nghe
+        với thiết kế độc quyền của ZADEZ, mang đến sự tinh tế cho không gian
+        trải nghiệm game đẳng cấp. Hãy trải nghiệm và tận hưởng các tính năng
+        độc đáo khác của đế treo tai nghe ZADEZ (* tùy thuộc từng model)ZADEZ
+        GAMING Game là niềm đam mê của bạn và phục vụ cho niềm đam mê đó là sứ
+        mệnh của chúng tôi. Hãy trải nghiệm các phụ kiện Gaming của ZADEZ với
+        thiết kế tinh tế, tính năng - trợ năng - hiệu năng ấn tượng, cùng sự bền
+        bỉ & chính sách chăm sóc khách hàng vượt trội. ZADEZ - Mang Đến Sự Hài
+        Lòng ! Bàn Phím Cơ Sử dụng switch cơ cao cấp dành cho Game thủ chuyên
+        nghiệp, đa dạng lựa chọn với Blue/ Red/ Brown/ Black switch đáp ứng cảm
+        giác gõ cho từng nhu cầu sử dụng. Thiết kế chuẩn Full size hoặc TKL, hỗ
+        trợ thiết lập macro qua driver chuyên dụng. Bàn Phím Membrane Bàn phím
+        gaming dành cho game thủ trong giai đoạn khởi đầu. Sử dụng switch cao su
+        (membrane) hỗ trợ tính năng kháng nước mà vẫn cho cảm giác gõ tương tự
+        switch cơ dòng Brown, đồng thời thiết lập macro qua driver chuyên dụng
+        (*). Chuột Gaming Nổi bật với dòng GT dành cho Game thủ chuyên nghiệp và
+        dòng G là lựa chọn cho sự khởi đầu hoàn hảo. Trang bị chipset cao cấp,
+        switch bền bỉ và hỗ trợ thiết lập macro (GT), các sản phẩm Gaming mouse
+        của ZADEZ sẽ mang đến trải nghiệm chơi game tuyệt vời nhất. Tai Nghe
+        Gaming Âm thanh vòm 7.1 chân thật sẽ giúp các game thủ xác định phương
+        hướng rõ ràng, đồng thời trao đổi cùng đồng đội kịp thời qua micro lọc
+        âm. Driver chuyên dụng hỗ trợ thay đổi tần số hoặc chế độ nghe Music/
+        Cinema tiện dụng (*) Gaming Pad Chất liệu cao cấp và tăng cường độ chính
+        xác khi sử dụng chuột, miếng lót Gaming pad là phụ kiện không thể thiếu
+        của Game thủ chuyên nghiệp. Không phải tất cả các Gaming pad đều giống
+        nhau, vì ZADEZ luôn tạo nên sự khác biệt. Khung Treo Tai Nghe Khung treo
+        tai nghe với thiết kế độc quyền của ZADEZ, mang đến sự tinh tế cho không
+        gian trải nghiệm game đẳng cấp. Hãy trải nghiệm và tận hưởng các tính
+        năng độc đáo khác của đế treo tai nghe ZADEZ (* tùy thuộc từng
+        model)ZADEZ GAMING Game là niềm đam mê của bạn và phục vụ cho niềm đam
+        mê đó là sứ mệnh của chúng tôi. Hãy trải nghiệm các phụ kiện Gaming của
+        ZADEZ với thiết kế tinh tế, tính năng - trợ năng - hiệu năng ấn tượng,
+        cùng sự bền bỉ & chính sách chăm sóc khách hàng vượt trội. ZADEZ - Mang
+        Đến Sự Hài Lòng ! Bàn Phím Cơ Sử dụng switch cơ cao cấp dành cho Game
+        thủ chuyên nghiệp, đa dạng lựa chọn với Blue/ Red/ Brown/ Black switch
+        đáp ứng cảm giác gõ cho từng nhu cầu sử dụng. Thiết kế chuẩn Full size
+        hoặc TKL, hỗ trợ thiết lập macro qua driver chuyên dụng. Bàn Phím
+        Membrane Bàn phím gaming dành cho game thủ trong giai đoạn khởi đầu. Sử
+        dụng switch cao su (membrane) hỗ trợ tính năng kháng nước mà vẫn cho cảm
+        giác gõ tương tự switch cơ dòng Brown, đồng thời thiết lập macro qua
+        driver chuyên dụng (*). Chuột Gaming Nổi bật với dòng GT dành cho Game
+        thủ chuyên nghiệp và dòng G là lựa chọn cho sự khởi đầu hoàn hảo. Trang
+        bị chipset cao cấp, switch bền bỉ và hỗ trợ thiết lập macro (GT), các
+        sản phẩm Gaming mouse của ZADEZ sẽ mang đến trải nghiệm chơi game tuyệt
+        vời nhất. Tai Nghe Gaming Âm thanh vòm 7.1 chân thật sẽ giúp các game
+        thủ xác định phương hướng rõ ràng, đồng thời trao đổi cùng đồng đội kịp
+        thời qua micro lọc âm. Driver chuyên dụng hỗ trợ thay đổi tần số hoặc
+        chế độ nghe Music/ Cinema tiện dụng (*) Gaming Pad Chất liệu cao cấp và
+        tăng cường độ chính xác khi sử dụng chuột, miếng lót Gaming pad là phụ
+        kiện không thể thiếu của Game thủ chuyên nghiệp. Không phải tất cả các
+        Gaming pad đều giống nhau, vì ZADEZ luôn tạo nên sự khác biệt. Khung
+        Treo Tai Nghe Khung treo tai nghe với thiết kế độc quyền của ZADEZ, mang
+        đến sự tinh tế cho không gian trải nghiệm game đẳng cấp. Hãy trải nghiệm
+        và tận hưởng các tính năng độc đáo khác của đế treo tai nghe ZADEZ (*
+        tùy thuộc từng model)ZADEZ GAMING Game là niềm đam mê của bạn và phục vụ
+        cho niềm đam mê đó là sứ mệnh của chúng tôi. Hãy trải nghiệm các phụ
+        kiện Gaming của ZADEZ với thiết kế tinh tế, tính năng - trợ năng - hiệu
+        năng ấn tượng, cùng sự bền bỉ & chính sách chăm sóc khách hàng vượt
+        trội. ZADEZ - Mang Đến Sự Hài Lòng ! Bàn Phím Cơ Sử dụng switch cơ cao
+        cấp dành cho Game thủ chuyên nghiệp, đa dạng lựa chọn với Blue/ Red/
+        Brown/ Black switch đáp ứng cảm giác gõ cho từng nhu cầu sử dụng. Thiết
+        kế chuẩn Full size hoặc TKL, hỗ trợ thiết lập macro qua driver chuyên
+        dụng. Bàn Phím Membrane Bàn phím gaming dành cho game thủ trong giai
+        đoạn khởi đầu. Sử dụng switch cao su (membrane) hỗ trợ tính năng kháng
+        nước mà vẫn cho cảm giác gõ tương tự switch cơ dòng Brown, đồng thời
+        thiết lập macro qua driver chuyên dụng (*). Chuột Gaming Nổi bật với
+        dòng GT dành cho Game thủ chuyên nghiệp và dòng G là lựa chọn cho sự
+        khởi đầu hoàn hảo. Trang bị chipset cao cấp, switch bền bỉ và hỗ trợ
+        thiết lập macro (GT), các sản phẩm Gaming mouse của ZADEZ sẽ mang đến
+        trải nghiệm chơi game tuyệt vời nhất. Tai Nghe Gaming Âm thanh vòm 7.1
+        chân thật sẽ giúp các game thủ xác định phương hướng rõ ràng, đồng thời
+        trao đổi cùng đồng đội kịp thời qua micro lọc âm. Driver chuyên dụng hỗ
+        trợ thay đổi tần số hoặc chế độ nghe Music/ Cinema tiện dụng (*) Gaming
+        Pad Chất liệu cao cấp và tăng cường độ chính xác khi sử dụng chuột,
+        miếng lót Gaming pad là phụ kiện không thể thiếu của Game thủ chuyên
+        nghiệp. Không phải tất cả các Gaming pad đều giống nhau, vì ZADEZ luôn
+        tạo nên sự khác biệt. Khung Treo Tai Nghe Khung treo tai nghe với thiết
+        kế độc quyền của ZADEZ, mang đến sự tinh tế cho không gian trải nghiệm
+        game đẳng cấp. Hãy trải nghiệm và tận hưởng các tính năng độc đáo khác
+        của đế treo tai nghe ZADEZ (* tùy thuộc từng model)ZADEZ GAMING Game là
+        niềm đam mê của bạn và phục vụ cho niềm đam mê đó là sứ mệnh của chúng
+        tôi. Hãy trải nghiệm các phụ kiện Gaming của ZADEZ với thiết kế tinh tế,
+        tính năng - trợ năng - hiệu năng ấn tượng, cùng sự bền bỉ & chính sách
+        chăm sóc khách hàng vượt trội. ZADEZ - Mang Đến Sự Hài Lòng ! Bàn Phím
+        Cơ Sử dụng switch cơ cao cấp dành cho Game thủ chuyên nghiệp, đa dạng
+        lựa chọn với Blue/ Red/ Brown/ Black switch đáp ứng cảm giác gõ cho từng
+        nhu cầu sử dụng. Thiết kế chuẩn Full size hoặc TKL, hỗ trợ thiết lập
+        macro qua driver chuyên dụng. Bàn Phím Membrane Bàn phím gaming dành cho
+        game thủ trong giai đoạn khởi đầu. Sử dụng switch cao su (membrane) hỗ
+        trợ tính năng kháng nước mà vẫn cho cảm giác gõ tương tự switch cơ dòng
+        Brown, đồng thời thiết lập macro qua driver chuyên dụng (*). Chuột
+        Gaming Nổi bật với dòng GT dành cho Game thủ chuyên nghiệp và dòng G là
+        lựa chọn cho sự khởi đầu hoàn hảo. Trang bị chipset cao cấp, switch bền
+        bỉ và hỗ trợ thiết lập macro (GT), các sản phẩm Gaming mouse của ZADEZ
+        sẽ mang đến trải nghiệm chơi game tuyệt vời nhất. Tai Nghe Gaming Âm
+        thanh vòm 7.1 chân thật sẽ giúp các game thủ xác định phương hướng rõ
+        ràng, đồng thời trao đổi cùng đồng đội kịp thời qua micro lọc âm. Driver
+        chuyên dụng hỗ trợ thay đổi tần số hoặc chế độ nghe Music/ Cinema tiện
+        dụng (*) Gaming Pad Chất liệu cao cấp và tăng cường độ chính xác khi sử
+        dụng chuột, miếng lót Gaming pad là phụ kiện không thể thiếu của Game
+        thủ chuyên nghiệp. Không phải tất cả các Gaming pad đều giống nhau, vì
+        ZADEZ luôn tạo nên sự khác biệt. Khung Treo Tai Nghe Khung treo tai nghe
+        với thiết kế độc quyền của ZADEZ, mang đến sự tinh tế cho không gian
+        trải nghiệm game đẳng cấp. Hãy trải nghiệm và tận hưởng các tính năng
+        độc đáo khác của đế treo tai nghe ZADEZ (* tùy thuộc từng model)ZADEZ
+        GAMING Game là niềm đam mê của bạn và phục vụ cho niềm đam mê đó là sứ
+        mệnh của chúng tôi. Hãy trải nghiệm các phụ kiện Gaming của ZADEZ với
+        thiết kế tinh tế, tính năng - trợ năng - hiệu năng ấn tượng, cùng sự bền
+        bỉ & chính sách chăm sóc khách hàng vượt trội. ZADEZ - Mang Đến Sự Hài
+        Lòng ! Bàn Phím Cơ Sử dụng switch cơ cao cấp dành cho Game thủ chuyên
+        nghiệp, đa dạng lựa chọn với Blue/ Red/ Brown/ Black switch đáp ứng cảm
+        giác gõ cho từng nhu cầu sử dụng. Thiết kế chuẩn Full size hoặc TKL, hỗ
+        trợ thiết lập macro qua driver chuyên dụng. Bàn Phím Membrane Bàn phím
+        gaming dành cho game thủ trong giai đoạn khởi đầu. Sử dụng switch cao su
+        (membrane) hỗ trợ tính năng kháng nước mà vẫn cho cảm giác gõ tương tự
+        switch cơ dòng Brown, đồng thời thiết lập macro qua driver chuyên dụng
+        (*). Chuột Gaming Nổi bật với dòng GT dành cho Game thủ chuyên nghiệp và
+        dòng G là lựa chọn cho sự khởi đầu hoàn hảo. Trang bị chipset cao cấp,
+        switch bền bỉ và hỗ trợ thiết lập macro (GT), các sản phẩm Gaming mouse
+        của ZADEZ sẽ mang đến trải nghiệm chơi game tuyệt vời nhất. Tai Nghe
+        Gaming Âm thanh vòm 7.1 chân thật sẽ giúp các game thủ xác định phương
+        hướng rõ ràng, đồng thời trao đổi cùng đồng đội kịp thời qua micro lọc
+        âm. Driver chuyên dụng hỗ trợ thay đổi tần số hoặc chế độ nghe Music/
+        Cinema tiện dụng (*) Gaming Pad Chất liệu cao cấp và tăng cường độ chính
+        xác khi sử dụng chuột, miếng lót Gaming pad là phụ kiện không thể thiếu
+        của Game thủ chuyên nghiệp. Không phải tất cả các Gaming pad đều giống
+        nhau, vì ZADEZ luôn tạo nên sự khác biệt. Khung Treo Tai Nghe Khung treo
+        tai nghe với thiết kế độc quyền của ZADEZ, mang đến sự tinh tế cho không
+        gian trải nghiệm game đẳng cấp. Hãy trải nghiệm và tận hưởng các tính
+        năng độc đáo khác của đế treo tai nghe ZADEZ (* tùy thuộc từng
+        model)ZADEZ GAMING Game là niềm đam mê của bạn và phục vụ cho niềm đam
+        mê đó là sứ mệnh của chúng tôi. Hãy trải nghiệm các phụ kiện Gaming của
+        ZADEZ với thiết kế tinh tế, tính năng - trợ năng - hiệu năng ấn tượng,
+        cùng sự bền bỉ & chính sách chăm sóc khách hàng vượt trội. ZADEZ - Mang
+        Đến Sự Hài Lòng ! Bàn Phím Cơ Sử dụng switch cơ cao cấp dành cho Game
+        thủ chuyên nghiệp, đa dạng lựa chọn với Blue/ Red/ Brown/ Black switch
+        đáp ứng cảm giác gõ cho từng nhu cầu sử dụng. Thiết kế chuẩn Full size
+        hoặc TKL, hỗ trợ thiết lập macro qua driver chuyên dụng. Bàn Phím
+        Membrane Bàn phím gaming dành cho game thủ trong giai đoạn khởi đầu. Sử
+        dụng switch cao su (membrane) hỗ trợ tính năng kháng nước mà vẫn cho cảm
+        giác gõ tương tự switch cơ dòng Brown, đồng thời thiết lập macro qua
+        driver chuyên dụng (*). Chuột Gaming Nổi bật với dòng GT dành cho Game
+        thủ chuyên nghiệp và dòng G là lựa chọn cho sự khởi đầu hoàn hảo. Trang
+        bị chipset cao cấp, switch bền bỉ và hỗ trợ thiết lập macro (GT), các
+        sản phẩm Gaming mouse của ZADEZ sẽ mang đến trải nghiệm chơi game tuyệt
+        vời nhất. Tai Nghe Gaming Âm thanh vòm 7.1 chân thật sẽ giúp các game
+        thủ xác định phương hướng rõ ràng, đồng thời trao đổi cùng đồng đội kịp
+        thời qua micro lọc âm. Driver chuyên dụng hỗ trợ thay đổi tần số hoặc
+        chế độ nghe Music/ Cinema tiện dụng (*) Gaming Pad Chất liệu cao cấp và
+        tăng cường độ chính xác khi sử dụng chuột, miếng lót Gaming pad là phụ
+        kiện không thể thiếu của Game thủ chuyên nghiệp. Không phải tất cả các
+        Gaming pad đều giống nhau, vì ZADEZ luôn tạo nên sự khác biệt. Khung
+        Treo Tai Nghe Khung treo tai nghe với thiết kế độc quyền của ZADEZ, mang
+        đến sự tinh tế cho không gian trải nghiệm game đẳng cấp. Hãy trải nghiệm
+        và tận hưởng các tính năng độc đáo khác của đế treo tai nghe ZADEZ (*
+        tùy thuộc từng model)ZADEZ GAMING Game là niềm đam mê của bạn và phục vụ
+        cho niềm đam mê đó là sứ mệnh của chúng tôi. Hãy trải nghiệm các phụ
+        kiện Gaming của ZADEZ với thiết kế tinh tế, tính năng - trợ năng - hiệu
+        năng ấn tượng, cùng sự bền bỉ & chính sách chăm sóc khách hàng vượt
+        trội. ZADEZ - Mang Đến Sự Hài Lòng ! Bàn Phím Cơ Sử dụng switch cơ cao
+        cấp dành cho Game thủ chuyên nghiệp, đa dạng lựa chọn với Blue/ Red/
+        Brown/ Black switch đáp ứng cảm giác gõ cho từng nhu cầu sử dụng. Thiết
+        kế chuẩn Full size hoặc TKL, hỗ trợ thiết lập macro qua driver chuyên
+        dụng. Bàn Phím Membrane Bàn phím gaming dành cho game thủ trong giai
+        đoạn khởi đầu. Sử dụng switch cao su (membrane) hỗ trợ tính năng kháng
+        nước mà vẫn cho cảm giác gõ tương tự switch cơ dòng Brown, đồng thời
+        thiết lập macro qua driver chuyên dụng (*). Chuột Gaming Nổi bật với
+        dòng GT dành cho Game thủ chuyên nghiệp và dòng G là lựa chọn cho sự
+        khởi đầu hoàn hảo. Trang bị chipset cao cấp, switch bền bỉ và hỗ trợ
+        thiết lập macro (GT), các sản phẩm Gaming mouse của ZADEZ sẽ mang đến
+        trải nghiệm chơi game tuyệt vời nhất. Tai Nghe Gaming Âm thanh vòm 7.1
+        chân thật sẽ giúp các game thủ xác định phương hướng rõ ràng, đồng thời
+        trao đổi cùng đồng đội kịp thời qua micro lọc âm. Driver chuyên dụng hỗ
+        trợ thay đổi tần số hoặc chế độ nghe Music/ Cinema tiện dụng (*) Gaming
+        Pad Chất liệu cao cấp và tăng cường độ chính xác khi sử dụng chuột,
+        miếng lót Gaming pad là phụ kiện không thể thiếu của Game thủ chuyên
+        nghiệp. Không phải tất cả các Gaming pad đều giống nhau, vì ZADEZ luôn
+        tạo nên sự khác biệt. Khung Treo Tai Nghe Khung treo tai nghe với thiết
+        kế độc quyền của ZADEZ, mang đến sự tinh tế cho không gian trải nghiệm
+        game đẳng cấp. Hãy trải nghiệm và tận hưởng các tính năng độc đáo khác
+        của đế treo tai nghe ZADEZ (* tùy thuộc từng model)ZADEZ GAMING Game là
+        niềm đam mê của bạn và phục vụ cho niềm đam mê đó là sứ mệnh của chúng
+        tôi. Hãy trải nghiệm các phụ kiện Gaming của ZADEZ với thiết kế tinh tế,
+        tính năng - trợ năng - hiệu năng ấn tượng, cùng sự bền bỉ & chính sách
+        chăm sóc khách hàng vượt trội. ZADEZ - Mang Đến Sự Hài Lòng ! Bàn Phím
+        Cơ Sử dụng switch cơ cao cấp dành cho Game thủ chuyên nghiệp, đa dạng
+        lựa chọn với Blue/ Red/ Brown/ Black switch đáp ứng cảm giác gõ cho từng
+        nhu cầu sử dụng. Thiết kế chuẩn Full size hoặc TKL, hỗ trợ thiết lập
+        macro qua driver chuyên dụng. Bàn Phím Membrane Bàn phím gaming dành cho
+        game thủ trong giai đoạn khởi đầu. Sử dụng switch cao su (membrane) hỗ
+        trợ tính năng kháng nước mà vẫn cho cảm giác gõ tương tự switch cơ dòng
+        Brown, đồng thời thiết lập macro qua driver chuyên dụng (*). Chuột
+        Gaming Nổi bật với dòng GT dành cho Game thủ chuyên nghiệp và dòng G là
+        lựa chọn cho sự khởi đầu hoàn hảo. Trang bị chipset cao cấp, switch bền
+        bỉ và hỗ trợ thiết lập macro (GT), các sản phẩm Gaming mouse của ZADEZ
+        sẽ mang đến trải nghiệm chơi game tuyệt vời nhất. Tai Nghe Gaming Âm
+        thanh vòm 7.1 chân thật sẽ giúp các game thủ xác định phương hướng rõ
+        ràng, đồng thời trao đổi cùng đồng đội kịp thời qua micro lọc âm. Driver
+        chuyên dụng hỗ trợ thay đổi tần số hoặc chế độ nghe Music/ Cinema tiện
+        dụng (*) Gaming Pad Chất liệu cao cấp và tăng cường độ chính xác khi sử
+        dụng chuột, miếng lót Gaming pad là phụ kiện không thể thiếu của Game
+        thủ chuyên nghiệp. Không phải tất cả các Gaming pad đều giống nhau, vì
+        ZADEZ luôn tạo nên sự khác biệt. Khung Treo Tai Nghe Khung treo tai nghe
+        với thiết kế độc quyền của ZADEZ, mang đến sự tinh tế cho không gian
+        trải nghiệm game đẳng cấp. Hãy trải nghiệm và tận hưởng các tính năng
+        độc đáo khác của đế treo tai nghe ZADEZ (* tùy thuộc từng model)ZADEZ
+        GAMING Game là niềm đam mê của bạn và phục vụ cho niềm đam mê đó là sứ
+        mệnh của chúng tôi. Hãy trải nghiệm các phụ kiện Gaming của ZADEZ với
+        thiết kế tinh tế, tính năng - trợ năng - hiệu năng ấn tượng, cùng sự bền
+        bỉ & chính sách chăm sóc khách hàng vượt trội. ZADEZ - Mang Đến Sự Hài
+        Lòng ! Bàn Phím Cơ Sử dụng switch cơ cao cấp dành cho Game thủ chuyên
+        nghiệp, đa dạng lựa chọn với Blue/ Red/ Brown/ Black switch đáp ứng cảm
+        giác gõ cho từng nhu cầu sử dụng. Thiết kế chuẩn Full size hoặc TKL, hỗ
+        trợ thiết lập macro qua driver chuyên dụng. Bàn Phím Membrane Bàn phím
+        gaming dành cho game thủ trong giai đoạn khởi đầu. Sử dụng switch cao su
+        (membrane) hỗ trợ tính năng kháng nước mà vẫn cho cảm giác gõ tương tự
+        switch cơ dòng Brown, đồng thời thiết lập macro qua driver chuyên dụng
+        (*). Chuột Gaming Nổi bật với dòng GT dành cho Game thủ chuyên nghiệp và
+        dòng G là lựa chọn cho sự khởi đầu hoàn hảo. Trang bị chipset cao cấp,
+        switch bền bỉ và hỗ trợ thiết lập macro (GT), các sản phẩm Gaming mouse
+        của ZADEZ sẽ mang đến trải nghiệm chơi game tuyệt vời nhất. Tai Nghe
+        Gaming Âm thanh vòm 7.1 chân thật sẽ giúp các game thủ xác định phương
+        hướng rõ ràng, đồng thời trao đổi cùng đồng đội kịp thời qua micro lọc
+        âm. Driver chuyên dụng hỗ trợ thay đổi tần số hoặc chế độ nghe Music/
+        Cinema tiện dụng (*) Gaming Pad Chất liệu cao cấp và tăng cường độ chính
+        xác khi sử dụng chuột, miếng lót Gaming pad là phụ kiện không thể thiếu
+        của Game thủ chuyên nghiệp. Không phải tất cả các Gaming pad đều giống
+        nhau, vì ZADEZ luôn tạo nên sự khác biệt. Khung Treo Tai Nghe Khung treo
+        tai nghe với thiết kế độc quyền của ZADEZ, mang đến sự tinh tế cho không
+        gian trải nghiệm game đẳng cấp. Hãy trải nghiệm và tận hưởng các tính
+        năng độc đáo khác của đế treo tai nghe ZADEZ (* tùy thuộc từng
+        model)ZADEZ GAMING Game là niềm đam mê của bạn và phục vụ cho niềm đam
+        mê đó là sứ mệnh của chúng tôi. Hãy trải nghiệm các phụ kiện Gaming của
+        ZADEZ với thiết kế tinh tế, tính năng - trợ năng - hiệu năng ấn tượng,
+        cùng sự bền bỉ & chính sách chăm sóc khách hàng vượt trội. ZADEZ - Mang
+        Đến Sự Hài Lòng ! Bàn Phím Cơ Sử dụng switch cơ cao cấp dành cho Game
+        thủ chuyên nghiệp, đa dạng lựa chọn với Blue/ Red/ Brown/ Black switch
+        đáp ứng cảm giác gõ cho từng nhu cầu sử dụng. Thiết kế chuẩn Full size
+        hoặc TKL, hỗ trợ thiết lập macro qua driver chuyên dụng. Bàn Phím
+        Membrane Bàn phím gaming dành cho game thủ trong giai đoạn khởi đầu. Sử
+        dụng switch cao su (membrane) hỗ trợ tính năng kháng nước mà vẫn cho cảm
+        giác gõ tương tự switch cơ dòng Brown, đồng thời thiết lập macro qua
+        driver chuyên dụng (*). Chuột Gaming Nổi bật với dòng GT dành cho Game
+        thủ chuyên nghiệp và dòng G là lựa chọn cho sự khởi đầu hoàn hảo. Trang
+        bị chipset cao cấp, switch bền bỉ và hỗ trợ thiết lập macro (GT), các
+        sản phẩm Gaming mouse của ZADEZ sẽ mang đến trải nghiệm chơi game tuyệt
+        vời nhất. Tai Nghe Gaming Âm thanh vòm 7.1 chân thật sẽ giúp các game
+        thủ xác định phương hướng rõ ràng, đồng thời trao đổi cùng đồng đội kịp
+        thời qua micro lọc âm. Driver chuyên dụng hỗ trợ thay đổi tần số hoặc
+        chế độ nghe Music/ Cinema tiện dụng (*) Gaming Pad Chất liệu cao cấp và
+        tăng cường độ chính xác khi sử dụng chuột, miếng lót Gaming pad là phụ
+        kiện không thể thiếu của Game thủ chuyên nghiệp. Không phải tất cả các
+        Gaming pad đều giống nhau, vì ZADEZ luôn tạo nên sự khác biệt. Khung
+        Treo Tai Nghe Khung treo tai nghe với thiết kế độc quyền của ZADEZ, mang
+        đến sự tinh tế cho không gian trải nghiệm game đẳng cấp. Hãy trải nghiệm
+        và tận hưởng các tính năng độc đáo khác của đế treo tai nghe ZADEZ (*
+        tùy thuộc từng model)ZADEZ GAMING Game là niềm đam mê của bạn và phục vụ
+        cho niềm đam mê đó là sứ mệnh của chúng tôi. Hãy trải nghiệm các phụ
+        kiện Gaming của ZADEZ với thiết kế tinh tế, tính năng - trợ năng - hiệu
+        năng ấn tượng, cùng sự bền bỉ & chính sách chăm sóc khách hàng vượt
+        trội. ZADEZ - Mang Đến Sự Hài Lòng ! Bàn Phím Cơ Sử dụng switch cơ cao
+        cấp dành cho Game thủ chuyên nghiệp, đa dạng lựa chọn với Blue/ Red/
+        Brown/ Black switch đáp ứng cảm giác gõ cho từng nhu cầu sử dụng. Thiết
+        kế chuẩn Full size hoặc TKL, hỗ trợ thiết lập macro qua driver chuyên
+        dụng. Bàn Phím Membrane Bàn phím gaming dành cho game thủ trong giai
+        đoạn khởi đầu. Sử dụng switch cao su (membrane) hỗ trợ tính năng kháng
+        nước mà vẫn cho cảm giác gõ tương tự switch cơ dòng Brown, đồng thời
+        thiết lập macro qua driver chuyên dụng (*). Chuột Gaming Nổi bật với
+        dòng GT dành cho Game thủ chuyên nghiệp và dòng G là lựa chọn cho sự
+        khởi đầu hoàn hảo. Trang bị chipset cao cấp, switch bền bỉ và hỗ trợ
+        thiết lập macro (GT), các sản phẩm Gaming mouse của ZADEZ sẽ mang đến
+        trải nghiệm chơi game tuyệt vời nhất. Tai Nghe Gaming Âm thanh vòm 7.1
+        chân thật sẽ giúp các game thủ xác định phương hướng rõ ràng, đồng thời
+        trao đổi cùng đồng đội kịp thời qua micro lọc âm. Driver chuyên dụng hỗ
+        trợ thay đổi tần số hoặc chế độ nghe Music/ Cinema tiện dụng (*) Gaming
+        Pad Chất liệu cao cấp và tăng cường độ chính xác khi sử dụng chuột,
+        miếng lót Gaming pad là phụ kiện không thể thiếu của Game thủ chuyên
+        nghiệp. Không phải tất cả các Gaming pad đều giống nhau, vì ZADEZ luôn
+        tạo nên sự khác biệt. Khung Treo Tai Nghe Khung treo tai nghe với thiết
+        kế độc quyền của ZADEZ, mang đến sự tinh tế cho không gian trải nghiệm
+        game đẳng cấp. Hãy trải nghiệm và tận hưởng các tính năng độc đáo khác
+        của đế treo tai nghe ZADEZ (* tùy thuộc từng model)
       </div>
     </div>
   );

@@ -8,6 +8,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
+import ModalSearch from "./SearchProducts";
 const BadgeCart = dynamic(() => import("../components/BadgeCart"));
 const Cart = dynamic(() => import("./Cart"));
 const NavBar = dynamic(() => import("./NavBar"));
@@ -114,7 +115,7 @@ const Header = () => {
 
   return (
     <header
-      className={`shadow-sm lg:py-4 py-2 w-full bg-[#fafafa]  px-2 fixed top-0 z-30 transition-all duration-500`}
+      className={`shadow-sm lg:py-3 py-2 w-full bg-[#fafafa]  fixed top-0 z-30 transition-all duration-500`}
     >
       {/* <Head>
                 <script src="https://sp.zalo.me/plugins/sdk.js"></script>
@@ -122,30 +123,31 @@ const Header = () => {
       {/* {isOpenMenu && <div onClick={() => setIsOpenMenu(false)} className="fixed inset-0 top-32 bg-gray-200 bg-opacity-75 transition-opacity z-50  overflow-hidden"></div>} */}
       <div className=" text-gray-600  border-b-[#e5e7eb] top-0 ">
         <div className="border border-b-[#e5e7eb]">
-          <div className="flex lg:grid lg:grid-cols-12  justify-center items-center">
+          <div className="flex justify-around  px-6 items-center">
             <div
-              className={`top-16 block lg:hidden absolute  left-5 px-3 py-2 border rounded hover:text-teal-200 border-gray-300 cursor-pointer duration-300 transition-all`}
+              className={`top-8 block lg:hidden absolute  left-5 px-3 py-2 border rounded hover:text-teal-200 border-gray-300 cursor-pointer duration-300 transition-all`}
             >
               <SideBar data={dataTree} />
             </div>
-            <div className="col-span-2">
+            <div className="">
               <a
                 className="flex justify-center font-medium items-center text-gray-900 mb-4 md:mb-0 cursor-pointer"
                 href="/"
               >
                 <Image
                   src={"/Logo-ZADEZ.webp"}
-                  width={80}
-                  height={80}
+                  width={60}
+                  height={60}
                   className="hover:opacity-80 cursor-pointer duration-300 transition-all "
                   alt="Zadez"
                 />
               </a>
             </div>
-            <div className="col-span-8 hidden lg:block">
+            <div className=" hidden lg:block">
               <NavBar data={dataTree} />
             </div>
-            <div className="col-span-2 lg:flex justify-center gap-4 hidden">
+            <div className=" lg:flex justify-center items-center gap-4 hidden">
+            <ModalSearch/>
               <BadgeCart cartState={cartState} showDrawer={showDrawer} />
               <Dropdown
                 menu={{
@@ -155,7 +157,7 @@ const Header = () => {
                 disabled={userState?.token ? false : true}
               >
                 <UserOutlined
-                  style={{ fontSize: "30px" }}
+                  style={{ fontSize: "24px" }}
                   onClick={handleOpenModalLogin}
                 />
               </Dropdown>

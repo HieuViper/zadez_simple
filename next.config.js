@@ -70,6 +70,22 @@ const nextConfig = {
         source: "/zadez-gp-803b",
         destination: "/gp-803",
       },
+      {
+        source: "/tin-tuc",
+        destination: "/blogs",
+      },
+      {
+        source: "/tin-tuc/:slug",
+        destination: "/blogs/:slug",
+      },
+      {
+        source: "/danh-muc/:slug",
+        destination: "/products-by-categories/:slug",
+      },
+      {
+        source: "/tim-kiem",
+        destination: "/search",
+      }
     ];
   },
 };

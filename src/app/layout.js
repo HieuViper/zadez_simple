@@ -1,33 +1,9 @@
-import localFont from "next/font/local";
+// import localFont from "next/font/local";
+import { Roboto } from "next/font/google";
 import "./globals.css";
-const roboto = localFont({
-  src: [
-    {
-      path: "../../public/font/Roboto-Light.ttf",
-      weight: "300",
-      style: "light",
-    },
-    {
-      path: "../../public/font/Roboto-Regular.ttf",
-      weight: "400",
-      style: "normal",
-    },
-    {
-      path: "../../public/font/Roboto-Italic.ttf",
-      weight: "400",
-      style: "italic",
-    },
-    {
-      path: "../../public/font/Roboto-Medium.ttf",
-      weight: "500",
-      style: "medium",
-    },
-    {
-      path: "../../public/font/Roboto-Bold.ttf",
-      weight: "700",
-      style: "normal",
-    },
-  ],
+export const roboto = Roboto({
+  subsets: ["vietnamese"],
+  weight: ["100", "300", "400", "500", "700", "900"],
 });
 
 export const metadata = {
@@ -43,9 +19,27 @@ export const metadata = {
   },
 };
 
+
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
+      <head>
+      <script
+        id="schema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: `
+              {
+                "@context": "https://schema.org",
+                "@type": "Organization",
+                "name": "Organization",
+                "url": "https://zadez.vn",
+                "logo": "https://zadez.vn/Logo-ZADEZ.webp"
+              }
+            `,
+        }}
+      />
+      </head>
       <body className={roboto.className}>{children}</body>
     </html>
   );

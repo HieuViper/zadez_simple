@@ -16,12 +16,17 @@ const NavBar = ({ data }) => {
                   style={{ textDecoration: "none", color: "black" }}
                   prefetch={false}
                 >
-                  <span className="py-2 flex justify-between items-center md:pr-0 pr-5 text-sm lg:text-xs 2xl:text-base font-medium md:cursor-pointer group-hover:text-red-500 text-black duration-200 transition">
+                  <span className="py-2 flex justify-between items-center md:pr-0 pr-5 text-sm lg:text-[11px] 2xl:text-base font-medium md:cursor-pointer group-hover:text-red-500 text-black duration-200 transition">
                     {item.name}
                   </span>
                 </Link>
               ) : (
-                <span className=" py-2 flex justify-between items-center md:pr-0 pr-5 text-sm lg:text-xs 2xl:text-base font-medium md:cursor-pointer group-hover:text-red-500 text-black duration-200 transition">
+                <Link
+                href={item.category_code == "zadez" || item.category_code == "catalogue" ? '/' : `/danh-muc/${item.category_code}`}
+                style={{ textDecoration: "none", color: "black" }}
+                prefetch={false}
+              >
+                <span className=" py-2 flex justify-between items-center md:pr-0 pr-5 text-sm lg:text-[11px] 2xl:text-base font-medium md:cursor-pointer group-hover:text-red-500 text-black duration-200 transition">
                   {item.name}
                   {item?.children && (
                     <span className="text-xs md:mt-1 md:ml-2  md:block hidden transition-all transform group-hover:rotate-180 group-hover:-mt-2">
@@ -34,10 +39,11 @@ const NavBar = ({ data }) => {
                     </span>
                   )}
                 </span>
+                </Link>
               )}
               {item?.children && (
                 <div
-                  className={`absolute top-[75px] invisible group-hover:md:visible hover:md:visible bg-white mt-5 py-2 pl-2 gap-10  rounded-xl shadow-lg  ease-in-out transition-all group-hover:md:-translate-y-6 duration-200 opacity-0 group-hover:opacity-100`}
+                  className={`absolute top-[64px] invisible group-hover:md:visible hover:md:visible bg-white mt-5 py-2 pl-2 gap-10  rounded-xl shadow-lg  ease-in-out transition-all group-hover:md:-translate-y-6 duration-200 opacity-0 group-hover:opacity-100`}
                 >
                   {item?.children &&
                     item?.children.map((item, i) => (
@@ -45,9 +51,7 @@ const NavBar = ({ data }) => {
                         <Link
                           href={`${
                             item.products.length > 0 ? `/danh-muc-san-pham` : ""
-                          }/${item.category_code}${
-                            item.products.length > 0 ? -`${item.id}` : ""
-                          }`}
+                          }/${item.category_code}`}
                           style={{ textDecoration: "none", color: "black" }}
                           prefetch={false}
                         >

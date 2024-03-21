@@ -215,6 +215,9 @@ const OrderForm = ({ params }) => {
         <Form.Item name={["customers", "email"]} label="E-mail">
           <Input disabled />
         </Form.Item>
+        <Form.Item name="note" label="Note">
+          <Input.TextArea rows={4}/>
+        </Form.Item>
 
         <Divider />
 
