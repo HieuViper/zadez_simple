@@ -1,4 +1,6 @@
+import auth from "@/auth/auth";
 import db from "@/models";
+import { headers } from "next/headers";
 import { NextResponse } from "next/server";
 const Sequelize = require("sequelize");
 const Op = Sequelize.Op;
@@ -70,6 +72,13 @@ export async function GET(req, { params }) {
 }
 
 export async function POST(body, req) {
+  const headersList = headers();
+  const token = headersList.get("authorization").split(" ")[1];
+  const signIn = await auth.checkAuth(token, ["admin"]);
+  if (!signIn) {
+    return NextResponse.json({ status: 401 });
+  }
+
   const bodyJSON = await body.json();
   let articles = bodyJSON;
 
@@ -81,6 +90,12 @@ export async function POST(body, req) {
 }
 
 export async function DELETE(body, req) {
+  const headersList = headers();
+  const token = headersList.get("authorization").split(" ")[1];
+  const signIn = await auth.checkAuth(token, ["admin"]);
+  if (!signIn) {
+    return NextResponse.json({ status: 401 });
+  }
   const bodyJSON = await body.json();
   await db.Articles.destroy({
     where: { id: { [Op.in]: bodyJSON.ids } },

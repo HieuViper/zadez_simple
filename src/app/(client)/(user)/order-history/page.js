@@ -48,7 +48,7 @@ const OrderHistory = () => {
       ),
     },
     {
-      title: "Status",
+      title: "Trạng thái",
       key: "status",
       dataIndex: "status",
       render: (item) =>
@@ -66,7 +66,7 @@ const OrderHistory = () => {
     },
     ,
     {
-      title: "Action",
+      title: "Thao tác",
       key: "action",
       render: (_, record) =>
         record.status == "pending" ? (
@@ -121,12 +121,15 @@ const OrderHistory = () => {
         title: "Số lượng",
         dataIndex: "amount",
         key: "amount",
+        render: (item) => <span>{item.toLocaleString()}</span>,
       },
       {
         title: "Tổng",
         dataIndex: "",
         key: "sum",
-        render: (_, item) => <span>{item.price * item.amount}</span>,
+        render: (_, item) => (
+          <span>{(item.price * item.amount).toLocaleString()}</span>
+        ),
       },
     ];
 

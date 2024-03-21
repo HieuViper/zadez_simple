@@ -3,6 +3,7 @@ const jwt = require("jsonwebtoken");
 async function checkAuth(token, roles) {
   try {
     const decodedToken = await jwt.verify(token, process.env.JWT_SECRET_KEY);
+    console.log("🚀 ~ checkAuth ~ decodedToken:", decodedToken);
     if (
       roles.length > 0 &&
       roles.some((r) => decodedToken.roles.indexOf(r) >= 0)

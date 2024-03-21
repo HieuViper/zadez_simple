@@ -1,14 +1,15 @@
 "use client";
+import auth from "@/auth/auth";
 import { RootStyleRegistry } from "@/library/RootStyleRegistry";
 import store from "@/library/zustand/store";
 import {
   AppstoreOutlined,
   CodeSandboxOutlined,
+  HolderOutlined,
   LogoutOutlined,
   MenuFoldOutlined,
   MenuUnfoldOutlined,
   ProfileOutlined,
-  SettingOutlined,
   ShoppingCartOutlined,
   TeamOutlined,
   TrademarkOutlined,
@@ -50,20 +51,21 @@ const DashboardLayout = (props) => {
     };
   }
   const items = [
-    getItem("Products", "Products", <CodeSandboxOutlined />, [
+    getItem("Articles", "Articles", <ProfileOutlined />, [
       getItem(
-        "/admin/products",
+        "/admin/articles",
         null,
-        <Link href="/admin/products">Products List</Link>
+        <Link href="/admin/articles">Articles List</Link>
       ),
       getItem(
-        "/admin/products/0",
+        "/admin/articles/0",
         null,
-        <Link href="/admin/products/0?previousPage=1&previousLimit=10">
-          Add Products
+        <Link href="/admin/articles/0?previousPage=1&previousLimit=10">
+          Add Articles
         </Link>
       ),
     ]),
+
     getItem("Categories", "Categories", <AppstoreOutlined />, [
       getItem(
         "/admin/categories",
@@ -78,17 +80,18 @@ const DashboardLayout = (props) => {
         </Link>
       ),
     ]),
-    getItem("Orders", "Orders", <ShoppingCartOutlined />, [
+
+    getItem("Consts", "Consts", <HolderOutlined />, [
       getItem(
-        "/admin/orders",
+        "/admin/consts",
         null,
-        <Link href="/admin/orders">Orders List</Link>
+        <Link href="/admin/consts">Consts List</Link>
       ),
       getItem(
-        "/admin/orders/0",
+        "/admin/consts/0",
         null,
-        <Link href="/admin/orders/0?previousPage=1&previousLimit=10">
-          Add Order
+        <Link href="/admin/consts/0?previousPage=1&previousLimit=10">
+          Add Consts
         </Link>
       ),
     ]),
@@ -106,34 +109,37 @@ const DashboardLayout = (props) => {
         </Link>
       ),
     ]),
-    getItem("Consts", "Consts", <AppstoreOutlined />, [
+
+    getItem("Orders", "Orders", <ShoppingCartOutlined />, [
       getItem(
-        "/admin/consts",
+        "/admin/orders",
         null,
-        <Link href="/admin/consts">Consts List</Link>
+        <Link href="/admin/orders">Orders List</Link>
       ),
       getItem(
-        "/admin/consts/0",
+        "/admin/orders/0",
         null,
-        <Link href="/admin/consts/0?previousPage=1&previousLimit=10">
-          Add Consts
+        <Link href="/admin/orders/0?previousPage=1&previousLimit=10">
+          Add Order
         </Link>
       ),
     ]),
-    getItem("Articles", "Articles", <ProfileOutlined />, [
+
+    getItem("Products", "Products", <CodeSandboxOutlined />, [
       getItem(
-        "/admin/articles",
+        "/admin/products",
         null,
-        <Link href="/admin/articles">Articles List</Link>
+        <Link href="/admin/products">Products List</Link>
       ),
       getItem(
-        "/admin/articles/0",
+        "/admin/products/0",
         null,
-        <Link href="/admin/articles/0?previousPage=1&previousLimit=10">
-          Add Articles
+        <Link href="/admin/products/0?previousPage=1&previousLimit=10">
+          Add Products
         </Link>
       ),
     ]),
+
     getItem("User", "User", <TeamOutlined />, [
       getItem(
         "/admin/users",
@@ -162,22 +168,16 @@ const DashboardLayout = (props) => {
         </Link>
       ),
     ]),
-
-    {
-      type: "divider",
-    },
-    getItem("Navigation Three", "Setting", <SettingOutlined />, [
-      getItem("Option 9", "9"),
-      getItem("Option 10", "10"),
-      getItem("Option 11", "11"),
-      getItem("Option 12", "12"),
-    ]),
   ];
 
   useEffect(() => {
     const token = userState.token;
+    const signIn = auth.checkAuth(token, ["admin", "system", "sa"]);
+    if (!signIn) {
+      redirect("/admin/login");
+    }
 
-    if (pathName === "/admin/login" && token) {
+    if (pathName === "/admin/login" && token && signIn) {
       redirect("/admin");
     } else if (pathName === "/admin/login" && !token) {
     } else if (pathName !== "/admin/login" && !token) {

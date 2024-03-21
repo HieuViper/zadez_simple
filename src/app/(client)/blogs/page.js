@@ -110,7 +110,7 @@ const BlogsPage = () => {
         <div className="absolute inset-0 bg-gray-900 bg-opacity-30 rounded-lg"></div>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 py-6 sm:py-16">
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 py-6 sm:py-16">
         {blogs?.map((item, index) => (
           <div
             key={index}
