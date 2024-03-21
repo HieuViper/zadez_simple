@@ -6,21 +6,25 @@ import { useRouter } from "next/navigation";
 import useSWRInfinite from "swr/infinite";
 import Banner from "./_components/Banner";
 import Loading from "@/components/Loading";
+import { useSWRData } from "@/library/api";
 
-const PAGE_SIZE = 4;
+const PAGE_SIZE = 6;
 
 const BlogsPage = () => {
   const router = useRouter();
+  
 
   const { data, mutate, size, setSize, isValidating, isLoading } =
-    useSWRInfinite(
-      (index) => `/api/articles?limit=${PAGE_SIZE}&page=${index + 1}`,
-      (url) => axios.get(url).then((res) => res.data.data)
+  useSWRInfinite(
+    (index) => `/api/articles?limit=${PAGE_SIZE}&page=${index + 1}`,
+    (url) => axios.get(url).then((res) => res.data.data)
     );
 
-  console.log("🚀 ~ BlogsPage ~ data:", data);
+  const {data: tempData} = useSWRData(`/api/articles`,{limit:1000})
+  const shuffled = tempData?.data.sort(() => 0.5 - Math.random());
+  const randomBlogs = shuffled?.slice(0, 4);
+
   const blogs = data ? [].concat(...data) : [];
-  console.log("🚀 ~ BlogsPage ~ blogs:", blogs);
   const isLoadingMore =
     isLoading || (size > 0 && data && typeof data[size - 1] === "undefined");
   const isEmpty = data?.[0]?.length === 0;
@@ -40,7 +44,7 @@ const BlogsPage = () => {
             blogs?.[0].mainImageURL || "/no-image.jpg"
           }")`,
         }}
-        className="h-[70%] sm:grid hidden relative -mx-6 lg:-mx-16 xl:-mx-24 text-white sm:pl-10 lg:pl-20 py-16 grid-cols-12 bg-no-repeat bg-cover bg-center"
+        className="h-[70%] sm:grid hidden relative -mx-6 lg:-mx-16 xl:-mx-24 text-white sm:pl-10 lg:pl-20 py-16 grid-cols-12 place-items-center bg-no-repeat bg-cover bg-center"
       >
         <div
           className="cursor-pointer sm:flex hidden flex-col gap-4 col-start-1 sm:col-span-7 lg:col-span-4 justify-center h-full z-10"
@@ -50,7 +54,7 @@ const BlogsPage = () => {
             )
           }
         >
-          <div className="text-3xl font-semibold">{blogs?.[0].title}</div>
+          
           <Image
             src={
               blogs?.[0].mainImageURL
@@ -62,15 +66,18 @@ const BlogsPage = () => {
             alt="ok"
             className="object-cover rounded-lg"
           />
-          <div className="text-xs">{blogs?.[0].short}</div>
+          <div className="text-3xl font-semibold">{blogs?.[0].title}</div>
+          <div className="text-xs">{blogs?.[0].short.slice(0, 300) +
+                      (blogs?.[0].short.length > 300 ? "..." : "")}</div>
         </div>
 
         <div className="col-end-13 col-span-4 z-10">
+          <div className="text-2xl font-medium">Bài viết ngẫu nhiên</div>
           <div className="flex flex-col">
-            {blogs?.slice(0, 4).map((item, index) => (
+            {randomBlogs?.map((item, index) => (
               <div
                 className={`flex items-center gap-4 py-4 pl-2 cursor-pointer hover:bg-[rgba(0,0,0,0.2)] ${
-                  index != blogs.slice(0, 4).length - 1
+                  index != randomBlogs.length - 1
                     ? "border-solid border-0 border-b border-gray-500"
                     : ""
                 }`}
@@ -94,12 +101,12 @@ const BlogsPage = () => {
                 </div>
                 <div className="flex flex-col gap-3">
                   <div className="font-bold">
-                    {item.title.slice(0, 20) +
-                      (item.title.length > 20 ? "..." : "")}
+                    {item.title.slice(0, 30) +
+                      (item.title.length > 30 ? "..." : "")}
                   </div>
                   <div className="italic text-sm">
-                    {item?.short?.slice(0, 20) +
-                      (item?.short?.length > 20 ? "..." : "")}
+                    {item?.short?.slice(0, 50) +
+                      (item?.short?.length > 50 ? "..." : "")}
                   </div>
                 </div>
               </div>
@@ -110,7 +117,7 @@ const BlogsPage = () => {
         <div className="absolute inset-0 bg-gray-900 bg-opacity-30 rounded-lg"></div>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 py-6 sm:py-16">
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 py-6 sm:py-16">
         {blogs?.map((item, index) => (
           <div
             key={index}

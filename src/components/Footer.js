@@ -163,12 +163,12 @@ const Footer = () => {
         Công ty TNHH ZADEZ Việt Nam triển khai theo bản quyền của ZADEZ AMERICA
         LLC. (USA)
         <div className="flex flex-wrap items-center justify-center gap-8 ">
-        <a className="text-[#0d6efd] no-underline" href="https://zadez.vn">TRANG CHỦ</a>
-        <a className="text-[#0d6efd] no-underline" href="https://psi.zadez.vn" target="_blank" >BẢO HÀNH ĐIỆN TỬ</a>
-        <a className="text-[#0d6efd] no-underline" href="https://psi.zadez.vn/vi/tra-cuu-bao-hanh" target="_blank" >TRA CỨU BẢO HÀNH</a>
-        <a className="text-[#0d6efd] no-underline" href="https://psi.zadez.vn/vi/huong-dan" target="_blank" >HƯỚNG DẪN</a>
-        <a className="text-[#0d6efd] no-underline" href="https://psi.zadez.vn/vi/chinh-sach-bao-hanh" target="_blank" >CHÍNH SÁCH BẢO HÀNH</a>
-        <a className="text-[#0d6efd] no-underline" href="https://zadez.vn/lien-he">LIÊN HỆ</a>
+        <a className="text-[#68A3FD] no-underline" href="https://zadez.vn">TRANG CHỦ</a>
+        <a className="text-[#68A3FD] no-underline" href="https://psi.zadez.vn" target="_blank" >BẢO HÀNH ĐIỆN TỬ</a>
+        <a className="text-[#68A3FD] no-underline" href="https://psi.zadez.vn/vi/tra-cuu-bao-hanh" target="_blank" >TRA CỨU BẢO HÀNH</a>
+        <a className="text-[#68A3FD] no-underline" href="https://psi.zadez.vn/vi/huong-dan" target="_blank" >HƯỚNG DẪN</a>
+        <a className="text-[#68A3FD] no-underline" href="https://psi.zadez.vn/vi/chinh-sach-bao-hanh" target="_blank" >CHÍNH SÁCH BẢO HÀNH</a>
+        <a className="text-[#68A3FD] no-underline" href="https://zadez.vn/lien-he">LIÊN HỆ</a>
         </div>
       </div>
       <a className="phone-call" href="tel:19000053">

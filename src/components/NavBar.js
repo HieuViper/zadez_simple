@@ -21,6 +21,11 @@ const NavBar = ({ data }) => {
                   </span>
                 </Link>
               ) : (
+                <Link
+                href={item.category_code == "zadez" || item.category_code == "catalogue" ? '/' : `/danh-muc/${item.category_code}`}
+                style={{ textDecoration: "none", color: "black" }}
+                prefetch={false}
+              >
                 <span className=" py-2 flex justify-between items-center md:pr-0 pr-5 text-sm lg:text-[11px] 2xl:text-base font-medium md:cursor-pointer group-hover:text-red-500 text-black duration-200 transition">
                   {item.name}
                   {item?.children && (
@@ -34,6 +39,7 @@ const NavBar = ({ data }) => {
                     </span>
                   )}
                 </span>
+                </Link>
               )}
               {item?.children && (
                 <div
@@ -45,9 +51,7 @@ const NavBar = ({ data }) => {
                         <Link
                           href={`${
                             item.products.length > 0 ? `/danh-muc-san-pham` : ""
-                          }/${item.category_code}${
-                            item.products.length > 0 ? -`${item.id}` : ""
-                          }`}
+                          }/${item.category_code}`}
                           style={{ textDecoration: "none", color: "black" }}
                           prefetch={false}
                         >

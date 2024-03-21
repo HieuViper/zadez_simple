@@ -71,11 +71,11 @@ const nextConfig = {
         destination: "/gp-803",
       },
       {
-        source: "/bai-viet",
+        source: "/tin-tuc",
         destination: "/blogs",
       },
       {
-        source: "/bai-viet/:slug",
+        source: "/tin-tuc/:slug",
         destination: "/blogs/:slug",
       },
       {

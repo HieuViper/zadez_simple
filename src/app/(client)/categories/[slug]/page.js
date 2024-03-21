@@ -7,7 +7,8 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 const Category = ({ params }) => {
   const { slug } = params;
-  const id = slug.split("-")[slug.split("-").length - 1];
+  const { data: category } = useSWRData(`/api/categories?category_code=${slug}`);
+  const id = category?.data[0]?.id
   const router = useRouter();
   const searchParams = useSearchParams();
   const type = searchParams.has("type") ? searchParams.get("type") : "";

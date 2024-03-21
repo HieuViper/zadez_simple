@@ -27,7 +27,7 @@ const SlideBanner = ({ data, width, height }) => {
             <SwiperSlide key={i}>
               {i == 0 ? (
                 <Image
-                  sizes="40vw"
+                  sizes="100vw"
                   style={{
                     width: "100%",
                     height: "auto",
@@ -42,7 +42,7 @@ const SlideBanner = ({ data, width, height }) => {
                 />
               ) : (
                 <Image
-                  sizes="40vw"
+                  sizes="100vw"
                   style={{
                     width: "100%",
                     height: "auto",

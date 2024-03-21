@@ -11,14 +11,13 @@ export async function generateMetadata({ params, searchParams }, parent) {
   const article = await fetch(`${process.env.BASE_URL}/api/articles/${id}`, {
     cache: "no-store",
   }).then((res) => res.json());
-  console.log("🚀 ~ generateMetadata ~ article:", article);
 
   return {
     title: article.title,
     description: article.short,
     keywords: article.keywords,
     alternates: {
-      canonical: `${process.env.BASE_URL}/bai-viet/${toSlug(
+      canonical: `${process.env.BASE_URL}/blogs/${toSlug(
         article.title + " " + article.id
       )}`,
     },

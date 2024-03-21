@@ -82,6 +82,18 @@ export async function GET(req, { params }) {
                 order: searchParams.get("order"),
             };
         } else { { } }
+        if (searchParams.has("parent")) {
+            option = {
+                ...option,
+                parent: searchParams.get("parent"),
+            };
+        } else { { } }
+        if (searchParams.has("category_code")) {
+            option = {
+                ...option,
+                category_code: searchParams.get("category_code"),
+            };
+        } else { { } }
         let { count, rows } = await db.Categories.findAndCountAll({
             where: option,
             include: [

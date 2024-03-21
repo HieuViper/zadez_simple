@@ -71,7 +71,6 @@ const Search = ({  }) => {
     `/api/products?limit=1000&keyword=${key}&${productType ? `type=${productType}` : ""}`
   );
   
-  console.log('products :', products);
   // FILTER
 
   const [isInStock, setIsInStock] = useState(false);
@@ -166,7 +165,7 @@ const Search = ({  }) => {
 
   return (
     <div className="my-10 w-full m-auto max-w-xs md:max-w-3xl lg:max-w-7xl">
-      <div className="mb-4"><AutoCompleteSearch/></div>
+      <div className="mb-4"><AutoCompleteSearch keyword={key}/></div>
       <div className="text-2xl text-center">Tìm thấy <strong>{products?.data?.length}</strong> kết quả với từ khóa <strong>&#34;{key?.replace(/-/g, ' ')}&#34;</strong></div>
       <div className="grid grid-cols-3 lg:grid-cols-4 gap-6 py-10">
         {/* FILTER */}
