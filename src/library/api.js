@@ -16,9 +16,7 @@ export const useSWRData = (endpoint, params = {}) => {
   //   }).then((r) => r.json());
 
   const fetcher = (url, token) =>
-    axios
-      .get(url, { headers: headers })
-      .then((res) => res.data);
+    axios.get(url, { headers: headers }).then((res) => res.data);
   const { id, ...otherParams } = params; // Extract 'id' from params
   const queryString =
     Object.keys(otherParams).length > 0
@@ -27,10 +25,7 @@ export const useSWRData = (endpoint, params = {}) => {
   const key = id
     ? `${endpoint}/${id}?${queryString}`
     : `${endpoint}${queryString && `?${queryString}`}`;
-  const { data, isLoading, error, mutate } = useSWR(
-    key,
-    fetcher
-  );
+  const { data, isLoading, error, mutate } = useSWR(key, fetcher);
 
   const createData = async (newData) => {
     // Perform POST request to create data
@@ -38,7 +33,7 @@ export const useSWRData = (endpoint, params = {}) => {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        // "Authorization": "Bearer " + auth.token
+        Authorization: "Bearer " + userState.token,
       },
       body: JSON.stringify(newData),
     });
@@ -56,6 +51,7 @@ export const useSWRData = (endpoint, params = {}) => {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
+        Authorization: "Bearer " + userState.token,
       },
       body: JSON.stringify(updatedData),
     });
@@ -70,6 +66,9 @@ export const useSWRData = (endpoint, params = {}) => {
   const deleteData = async (id) => {
     const res = await fetch(`${endpoint}/${id}`, {
       method: "DELETE",
+      headers: {
+        Authorization: "Bearer " + userState.token,
+      },
     });
 
     if (res.ok) {

@@ -47,7 +47,11 @@ const Header = () => {
       key: "1",
     },
     {
-      label: "Quản lý đơn đã đặt",
+      label: (
+        <Link href="/order-history" prefetch={false}>
+          Lịch sử đơn hàng
+        </Link>
+      ),
       key: "2",
     },
     {

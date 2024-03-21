@@ -4,14 +4,6 @@ const Sequelize = require("sequelize");
 const Op = Sequelize.Op;
 
 export async function GET(req, { params }) {
-  // const signIn = await auth.checkAuth(req.headers.get("Authorization"), [
-  //   "admin",
-  // ]);
-  // if (!signIn) {
-  //   return NextResponse.json({ status: 401 });
-  // }
-  // console.log(req.headers.get("Authorization"));
-
   const searchParams = req.nextUrl.searchParams;
   const page = searchParams.has("page") ? searchParams.get("page") - 1 : 0;
   const limit = searchParams.has("limit") ? searchParams.get("limit") : 10;
